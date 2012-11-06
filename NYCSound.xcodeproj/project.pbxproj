@@ -1,0 +1,461 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		91D32EAB164971BE00BF7988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
+		91D32EAD164971BE00BF7988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
+		91D32EAF164971BE00BF7988 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAE164971BE00BF7988 /* CoreGraphics.framework */; };
+		91D32EB5164971BE00BF7988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EB3164971BE00BF7988 /* InfoPlist.strings */; };
+		91D32EB7164971BE00BF7988 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EB6164971BE00BF7988 /* main.m */; };
+		91D32EBB164971BE00BF7988 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EBA164971BE00BF7988 /* AppDelegate.m */; };
+		91D32EBD164971BE00BF7988 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EBC164971BE00BF7988 /* Default.png */; };
+		91D32EBF164971BE00BF7988 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EBE164971BE00BF7988 /* Default@2x.png */; };
+		91D32EC1164971BE00BF7988 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EC0164971BE00BF7988 /* Default-568h@2x.png */; };
+		91D32EC4164971BE00BF7988 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */; };
+		91D32EC7164971BE00BF7988 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EC6164971BE00BF7988 /* ViewController.m */; };
+		91D32ECF164971BF00BF7988 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32ECE164971BF00BF7988 /* SenTestingKit.framework */; };
+		91D32ED0164971BF00BF7988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
+		91D32ED1164971BF00BF7988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
+		91D32ED9164971BF00BF7988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91D32ED7164971BF00BF7988 /* InfoPlist.strings */; };
+		91D32EDC164971BF00BF7988 /* NYCSoundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EDB164971BF00BF7988 /* NYCSoundTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		91D32ED2164971BF00BF7988 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91D32E9D164971BE00BF7988 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91D32EA5164971BE00BF7988;
+			remoteInfo = NYCSound;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		91D32EA6164971BE00BF7988 /* NYCSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91D32EAA164971BE00BF7988 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		91D32EAC164971BE00BF7988 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		91D32EAE164971BE00BF7988 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		91D32EB2164971BE00BF7988 /* NYCSound-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NYCSound-Info.plist"; sourceTree = "<group>"; };
+		91D32EB4164971BE00BF7988 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		91D32EB6164971BE00BF7988 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		91D32EB8164971BE00BF7988 /* NYCSound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NYCSound-Prefix.pch"; sourceTree = "<group>"; };
+		91D32EB9164971BE00BF7988 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		91D32EBA164971BE00BF7988 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		91D32EBC164971BE00BF7988 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		91D32EBE164971BE00BF7988 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		91D32EC0164971BE00BF7988 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		91D32EC3164971BE00BF7988 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		91D32EC5164971BE00BF7988 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		91D32EC6164971BE00BF7988 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		91D32ECD164971BF00BF7988 /* NYCSoundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYCSoundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91D32ECE164971BF00BF7988 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		91D32ED6164971BF00BF7988 /* NYCSoundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NYCSoundTests-Info.plist"; sourceTree = "<group>"; };
+		91D32ED8164971BF00BF7988 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		91D32EDA164971BF00BF7988 /* NYCSoundTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYCSoundTests.h; sourceTree = "<group>"; };
+		91D32EDB164971BF00BF7988 /* NYCSoundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYCSoundTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		91D32EA3164971BE00BF7988 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32EAB164971BE00BF7988 /* UIKit.framework in Frameworks */,
+				91D32EAD164971BE00BF7988 /* Foundation.framework in Frameworks */,
+				91D32EAF164971BE00BF7988 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91D32EC9164971BF00BF7988 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32ECF164971BF00BF7988 /* SenTestingKit.framework in Frameworks */,
+				91D32ED0164971BF00BF7988 /* UIKit.framework in Frameworks */,
+				91D32ED1164971BF00BF7988 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		91D32E9B164971BE00BF7988 = {
+			isa = PBXGroup;
+			children = (
+				91D32EB0164971BE00BF7988 /* NYCSound */,
+				91D32ED4164971BF00BF7988 /* NYCSoundTests */,
+				91D32EA9164971BE00BF7988 /* Frameworks */,
+				91D32EA7164971BE00BF7988 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		91D32EA7164971BE00BF7988 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EA6164971BE00BF7988 /* NYCSound.app */,
+				91D32ECD164971BF00BF7988 /* NYCSoundTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		91D32EA9164971BE00BF7988 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EAA164971BE00BF7988 /* UIKit.framework */,
+				91D32EAC164971BE00BF7988 /* Foundation.framework */,
+				91D32EAE164971BE00BF7988 /* CoreGraphics.framework */,
+				91D32ECE164971BF00BF7988 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91D32EB0164971BE00BF7988 /* NYCSound */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EB9164971BE00BF7988 /* AppDelegate.h */,
+				91D32EBA164971BE00BF7988 /* AppDelegate.m */,
+				91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */,
+				91D32EC5164971BE00BF7988 /* ViewController.h */,
+				91D32EC6164971BE00BF7988 /* ViewController.m */,
+				91D32EB1164971BE00BF7988 /* Supporting Files */,
+			);
+			path = NYCSound;
+			sourceTree = "<group>";
+		};
+		91D32EB1164971BE00BF7988 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EB2164971BE00BF7988 /* NYCSound-Info.plist */,
+				91D32EB3164971BE00BF7988 /* InfoPlist.strings */,
+				91D32EB6164971BE00BF7988 /* main.m */,
+				91D32EB8164971BE00BF7988 /* NYCSound-Prefix.pch */,
+				91D32EBC164971BE00BF7988 /* Default.png */,
+				91D32EBE164971BE00BF7988 /* Default@2x.png */,
+				91D32EC0164971BE00BF7988 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91D32ED4164971BF00BF7988 /* NYCSoundTests */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EDA164971BF00BF7988 /* NYCSoundTests.h */,
+				91D32EDB164971BF00BF7988 /* NYCSoundTests.m */,
+				91D32ED5164971BF00BF7988 /* Supporting Files */,
+			);
+			path = NYCSoundTests;
+			sourceTree = "<group>";
+		};
+		91D32ED5164971BF00BF7988 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91D32ED6164971BF00BF7988 /* NYCSoundTests-Info.plist */,
+				91D32ED7164971BF00BF7988 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		91D32EA5164971BE00BF7988 /* NYCSound */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91D32EDF164971BF00BF7988 /* Build configuration list for PBXNativeTarget "NYCSound" */;
+			buildPhases = (
+				91D32EA2164971BE00BF7988 /* Sources */,
+				91D32EA3164971BE00BF7988 /* Frameworks */,
+				91D32EA4164971BE00BF7988 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NYCSound;
+			productName = NYCSound;
+			productReference = 91D32EA6164971BE00BF7988 /* NYCSound.app */;
+			productType = "com.apple.product-type.application";
+		};
+		91D32ECC164971BF00BF7988 /* NYCSoundTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91D32EE2164971BF00BF7988 /* Build configuration list for PBXNativeTarget "NYCSoundTests" */;
+			buildPhases = (
+				91D32EC8164971BF00BF7988 /* Sources */,
+				91D32EC9164971BF00BF7988 /* Frameworks */,
+				91D32ECA164971BF00BF7988 /* Resources */,
+				91D32ECB164971BF00BF7988 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91D32ED3164971BF00BF7988 /* PBXTargetDependency */,
+			);
+			name = NYCSoundTests;
+			productName = NYCSoundTests;
+			productReference = 91D32ECD164971BF00BF7988 /* NYCSoundTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		91D32E9D164971BE00BF7988 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = COSM;
+			};
+			buildConfigurationList = 91D32EA0164971BE00BF7988 /* Build configuration list for PBXProject "NYCSound" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 91D32E9B164971BE00BF7988;
+			productRefGroup = 91D32EA7164971BE00BF7988 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				91D32EA5164971BE00BF7988 /* NYCSound */,
+				91D32ECC164971BF00BF7988 /* NYCSoundTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91D32EA4164971BE00BF7988 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32EB5164971BE00BF7988 /* InfoPlist.strings in Resources */,
+				91D32EBD164971BE00BF7988 /* Default.png in Resources */,
+				91D32EBF164971BE00BF7988 /* Default@2x.png in Resources */,
+				91D32EC1164971BE00BF7988 /* Default-568h@2x.png in Resources */,
+				91D32EC4164971BE00BF7988 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91D32ECA164971BF00BF7988 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32ED9164971BF00BF7988 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		91D32ECB164971BF00BF7988 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		91D32EA2164971BE00BF7988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32EB7164971BE00BF7988 /* main.m in Sources */,
+				91D32EBB164971BE00BF7988 /* AppDelegate.m in Sources */,
+				91D32EC7164971BE00BF7988 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91D32EC8164971BF00BF7988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91D32EDC164971BF00BF7988 /* NYCSoundTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		91D32ED3164971BF00BF7988 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91D32EA5164971BE00BF7988 /* NYCSound */;
+			targetProxy = 91D32ED2164971BF00BF7988 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		91D32EB3164971BE00BF7988 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91D32EB4164971BE00BF7988 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91D32EC3164971BE00BF7988 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		91D32ED7164971BF00BF7988 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91D32ED8164971BF00BF7988 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		91D32EDD164971BF00BF7988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		91D32EDE164971BF00BF7988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		91D32EE0164971BF00BF7988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NYCSound/NYCSound-Prefix.pch";
+				INFOPLIST_FILE = "NYCSound/NYCSound-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		91D32EE1164971BF00BF7988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NYCSound/NYCSound-Prefix.pch";
+				INFOPLIST_FILE = "NYCSound/NYCSound-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		91D32EE3164971BF00BF7988 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NYCSound.app/NYCSound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NYCSound/NYCSound-Prefix.pch";
+				INFOPLIST_FILE = "NYCSoundTests/NYCSoundTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		91D32EE4164971BF00BF7988 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NYCSound.app/NYCSound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NYCSound/NYCSound-Prefix.pch";
+				INFOPLIST_FILE = "NYCSoundTests/NYCSoundTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		91D32EA0164971BE00BF7988 /* Build configuration list for PBXProject "NYCSound" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91D32EDD164971BF00BF7988 /* Debug */,
+				91D32EDE164971BF00BF7988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91D32EDF164971BF00BF7988 /* Build configuration list for PBXNativeTarget "NYCSound" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91D32EE0164971BF00BF7988 /* Debug */,
+				91D32EE1164971BF00BF7988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		91D32EE2164971BF00BF7988 /* Build configuration list for PBXNativeTarget "NYCSoundTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91D32EE3164971BF00BF7988 /* Debug */,
+				91D32EE4164971BF00BF7988 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 91D32E9D164971BE00BF7988 /* Project object */;
+}
