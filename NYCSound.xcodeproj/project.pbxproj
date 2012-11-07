@@ -17,12 +17,24 @@
 		91D32EBF164971BE00BF7988 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EBE164971BE00BF7988 /* Default@2x.png */; };
 		91D32EC1164971BE00BF7988 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EC0164971BE00BF7988 /* Default-568h@2x.png */; };
 		91D32EC4164971BE00BF7988 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */; };
-		91D32EC7164971BE00BF7988 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EC6164971BE00BF7988 /* ViewController.m */; };
+		91D32EC7164971BE00BF7988 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EC6164971BE00BF7988 /* HomeViewController.m */; };
 		91D32ECF164971BF00BF7988 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32ECE164971BF00BF7988 /* SenTestingKit.framework */; };
 		91D32ED0164971BF00BF7988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91D32ED1164971BF00BF7988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
 		91D32ED9164971BF00BF7988 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91D32ED7164971BF00BF7988 /* InfoPlist.strings */; };
 		91D32EDC164971BF00BF7988 /* NYCSoundTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EDB164971BF00BF7988 /* NYCSoundTests.m */; };
+		91D32EEA164A617B00BF7988 /* UINavigationBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EE8164A617B00BF7988 /* UINavigationBackground.png */; };
+		91D32EEB164A617B00BF7988 /* UINavigationBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EE9164A617B00BF7988 /* UINavigationBackground@2x.png */; };
+		91D32EEF164A665A00BF7988 /* UINavigationBar-COSM-Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EED164A665A00BF7988 /* UINavigationBar-COSM-Title.png */; };
+		91D32EF0164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EEE164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png */; };
+		91D32EF3164A6B2700BF7988 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EF2164A6B2700BF7988 /* FilterViewController.m */; };
+		91D32EF6164A6CFD00BF7988 /* ViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EF5164A6CFD00BF7988 /* ViewViewController.m */; };
+		91D32EF9164AA19200BF7988 /* COSMDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EF8164AA19200BF7988 /* COSMDefaults.m */; };
+		91D32F0E164AB32100BF7988 /* UIBarButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F0C164AB32100BF7988 /* UIBarButtonBack.png */; };
+		91D32F0F164AB32100BF7988 /* UIBarButtonBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F0D164AB32100BF7988 /* UIBarButtonBack@2x.png */; };
+		91D32F15164AC5F900BF7988 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F13164AC5F800BF7988 /* Background.png */; };
+		91D32F16164AC5F900BF7988 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F14164AC5F800BF7988 /* Background@2x.png */; };
+		91D32F19164ACE6600BF7988 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F18164ACE6600BF7988 /* AboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +62,30 @@
 		91D32EBE164971BE00BF7988 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		91D32EC0164971BE00BF7988 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91D32EC3164971BE00BF7988 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		91D32EC5164971BE00BF7988 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		91D32EC6164971BE00BF7988 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		91D32EC5164971BE00BF7988 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		91D32EC6164971BE00BF7988 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		91D32ECD164971BF00BF7988 /* NYCSoundTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NYCSoundTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D32ECE164971BF00BF7988 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91D32ED6164971BF00BF7988 /* NYCSoundTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NYCSoundTests-Info.plist"; sourceTree = "<group>"; };
 		91D32ED8164971BF00BF7988 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91D32EDA164971BF00BF7988 /* NYCSoundTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NYCSoundTests.h; sourceTree = "<group>"; };
 		91D32EDB164971BF00BF7988 /* NYCSoundTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NYCSoundTests.m; sourceTree = "<group>"; };
+		91D32EE8164A617B00BF7988 /* UINavigationBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UINavigationBackground.png; sourceTree = "<group>"; };
+		91D32EE9164A617B00BF7988 /* UINavigationBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UINavigationBackground@2x.png"; sourceTree = "<group>"; };
+		91D32EED164A665A00BF7988 /* UINavigationBar-COSM-Title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UINavigationBar-COSM-Title.png"; sourceTree = "<group>"; };
+		91D32EEE164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UINavigationBar-COSM-Title@2x.png"; sourceTree = "<group>"; };
+		91D32EF1164A6B2700BF7988 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		91D32EF2164A6B2700BF7988 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		91D32EF4164A6CFD00BF7988 /* ViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewViewController.h; sourceTree = "<group>"; };
+		91D32EF5164A6CFD00BF7988 /* ViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewViewController.m; sourceTree = "<group>"; };
+		91D32EF7164AA19200BF7988 /* COSMDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDefaults.h; sourceTree = "<group>"; };
+		91D32EF8164AA19200BF7988 /* COSMDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDefaults.m; sourceTree = "<group>"; };
+		91D32F0C164AB32100BF7988 /* UIBarButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBarButtonBack.png; sourceTree = "<group>"; };
+		91D32F0D164AB32100BF7988 /* UIBarButtonBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIBarButtonBack@2x.png"; sourceTree = "<group>"; };
+		91D32F13164AC5F800BF7988 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		91D32F14164AC5F800BF7988 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
+		91D32F17164ACE6600BF7988 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		91D32F18164ACE6600BF7988 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +145,10 @@
 		91D32EB0164971BE00BF7988 /* NYCSound */ = {
 			isa = PBXGroup;
 			children = (
-				91D32EB9164971BE00BF7988 /* AppDelegate.h */,
-				91D32EBA164971BE00BF7988 /* AppDelegate.m */,
+				91D32EB2164971BE00BF7988 /* NYCSound-Info.plist */,
 				91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */,
-				91D32EC5164971BE00BF7988 /* ViewController.h */,
-				91D32EC6164971BE00BF7988 /* ViewController.m */,
+				91D32F05164AAB7A00BF7988 /* App */,
+				91D32F06164AAB8A00BF7988 /* UIViewControllers */,
 				91D32EB1164971BE00BF7988 /* Supporting Files */,
 			);
 			path = NYCSound;
@@ -130,7 +157,7 @@
 		91D32EB1164971BE00BF7988 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				91D32EB2164971BE00BF7988 /* NYCSound-Info.plist */,
+				91D32EE7164A617B00BF7988 /* bin */,
 				91D32EB3164971BE00BF7988 /* InfoPlist.strings */,
 				91D32EB6164971BE00BF7988 /* main.m */,
 				91D32EB8164971BE00BF7988 /* NYCSound-Prefix.pch */,
@@ -158,6 +185,55 @@
 				91D32ED7164971BF00BF7988 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91D32EE7164A617B00BF7988 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				91D32F13164AC5F800BF7988 /* Background.png */,
+				91D32F14164AC5F800BF7988 /* Background@2x.png */,
+				91D32F0C164AB32100BF7988 /* UIBarButtonBack.png */,
+				91D32F0D164AB32100BF7988 /* UIBarButtonBack@2x.png */,
+				91D32EED164A665A00BF7988 /* UINavigationBar-COSM-Title.png */,
+				91D32EEE164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png */,
+				91D32EE8164A617B00BF7988 /* UINavigationBackground.png */,
+				91D32EE9164A617B00BF7988 /* UINavigationBackground@2x.png */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		91D32F05164AAB7A00BF7988 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EB9164971BE00BF7988 /* AppDelegate.h */,
+				91D32EBA164971BE00BF7988 /* AppDelegate.m */,
+				91D32EF7164AA19200BF7988 /* COSMDefaults.h */,
+				91D32EF8164AA19200BF7988 /* COSMDefaults.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		91D32F06164AAB8A00BF7988 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				91D32F0B164AAEFB00BF7988 /* Storyboards */,
+			);
+			name = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		91D32F0B164AAEFB00BF7988 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				91D32EF4164A6CFD00BF7988 /* ViewViewController.h */,
+				91D32EF5164A6CFD00BF7988 /* ViewViewController.m */,
+				91D32EF1164A6B2700BF7988 /* FilterViewController.h */,
+				91D32EF2164A6B2700BF7988 /* FilterViewController.m */,
+				91D32EC5164971BE00BF7988 /* HomeViewController.h */,
+				91D32EC6164971BE00BF7988 /* HomeViewController.m */,
+				91D32F17164ACE6600BF7988 /* AboutViewController.h */,
+				91D32F18164ACE6600BF7988 /* AboutViewController.m */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +312,14 @@
 				91D32EBF164971BE00BF7988 /* Default@2x.png in Resources */,
 				91D32EC1164971BE00BF7988 /* Default-568h@2x.png in Resources */,
 				91D32EC4164971BE00BF7988 /* MainStoryboard.storyboard in Resources */,
+				91D32EEA164A617B00BF7988 /* UINavigationBackground.png in Resources */,
+				91D32EEB164A617B00BF7988 /* UINavigationBackground@2x.png in Resources */,
+				91D32EEF164A665A00BF7988 /* UINavigationBar-COSM-Title.png in Resources */,
+				91D32EF0164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png in Resources */,
+				91D32F0E164AB32100BF7988 /* UIBarButtonBack.png in Resources */,
+				91D32F0F164AB32100BF7988 /* UIBarButtonBack@2x.png in Resources */,
+				91D32F15164AC5F900BF7988 /* Background.png in Resources */,
+				91D32F16164AC5F900BF7988 /* Background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +356,11 @@
 			files = (
 				91D32EB7164971BE00BF7988 /* main.m in Sources */,
 				91D32EBB164971BE00BF7988 /* AppDelegate.m in Sources */,
-				91D32EC7164971BE00BF7988 /* ViewController.m in Sources */,
+				91D32EC7164971BE00BF7988 /* HomeViewController.m in Sources */,
+				91D32EF3164A6B2700BF7988 /* FilterViewController.m in Sources */,
+				91D32EF6164A6CFD00BF7988 /* ViewViewController.m in Sources */,
+				91D32EF9164AA19200BF7988 /* COSMDefaults.m in Sources */,
+				91D32F19164ACE6600BF7988 /* AboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

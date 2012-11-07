@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "COSMDefaults.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UIToolbar appearance]         setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance]   setTintColor:[COSMDefaults colorForKey:@"grey"]];
     return YES;
 }
 							
