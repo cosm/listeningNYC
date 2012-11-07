@@ -311,23 +311,69 @@
             </objects>
             <point key="canvasLocation" x="946" y="1045"/>
         </scene>
-        <!--Table View Controller - History-->
+        <!--Navigation Controller-->
+        <scene sceneID="WMV-hy-8aX">
+            <objects>
+                <navigationController storyboardIdentifier="" definesPresentationContext="YES" id="t2a-F6-rfH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SXf-QW-0zn">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bUK-fs-iCG" kind="relationship" relationship="rootViewController" id="JKl-Js-U6S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DfT-pK-pdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="131"/>
+        </scene>
+        <!--View Controller - View-->
+        <scene sceneID="vsl-2G-7pp">
+            <objects>
+                <viewController storyboardIdentifier="Measurement" title="View" id="bUK-fs-iCG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lZ9-gU-1IM">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Measurement" id="oUM-Xe-w5f"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APM-po-AKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1429" y="136"/>
+        </scene>
+        <!--History View Controller - History-->
         <scene sceneID="3jA-Eg-ipy">
             <objects>
-                <tableViewController id="ycx-gl-Ypg" sceneMemberID="viewController">
+                <tableViewController id="ycx-gl-Ypg" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rYd-dK-CHE">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PEu-nJ-qjf">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="History Cell" id="PEu-nJ-qjf" customClass="HistoryCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zf0-nL-5bg">
+                                            <rect key="frame" x="62" y="0.0" width="246" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="RecordingIcon.png" id="Aeb-vN-SmC">
+                                            <rect key="frame" x="3" y="0.0" width="51" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="label" destination="zf0-nL-5bg" id="l1I-LT-Aq0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -359,6 +405,7 @@
     </scenes>
     <resources>
         <image name="Background.png" width="320" height="252"/>
+        <image name="RecordingIcon.png" width="20" height="32"/>
     </resources>
     <classes>
         <class className="AboutViewController" superclassName="UIViewController">
@@ -372,6 +419,15 @@
             <relationships>
                 <relationship kind="action" name="cancelFilterViewController:"/>
             </relationships>
+        </class>
+        <class className="HistoryCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HistoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
         </class>
         <class className="HomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
