@@ -7,12 +7,15 @@
 //
 
 #import "AboutViewController.h"
+#import "COSMDefaults.h"
 
 @interface AboutViewController ()
 
 @end
 
 @implementation AboutViewController
+
+@synthesize guidTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +30,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.guidTextField.text = [COSMDefaults cosmGUID];
 }
 
 - (void)didReceiveMemoryWarning

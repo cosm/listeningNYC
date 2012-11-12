@@ -14,8 +14,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                UITextAttributeTextColor: [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0],
+                          UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0f green:0.0 blue:0.0f alpha:0.8],
+                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+                                     UITextAttributeFont: [UIFont fontWithName:@"Helvetica-Light" size:22.0f]
+     }];
+     
     [[UIToolbar appearance]         setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance]   setTintColor:[COSMDefaults colorForKey:@"grey"]];
+    
     return YES;
 }
 							

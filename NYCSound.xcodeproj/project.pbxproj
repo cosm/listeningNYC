@@ -40,6 +40,7 @@
 		91D32F20164AD1DF00BF7988 /* RecordingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F1E164AD1DF00BF7988 /* RecordingIcon@2x.png */; };
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
+		91D6CB51165156AE00148FA4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D6CB50165156AE00148FA4 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		91D32F21164AD3B400BF7988 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		91D6CB4F165156AE00148FA4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		91D6CB50165156AE00148FA4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				91D32EB2164971BE00BF7988 /* NYCSound-Info.plist */,
+				91D6CB4F165156AE00148FA4 /* Utils.h */,
+				91D6CB50165156AE00148FA4 /* Utils.m */,
 				91D32EC2164971BE00BF7988 /* MainStoryboard.storyboard */,
 				91D32EB9164971BE00BF7988 /* AppDelegate.h */,
 				91D32EBA164971BE00BF7988 /* AppDelegate.m */,
@@ -377,6 +382,7 @@
 				91D32F19164ACE6600BF7988 /* AboutViewController.m in Sources */,
 				91D32F1C164ACF8100BF7988 /* HistoryViewController.m in Sources */,
 				91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */,
+				91D6CB51165156AE00148FA4 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +556,7 @@
 				91D32EE1164971BF00BF7988 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91D32EE2164971BF00BF7988 /* Build configuration list for PBXNativeTarget "NYCSoundTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +565,7 @@
 				91D32EE4164971BF00BF7988 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

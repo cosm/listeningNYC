@@ -7,6 +7,7 @@
 //
 
 #import "COSMDefaults.h"
+#import "Utils.h"
 
 @implementation COSMDefaults
 
@@ -35,6 +36,28 @@ static NSDictionary *colorDictionary;
 + (UIColor *)colorForKey:(NSString *)key {
     if (!sharedInstance) { [COSMDefaults sharedInstance]; }
     return (UIColor *) [colorDictionary objectForKey:key];
+}
+
+// this is used locally only if one is not set
+// in the system preferences.
+NSString * getUUID() {
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge_transfer NSString *)string;
+}
+
++ (NSString *)cosmGUID {
+    NSString *guid = [[NSUserDefaults standardUserDefaults] stringForKey:@"COSMGUID"];
+    if (guid == nil) {
+        guid = getUUID();
+        [[NSUserDefaults standardUserDefaults] setObject:guid forKey:@"COSMGUID"];
+        [Utils alert:@"Generating COSM GUID" message:guid];
+        if (![[NSUserDefaults standardUserDefaults] synchronize]) {
+            [Utils alert:@"error" message:@"Failed to save the guid"];
+        }
+    }
+    return guid;
 }
 
 @end

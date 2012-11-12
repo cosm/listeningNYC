@@ -15,6 +15,7 @@
 + (COSMDefaults *)sharedInstance;
 
 + (UIColor *)colorForKey:(NSString *)key;
++ (NSString *)cosmGUID;
 
 
 @end

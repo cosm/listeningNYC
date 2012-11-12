@@ -293,11 +293,26 @@
         <!--About View Controller - About-->
         <scene sceneID="KUO-1S-Jz1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f8q-3T-iFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="VNa-dq-ME1" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F28-F8-thl">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2Il-1k-He0">
+                                <rect key="frame" x="14" y="45" width="286" height="76"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="COSM GUID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oqv-Zb-q2b">
+                                <rect key="frame" x="20" y="20" width="133" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="xZv-pr-utu">
@@ -307,7 +322,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="guidTextField" destination="2Il-1k-He0" id="LWW-4N-Ws2"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8q-3T-iFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="946" y="1045"/>
         </scene>
@@ -418,6 +437,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cancelFilterViewController:"/>
+                <relationship kind="outlet" name="guidTextField" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="FilterViewController" superclassName="UIViewController">
