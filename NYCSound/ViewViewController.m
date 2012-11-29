@@ -1,11 +1,3 @@
-//
-//  ViewViewController.m
-//  NYCSound
-//
-//  Created by Ross Cairns on 07/11/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import "ViewViewController.h"
 #import "COSMDefaults.h"
 
@@ -15,7 +7,18 @@
 
 @implementation ViewViewController
 
-@synthesize mapWebView;
+@synthesize mapView;
+
+#pragma mark - Lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Wiew will appear with map %@", self.mapView);
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.mapView setUserTrackingMode:MKUserTrackingModeNone animated:YES];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,8 +35,6 @@
 	// Do any additional setup after loading the view.
     
     self.navigationItem.rightBarButtonItem.tintColor = [COSMDefaults colorForKey:@"orange"];
-    
-    [self.mapWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://rossc1.cartodb.com/tables/untitled_table/embed_map"]]];
    
 }
 

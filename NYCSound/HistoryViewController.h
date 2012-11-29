@@ -1,13 +1,13 @@
-//
-//  HistoryViewController.h
-//  NYCSound
-//
-//  Created by Ross Cairns on 07/11/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "COSM.h"
 
-@interface HistoryViewController : UITableViewController
+@interface HistoryViewController : UITableViewController<COSMFeedCollectionDelegate>
+
+// data
+@property (nonatomic, strong) COSMFeedCollection *feedCollection;
+
+// collection delegates
+- (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection;
+- (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON;
 
 @end

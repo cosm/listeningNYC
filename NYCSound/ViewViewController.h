@@ -1,15 +1,8 @@
-//
-//  ViewViewController.h
-//  NYCSound
-//
-//  Created by Ross Cairns on 07/11/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface ViewViewController : UIViewController
 
-@property(nonatomic, weak) IBOutlet UIWebView *mapWebView;
+@property (nonatomic, weak) MKMapView *mapView;
 
 @end

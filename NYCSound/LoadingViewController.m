@@ -1,13 +1,10 @@
-#import "AboutViewController.h"
-#import "COSMDefaults.h"
+#import "LoadingViewController.h"
 
-@interface AboutViewController ()
+@interface LoadingViewController ()
 
 @end
 
-@implementation AboutViewController
-
-@synthesize guidTextField;
+@implementation LoadingViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,20 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    self.guidTextField.text = [COSMDefaults cosmGUID];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark -
-
--(IBAction)cancelFilterViewController:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

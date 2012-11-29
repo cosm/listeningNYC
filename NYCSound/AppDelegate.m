@@ -1,18 +1,12 @@
-//
-//  AppDelegate.m
-//  NYCSound
-//
-//  Created by Ross Cairns on 06/11/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import "COSMDefaults.h"
+#import "COSM.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Setup UI
     [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes: @{
                                 UITextAttributeTextColor: [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0],
@@ -23,6 +17,9 @@
      
     [[UIToolbar appearance]         setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance]   setTintColor:[COSMDefaults colorForKey:@"grey"]];
+    
+    // Setup COSM
+    [[COSMAPI defaultAPI] setApiKey:@"4hSu8SQaNIRojnX5Pbq0cF8BUDGSAKxsS3pvdU1qdGVDND0g"];
     
     return YES;
 }

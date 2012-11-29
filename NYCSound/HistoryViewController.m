@@ -1,19 +1,37 @@
-//
-//  HistoryViewController.m
-//  NYCSound
-//
-//  Created by Ross Cairns on 07/11/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import "HistoryViewController.h"
 #import "HistoryCell.h"
+#import "Utils.h"
 
 @interface HistoryViewController ()
 
 @end
 
 @implementation HistoryViewController
+
+#pragma mark - Data
+
+@synthesize feedCollection;
+
+#pragma mark - Collection Delegate
+
+- (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection {
+    [self.tableView reloadData];
+}
+
+- (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON {
+    [Utils alertUsingJSON:JSON orTitle:@"Error saving feed" message:JSON];
+}
+
+#pragma mark - Life cycle
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.feedCollection.delegate = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.feedCollection.delegate = self;
+    [self.feedCollection fetch];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,12 +45,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (!self.feedCollection) {
+        self.feedCollection = [[COSMFeedCollection alloc] init];
+        [self.feedCollection useParameter:@"user" withValue:@"nycsoundapp"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +71,7 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 20;
+    return self.feedCollection.feeds.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,7 +79,8 @@
     static NSString *CellIdentifier = @"History Cell";
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.label.text = @"Fish & Chips";
+    COSMFeedModel *feed = [self.feedCollection.feeds objectAtIndex:indexPath.row];
+    cell.label.text = [feed valueForKeyPath:@"info.title"];
     
     return cell;
 }
