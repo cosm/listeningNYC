@@ -1,3 +1,12 @@
 [submodule "Lib/asi-http-request"]
 	path = Lib/asi-http-request
 	url = git://github.com/pokeb/asi-http-request.git
+[submodule "Lib/novocaine"]
+	path = Lib/novocaine
+	url = git@github.com:rc1/novocaine.git
+[submodule "Lib/CocoaLumberjack"]
+	path = Lib/CocoaLumberjack
+	url = git://github.com/robbiehanson/CocoaLumberjack.git
+[submodule "Lib/NVDSP"]
+	path = Lib/NVDSP
+	url = git://github.com/bartolsthoorn/NVDSP.git
