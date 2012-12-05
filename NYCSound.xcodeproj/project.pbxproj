@@ -200,6 +200,27 @@
 		91D32F20164AD1DF00BF7988 /* RecordingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F1E164AD1DF00BF7988 /* RecordingIcon@2x.png */; };
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
+		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */; };
+		91F23BCE166FE3B100A4A7E4 /* TestMeasure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.m */; };
+		91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
+		91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489422166799C90039094B /* NVAllpassFilter.m */; };
+		91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489424166799C90039094B /* NVBandpassFilter.m */; };
+		91F23BD2166FE49600A4A7E4 /* NVBandpassQPeakGainFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489426166799C90039094B /* NVBandpassQPeakGainFilter.m */; };
+		91F23BD3166FE49600A4A7E4 /* NVHighpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489428166799C90039094B /* NVHighpassFilter.m */; };
+		91F23BD4166FE49600A4A7E4 /* NVHighShelvingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148942A166799C90039094B /* NVHighShelvingFilter.m */; };
+		91F23BD5166FE49600A4A7E4 /* NVLowpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148942C166799C90039094B /* NVLowpassFilter.m */; };
+		91F23BD6166FE49600A4A7E4 /* NVLowShelvingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148942E166799C90039094B /* NVLowShelvingFilter.m */; };
+		91F23BD7166FE49600A4A7E4 /* NVNotchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489430166799C90039094B /* NVNotchFilter.m */; };
+		91F23BD8166FE49600A4A7E4 /* NVPeakingEQFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489432166799C90039094B /* NVPeakingEQFilter.m */; };
+		91F23BD9166FE49600A4A7E4 /* NVDSP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91489435166799C90039094B /* NVDSP.mm */; };
+		91F23BDA166FE49600A4A7E4 /* NVClippingDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489439166799C90039094B /* NVClippingDetection.m */; };
+		91F23BDB166FE4F400A4A7E4 /* AudioFileReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC831667858B002B9000 /* AudioFileReader.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91F23BDC166FE4F400A4A7E4 /* AudioFileWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC851667858B002B9000 /* AudioFileWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91F23BDD166FE4F400A4A7E4 /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC871667858B002B9000 /* Novocaine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91F23BDE166FE4F400A4A7E4 /* RingBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC891667858B002B9000 /* RingBuffer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91F23BDF166FE53400A4A7E4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC616678995002B9000 /* Accelerate.framework */; };
+		91F23BE0166FE53800A4A7E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC31667891B002B9000 /* AudioToolbox.framework */; };
+		91F23BE1166FE55300A4A7E4 /* DBTool.c in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.c */; };
 		91F7CF5016516B480062DEE6 /* ExampleRecording.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F7CF4E16516B480062DEE6 /* ExampleRecording.png */; };
 		91F7CF5116516B480062DEE6 /* ExampleRecording@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F7CF4F16516B480062DEE6 /* ExampleRecording@2x.png */; };
 /* End PBXBuildFile section */
@@ -439,6 +460,8 @@
 		91D32F21164AD3B400BF7988 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarTestViewController.h; sourceTree = "<group>"; };
+		91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarTestViewController.m; sourceTree = "<group>"; };
 		91F7CF4E16516B480062DEE6 /* ExampleRecording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExampleRecording.png; sourceTree = "<group>"; };
 		91F7CF4F16516B480062DEE6 /* ExampleRecording@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ExampleRecording@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -475,6 +498,8 @@
 				91C9D6DA166E2AD300837487 /* UIKit.framework in Frameworks */,
 				91C9D6DB166E2AD300837487 /* Foundation.framework in Frameworks */,
 				91C9D6DC166E2AD300837487 /* CoreGraphics.framework in Frameworks */,
+				91F23BDF166FE53400A4A7E4 /* Accelerate.framework in Frameworks */,
+				91F23BE0166FE53800A4A7E4 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +773,8 @@
 				919BD0BB166E34EB00478838 /* RadarSweeper.mm */,
 				919BD0D8166E469F00478838 /* GLTool.h */,
 				91C9D6DE166E2AD300837487 /* Supporting Files */,
+				91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */,
+				91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
@@ -1305,6 +1332,25 @@
 				91C9D6E8166E2AD300837487 /* RadarAppDelegate.m in Sources */,
 				91C9D6F4166E2AD300837487 /* RadarViewController.mm in Sources */,
 				919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */,
+				91F23BCD166FE29900A4A7E4 /* RadarTestViewController.m in Sources */,
+				91F23BCE166FE3B100A4A7E4 /* TestMeasure.m in Sources */,
+				91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */,
+				91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */,
+				91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */,
+				91F23BD2166FE49600A4A7E4 /* NVBandpassQPeakGainFilter.m in Sources */,
+				91F23BD3166FE49600A4A7E4 /* NVHighpassFilter.m in Sources */,
+				91F23BD4166FE49600A4A7E4 /* NVHighShelvingFilter.m in Sources */,
+				91F23BD5166FE49600A4A7E4 /* NVLowpassFilter.m in Sources */,
+				91F23BD6166FE49600A4A7E4 /* NVLowShelvingFilter.m in Sources */,
+				91F23BD7166FE49600A4A7E4 /* NVNotchFilter.m in Sources */,
+				91F23BD8166FE49600A4A7E4 /* NVPeakingEQFilter.m in Sources */,
+				91F23BD9166FE49600A4A7E4 /* NVDSP.mm in Sources */,
+				91F23BDA166FE49600A4A7E4 /* NVClippingDetection.m in Sources */,
+				91F23BDB166FE4F400A4A7E4 /* AudioFileReader.mm in Sources */,
+				91F23BDC166FE4F400A4A7E4 /* AudioFileWriter.m in Sources */,
+				91F23BDD166FE4F400A4A7E4 /* Novocaine.m in Sources */,
+				91F23BDE166FE4F400A4A7E4 /* RingBuffer.mm in Sources */,
+				91F23BE1166FE55300A4A7E4 /* DBTool.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
