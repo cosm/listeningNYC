@@ -63,7 +63,7 @@
 {
     [super viewDidLoad];
     
-    radar = new RadarSweeper(200, 12, 150.0f);
+    radar = new RadarSweeper(800 * 4, 12, 150.0f);
     
     // configure the view
     self.preferredFramesPerSecond = 30;

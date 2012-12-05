@@ -1,12 +1,14 @@
 #import "TestMeasure.h"
 #import "DDLog.h"
 #import "DBTool.h"
+#import "maxiFFT.h"
 
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface TestMeasure () {
-    
+    maxiFFT *fft;
+    maxiFFTOctaveAnalyzer *oct;
 }
 
 @end
@@ -42,6 +44,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
             [aPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
         currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
+        
+        /// add a-weighted to the fft & octave analyser
+        for (int i=0; i < numFrames; i+=numChannels) {
+            fft->process(aWeightedAudio[i]);
+        }
+        fft->magsToDB();
+        oct->calculate(fft->magnitudesDB);
         
         ////
         /// c weighted
@@ -97,11 +106,24 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
     cPeakingEq.Q = 0.2f;
 }
 
+- (void)dealloc {
+    delete fft;
+    delete oct;
+}
+
 - (id)init {
     if ((self=[super init])) {
         self.flatLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.aWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.cWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
+        
+        fft = new maxiFFT();
+        oct = new maxiFFTOctaveAnalyzer();
+        NSInteger fftSize = 1024;
+        NSInteger windowSize = 1024; //1024;
+        fft->setup(fftSize, windowSize, 256);
+        NSInteger averages = 0; // setting this to 12 should be each step in the octave
+        oct->setup([Novocaine audioManager].samplingRate, fftSize/2, averages);
         
         for (int i=0; i<11; ++i) {
             aPeakingEqs[i] = [[NVPeakingEQFilter alloc] initWithSamplingRate:[Novocaine audioManager].samplingRate];

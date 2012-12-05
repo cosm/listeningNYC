@@ -1,7 +1,17 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 
+/// Protocol
+@class RadarViewController;
+@protocol RadarViewControllerDatasource
+@optional
+- (NSArray *)opacityValues:(RadarViewController *)radarViewController;
+@end
+
+/// Class
 @interface RadarViewController : GLKViewController<GLKViewDelegate>
+
+@property (nonatomic, weak) id<RadarViewControllerDatasource> datasource;
 
 // Interface
 - (void)update;

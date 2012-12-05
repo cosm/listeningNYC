@@ -37,10 +37,10 @@
 		91489459166799C90039094B /* NVClippingDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489439166799C90039094B /* NVClippingDetection.m */; };
 		9148945A166799C90039094B /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
 		9148945B166799C90039094B /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
-		9148945F16679B980039094B /* TestMeasure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.m */; };
-		9148946016679B980039094B /* TestMeasure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.m */; };
-		914894621667B28E0039094B /* DBTool.c in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.c */; };
-		914894631667B28E0039094B /* DBTool.c in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.c */; };
+		9148945F16679B980039094B /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
+		9148946016679B980039094B /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
+		914894621667B28E0039094B /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
+		914894631667B28E0039094B /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
 		914894641667B3370039094B /* COSMDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EF8164AA19200BF7988 /* COSMDefaults.m */; };
 		914894651667B3410039094B /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC41165FA50300643315 /* Utils.m */; };
 		914894661667B34E0039094B /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -200,8 +200,8 @@
 		91D32F20164AD1DF00BF7988 /* RecordingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F1E164AD1DF00BF7988 /* RecordingIcon@2x.png */; };
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
-		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */; };
-		91F23BCE166FE3B100A4A7E4 /* TestMeasure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.m */; };
+		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */; };
+		91F23BCE166FE3B100A4A7E4 /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
 		91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
 		91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489422166799C90039094B /* NVAllpassFilter.m */; };
 		91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489424166799C90039094B /* NVBandpassFilter.m */; };
@@ -220,9 +220,18 @@
 		91F23BDE166FE4F400A4A7E4 /* RingBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC891667858B002B9000 /* RingBuffer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		91F23BDF166FE53400A4A7E4 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC616678995002B9000 /* Accelerate.framework */; };
 		91F23BE0166FE53800A4A7E4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC31667891B002B9000 /* AudioToolbox.framework */; };
-		91F23BE1166FE55300A4A7E4 /* DBTool.c in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.c */; };
+		91F23BE1166FE55300A4A7E4 /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
 		91F7CF5016516B480062DEE6 /* ExampleRecording.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F7CF4E16516B480062DEE6 /* ExampleRecording.png */; };
 		91F7CF5116516B480062DEE6 /* ExampleRecording@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F7CF4F16516B480062DEE6 /* ExampleRecording@2x.png */; };
+		91F9B995166FED9400EF1ACF /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97B166FED9400EF1ACF /* fft.cpp */; };
+		91F9B996166FED9400EF1ACF /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97B166FED9400EF1ACF /* fft.cpp */; };
+		91F9B997166FED9400EF1ACF /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97B166FED9400EF1ACF /* fft.cpp */; };
+		91F9B99B166FED9400EF1ACF /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */; };
+		91F9B99C166FED9400EF1ACF /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */; };
+		91F9B99D166FED9400EF1ACF /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */; };
+		91F9B9B8166FEED800EF1ACF /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B9B6166FEED800EF1ACF /* maximilian.cpp */; };
+		91F9B9B9166FEED800EF1ACF /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B9B6166FEED800EF1ACF /* maximilian.cpp */; };
+		91F9B9BA166FEED800EF1ACF /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B9B6166FEED800EF1ACF /* maximilian.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,8 +287,8 @@
 		9148943A166799C90039094B /* NVSoundLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSoundLevelMeter.h; sourceTree = "<group>"; };
 		9148943B166799C90039094B /* NVSoundLevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSoundLevelMeter.m; sourceTree = "<group>"; };
 		9148945D16679B980039094B /* TestMeasure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMeasure.h; sourceTree = "<group>"; };
-		9148945E16679B980039094B /* TestMeasure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMeasure.m; sourceTree = "<group>"; };
-		914894611667B28E0039094B /* DBTool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DBTool.c; sourceTree = "<group>"; };
+		9148945E16679B980039094B /* TestMeasure.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestMeasure.mm; sourceTree = "<group>"; };
+		914894611667B28E0039094B /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
 		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
 		917ABBF1165F901D00643315 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSM.h; path = ../../COSM/COSM.h; sourceTree = "<group>"; };
 		917ABBF2165F901D00643315 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMAPI.h; path = ../../COSM/COSMAPI.h; sourceTree = "<group>"; };
@@ -461,9 +470,15 @@
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarTestViewController.h; sourceTree = "<group>"; };
-		91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarTestViewController.m; sourceTree = "<group>"; };
+		91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarTestViewController.mm; sourceTree = "<group>"; };
 		91F7CF4E16516B480062DEE6 /* ExampleRecording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ExampleRecording.png; sourceTree = "<group>"; };
 		91F7CF4F16516B480062DEE6 /* ExampleRecording@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ExampleRecording@2x.png"; sourceTree = "<group>"; };
+		91F9B97B166FED9400EF1ACF /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = fft.cpp; path = libs/fft.cpp; sourceTree = "<group>"; };
+		91F9B97C166FED9400EF1ACF /* fft.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = fft.h; path = libs/fft.h; sourceTree = "<group>"; };
+		91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = maxiFFT.cpp; path = libs/maxiFFT.cpp; sourceTree = "<group>"; };
+		91F9B980166FED9400EF1ACF /* maxiFFT.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = maxiFFT.h; path = libs/maxiFFT.h; sourceTree = "<group>"; };
+		91F9B9B6166FEED800EF1ACF /* maximilian.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = maximilian.cpp; path = Lib/Maximillian/maximilian.cpp; sourceTree = SOURCE_ROOT; };
+		91F9B9B7166FEED800EF1ACF /* maximilian.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = maximilian.h; path = Lib/Maximillian/maximilian.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -662,7 +677,7 @@
 				91A5EC5C16677F15002B9000 /* TestMonitorMainStoryboard_iPhone.storyboard */,
 				91A5EC5F16677F15002B9000 /* TestMonitorMainStoryboard_iPad.storyboard */,
 				9148945D16679B980039094B /* TestMeasure.h */,
-				9148945E16679B980039094B /* TestMeasure.m */,
+				9148945E16679B980039094B /* TestMeasure.mm */,
 				91A5EC4B16677F15002B9000 /* Supporting Files */,
 			);
 			name = "COSM TestMonitor";
@@ -705,6 +720,7 @@
 		91A5EC801667856C002B9000 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				91F9B978166FED9400EF1ACF /* Maximilian */,
 				9148941B166799C90039094B /* NVDSP */,
 				91A5EC9216678699002B9000 /* Lumberjack */,
 				91A5EC811667858B002B9000 /* Novocaine */,
@@ -774,7 +790,7 @@
 				919BD0D8166E469F00478838 /* GLTool.h */,
 				91C9D6DE166E2AD300837487 /* Supporting Files */,
 				91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */,
-				91F23BCC166FE29900A4A7E4 /* RadarTestViewController.m */,
+				91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */,
 			);
 			path = Radar;
 			sourceTree = "<group>";
@@ -879,7 +895,7 @@
 				91D32EB1164971BE00BF7988 /* Supporting Files */,
 				91D32F21164AD3B400BF7988 /* HistoryCell.h */,
 				91D32F22164AD3B400BF7988 /* HistoryCell.m */,
-				914894611667B28E0039094B /* DBTool.c */,
+				914894611667B28E0039094B /* DBTool.mm */,
 				9148947A1667C7FA0039094B /* DBTool.h */,
 			);
 			path = NYCSound;
@@ -979,6 +995,20 @@
 				91BC2D1B1668ECFC0045F3BA /* MapViewController.m */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		91F9B978166FED9400EF1ACF /* Maximilian */ = {
+			isa = PBXGroup;
+			children = (
+				91F9B9B6166FEED800EF1ACF /* maximilian.cpp */,
+				91F9B9B7166FEED800EF1ACF /* maximilian.h */,
+				91F9B97B166FED9400EF1ACF /* fft.cpp */,
+				91F9B97C166FED9400EF1ACF /* fft.h */,
+				91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */,
+				91F9B980166FED9400EF1ACF /* maxiFFT.h */,
+			);
+			name = Maximilian;
+			path = Lib/Maximillian/ofxMaxim/ofxMaxim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1308,11 +1338,14 @@
 				91489455166799C90039094B /* NVDSP.mm in Sources */,
 				91489459166799C90039094B /* NVClippingDetection.m in Sources */,
 				9148945B166799C90039094B /* NVSoundLevelMeter.m in Sources */,
-				9148946016679B980039094B /* TestMeasure.m in Sources */,
-				914894631667B28E0039094B /* DBTool.c in Sources */,
+				9148946016679B980039094B /* TestMeasure.mm in Sources */,
+				914894631667B28E0039094B /* DBTool.mm in Sources */,
 				914894641667B3370039094B /* COSMDefaults.m in Sources */,
 				914894651667B3410039094B /* Utils.m in Sources */,
 				914894661667B34E0039094B /* ISO8601DateFormatter.m in Sources */,
+				91F9B996166FED9400EF1ACF /* fft.cpp in Sources */,
+				91F9B99C166FED9400EF1ACF /* maxiFFT.cpp in Sources */,
+				91F9B9B9166FEED800EF1ACF /* maximilian.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1332,8 +1365,8 @@
 				91C9D6E8166E2AD300837487 /* RadarAppDelegate.m in Sources */,
 				91C9D6F4166E2AD300837487 /* RadarViewController.mm in Sources */,
 				919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */,
-				91F23BCD166FE29900A4A7E4 /* RadarTestViewController.m in Sources */,
-				91F23BCE166FE3B100A4A7E4 /* TestMeasure.m in Sources */,
+				91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */,
+				91F23BCE166FE3B100A4A7E4 /* TestMeasure.mm in Sources */,
 				91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */,
 				91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */,
 				91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */,
@@ -1350,7 +1383,10 @@
 				91F23BDC166FE4F400A4A7E4 /* AudioFileWriter.m in Sources */,
 				91F23BDD166FE4F400A4A7E4 /* Novocaine.m in Sources */,
 				91F23BDE166FE4F400A4A7E4 /* RingBuffer.mm in Sources */,
-				91F23BE1166FE55300A4A7E4 /* DBTool.c in Sources */,
+				91F23BE1166FE55300A4A7E4 /* DBTool.mm in Sources */,
+				91F9B997166FED9400EF1ACF /* fft.cpp in Sources */,
+				91F9B99D166FED9400EF1ACF /* maxiFFT.cpp in Sources */,
+				91F9B9BA166FEED800EF1ACF /* maximilian.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1424,11 +1460,14 @@
 				91489454166799C90039094B /* NVDSP.mm in Sources */,
 				91489458166799C90039094B /* NVClippingDetection.m in Sources */,
 				9148945A166799C90039094B /* NVSoundLevelMeter.m in Sources */,
-				9148945F16679B980039094B /* TestMeasure.m in Sources */,
-				914894621667B28E0039094B /* DBTool.c in Sources */,
+				9148945F16679B980039094B /* TestMeasure.mm in Sources */,
+				914894621667B28E0039094B /* DBTool.mm in Sources */,
 				91BC2D181668EA400045F3BA /* TestSubmitViewController.m in Sources */,
 				91BC2D191668EBF00045F3BA /* TestMonitorViewController.m in Sources */,
 				91BC2D1C1668ECFC0045F3BA /* MapViewController.m in Sources */,
+				91F9B995166FED9400EF1ACF /* fft.cpp in Sources */,
+				91F9B99B166FED9400EF1ACF /* maxiFFT.cpp in Sources */,
+				91F9B9B8166FEED800EF1ACF /* maximilian.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

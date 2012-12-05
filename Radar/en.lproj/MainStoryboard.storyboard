@@ -31,7 +31,7 @@
                             <containerView contentMode="scaleToFill" id="aUY-4X-CEr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="eLg-bs-uMG" kind="embed" id="QXv-vd-6Z7"/>
                                 </connections>
