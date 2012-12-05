@@ -5,6 +5,12 @@
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
+@interface TestMeasure () {
+    
+}
+
+@end
+
 @implementation TestMeasure
 
 #pragma mark - Tools

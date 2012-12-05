@@ -89,6 +89,8 @@
     
     scanlinesIterator = radar->scanlines.begin();
     self.updateSweeperTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updaterSweeper) userInfo:nil repeats:YES];
+    
+    self.view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewWillUnload {
