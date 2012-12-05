@@ -97,6 +97,10 @@
 		917ABC4C165FACC300643315 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC4B165FACC200643315 /* LoadingViewController.m */; };
 		919AAA2B16524D5E00EB99D4 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */; };
 		919AAA2F1652534E00EB99D4 /* MeasureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2E1652534E00EB99D4 /* MeasureDetailViewController.m */; };
+		919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
+		919BD0BD166E34EB00478838 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
+		919BD0BF166E35F000478838 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BD0BE166E35F000478838 /* GLKit.framework */; };
+		919BD0CC166E3A2C00478838 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BD0CB166E3A2C00478838 /* OpenGLES.framework */; };
 		919E32F6165FBDB700121D6C /* CartoTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E32F5165FBDB700121D6C /* CartoTileProvider.m */; };
 		919E32FA165FBE9400121D6C /* CartoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E32F9165FBE9300121D6C /* CartoTile.m */; };
 		91A5EC4716677F15002B9000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
@@ -157,7 +161,7 @@
 		91C9D6EC166E2AD300837487 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C9D6EB166E2AD300837487 /* Default@2x.png */; };
 		91C9D6EE166E2AD300837487 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C9D6ED166E2AD300837487 /* Default-568h@2x.png */; };
 		91C9D6F1166E2AD300837487 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C9D6EF166E2AD300837487 /* MainStoryboard.storyboard */; };
-		91C9D6F4166E2AD300837487 /* RadarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C9D6F3166E2AD300837487 /* RadarViewController.m */; };
+		91C9D6F4166E2AD300837487 /* RadarViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91C9D6F3166E2AD300837487 /* RadarViewController.mm */; };
 		91C9D6FB166E2AD400837487 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32ECE164971BF00BF7988 /* SenTestingKit.framework */; };
 		91C9D6FC166E2AD400837487 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91C9D6FD166E2AD400837487 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
@@ -315,6 +319,11 @@
 		919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasureViewController.m; sourceTree = "<group>"; };
 		919AAA2D1652534E00EB99D4 /* MeasureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureDetailViewController.h; sourceTree = "<group>"; };
 		919AAA2E1652534E00EB99D4 /* MeasureDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasureDetailViewController.m; sourceTree = "<group>"; };
+		919BD0BA166E333900478838 /* RadarSweeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadarSweeper.h; path = RadarTests/RadarSweeper.h; sourceTree = SOURCE_ROOT; };
+		919BD0BB166E34EB00478838 /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarSweeper.mm; path = RadarTests/RadarSweeper.mm; sourceTree = SOURCE_ROOT; };
+		919BD0BE166E35F000478838 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		919BD0CB166E3A2C00478838 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		919BD0D8166E469F00478838 /* GLTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTool.h; sourceTree = "<group>"; };
 		919E32F4165FBDB600121D6C /* CartoTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartoTileProvider.h; sourceTree = "<group>"; };
 		919E32F5165FBDB700121D6C /* CartoTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartoTileProvider.m; sourceTree = "<group>"; };
 		919E32F8165FBE9300121D6C /* CartoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartoTile.h; sourceTree = "<group>"; };
@@ -379,7 +388,7 @@
 		91C9D6ED166E2AD300837487 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91C9D6F0166E2AD300837487 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		91C9D6F2166E2AD300837487 /* RadarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadarViewController.h; sourceTree = "<group>"; };
-		91C9D6F3166E2AD300837487 /* RadarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadarViewController.m; sourceTree = "<group>"; };
+		91C9D6F3166E2AD300837487 /* RadarViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarViewController.mm; sourceTree = "<group>"; };
 		91C9D6FA166E2AD400837487 /* RadarTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadarTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C9D702166E2AD400837487 /* RadarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadarTests-Info.plist"; sourceTree = "<group>"; };
 		91C9D704166E2AD400837487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -461,6 +470,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919BD0CC166E3A2C00478838 /* OpenGLES.framework in Frameworks */,
+				919BD0BF166E35F000478838 /* GLKit.framework in Frameworks */,
 				91C9D6DA166E2AD300837487 /* UIKit.framework in Frameworks */,
 				91C9D6DB166E2AD300837487 /* Foundation.framework in Frameworks */,
 				91C9D6DC166E2AD300837487 /* CoreGraphics.framework in Frameworks */,
@@ -732,7 +743,10 @@
 				91C9D6E7166E2AD300837487 /* RadarAppDelegate.m */,
 				91C9D6EF166E2AD300837487 /* MainStoryboard.storyboard */,
 				91C9D6F2166E2AD300837487 /* RadarViewController.h */,
-				91C9D6F3166E2AD300837487 /* RadarViewController.m */,
+				91C9D6F3166E2AD300837487 /* RadarViewController.mm */,
+				919BD0BA166E333900478838 /* RadarSweeper.h */,
+				919BD0BB166E34EB00478838 /* RadarSweeper.mm */,
+				919BD0D8166E469F00478838 /* GLTool.h */,
 				91C9D6DE166E2AD300837487 /* Supporting Files */,
 			);
 			path = Radar;
@@ -804,6 +818,8 @@
 		91D32EA9164971BE00BF7988 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				919BD0CB166E3A2C00478838 /* OpenGLES.framework */,
+				919BD0BE166E35F000478838 /* GLKit.framework */,
 				91A5ECC616678995002B9000 /* Accelerate.framework */,
 				91A5ECC31667891B002B9000 /* AudioToolbox.framework */,
 				91D32F24164AD88300BF7988 /* MapKit.framework */,
@@ -1287,7 +1303,8 @@
 			files = (
 				91C9D6E4166E2AD300837487 /* main.m in Sources */,
 				91C9D6E8166E2AD300837487 /* RadarAppDelegate.m in Sources */,
-				91C9D6F4166E2AD300837487 /* RadarViewController.m in Sources */,
+				91C9D6F4166E2AD300837487 /* RadarViewController.mm in Sources */,
+				919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1296,6 +1313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91C9D708166E2AD400837487 /* RadarTests.m in Sources */,
+				919BD0BD166E34EB00478838 /* RadarSweeper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1739,6 +1757,7 @@
 				91C9D70A166E2AD400837487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91C9D70E166E2AD400837487 /* Build configuration list for PBXNativeTarget "RadarTests" */ = {
 			isa = XCConfigurationList;
@@ -1747,6 +1766,7 @@
 				91C9D70C166E2AD400837487 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91D32EA0164971BE00BF7988 /* Build configuration list for PBXProject "NYCSound" */ = {
 			isa = XCConfigurationList;

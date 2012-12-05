@@ -1,13 +1,13 @@
-//
-//  RadarViewController.h
-//  Radar
-//
-//  Created by Ross Cairns on 04/12/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
-@interface RadarViewController : UIViewController
+@interface RadarViewController : GLKViewController<GLKViewDelegate>
+
+// Interface
+- (void)update;
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect;
+
+// GL
+@property (nonatomic, strong) GLKBaseEffect *projectionMatrixEffect;
 
 @end
