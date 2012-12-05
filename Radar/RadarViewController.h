@@ -10,4 +10,8 @@
 // GL
 @property (nonatomic, strong) GLKBaseEffect *projectionMatrixEffect;
 
+// Timer
+@property (nonatomic, strong) NSTimer *updateSweeperTimer;
+- (void)updaterSweeper;
+
 @end
