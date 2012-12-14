@@ -1,9 +1,57 @@
 #import "TestMeasure.h"
 #import "DDLog.h"
 #import "DBTool.h"
-
+#import "maxiFFT.h"
+#import "RadarSweeper.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+template<typename T>
+struct Normalizing {
+    Normalizing() {
+        min = std::numeric_limits<T>::max();
+        max = std::numeric_limits<T>::min();
+    }
+    T max;
+    T min;
+    T currentValue;
+    void set(T value) {
+        if (value < min) { min = value; }
+        if (value > max) { max = value; }
+        currentValue = value;
+    }
+    float getNormalized () {
+        float n = map(currentValue, min, max, 0.0f, 1.0f);
+        return n;
+    }
+    T map(float input, T inputMin, T inputMax, float outputMin, float outputMax) {
+        T output = ((input-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
+        if (outputMax < outputMin) {
+            if (output < outputMax) {
+                output = outputMax;
+            }
+            else if (output > outputMin) {
+                output = outputMin;
+            }
+        } else {
+            if (output > outputMax) {
+                output = outputMax;
+            }
+            else if (output < outputMin) {
+                output = outputMin;
+            }
+        }
+        return output;
+    };
+};
+
+
+@interface TestMeasure () {
+    maxiFFT *fft;
+    maxiFFTOctaveAnalyzer *oct;
+    Normalizing<float> *nomalized;
+}
+
+@end
 
 @implementation TestMeasure
 
@@ -37,6 +85,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         }
         currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
         
+
+
         ////
         /// c weighted
         float cWeightedAudio[numFrames * numChannels];
@@ -45,6 +95,17 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
         for (int i=0; i < 11; ++i) {
             [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
+        
+        /// add a-weighted to the fft & octave analyser
+        for (int i=0; i < numFrames; i+=numChannels) {
+            fft->process(cWeightedAudio[i]);
+        }
+        fft->magsToDB();
+        oct->calculate(fft->magnitudesDB);
+        for (int i =0; i < oct->nAverages; ++i) {
+            nomalized[i].set(oct->peaks[i]);
+        }
+        
         currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
         
         /// peak
@@ -79,6 +140,22 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     
 }
 
+#pragma mark - Rader Data Source
+
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
+    BOOL useOct = YES;
+    if (useOct) {
+        // NSLog(@"%u", oct->nAverages);
+        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, oct->nAverages - 20);
+        unsigned int peakDbIndex = floor(index);
+        return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
+    } else {
+        //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);
+        //unsigned int peakDbIndex = floor(index);
+        //return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
+    }
+}
+
 #pragma mark - Life Cycle
 
 void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, int freq) {
@@ -91,11 +168,27 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
     cPeakingEq.Q = 0.2f;
 }
 
+- (void)dealloc {
+    delete fft;
+    delete oct;
+    delete nomalized;
+}
+
 - (id)init {
     if ((self=[super init])) {
         self.flatLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.aWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.cWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
+        
+        fft = new maxiFFT();
+        oct = new maxiFFTOctaveAnalyzer();
+        NSInteger fftSize = 1024;
+        NSInteger windowSize = 1024; //1024;
+        fft->setup(fftSize, windowSize, 256);
+        NSInteger averages = 12; // setting this to 12 should be each step in the octave
+        oct->setup([Novocaine audioManager].samplingRate, fftSize/2, averages);
+        
+        nomalized = new Normalizing<float>[oct->nAverages];
         
         for (int i=0; i<11; ++i) {
             aPeakingEqs[i] = [[NVPeakingEQFilter alloc] initWithSamplingRate:[Novocaine audioManager].samplingRate];

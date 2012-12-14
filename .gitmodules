@@ -10,3 +10,6 @@
 [submodule "Lib/NVDSP"]
 	path = Lib/NVDSP
 	url = git://github.com/bartolsthoorn/NVDSP.git
+[submodule "Lib/Maximillian"]
+	path = Lib/Maximillian
+	url = git@github.com:rc1/Maximilian.git

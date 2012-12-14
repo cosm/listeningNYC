@@ -1,18 +1,18 @@
 //
-//  RadarViewController.m
-//  Radar
+//  ViewController.m
+//  ListeningNYC
 //
-//  Created by Ross Cairns on 04/12/2012.
+//  Created by Ross Cairns on 07/12/2012.
 //  Copyright (c) 2012 COSM. All rights reserved.
 //
 
-#import "RadarViewController.h"
+#import "ViewController.h"
 
-@interface RadarViewController ()
+@interface ViewController ()
 
 @end
 
-@implementation RadarViewController
+@implementation ViewController
 
 - (void)viewDidLoad
 {
