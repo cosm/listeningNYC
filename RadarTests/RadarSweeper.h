@@ -1,12 +1,14 @@
 #pragma once
 #include <vector>
 
-typedef struct {
+struct RadarColor {
+    RadarColor(){};
+    RadarColor(float r, float g, float b):r(r),g(g),b(b){};
     float r;
     float g;
     float b;
     float a;
-} RadarColor;
+};
 
 float RadarMapFloat(float input, float inputMin, float inputMax, float outputMin, float outputMax);
 
@@ -23,6 +25,7 @@ public:
     }
     void    draw();
     void    hsvTransformColor(float hueDegrees, float saturation, float value, float alpha, unsigned int which);
+    void    setParticleHSVAColor(float h, float s, float v, float a, unsigned int which);
     void    setParticleRGBAColor(float r, float g, float b, float a, unsigned int which) {
         unsigned int needle = which * 8;
         if (needle>numParticles * 8) {
@@ -51,6 +54,12 @@ public:
         for (int i=0; i<numParticles * 8; ++i) {
             colors[i] = (float)rand()/(float)RAND_MAX;
         }
+    }
+    void    setAlpha(float alpha, unsigned int which) {
+        //NSLog(@"setting alpha to %f", alpha);
+        which = which * 8;
+        colors[which+3] = alpha;
+        colors[which+7] = alpha;
     }
     void setHeight(float height) {
         _height = height;
@@ -93,8 +102,20 @@ public:
             RadarScanline *scanline = new RadarScanline(particlesPerScanLine, width * 2, height);
             scanlines.push_back(scanline);
             scanline->rotate(currentRotation, 0.0f, 0.0f, 1.0f);
-            scanline->colorizeRandom();
+            //scanline->colorizeRandom();
             currentRotation += spreadDegree;
+        }
+    }
+
+    void    setHues(float startHue, float endHue) {
+        for (ScanlinesIt it = scanlines.begin(); it != scanlines.end(); ++it) {
+            RadarScanline *scanline = *it;
+            for (int i = 0; i < scanline->getNumParticles(); ++i) {
+                //scanline->setParticleRGBAColor(1.0f, 0.0f, 1.0f, 0.0f, i);
+                float hue = RadarMapFloat(i, 0, scanline->getNumParticles(), startHue, endHue);
+                //scanline->hsvTransformColor(hue, 1.0f, 1.0f, 01.0f.0f, i);
+                scanline->setParticleHSVAColor(hue, 1.0f, 1.0f, 0.0f, i);
+            }
         }
     }
     virtual ~RadarSweeper() {

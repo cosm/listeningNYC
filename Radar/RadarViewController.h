@@ -2,10 +2,10 @@
 #import <GLKit/GLKit.h>
 
 /// Protocol
-@class RadarViewController;
-@protocol RadarViewControllerDatasource
+@class RadarViewController; 
+@protocol RadarViewControllerDatasource <NSObject>
 @optional
-- (NSArray *)opacityValues:(RadarViewController *)radarViewController;
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
 @end
 
 /// Class

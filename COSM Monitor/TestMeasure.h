@@ -3,8 +3,11 @@
 #import "NVSoundLevelMeter.h"
 #import "DBTool.h"
 #import "NVPeakingEQFilter.h"
+#import "RadarViewController.h"
 
-@interface TestMeasure : NSObject {
+
+
+@interface TestMeasure : NSObject<RadarViewControllerDatasource> {
     NVPeakingEQFilter *aPeakingEqs[11];
     NVPeakingEQFilter *cPeakingEqs[11];
     DBCollection peakLevels;
@@ -20,5 +23,8 @@
 - (void)stop;
 @property DBCollection currentLevels;
 -(DBCollection)peakLevels;
+
+// radar datasource
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
 
 @end

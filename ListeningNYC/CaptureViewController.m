@@ -1,12 +1,12 @@
-#import "RadarTestViewController.h"
+#import "CaptureViewController.h"
 #import "TestMeasure.h"
 #import "RadarViewController.h"
 
-@interface RadarTestViewController ()
+@interface CaptureViewController ()
 
 @end
 
-@implementation RadarTestViewController
+@implementation CaptureViewController
 
 #pragma mark - Radar view controller
 
@@ -25,7 +25,6 @@
     [super viewDidLoad];
 	self.testMeasure = [[TestMeasure alloc] init];
     [self.testMeasure start];
-    NSLog(@"setting delegate");
     self.radarViewController.datasource = self.testMeasure;
 }
 

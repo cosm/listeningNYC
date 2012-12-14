@@ -53,7 +53,81 @@ void RadarScanline::hsvTransformColor(float hueDegrees, float saturation, float 
     setParticleRGBAColor(color.r, color.g, color.b, alpha, which);
 }
 
+
+// from SO: 
+template<class Color>
+void hsv2rgb(double inH, double inS, double inV, Color &out){
+    double      hh, p, q, t, ff;
+    long        i;
+    
+    if(inS <= 0.0) {       // < is bogus, just shuts up warnings
+        if(isnan(inH)) {   // inH == NAN
+            out.r = inV;
+            out.g = inV;
+            out.b = inV;
+            return;
+        }
+        // error - should never happen
+        out.r = 0.0;
+        out.g = 0.0;
+        out.b = 0.0;
+        return;
+    }
+    hh = inH;
+    if(hh >= 360.0) hh = 0.0;
+    hh /= 60.0;
+    i = (long)hh;
+    ff = hh - i;
+    p = inV * (1.0 - inS);
+    q = inV * (1.0 - (inS * ff));
+    t = inV * (1.0 - (inS * (1.0 - ff)));
+    
+    switch(i) {
+        case 0:
+            out.r = inV;
+            out.g = t;
+            out.b = p;
+            break;
+        case 1:
+            out.r = q;
+            out.g = inV;
+            out.b = p;
+            break;
+        case 2:
+            out.r = p;
+            out.g = inV;
+            out.b = t;
+            break;
+            
+        case 3:
+            out.r = p;
+            out.g = q;
+            out.b = inV;
+            break;
+        case 4:
+            out.r = t;
+            out.g = p;
+            out.b = inV;
+            break;
+        case 5:
+        default:
+            out.r = inV;
+            out.g = p;
+            out.b = q;
+            break;
+    }
+    return;     
+}
+
+void RadarScanline::setParticleHSVAColor(float h, float s, float v, float a, unsigned int which) {
+    RadarColor color;
+    hsv2rgb(h,s,v,color);
+    setParticleRGBAColor(color.r, color.g, color.b, a, which);
+}
+
 void RadarScanline::draw() {
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     // positions
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
@@ -65,6 +139,7 @@ void RadarScanline::draw() {
     // disable
     glDisableVertexAttribArray(GLKVertexAttribColor);
     glDisableVertexAttribArray(GLKVertexAttribPosition);
+    glDisable(GL_BLEND);
 }
 
 void RadarScanline::rotate(float degrees, float x, float y, float z) {
