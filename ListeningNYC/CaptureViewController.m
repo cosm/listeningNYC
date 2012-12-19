@@ -8,21 +8,31 @@
 
 @implementation CaptureViewController
 
+#pragma mark - IB
+
+@synthesize radarContainerView;
+
 #pragma mark - Radar view controller
 
 @synthesize radarViewController, testMeasure;
 
 #pragma mark - Life Cycle
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.destinationViewController isKindOfClass:[RadarViewController class]]) {
-        self.radarViewController = segue.destinationViewController;
-        
-    }
+- (void)viewWillAppear:(BOOL)animated {
+    self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundA"];
+    self.tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
+    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
+    UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:0];
+    [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"Capture"] withFinishedUnselectedImage:[UIImage imageNamed:@"Capture"]];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // connect up the container view
+    self.radarViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Radar View Controller"];
+    [self.radarContainerView addSubview:self.radarViewController.view];
+    
 	self.testMeasure = [[TestMeasure alloc] init];
     [self.testMeasure start];
     self.radarViewController.datasource = self.testMeasure;
@@ -32,9 +42,9 @@
     
 }
 
-- (id)init {
-    if ((self = [super init])) {
-        NSLog(@"init!!");
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
     }
     return self;
 }

@@ -1,18 +1,27 @@
-//
-//  AppDelegate.m
-//  ListeningNYC
-//
-//  Created by Ross Cairns on 07/12/2012.
-//  Copyright (c) 2012 COSM. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes: @{
+                                UITextAttributeTextColor: [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:1.0],
+                          UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0f green:0.0 blue:0.0f alpha:0.8],
+                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+                                     UITextAttributeFont: [UIFont fontWithName:@"Helvetica-Light" size:22.0f]
+     }];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"ToolbarBackground"]];
+    [[UITabBar appearance] setTintColor:[UIColor clearColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{ UITextAttributeTextColor : [UIColor whiteColor] }
+                                             forState:UIControlStateNormal];
+    float padding = 6.0f;
+    [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"SegmentDivider"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"SegmentDivider"] forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+
+    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"SegementBackgroundUnselected"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:[UIImage imageNamed:@"SegementBackgroundSelected"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 							

@@ -21,10 +21,19 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    // tab bar
+    self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundC"];
+    self.tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
+    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
+    UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:2];
+    [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"MyCollection"] withFinishedUnselectedImage:[UIImage imageNamed:@"MyCollection"]];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.tableView.separatorColor = [UIColor clearColor];
 
     // Uncomment the following line to preserve selection between presentations.

@@ -8,6 +8,7 @@
 @property (nonatomic, weak) IBOutlet UIView *containerView;
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
 @property (nonatomic, weak) IBOutlet CircleBands *circleBands;
+@property (nonatomic, weak) IBOutlet UIView *tagsContainer;
 - (IBAction)close:(id)sender;
 
 @end

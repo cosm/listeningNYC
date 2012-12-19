@@ -22,6 +22,16 @@
 @synthesize dateLabel_right;
 @synthesize timeLabel_left;
 @synthesize timeLabel_right;
+@synthesize deleteButton_left;
+@synthesize deleteButton_right;
+
+- (IBAction)delete_left:(id)sender {
+    NSLog(@"Delete Left");
+}
+
+- (IBAction)delete_right:(id)sender {
+    NSLog(@"Delete Right");
+}
 
 #pragma mark - UI
 
@@ -30,21 +40,21 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!self.hasLaidOutTags) {
-        self.tagViews_left = [Utils createTagViews:self.tagStrings_left];
-        self.tagViews_right = [Utils createTagViews:self.tagStrings_right];
+        self.tagViews_left = [Utils createSmallTagViews:self.tagStrings_left];
+        self.tagViews_right = [Utils createSmallTagViews:self.tagStrings_right];
         
-        [Utils layoutViews:self.tagViews_left
-                    inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_left.frame.size.width, self.tagContainer_left.frame.size.height)
-               withSpacing:CGSizeMake(5.0f, 3.0f)];
+        [Utils layoutViewsHTMLStyle:self.tagViews_left
+                             inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_left.frame.size.width, self.tagContainer_left.frame.size.height)
+                        withSpacing:CGSizeMake(5.0f, 3.0f)];
         [Utils addSubviews:self.tagViews_left toView:self.tagContainer_left];
         
-        [Utils layoutViews:self.tagViews_right
-                    inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_right.frame.size.width, self.tagContainer_right.frame.size.height)
-               withSpacing:CGSizeMake(5.0f, 3.0f)];
+        [Utils layoutViewsHTMLStyle:self.tagViews_right
+                             inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_right.frame.size.width, self.tagContainer_right.frame.size.height)
+                        withSpacing:CGSizeMake(5.0f, 3.0f)];
         [Utils addSubviews:self.tagViews_right toView:self.tagContainer_right];
     }
     
-    self.hasLaidOutTags = YES;
+    self.hasLaidOutTags = YES; 
 }
 
 - (void)drawRect:(CGRect)rect {
