@@ -10,7 +10,7 @@
 
 #pragma mark - IB
 
-@synthesize containerView, webview, tagsContainer;
+@synthesize containerView, webview, tagsContainer, likeDislikeSlider;
 
 - (IBAction)close:(id)sender {
     [self.view removeFromSuperview];
@@ -41,6 +41,11 @@
     [Utils layoutViewsVerticalCenterStyle:tagViews inRect:self.tagsContainer.frame spacingMin:1.0f spacingMax:10.0f];
     [Utils flipChildUIImageViewsIn:tagViews whichExceed:CGPointMake(10000.0f, self.tagsContainer.frame.size.height/2.0f)];
     [Utils addSubviews:tagViews toView:self.tagsContainer];
+    
+    
+    [self.likeDislikeSlider setMinimumTrackImage:[UIImage imageNamed:@"Blank"] forState:UIControlStateNormal];
+    [self.likeDislikeSlider setMaximumTrackImage:[UIImage imageNamed:@"Blank"] forState:UIControlStateNormal];
+    [self.likeDislikeSlider setThumbImage:[UIImage imageNamed:@"SliderThumb"] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning

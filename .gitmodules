@@ -13,3 +13,6 @@
 [submodule "Lib/Maximillian"]
 	path = Lib/Maximillian
 	url = git@github.com:rc1/Maximilian.git
+[submodule "JSMap"]
+	path = JSMap
+	url = git@bitbucket.org:rc1/cosm-map.git

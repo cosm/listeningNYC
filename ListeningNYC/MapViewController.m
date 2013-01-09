@@ -1,5 +1,6 @@
 #import "MapViewController.h"
 #import "MapWebViewController.h"
+#import "AppDelegate.h"
 
 @interface MapViewController ()
 
@@ -48,9 +49,31 @@
     [self toggleMapOptionsAnimated:YES];
 }
 
-#pragma mark - Web View
+- (IBAction)locatePressed:(id)sender {
+    if (self.mapWebViewController.mapIsReady) {
+        [self.mapWebViewController setMapIsTracking:YES];
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [self.mapWebViewController setMapLocation:appDelegate.currentLocation];
+
+    }
+}
+
+#pragma mark - Map Web View & Delegate
 
 @synthesize mapWebViewController;
+
+- (void)mapDidLoad {
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [self.mapWebViewController setMapLocation:appDelegate.currentLocation];
+}
+
+#pragma mark - Notifcations
+
+- (void)didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    if (self.mapWebViewController.mapIsReady) {
+        [self.mapWebViewController setMapLocation:newLocation];
+    }
+}
 
 #pragma mark - Lifecycle
 
@@ -67,10 +90,19 @@
         self.optionsIsVisible = YES;
         [self setMapOptionsVisible:NO animated:NO];
     }
+    
+    self.mapWebViewController.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserverForName:kLocationUpdatedNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self didUpdateToLocation:[note.userInfo valueForKeyPath:@"newLocation"] fromLocation:[note.userInfo valueForKeyPath:@"oldLocation"]];
+    }];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.mapWebViewController.delegate = self;
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
     CGRect frame = self.mapWebViewController.view.frame;
@@ -79,11 +111,9 @@
     
     [self.webContainerView addSubview:self.mapWebViewController.view];
     [self.webContainerView sendSubviewToBack:self.mapWebViewController.view];
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

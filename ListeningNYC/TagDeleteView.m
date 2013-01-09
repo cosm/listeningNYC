@@ -27,10 +27,10 @@
 
 #pragma mark - Life Cycle
 
-- (id)initWithOrigin:(CGPoint)origin tag:(NSString *)tagname upImage:(UIImage *)upImage selectedImage:(UIImage *)selectedImage {
+- (id)initWithOrigin:(CGPoint)origin tag:(NSString *)name upImage:(UIImage *)upImage selectedImage:(UIImage *)selectedImage {
     self = [super initWithFrame:CGRectMake(origin.x - (upImage.size.width/2.0f), origin.y - (upImage.size.height/2.0f), upImage.size.width, upImage.size.height)];
     if (self) {
-        self.tagname = tagname;
+        self.tagname = name;
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
         self.button.frame = CGRectMake(0.0f, 0.0f, upImage.size.width, upImage.size.height);
         [self.button setImage:upImage forState:UIControlStateNormal];

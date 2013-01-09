@@ -90,9 +90,9 @@
     return self.suggestedTags.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = [self.suggestedTags objectAtIndex:indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:18.0f];
     return cell;
@@ -100,10 +100,10 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.textfield.text = [self.suggestedTags objectAtIndex:indexPath.row];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self add:tableView];
+    [tv deselectRowAtIndexPath:indexPath animated:YES];
+    [self add:tv];
 }
 
 @end

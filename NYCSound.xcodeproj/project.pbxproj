@@ -16,6 +16,8 @@
 		9103D8F61675FF590014B3EF /* TagBackgroundSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9103D8F41675FF590014B3EF /* TagBackgroundSmall@2x.png */; };
 		9110A0DC1678C31300B7B0EE /* CircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DB1678C31300B7B0EE /* CircleBands.m */; };
 		9110A0E01678DFD300B7B0EE /* QuarterCircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */; };
+		911C2425169C615500EE1E11 /* Blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 911C2424169C615500EE1E11 /* Blank.png */; };
+		911C2428169C66BF00EE1E11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911C2427169C66BF00EE1E11 /* CoreLocation.framework */; };
 		9148943C166799C90039094B /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 9148941D166799C90039094B /* .gitkeep */; };
 		9148943D166799C90039094B /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 9148941D166799C90039094B /* .gitkeep */; };
 		91489440166799C90039094B /* NVAllpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489422166799C90039094B /* NVAllpassFilter.m */; };
@@ -278,7 +280,6 @@
 		91C773751671F43400C9BDB3 /* NVLowShelvingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148942E166799C90039094B /* NVLowShelvingFilter.m */; };
 		91C773791671F79D00C9BDB3 /* FrequencyGuide.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C773771671F79D00C9BDB3 /* FrequencyGuide.png */; };
 		91C7737A1671F79D00C9BDB3 /* FrequencyGuide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C773781671F79D00C9BDB3 /* FrequencyGuide@2x.png */; };
-		91C7737D1671F8C200C9BDB3 /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91C7737C1671F8C200C9BDB3 /* public */; };
 		91C773801671F90600C9BDB3 /* MapWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C7737F1671F90600C9BDB3 /* MapWebViewController.m */; };
 		91C9D6DA166E2AD300837487 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91C9D6DB166E2AD300837487 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
@@ -329,6 +330,7 @@
 		91D32F20164AD1DF00BF7988 /* RecordingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32F1E164AD1DF00BF7988 /* RecordingIcon@2x.png */; };
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
+		91D75B50169DDA9C0088FB0D /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91D75B4F169DDA9C0088FB0D /* public */; };
 		91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F161DE1682214C0099AAB9 /* TagDeleteView.m */; };
 		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */; };
 		91F23BCE166FE3B100A4A7E4 /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
@@ -416,6 +418,8 @@
 		9110A0DB1678C31300B7B0EE /* CircleBands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleBands.m; sourceTree = "<group>"; };
 		9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuarterCircleBands.h; sourceTree = "<group>"; };
 		9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuarterCircleBands.m; sourceTree = "<group>"; };
+		911C2424169C615500EE1E11 /* Blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blank.png; path = Images/Blank.png; sourceTree = "<group>"; };
+		911C2427169C66BF00EE1E11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9148941D166799C90039094B /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		91489421166799C90039094B /* NVAllpassFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVAllpassFilter.h; sourceTree = "<group>"; };
 		91489422166799C90039094B /* NVAllpassFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVAllpassFilter.m; sourceTree = "<group>"; };
@@ -658,7 +662,6 @@
 		91C773581671EF8500C9BDB3 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		91C773771671F79D00C9BDB3 /* FrequencyGuide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FrequencyGuide.png; path = Images/FrequencyGuide.png; sourceTree = "<group>"; };
 		91C773781671F79D00C9BDB3 /* FrequencyGuide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FrequencyGuide@2x.png"; path = "Images/FrequencyGuide@2x.png"; sourceTree = "<group>"; };
-		91C7737C1671F8C200C9BDB3 /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = "../../NYC Sound Map/public"; sourceTree = "<group>"; };
 		91C7737E1671F90600C9BDB3 /* MapWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapWebViewController.h; sourceTree = "<group>"; };
 		91C7737F1671F90600C9BDB3 /* MapWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapWebViewController.m; sourceTree = "<group>"; };
 		91C9D6D8166E2AD300837487 /* Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -724,6 +727,7 @@
 		91D32F21164AD3B400BF7988 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		91D75B4F169DDA9C0088FB0D /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JSMap/public; sourceTree = SOURCE_ROOT; };
 		91F161DD1682214C0099AAB9 /* TagDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDeleteView.h; sourceTree = "<group>"; };
 		91F161DE1682214C0099AAB9 /* TagDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDeleteView.m; sourceTree = "<group>"; };
 		91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarTestViewController.h; sourceTree = "<group>"; };
@@ -775,6 +779,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911C2428169C66BF00EE1E11 /* CoreLocation.framework in Frameworks */,
 				91C773181671EB7A00C9BDB3 /* UIKit.framework in Frameworks */,
 				91C773191671EB7A00C9BDB3 /* Foundation.framework in Frameworks */,
 				91C7736A1671F3D700C9BDB3 /* AudioToolbox.framework in Frameworks */,
@@ -1072,16 +1077,16 @@
 			isa = PBXGroup;
 			children = (
 				9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */,
+				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
 				917ABC40165FA50100643315 /* Utils.h */,
 				917ABC41165FA50300643315 /* Utils.m */,
-				91C7737B1671F8A400C9BDB3 /* HTML For Map */,
+				91C7737B1671F8A400C9BDB3 /* JSMap */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
 				91C773251671EB7A00C9BDB3 /* AppDelegate.m */,
 				91B8F3891680B68400CBBC0C /* AddTagViewController.h */,
 				91B8F38A1680B68400CBBC0C /* AddTagViewController.m */,
 				91F161DD1682214C0099AAB9 /* TagDeleteView.h */,
 				91F161DE1682214C0099AAB9 /* TagDeleteView.m */,
-				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
 				91B8F34D167F67B100CBBC0C /* PostCaptureViewController.h */,
 				91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */,
 				91C773301671EB7A00C9BDB3 /* ViewController.h */,
@@ -1093,6 +1098,8 @@
 				91C7734F1671EF3900C9BDB3 /* CaptureViewController.m */,
 				91C773511671EF5300C9BDB3 /* MapViewController.h */,
 				91C773521671EF5300C9BDB3 /* MapViewController.m */,
+				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
+				91C7737F1671F90600C9BDB3 /* MapWebViewController.m */,
 				91C773541671EF6400C9BDB3 /* AboutViewController.h */,
 				91C773551671EF6400C9BDB3 /* AboutViewController.m */,
 				91C773571671EF8500C9BDB3 /* HistoryViewController.h */,
@@ -1105,8 +1112,6 @@
 				9110A0DB1678C31300B7B0EE /* CircleBands.m */,
 				9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */,
 				9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */,
-				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
-				91C7737F1671F90600C9BDB3 /* MapWebViewController.m */,
 			);
 			path = ListeningNYC;
 			sourceTree = "<group>";
@@ -1148,6 +1153,7 @@
 		91C773761671F77F00C9BDB3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				911C2424169C615500EE1E11 /* Blank.png */,
 				91C6D39A16826C990018A168 /* SegmentDivider.png */,
 				91C6D39B16826C990018A168 /* SegmentDivider@2x.png */,
 				91C6D392168269640018A168 /* SegementBackgroundSelected.png */,
@@ -1228,12 +1234,12 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		91C7737B1671F8A400C9BDB3 /* HTML For Map */ = {
+		91C7737B1671F8A400C9BDB3 /* JSMap */ = {
 			isa = PBXGroup;
 			children = (
-				91C7737C1671F8C200C9BDB3 /* public */,
+				91D75B4F169DDA9C0088FB0D /* public */,
 			);
-			name = "HTML For Map";
+			name = JSMap;
 			sourceTree = "<group>";
 		};
 		91C9D6DD166E2AD300837487 /* Radar */ = {
@@ -1324,6 +1330,7 @@
 		91D32EA9164971BE00BF7988 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				911C2427169C66BF00EE1E11 /* CoreLocation.framework */,
 				919BD0CB166E3A2C00478838 /* OpenGLES.framework */,
 				919BD0BE166E35F000478838 /* GLKit.framework */,
 				91A5ECC616678995002B9000 /* Accelerate.framework */,
@@ -1706,7 +1713,6 @@
 				91C7732F1671EB7A00C9BDB3 /* MainStoryboard.storyboard in Resources */,
 				91C773791671F79D00C9BDB3 /* FrequencyGuide.png in Resources */,
 				91C7737A1671F79D00C9BDB3 /* FrequencyGuide@2x.png in Resources */,
-				91C7737D1671F8C200C9BDB3 /* public in Resources */,
 				9199DF7E16723E63005C5488 /* Capture.png in Resources */,
 				9199DF7F16723E63005C5488 /* Capture@2x.png in Resources */,
 				9199DF851672427D005C5488 /* About.png in Resources */,
@@ -1782,6 +1788,8 @@
 				91C6D39C16826C990018A168 /* SegmentDivider.png in Resources */,
 				91C6D39D16826C990018A168 /* SegmentDivider@2x.png in Resources */,
 				91C6D39E168276410018A168 /* UINavigationBackground@2x.png in Resources */,
+				911C2425169C615500EE1E11 /* Blank.png in Resources */,
+				91D75B50169DDA9C0088FB0D /* public in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2398,14 +2406,14 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ListeningNYC/ListeningNYC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Ross Cairns";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ross Cairns";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ListeningNYC/ListeningNYC-Prefix.pch";
 				INFOPLIST_FILE = "ListeningNYC/ListeningNYC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "15D22207-F760-4B04-82F2-D88786B7E0C3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "4BF92366-E9A8-4933-9C54-B640A8DD08C4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4BF92366-E9A8-4933-9C54-B640A8DD08C4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;

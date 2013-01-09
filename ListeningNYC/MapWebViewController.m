@@ -6,6 +6,46 @@
 
 @implementation MapWebViewController
 
+#pragma mark - JS Bridge
+
+@synthesize mapIsReady;
+
+- (void)createMap {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC = new ListeningNYC()"];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
+- (void)mapDidCreate {
+    self.mapIsReady = true;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(mapDidLoad)]) {
+        [self.delegate mapDidLoad];
+    }
+}
+
+#pragma mark - Map Controls
+
+- (void)setMapLocation:(CLLocation *)location {
+    //location.horizontalAccuracy
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.updateUserPosition(%f, %f, 13)", location.coordinate.latitude, location.coordinate.longitude];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
+- (void)setMapQueryType:(NSString *)queryType {
+    // can be none, all, likeonly, dislikeonly
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setQueryType(%@)", queryType];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
+- (void)setMapIsTracking:(BOOL)isTracking {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.isTrackingEnabled = %@", (isTracking) ? @"true" : @"false"];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
+- (void)setZoom:(NSNumber *)level {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.map.setZoom(%@)", [level stringValue]];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
 #pragma mark - UI
 
 @synthesize webview;
@@ -15,21 +55,62 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     NSLog(@"webView:didFailLoadWithError: %@", error);
 }
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSLog(@"webView:shouldStartLoadWithRequest:..");
-    return YES;
+    
+    // ignore normal requests
+    if (![request.URL.scheme isEqualToString:@"bridge"]) {
+        return YES;
+    }
+    
+    // deserialize the request JSON
+    NSString *JSONString = [request.URL.fragment stringByReplacingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    NSError *error = nil;
+    id json = [NSJSONSerialization  JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    
+    if (error) {
+        NSLog(@"Could not parse JSON");
+    }
+    
+    id event = [json valueForKey:@"event"];
+    if (event) {
+        if ([event isKindOfClass:[NSString class]]) {
+            if ([event isEqualToString:@"mapDidCreate"]) {
+                [self mapDidCreate];
+            }
+        }
+    }
+    
+    id log = [json objectForKey:@"log"];
+    if (log) {
+        if ([log isKindOfClass:[NSString class]]) {
+            NSLog(@"Javascript Log: %@", log);
+        } else if ([log isKindOfClass:[NSArray class]]) {
+            NSMutableString *logOutput = [[NSMutableString alloc] init];
+            [log enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [logOutput appendString:[NSString stringWithFormat:@"%@ ", obj]];
+            }];
+            NSLog(@"Javascript Log: %@", logOutput);
+        } else {
+            NSLog(@"Javascript Log: %@", log);
+        }
+    }
+    
+    return NO;
 }
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidFinishLoad");
+    [self createMap];
 }
+
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidStartLoad");
 }
 
 #pragma mark - Life Cycle
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+@synthesize delegate;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -37,16 +118,20 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-    NSLog(@"View did loaded!! should be loading webview %@", self.webview);
+    self.webview.scrollView.bounces = NO;
     self.webview.delegate = self;
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"public/map" ofType:@"html"] isDirectory:NO]]];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)viewWillUnload {
+    NSLog(@"View is unloading!");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

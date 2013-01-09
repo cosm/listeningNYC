@@ -1,10 +1,8 @@
 #import "TestMeasure.h"
-#import "DDLog.h"
 #import "DBTool.h"
 #import "maxiFFT.h"
 #import "RadarSweeper.h"
 
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 template<typename T>
 struct Normalizing {
     Normalizing() {
