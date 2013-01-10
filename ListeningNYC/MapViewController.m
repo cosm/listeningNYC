@@ -1,6 +1,7 @@
 #import "MapViewController.h"
 #import "MapWebViewController.h"
 #import "AppDelegate.h"
+#import "DetailModalViewController.h"
 
 @interface MapViewController ()
 
@@ -52,9 +53,24 @@
 - (IBAction)locatePressed:(id)sender {
     if (self.mapWebViewController.mapIsReady) {
         [self.mapWebViewController setMapIsTracking:YES];
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        [self.mapWebViewController setMapLocation:appDelegate.currentLocation];
+        id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+        [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+    }
+}
 
+- (IBAction)filterChanged:(id)sender {
+    UISegmentedControl *segmentControl = (UISegmentedControl *)sender;
+    NSLog(@"Filter");
+    switch ([segmentControl selectedSegmentIndex]) {
+        case 0:
+            [self.mapWebViewController setMapQueryType:@"likeonly"];
+            break;
+        case 1:
+            [self.mapWebViewController setMapQueryType:@"dislikeonly"];
+            break;
+        case 2:
+            [self.mapWebViewController setMapQueryType:@"all"];
+            break;
     }
 }
 
@@ -63,8 +79,25 @@
 @synthesize mapWebViewController;
 
 - (void)mapDidLoad {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [self.mapWebViewController setMapLocation:appDelegate.currentLocation];
+    id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+    [self.mapWebViewController setMapQueryType:@"all"];
+}
+
+- (void)featureClicked:(id)data {
+    if (!self.detailModalViewController) {
+        self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
+    }
+    CGRect frame = detailModalViewController.view.frame;
+    frame.origin.y = 0.0f;
+    detailModalViewController.view.frame = frame;
+    [self.view addSubview:detailModalViewController.view];
+    [self.detailModalViewController viewWillAppear:NO];
+    [detailModalViewController.view setAlpha:0.0f];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    [detailModalViewController.view  setAlpha:1.0];
+    [UIView commitAnimations];
 }
 
 #pragma mark - Notifcations
@@ -76,6 +109,8 @@
 }
 
 #pragma mark - Lifecycle
+
+@synthesize detailModalViewController;
 
 - (void)viewWillAppear:(BOOL)animated {
     // tab bar
@@ -95,17 +130,19 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:kLocationUpdatedNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
         [self didUpdateToLocation:[note.userInfo valueForKeyPath:@"newLocation"] fromLocation:[note.userInfo valueForKeyPath:@"oldLocation"]];
     }];
+    [self.detailModalViewController viewWillAppear:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.mapWebViewController.delegate = self;
+    self.mapWebViewController.delegate = nil;
+    [self.detailModalViewController viewWillDisappear:NO];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
-    CGRect frame = self.mapWebViewController.view.frame;
+    CGRect frame = self.webContainerView.frame;
     frame.origin = CGPointMake(0.0f, 0.0f);
     self.mapWebViewController.view.frame = frame;
     

@@ -22,6 +22,12 @@
     }
 }
 
+- (void)featureClicked:(id)data {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(featureClicked:)]) {
+        [self.delegate featureClicked:data];
+    }
+}
+
 #pragma mark - Map Controls
 
 - (void)setMapLocation:(CLLocation *)location {
@@ -32,7 +38,7 @@
 
 - (void)setMapQueryType:(NSString *)queryType {
     // can be none, all, likeonly, dislikeonly
-    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setQueryType(%@)", queryType];
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setQueryType('%@')", queryType];
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 
@@ -41,8 +47,13 @@
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 
-- (void)setZoom:(NSNumber *)level {
+- (void)setMapZoom:(NSNumber *)level {
     NSString *javascript = [NSString stringWithFormat:@"listeningNYC.map.setZoom(%@)", [level stringValue]];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+}
+
+- (void)setMapDisplayLocationCircle:(BOOL)yN {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setDisplayLocationCircle(%@)", (yN) ? @"true" : @"false"];
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 
@@ -60,7 +71,7 @@
     
     // ignore normal requests
     if (![request.URL.scheme isEqualToString:@"bridge"]) {
-        return YES;
+        return [request.URL.path.lastPathComponent isEqualToString:@"map.html"];
     }
     
     // deserialize the request JSON
@@ -77,6 +88,8 @@
         if ([event isKindOfClass:[NSString class]]) {
             if ([event isEqualToString:@"mapDidCreate"]) {
                 [self mapDidCreate];
+            } else if ([event isEqualToString:@"cartoFeatureClick"]) {
+                [self featureClicked:[json valueForKey:@"data"]];
             }
         }
     }

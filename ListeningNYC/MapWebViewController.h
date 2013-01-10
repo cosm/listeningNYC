@@ -5,6 +5,7 @@
 @protocol MapWebViewControllerDelegate <NSObject>
 @optional
 - (void)mapDidLoad;
+- (void)featureClicked:(id)data;
 @end
 
 @interface MapWebViewController : UIViewController<UIWebViewDelegate>
@@ -19,7 +20,8 @@
 - (void)setMapLocation:(CLLocation *)location;
 - (void)setMapQueryType:(NSString *)queryType;
 - (void)setMapIsTracking:(BOOL)isTracking;
-- (void)setZoom:(NSNumber *)level;
+- (void)setMapZoom:(NSNumber *)level;
+- (void)setMapDisplayLocationCircle:(BOOL)yN;
 
 // UI
 @property (nonatomic, weak) IBOutlet UIWebView *webview;

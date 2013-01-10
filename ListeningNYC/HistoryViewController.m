@@ -28,6 +28,16 @@
     self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
     UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:2];
     [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"MyCollection"] withFinishedUnselectedImage:[UIImage imageNamed:@"MyCollection"]];
+    
+    if (self.detailModalViewController) {
+        [self.detailModalViewController viewWillAppear:animated];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (self.detailModalViewController) {
+        [self.detailModalViewController viewWillDisappear:animated];
+    }
 }
 
 - (void)viewDidLoad
@@ -62,7 +72,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Twin Cell";
-    TwinCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    TwinCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
     // Configure the cell...
     cell.tagStrings_left = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
@@ -122,6 +132,7 @@
     self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
     [self.view.superview.superview addSubview:detailModalViewController.view];
     [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
+    [self.detailModalViewController viewWillAppear:NO];
 }
 
 @end

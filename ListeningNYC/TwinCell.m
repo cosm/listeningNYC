@@ -66,8 +66,7 @@
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];
     if (self) {
-        self.hasLaidOutTags = NO;
-        NSLog(@"setting selection stykle using encoder");
+        self.hasLaidOutTags = NO;   
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;

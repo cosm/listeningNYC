@@ -909,6 +909,55 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		917A65F1169F258800E862D7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				91C773541671EF6400C9BDB3 /* AboutViewController.h */,
+				91C773551671EF6400C9BDB3 /* AboutViewController.m */,
+				91B8F3891680B68400CBBC0C /* AddTagViewController.h */,
+				91B8F38A1680B68400CBBC0C /* AddTagViewController.m */,
+				91C7734E1671EF3900C9BDB3 /* CaptureViewController.h */,
+				91C7734F1671EF3900C9BDB3 /* CaptureViewController.m */,
+				91FDAC931678F35400A1BA3A /* DetailModalViewController.h */,
+				91FDAC941678F35400A1BA3A /* DetailModalViewController.m */,
+				91C773571671EF8500C9BDB3 /* HistoryViewController.h */,
+				91C773581671EF8500C9BDB3 /* HistoryViewController.m */,
+				91B8F34D167F67B100CBBC0C /* PostCaptureViewController.h */,
+				91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */,
+				91C773511671EF5300C9BDB3 /* MapViewController.h */,
+				91C773521671EF5300C9BDB3 /* MapViewController.m */,
+				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
+				91C7737F1671F90600C9BDB3 /* MapWebViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		917A65F3169F262100E862D7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				917ABC40165FA50100643315 /* Utils.h */,
+				917ABC41165FA50300643315 /* Utils.m */,
+				917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */,
+				917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		917A65F4169F263900E862D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9110A0DA1678C31300B7B0EE /* CircleBands.h */,
+				9110A0DB1678C31300B7B0EE /* CircleBands.m */,
+				9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */,
+				9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */,
+				91F161DD1682214C0099AAB9 /* TagDeleteView.h */,
+				91F161DE1682214C0099AAB9 /* TagDeleteView.m */,
+				9103D8EC1675F6AB0014B3EF /* TwinCell.h */,
+				9103D8ED1675F6AB0014B3EF /* TwinCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		917ABBEF165F900900643315 /* COSM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,42 +1125,16 @@
 		91C7731B1671EB7A00C9BDB3 /* ListeningNYC */ = {
 			isa = PBXGroup;
 			children = (
-				9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */,
+				91C7737B1671F8A400C9BDB3 /* Javascript */,
 				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
-				917ABC40165FA50100643315 /* Utils.h */,
-				917ABC41165FA50300643315 /* Utils.m */,
-				91C7737B1671F8A400C9BDB3 /* JSMap */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
 				91C773251671EB7A00C9BDB3 /* AppDelegate.m */,
-				91B8F3891680B68400CBBC0C /* AddTagViewController.h */,
-				91B8F38A1680B68400CBBC0C /* AddTagViewController.m */,
-				91F161DD1682214C0099AAB9 /* TagDeleteView.h */,
-				91F161DE1682214C0099AAB9 /* TagDeleteView.m */,
-				91B8F34D167F67B100CBBC0C /* PostCaptureViewController.h */,
-				91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */,
+				917A65F3169F262100E862D7 /* Utilities */,
+				917A65F1169F258800E862D7 /* View Controllers */,
+				917A65F4169F263900E862D7 /* Views */,
 				91C773301671EB7A00C9BDB3 /* ViewController.h */,
 				91C773311671EB7B00C9BDB3 /* ViewController.m */,
-				917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */,
-				917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */,
 				91C7731C1671EB7A00C9BDB3 /* Supporting Files */,
-				91C7734E1671EF3900C9BDB3 /* CaptureViewController.h */,
-				91C7734F1671EF3900C9BDB3 /* CaptureViewController.m */,
-				91C773511671EF5300C9BDB3 /* MapViewController.h */,
-				91C773521671EF5300C9BDB3 /* MapViewController.m */,
-				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
-				91C7737F1671F90600C9BDB3 /* MapWebViewController.m */,
-				91C773541671EF6400C9BDB3 /* AboutViewController.h */,
-				91C773551671EF6400C9BDB3 /* AboutViewController.m */,
-				91C773571671EF8500C9BDB3 /* HistoryViewController.h */,
-				91C773581671EF8500C9BDB3 /* HistoryViewController.m */,
-				91FDAC931678F35400A1BA3A /* DetailModalViewController.h */,
-				91FDAC941678F35400A1BA3A /* DetailModalViewController.m */,
-				9103D8EC1675F6AB0014B3EF /* TwinCell.h */,
-				9103D8ED1675F6AB0014B3EF /* TwinCell.m */,
-				9110A0DA1678C31300B7B0EE /* CircleBands.h */,
-				9110A0DB1678C31300B7B0EE /* CircleBands.m */,
-				9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */,
-				9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */,
 			);
 			path = ListeningNYC;
 			sourceTree = "<group>";
@@ -1119,6 +1142,7 @@
 		91C7731C1671EB7A00C9BDB3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */,
 				91C773761671F77F00C9BDB3 /* Images */,
 				91C7731D1671EB7A00C9BDB3 /* ListeningNYC-Info.plist */,
 				91C7731E1671EB7A00C9BDB3 /* InfoPlist.strings */,
@@ -1234,12 +1258,12 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		91C7737B1671F8A400C9BDB3 /* JSMap */ = {
+		91C7737B1671F8A400C9BDB3 /* Javascript */ = {
 			isa = PBXGroup;
 			children = (
 				91D75B4F169DDA9C0088FB0D /* public */,
 			);
-			name = JSMap;
+			name = Javascript;
 			sourceTree = "<group>";
 		};
 		91C9D6DD166E2AD300837487 /* Radar */ = {
@@ -1523,6 +1547,7 @@
 				91C773121671EB7A00C9BDB3 /* Sources */,
 				91C773131671EB7A00C9BDB3 /* Frameworks */,
 				91C773141671EB7A00C9BDB3 /* Resources */,
+				91D75B5A169DE8B00088FB0D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1920,6 +1945,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		91D75B5A169DE8B00088FB0D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Auto Increment Version Script\nbuildPlist=${INFOPLIST_FILE}\nCFBundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $buildPlist)\nCFBundleVersion=$(($CFBundleVersion + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $CFBundleVersion\" $buildPlist\n# CFBuildDate=$(date +%Y%m%d%H%M%S)\n# /usr/libexec/PlistBuddy -c \"Set :CFBuildDate $CFBuildDate\" $buildPlist";
 		};
 /* End PBXShellScriptBuildPhase section */
 

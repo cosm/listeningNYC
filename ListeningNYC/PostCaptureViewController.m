@@ -2,6 +2,7 @@
 #import "CircleBands.h"
 #import "AddTagViewController.h"
 #import "Utils.h"
+#import "AppDelegate.h"
 
 @interface PostCaptureViewController ()
 
@@ -13,9 +14,24 @@
 
 @synthesize tags;
 
+#pragma mark - Notifcations
+
+- (void)didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    if (self.mapWebViewController.mapIsReady) {
+        [self.mapWebViewController setMapLocation:newLocation];
+    }
+}
+
+#pragma mark - Map Web View Delegate
+
+- (void)mapDidLoad {
+    id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+}
+
 #pragma mark - IB
 
-@synthesize webview, circleBands, tagsContainer, slider;
+@synthesize circleBands, tagsContainer, slider;
 
 - (IBAction)deleteTagsTouched:(id)sender {
     [self addDeleteButtons];
@@ -84,9 +100,14 @@
 }
 
 - (void)viewDidLoad
-{
+{ 
     [super viewDidLoad];
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"public/map" ofType:@"html"] isDirectory:NO]]];
+    self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
+    [self.view addSubview:self.mapWebViewController.view];
+    [self.view sendSubviewToBack:self.mapWebViewController.view];
+    CGRect frame = self.mapWebViewController.view.frame;
+    frame.origin.y = 0.0f;
+    self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
     self.tags = [[NSMutableArray alloc] init];
     self.deleteButtons = [[NSMutableArray alloc] init];
@@ -97,6 +118,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self layoutTags];
+    self.mapWebViewController.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserverForName:kLocationUpdatedNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self didUpdateToLocation:[note.userInfo valueForKeyPath:@"newLocation"] fromLocation:[note.userInfo valueForKeyPath:@"oldLocation"]];
+    }];
     
     // tab bar
     self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundA"];
@@ -104,7 +129,11 @@
     self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
     UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:0];
     [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"Capture"] withFinishedUnselectedImage:[UIImage imageNamed:@"Capture"]];
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    self.mapWebViewController.delegate = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
