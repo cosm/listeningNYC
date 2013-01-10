@@ -11,5 +11,6 @@
 
 // applicaton
 @property (strong, nonatomic) UIWindow *window;
-
+#define kApplicationDidBecomeActive @"ApplicationDidBecomeActive"
+#define kapplicationWillResignActive @"applicationWillResignActive"
 @end

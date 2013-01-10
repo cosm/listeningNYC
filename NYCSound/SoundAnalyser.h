@@ -5,9 +5,7 @@
 #import "NVPeakingEQFilter.h"
 #import "RadarViewController.h"
 
-
-
-@interface TestMeasure : NSObject<RadarViewControllerDatasource> {
+@interface SoundAnalyser : NSObject<RadarViewControllerDatasource> {
     NVPeakingEQFilter *aPeakingEqs[11];
     NVPeakingEQFilter *cPeakingEqs[11];
     DBCollection peakLevels;

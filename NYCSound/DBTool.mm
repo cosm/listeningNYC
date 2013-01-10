@@ -58,3 +58,5 @@ float MapDB(float inputDB, float inputDBMin, float inputDBMax, float outputDBMin
 //    collection.cWeightedDB = MapDB(collection.cWeightedDB, inputDBMin, inputDBMax, outputDBMin, outputDBMax);
 //    return collection;
 //};
+
+

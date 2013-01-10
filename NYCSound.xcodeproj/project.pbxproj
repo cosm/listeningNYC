@@ -48,8 +48,6 @@
 		91489459166799C90039094B /* NVClippingDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489439166799C90039094B /* NVClippingDetection.m */; };
 		9148945A166799C90039094B /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
 		9148945B166799C90039094B /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
-		9148945F16679B980039094B /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
-		9148946016679B980039094B /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
 		914894621667B28E0039094B /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
 		914894631667B28E0039094B /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
 		914894641667B3370039094B /* COSMDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32EF8164AA19200BF7988 /* COSMDefaults.m */; };
@@ -149,22 +147,6 @@
 		91A5EC8F1667858B002B9000 /* Novocaine.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC871667858B002B9000 /* Novocaine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		91A5EC901667858B002B9000 /* RingBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC891667858B002B9000 /* RingBuffer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		91A5EC911667858B002B9000 /* RingBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC891667858B002B9000 /* RingBuffer.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		91A5ECA316678699002B9000 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9416678699002B9000 /* DDAbstractDatabaseLogger.m */; };
-		91A5ECA416678699002B9000 /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9416678699002B9000 /* DDAbstractDatabaseLogger.m */; };
-		91A5ECA516678699002B9000 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9616678699002B9000 /* DDASLLogger.m */; };
-		91A5ECA616678699002B9000 /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9616678699002B9000 /* DDASLLogger.m */; };
-		91A5ECA716678699002B9000 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9816678699002B9000 /* DDFileLogger.m */; };
-		91A5ECA816678699002B9000 /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9816678699002B9000 /* DDFileLogger.m */; };
-		91A5ECA916678699002B9000 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9A16678699002B9000 /* DDLog.m */; };
-		91A5ECAA16678699002B9000 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9A16678699002B9000 /* DDLog.m */; };
-		91A5ECAB16678699002B9000 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9C16678699002B9000 /* DDTTYLogger.m */; };
-		91A5ECAC16678699002B9000 /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9C16678699002B9000 /* DDTTYLogger.m */; };
-		91A5ECAD16678699002B9000 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9F16678699002B9000 /* ContextFilterLogFormatter.m */; };
-		91A5ECAE16678699002B9000 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5EC9F16678699002B9000 /* ContextFilterLogFormatter.m */; };
-		91A5ECAF16678699002B9000 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5ECA116678699002B9000 /* DispatchQueueLogFormatter.m */; };
-		91A5ECB016678699002B9000 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A5ECA116678699002B9000 /* DispatchQueueLogFormatter.m */; };
-		91A5ECB116678699002B9000 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91A5ECA216678699002B9000 /* README.txt */; };
-		91A5ECB216678699002B9000 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 91A5ECA216678699002B9000 /* README.txt */; };
 		91A5ECC716678995002B9000 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC616678995002B9000 /* Accelerate.framework */; };
 		91A5ECC8166789B1002B9000 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC31667891B002B9000 /* AudioToolbox.framework */; };
 		91A5ECC9166789CD002B9000 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A5ECC616678995002B9000 /* Accelerate.framework */; };
@@ -253,7 +235,6 @@
 		91C7735A1671F2C000C9BDB3 /* RadarViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91C9D6F3166E2AD300837487 /* RadarViewController.mm */; };
 		91C7735B1671F2C700C9BDB3 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
 		91C7735C1671F2D100C9BDB3 /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
-		91C7735D1671F2DA00C9BDB3 /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
 		91C7735E1671F2EB00C9BDB3 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B9B6166FEED800EF1ACF /* maximilian.cpp */; };
 		91C7735F1671F2EB00C9BDB3 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97B166FED9400EF1ACF /* fft.cpp */; };
 		91C773601671F2EB00C9BDB3 /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */; };
@@ -331,9 +312,9 @@
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
 		91D75B50169DDA9C0088FB0D /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91D75B4F169DDA9C0088FB0D /* public */; };
+		91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F0760F169F34C50047FFEF /* SoundAnalyser.mm */; };
 		91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F161DE1682214C0099AAB9 /* TagDeleteView.m */; };
 		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */; };
-		91F23BCE166FE3B100A4A7E4 /* TestMeasure.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9148945E16679B980039094B /* TestMeasure.mm */; };
 		91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148943B166799C90039094B /* NVSoundLevelMeter.m */; };
 		91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489422166799C90039094B /* NVAllpassFilter.m */; };
 		91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91489424166799C90039094B /* NVBandpassFilter.m */; };
@@ -447,10 +428,8 @@
 		91489439166799C90039094B /* NVClippingDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVClippingDetection.m; sourceTree = "<group>"; };
 		9148943A166799C90039094B /* NVSoundLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSoundLevelMeter.h; sourceTree = "<group>"; };
 		9148943B166799C90039094B /* NVSoundLevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSoundLevelMeter.m; sourceTree = "<group>"; };
-		9148945D16679B980039094B /* TestMeasure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMeasure.h; sourceTree = "<group>"; };
-		9148945E16679B980039094B /* TestMeasure.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestMeasure.mm; sourceTree = "<group>"; };
-		914894611667B28E0039094B /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
-		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
+		914894611667B28E0039094B /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DBTool.mm; path = ../NYCSound/DBTool.mm; sourceTree = "<group>"; };
+		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DBTool.h; path = ../NYCSound/DBTool.h; sourceTree = "<group>"; };
 		917ABBF1165F901D00643315 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSM.h; path = ../../COSM/COSM.h; sourceTree = "<group>"; };
 		917ABBF2165F901D00643315 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMAPI.h; path = ../../COSM/COSMAPI.h; sourceTree = "<group>"; };
 		917ABBF3165F901D00643315 /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMAPI.m; path = ../../COSM/COSMAPI.m; sourceTree = "<group>"; };
@@ -525,7 +504,7 @@
 		919BD0BB166E34EB00478838 /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarSweeper.mm; path = RadarTests/RadarSweeper.mm; sourceTree = SOURCE_ROOT; };
 		919BD0BE166E35F000478838 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		919BD0CB166E3A2C00478838 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		919BD0D8166E469F00478838 /* GLTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTool.h; sourceTree = "<group>"; };
+		919BD0D8166E469F00478838 /* GLTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLTool.h; path = ../Radar/GLTool.h; sourceTree = "<group>"; };
 		919E32F4165FBDB600121D6C /* CartoTileProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartoTileProvider.h; sourceTree = "<group>"; };
 		919E32F5165FBDB700121D6C /* CartoTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartoTileProvider.m; sourceTree = "<group>"; };
 		919E32F8165FBE9300121D6C /* CartoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartoTile.h; sourceTree = "<group>"; };
@@ -557,21 +536,6 @@
 		91A5EC871667858B002B9000 /* Novocaine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Novocaine.m; sourceTree = "<group>"; };
 		91A5EC881667858B002B9000 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
 		91A5EC891667858B002B9000 /* RingBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RingBuffer.mm; sourceTree = "<group>"; };
-		91A5EC9316678699002B9000 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
-		91A5EC9416678699002B9000 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		91A5EC9516678699002B9000 /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
-		91A5EC9616678699002B9000 /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
-		91A5EC9716678699002B9000 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
-		91A5EC9816678699002B9000 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
-		91A5EC9916678699002B9000 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
-		91A5EC9A16678699002B9000 /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
-		91A5EC9B16678699002B9000 /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
-		91A5EC9C16678699002B9000 /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
-		91A5EC9E16678699002B9000 /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
-		91A5EC9F16678699002B9000 /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
-		91A5ECA016678699002B9000 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
-		91A5ECA116678699002B9000 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
-		91A5ECA216678699002B9000 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		91A5ECC31667891B002B9000 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		91A5ECC616678995002B9000 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		91B8F328167F521400CBBC0C /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StartButton.png; path = Images/StartButton.png; sourceTree = "<group>"; };
@@ -675,8 +639,8 @@
 		91C9D6EB166E2AD300837487 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		91C9D6ED166E2AD300837487 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91C9D6F0166E2AD300837487 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		91C9D6F2166E2AD300837487 /* RadarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadarViewController.h; sourceTree = "<group>"; };
-		91C9D6F3166E2AD300837487 /* RadarViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarViewController.mm; sourceTree = "<group>"; };
+		91C9D6F2166E2AD300837487 /* RadarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadarViewController.h; path = ../Radar/RadarViewController.h; sourceTree = "<group>"; };
+		91C9D6F3166E2AD300837487 /* RadarViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarViewController.mm; path = ../Radar/RadarViewController.mm; sourceTree = "<group>"; };
 		91C9D6FA166E2AD400837487 /* RadarTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RadarTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C9D702166E2AD400837487 /* RadarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadarTests-Info.plist"; sourceTree = "<group>"; };
 		91C9D704166E2AD400837487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -728,6 +692,8 @@
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		91D75B4F169DDA9C0088FB0D /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JSMap/public; sourceTree = SOURCE_ROOT; };
+		91F0760E169F34C50047FFEF /* SoundAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundAnalyser.h; path = NYCSound/SoundAnalyser.h; sourceTree = SOURCE_ROOT; };
+		91F0760F169F34C50047FFEF /* SoundAnalyser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoundAnalyser.mm; path = NYCSound/SoundAnalyser.mm; sourceTree = SOURCE_ROOT; };
 		91F161DD1682214C0099AAB9 /* TagDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDeleteView.h; sourceTree = "<group>"; };
 		91F161DE1682214C0099AAB9 /* TagDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDeleteView.m; sourceTree = "<group>"; };
 		91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarTestViewController.h; sourceTree = "<group>"; };
@@ -862,7 +828,7 @@
 				91489437166799C90039094B /* Utilities */,
 			);
 			name = NVDSP;
-			path = Lib/NVDSP;
+			path = ../Lib/NVDSP;
 			sourceTree = "<group>";
 		};
 		9148941C166799C90039094B /* Analytics */ = {
@@ -924,6 +890,8 @@
 				91C773581671EF8500C9BDB3 /* HistoryViewController.m */,
 				91B8F34D167F67B100CBBC0C /* PostCaptureViewController.h */,
 				91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */,
+				91C9D6F2166E2AD300837487 /* RadarViewController.h */,
+				91C9D6F3166E2AD300837487 /* RadarViewController.mm */,
 				91C773511671EF5300C9BDB3 /* MapViewController.h */,
 				91C773521671EF5300C9BDB3 /* MapViewController.m */,
 				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
@@ -1021,8 +989,6 @@
 				91A5EC5416677F15002B9000 /* TestMonitorAppDelegate.m */,
 				91A5EC5C16677F15002B9000 /* TestMonitorMainStoryboard_iPhone.storyboard */,
 				91A5EC5F16677F15002B9000 /* TestMonitorMainStoryboard_iPad.storyboard */,
-				9148945D16679B980039094B /* TestMeasure.h */,
-				9148945E16679B980039094B /* TestMeasure.mm */,
 				91A5EC4B16677F15002B9000 /* Supporting Files */,
 			);
 			name = "COSM TestMonitor";
@@ -1065,10 +1031,6 @@
 		91A5EC801667856C002B9000 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				91F9B978166FED9400EF1ACF /* Maximilian */,
-				9148941B166799C90039094B /* NVDSP */,
-				91A5EC9216678699002B9000 /* Lumberjack */,
-				91A5EC811667858B002B9000 /* Novocaine */,
 				917ABC21165F99D300643315 /* AFNetworking */,
 				917ABBEF165F900900643315 /* COSM */,
 			);
@@ -1088,49 +1050,20 @@
 				91A5EC891667858B002B9000 /* RingBuffer.mm */,
 			);
 			name = Novocaine;
-			path = Lib/novocaine/Novocaine;
-			sourceTree = "<group>";
-		};
-		91A5EC9216678699002B9000 /* Lumberjack */ = {
-			isa = PBXGroup;
-			children = (
-				91A5EC9316678699002B9000 /* DDAbstractDatabaseLogger.h */,
-				91A5EC9416678699002B9000 /* DDAbstractDatabaseLogger.m */,
-				91A5EC9516678699002B9000 /* DDASLLogger.h */,
-				91A5EC9616678699002B9000 /* DDASLLogger.m */,
-				91A5EC9716678699002B9000 /* DDFileLogger.h */,
-				91A5EC9816678699002B9000 /* DDFileLogger.m */,
-				91A5EC9916678699002B9000 /* DDLog.h */,
-				91A5EC9A16678699002B9000 /* DDLog.m */,
-				91A5EC9B16678699002B9000 /* DDTTYLogger.h */,
-				91A5EC9C16678699002B9000 /* DDTTYLogger.m */,
-				91A5EC9D16678699002B9000 /* Extensions */,
-			);
-			name = Lumberjack;
-			path = Lib/CocoaLumberjack/Lumberjack;
-			sourceTree = "<group>";
-		};
-		91A5EC9D16678699002B9000 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				91A5EC9E16678699002B9000 /* ContextFilterLogFormatter.h */,
-				91A5EC9F16678699002B9000 /* ContextFilterLogFormatter.m */,
-				91A5ECA016678699002B9000 /* DispatchQueueLogFormatter.h */,
-				91A5ECA116678699002B9000 /* DispatchQueueLogFormatter.m */,
-				91A5ECA216678699002B9000 /* README.txt */,
-			);
-			path = Extensions;
+			path = ../Lib/novocaine/Novocaine;
 			sourceTree = "<group>";
 		};
 		91C7731B1671EB7A00C9BDB3 /* ListeningNYC */ = {
 			isa = PBXGroup;
 			children = (
+				91F07611169F35A30047FFEF /* Libraries */,
 				91C7737B1671F8A400C9BDB3 /* Javascript */,
 				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
 				91C773251671EB7A00C9BDB3 /* AppDelegate.m */,
 				917A65F3169F262100E862D7 /* Utilities */,
 				917A65F1169F258800E862D7 /* View Controllers */,
+				91F0760C169F348E0047FFEF /* Sound Analysis */,
 				917A65F4169F263900E862D7 /* Views */,
 				91C773301671EB7A00C9BDB3 /* ViewController.h */,
 				91C773311671EB7B00C9BDB3 /* ViewController.m */,
@@ -1272,11 +1205,6 @@
 				91C9D6E6166E2AD300837487 /* RadarAppDelegate.h */,
 				91C9D6E7166E2AD300837487 /* RadarAppDelegate.m */,
 				91C9D6EF166E2AD300837487 /* MainStoryboard.storyboard */,
-				91C9D6F2166E2AD300837487 /* RadarViewController.h */,
-				91C9D6F3166E2AD300837487 /* RadarViewController.mm */,
-				919BD0BA166E333900478838 /* RadarSweeper.h */,
-				919BD0BB166E34EB00478838 /* RadarSweeper.mm */,
-				919BD0D8166E469F00478838 /* GLTool.h */,
 				91C9D6DE166E2AD300837487 /* Supporting Files */,
 				91F23BCB166FE29900A4A7E4 /* RadarTestViewController.h */,
 				91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */,
@@ -1385,8 +1313,6 @@
 				91D32EB1164971BE00BF7988 /* Supporting Files */,
 				91D32F21164AD3B400BF7988 /* HistoryCell.h */,
 				91D32F22164AD3B400BF7988 /* HistoryCell.m */,
-				914894611667B28E0039094B /* DBTool.mm */,
-				9148947A1667C7FA0039094B /* DBTool.h */,
 			);
 			path = NYCSound;
 			sourceTree = "<group>";
@@ -1485,6 +1411,30 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		91F0760C169F348E0047FFEF /* Sound Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				919BD0D8166E469F00478838 /* GLTool.h */,
+				9148947A1667C7FA0039094B /* DBTool.h */,
+				914894611667B28E0039094B /* DBTool.mm */,
+				91F0760E169F34C50047FFEF /* SoundAnalyser.h */,
+				91F0760F169F34C50047FFEF /* SoundAnalyser.mm */,
+				919BD0BA166E333900478838 /* RadarSweeper.h */,
+				919BD0BB166E34EB00478838 /* RadarSweeper.mm */,
+			);
+			name = "Sound Analysis";
+			sourceTree = "<group>";
+		};
+		91F07611169F35A30047FFEF /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				91F9B978166FED9400EF1ACF /* Maximilian */,
+				9148941B166799C90039094B /* NVDSP */,
+				91A5EC811667858B002B9000 /* Novocaine */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		91F9B978166FED9400EF1ACF /* Maximilian */ = {
 			isa = PBXGroup;
 			children = (
@@ -1498,7 +1448,7 @@
 				91F9B9C0167015F200EF1ACF /* stb_vorbis.h */,
 			);
 			name = Maximilian;
-			path = Lib/Maximillian/ofxMaxim/ofxMaxim;
+			path = ../Lib/Maximillian/ofxMaxim/ofxMaxim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1693,7 +1643,6 @@
 				91A5EC5B16677F15002B9000 /* Default-568h@2x.png in Resources */,
 				91A5EC5E16677F15002B9000 /* TestMonitorMainStoryboard_iPhone.storyboard in Resources */,
 				91A5EC6116677F16002B9000 /* TestMonitorMainStoryboard_iPad.storyboard in Resources */,
-				91A5ECB216678699002B9000 /* README.txt in Resources */,
 				9148943D166799C90039094B /* .gitkeep in Resources */,
 				91489453166799C90039094B /* license.txt in Resources */,
 				91489457166799C90039094B /* README.md in Resources */,
@@ -1876,7 +1825,6 @@
 				917ABC1C165F955100643315 /* Icon-AppStore.jpg in Resources */,
 				917ABC1E165F998600643315 /* Icon.png in Resources */,
 				917ABC20165F998C00643315 /* Icon@2x.png in Resources */,
-				91A5ECB116678699002B9000 /* README.txt in Resources */,
 				9148943C166799C90039094B /* .gitkeep in Resources */,
 				91489452166799C90039094B /* license.txt in Resources */,
 				91489456166799C90039094B /* README.md in Resources */,
@@ -1973,13 +1921,6 @@
 				91A5EC8D1667858B002B9000 /* AudioFileWriter.m in Sources */,
 				91A5EC8F1667858B002B9000 /* Novocaine.m in Sources */,
 				91A5EC911667858B002B9000 /* RingBuffer.mm in Sources */,
-				91A5ECA416678699002B9000 /* DDAbstractDatabaseLogger.m in Sources */,
-				91A5ECA616678699002B9000 /* DDASLLogger.m in Sources */,
-				91A5ECA816678699002B9000 /* DDFileLogger.m in Sources */,
-				91A5ECAA16678699002B9000 /* DDLog.m in Sources */,
-				91A5ECAC16678699002B9000 /* DDTTYLogger.m in Sources */,
-				91A5ECAE16678699002B9000 /* ContextFilterLogFormatter.m in Sources */,
-				91A5ECB016678699002B9000 /* DispatchQueueLogFormatter.m in Sources */,
 				91489441166799C90039094B /* NVAllpassFilter.m in Sources */,
 				91489443166799C90039094B /* NVBandpassFilter.m in Sources */,
 				91489445166799C90039094B /* NVBandpassQPeakGainFilter.m in Sources */,
@@ -1992,7 +1933,6 @@
 				91489455166799C90039094B /* NVDSP.mm in Sources */,
 				91489459166799C90039094B /* NVClippingDetection.m in Sources */,
 				9148945B166799C90039094B /* NVSoundLevelMeter.m in Sources */,
-				9148946016679B980039094B /* TestMeasure.mm in Sources */,
 				914894631667B28E0039094B /* DBTool.mm in Sources */,
 				914894641667B3370039094B /* COSMDefaults.m in Sources */,
 				914894651667B3410039094B /* Utils.m in Sources */,
@@ -2026,7 +1966,6 @@
 				91C7735A1671F2C000C9BDB3 /* RadarViewController.mm in Sources */,
 				91C7735B1671F2C700C9BDB3 /* RadarSweeper.mm in Sources */,
 				91C7735C1671F2D100C9BDB3 /* DBTool.mm in Sources */,
-				91C7735D1671F2DA00C9BDB3 /* TestMeasure.mm in Sources */,
 				91C7735E1671F2EB00C9BDB3 /* maximilian.cpp in Sources */,
 				91C7735F1671F2EB00C9BDB3 /* fft.cpp in Sources */,
 				91C773601671F2EB00C9BDB3 /* maxiFFT.cpp in Sources */,
@@ -2057,6 +1996,7 @@
 				91B8F34F167F67B200CBBC0C /* PostCaptureViewController.m in Sources */,
 				91B8F3901680BC3800CBBC0C /* AddTagViewController.m in Sources */,
 				91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */,
+				91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2077,7 +2017,6 @@
 				91C9D6F4166E2AD300837487 /* RadarViewController.mm in Sources */,
 				919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */,
 				91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */,
-				91F23BCE166FE3B100A4A7E4 /* TestMeasure.mm in Sources */,
 				91F23BCF166FE48000A4A7E4 /* NVSoundLevelMeter.m in Sources */,
 				91F23BD0166FE49600A4A7E4 /* NVAllpassFilter.m in Sources */,
 				91F23BD1166FE49600A4A7E4 /* NVBandpassFilter.m in Sources */,
@@ -2153,13 +2092,6 @@
 				91A5EC8C1667858B002B9000 /* AudioFileWriter.m in Sources */,
 				91A5EC8E1667858B002B9000 /* Novocaine.m in Sources */,
 				91A5EC901667858B002B9000 /* RingBuffer.mm in Sources */,
-				91A5ECA316678699002B9000 /* DDAbstractDatabaseLogger.m in Sources */,
-				91A5ECA516678699002B9000 /* DDASLLogger.m in Sources */,
-				91A5ECA716678699002B9000 /* DDFileLogger.m in Sources */,
-				91A5ECA916678699002B9000 /* DDLog.m in Sources */,
-				91A5ECAB16678699002B9000 /* DDTTYLogger.m in Sources */,
-				91A5ECAD16678699002B9000 /* ContextFilterLogFormatter.m in Sources */,
-				91A5ECAF16678699002B9000 /* DispatchQueueLogFormatter.m in Sources */,
 				91489440166799C90039094B /* NVAllpassFilter.m in Sources */,
 				91489442166799C90039094B /* NVBandpassFilter.m in Sources */,
 				91489444166799C90039094B /* NVBandpassQPeakGainFilter.m in Sources */,
@@ -2172,7 +2104,6 @@
 				91489454166799C90039094B /* NVDSP.mm in Sources */,
 				91489458166799C90039094B /* NVClippingDetection.m in Sources */,
 				9148945A166799C90039094B /* NVSoundLevelMeter.m in Sources */,
-				9148945F16679B980039094B /* TestMeasure.mm in Sources */,
 				914894621667B28E0039094B /* DBTool.mm in Sources */,
 				91BC2D181668EA400045F3BA /* TestSubmitViewController.m in Sources */,
 				91BC2D191668EBF00045F3BA /* TestMonitorViewController.m in Sources */,

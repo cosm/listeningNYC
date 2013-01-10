@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-@class TestMeasure;
+@class SoundAnalyser;
 @class RadarViewController;
 
 @interface CaptureViewController : UIViewController
@@ -8,7 +8,7 @@
 @property (nonatomic, weak) IBOutlet UIView *radarContainerView;
 
 // radar view controller
-@property (nonatomic, strong) TestMeasure *testMeasure;
-@property (nonatomic, weak) RadarViewController *radarViewController;
+@property (nonatomic, strong) SoundAnalyser *soundAnalyser;
+@property (nonatomic, strong) RadarViewController *radarViewController;
 
 @end

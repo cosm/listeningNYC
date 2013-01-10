@@ -1,4 +1,4 @@
-#import "TestMeasure.h"
+#import "SoundAnalyser.h"
 #import "DBTool.h"
 #import "maxiFFT.h"
 #import "RadarSweeper.h"
@@ -42,8 +42,7 @@ struct Normalizing {
     };
 };
 
-
-@interface TestMeasure () {
+@interface SoundAnalyser () {
     maxiFFT *fft;
     maxiFFTOctaveAnalyzer *oct;
     Normalizing<float> *nomalized;
@@ -51,7 +50,7 @@ struct Normalizing {
 
 @end
 
-@implementation TestMeasure
+@implementation SoundAnalyser
 
 #pragma mark - Tools
 
@@ -66,6 +65,8 @@ struct Normalizing {
 }
 
 - (void)start {
+    NSLog(@"Sound Analyers start");
+    
     peakLevels.flatDB = -99999.9f;
     peakLevels.aWeightedDB = -99999.9f;
     peakLevels.cWeightedDB = -99999.9f;
@@ -82,8 +83,6 @@ struct Normalizing {
             [aPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
         currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
-        
-
 
         ////
         /// c weighted
@@ -135,7 +134,9 @@ struct Normalizing {
 }
 
 - (void)stop {
-    
+    NSLog(@"Sound Analyers Stop");
+    Novocaine *audioManager = [Novocaine audioManager];
+    [audioManager setInputBlock:nil];
 }
 
 #pragma mark - Rader Data Source
@@ -152,9 +153,17 @@ struct Normalizing {
         //unsigned int peakDbIndex = floor(index);
         //return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
     }
+    return 0;
 }
 
 #pragma mark - Life Cycle
+
+- (void)dealloc {
+    NSLog(@"Sound Analyser dealloc");
+    delete fft;
+    delete oct;
+    delete nomalized;
+}
 
 void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, int freq) {
     DBWeighting weighting = CalculateDBWeighting(freq);
@@ -166,14 +175,10 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
     cPeakingEq.Q = 0.2f;
 }
 
-- (void)dealloc {
-    delete fft;
-    delete oct;
-    delete nomalized;
-}
-
 - (id)init {
-    if ((self=[super init])) {
+    self=[super init];
+    if (self) {
+        NSLog(@"Sound Analyser Init");
         self.flatLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.aWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.cWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];

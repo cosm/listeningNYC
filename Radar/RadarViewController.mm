@@ -70,6 +70,20 @@
 
 #pragma mark - Life Cycle
 
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"RadarViewController viewWillAppear");
+    self.paused = NO;
+    scanlinesIterator = radar->scanlines.begin();
+    [self.updateSweeperTimer invalidate];
+    self.updateSweeperTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updaterSweeper) userInfo:nil repeats:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"RadarViewController viewWillDisappear");
+    self.paused = YES;
+    [self.updateSweeperTimer invalidate];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -100,11 +114,6 @@
     // create the projection matrix
     self.projectionMatrixEffect = [[GLKBaseEffect alloc] init];
     GLToolProjectionMatrixEffectWithFrame(self.projectionMatrixEffect, self.view.frame);
-    
-    self.paused = NO;
-    
-    scanlinesIterator = radar->scanlines.begin();
-    self.updateSweeperTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updaterSweeper) userInfo:nil repeats:YES];
     
     self.view.backgroundColor = [UIColor clearColor];
 }
