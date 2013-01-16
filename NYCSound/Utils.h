@@ -19,6 +19,7 @@
 + (void)layoutViewsHTMLStyle:(NSArray *)views inRect:(CGRect)area withSpacing:(CGSize)spacing;
 + (void)layoutViewsVerticalCenterStyle:(NSArray *)views inRect:(CGRect)rect spacingMin:(float)spacingMin spacingMax:(float)spacingMax;
 + (void)flipChildUIImageViewsIn:(NSArray *)views whichExceed:(CGPoint)point;
++ (void)setY:(float)y to:(UIView *)view;
 
 // Tags
 /// creates tag view and returns each tag view in a array.
@@ -52,5 +53,8 @@
 + (float)mapFloat:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp;
 + (float)randomFloatFrom:(float)min to:(float)max;
 + (float)clampFloat:(float)value min:(float)min max:(float)max;
+
+// Device
++ (NSString *)deviceGUID;
 
 @end

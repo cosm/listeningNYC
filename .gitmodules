@@ -1,3 +1,9 @@
 [submodule "JSMap"]
 	path = JSMap
 	url = git@bitbucket.org:rc1/cosm-map.git
+[submodule "Lib/COSM"]
+	path = Lib/COSM
+	url = git@bitbucket.org:rc1/libcosm.git
+[submodule "Lib/AFNetworking"]
+	path = Lib/AFNetworking
+	url = git://github.com/AFNetworking/AFNetworking.git

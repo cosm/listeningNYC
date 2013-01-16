@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Droplet Settings</key>
+	<dict>
+		<key>default location</key>
+		<string>/Applications/A Better Finder Rename 8.app</string>
+		<key>location key</key>
+		<string>net.publicspace.abfr8</string>
+		<key>temporary settings key</key>
+		<string>droplet settings</string>
+	</dict>
+	<key>Host Application Settings</key>
+	<dict>
+		<key>composite action</key>
+		<dict>
+			<key>composite actions array</key>
+			<array>
+				<dict>
+					<key>action name</key>
+					<string>Remove text at front</string>
+					<key>action parameter list</key>
+					<dict>
+						<key>active</key>
+						<integer>1</integer>
+						<key>fragmentSelection</key>
+						<integer>0</integer>
+						<key>ignoreCase</key>
+						<integer>1</integer>
+						<key>replace</key>
+						<string>COSM UI_</string>
+						<key>with</key>
+						<string></string>
+					</dict>
+				</dict>
+			</array>
+			<key>currentActionIndex</key>
+			<integer>0</integer>
+		</dict>
+		<key>global settings</key>
+		<dict>
+			<key>accurateFolderSize</key>
+			<integer>0</integer>
+			<key>active</key>
+			<integer>1</integer>
+			<key>conflictResolutionOrder1</key>
+			<integer>8</integer>
+			<key>conflictResolutionOrder2</key>
+			<integer>2</integer>
+			<key>conflictResolutionOrder3</key>
+			<integer>10</integer>
+			<key>conflictResolutionScheme</key>
+			<integer>9</integer>
+			<key>continueAfterRename</key>
+			<true/>
+			<key>copyFileComments</key>
+			<integer>1</integer>
+			<key>discloseAdvancedOptions</key>
+			<integer>0</integer>
+			<key>interactiveMode</key>
+			<integer>1</integer>
+			<key>lastAddDirectory</key>
+			<string>/Volumes/Macintosh HD/ross/Dropbox/Dropbox/Punters/COSM/COSM-001 NYC Sound App/[ Image Work Folder ]/PNGs</string>
+			<key>lockedDroplet</key>
+			<false/>
+			<key>multistep</key>
+			<integer>0</integer>
+			<key>preventAccidentalIPhotoLibraryDamage</key>
+			<true/>
+			<key>preventAccidentalITunesLibraryDamage</key>
+			<true/>
+			<key>previewConflictResolution</key>
+			<true/>
+			<key>previewMode</key>
+			<integer>0</integer>
+			<key>previewPaneWidth</key>
+			<integer>450</integer>
+			<key>processFiles</key>
+			<integer>1</integer>
+			<key>processFolders</key>
+			<integer>1</integer>
+			<key>processSubfolders</key>
+			<integer>0</integer>
+			<key>quickLookThumbnail</key>
+			<true/>
+			<key>quitAfterRename</key>
+			<integer>0</integer>
+			<key>renameMode</key>
+			<integer>0</integer>
+			<key>retrieveEXIFInformation</key>
+			<true/>
+			<key>showCurrentName</key>
+			<integer>1</integer>
+			<key>showPath</key>
+			<integer>0</integer>
+			<key>showSummary</key>
+			<integer>1</integer>
+			<key>silentDroplet</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>

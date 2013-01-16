@@ -127,6 +127,13 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     }];
 }
 
+
++ (void)setY:(float)y to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.origin.y = y;
+    view.frame = frame;
+}
+
 #pragma mark - Tags
 
 + (NSMutableArray *)createTagViews:(NSArray *)tags {
@@ -402,6 +409,29 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     if (value > max) { return max; }
     if (value < min) { return min; }
     return value;
+}
+
+#pragma  mark - Device
+
+// this is used locally only if one is not set
+// in the system preferences.
+NSString * createUUID() {
+    CFUUIDRef theUUID = CFUUIDCreate(NULL);
+    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+    CFRelease(theUUID);
+    return (__bridge_transfer NSString *)string;
+}
+
++ (NSString *)deviceGUID {
+    NSString *guid = [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceGUID"];
+    if (guid == nil) {
+        guid = createUUID();
+        [[NSUserDefaults standardUserDefaults] setObject:guid forKey:@"DeviceGUID"];
+        if (![[NSUserDefaults standardUserDefaults] synchronize]) {
+            [Utils alert:@"error" message:@"Failed to save the guid"];
+        }
+    }
+    return guid;
 }
 
 @end

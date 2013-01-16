@@ -2,6 +2,8 @@
 #import "SoundAnalyser.h"
 #import "RadarViewController.h"
 #import "AppDelegate.h"
+#import "Utils.h"
+#import "PostCaptureViewController.h"
 
 @interface CaptureViewController ()
 
@@ -9,9 +11,76 @@
 
 @implementation CaptureViewController
 
+#pragma mark - Recording View Controller 
+
+@synthesize recordingViewController, recordingContainerView;
+
+- (void)recordingViewControllerDidCancel {
+    [self.view bringSubviewToFront:self.startButton];
+    [self.recordingViewController.view removeFromSuperview];
+    self.recordingViewController.delegate = nil;
+    self.recordingViewController = nil;
+    self.startButton.hidden = NO;
+    
+    [self.startButton setUserInteractionEnabled:YES];
+    [self.countdownHolder setUserInteractionEnabled:NO];
+    [self.recordingContainerView setUserInteractionEnabled:NO];
+}
+
+- (void)recordingViewControllerDidFinish {
+    
+}
+
+- (void)recordingViewControllerDidRequestNext {
+    [self.recordingViewController.view removeFromSuperview];
+    self.recordingViewController.delegate = nil;
+    self.recordingViewController = nil;
+    self.startButton.hidden = NO;
+    
+    [self.startButton setUserInteractionEnabled:YES];
+    [self.countdownHolder setUserInteractionEnabled:NO];
+    [self.recordingContainerView setUserInteractionEnabled:NO];
+    
+    PostCaptureViewController *postCaptureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Post Capture View Controller"];
+    [self.navigationController pushViewController:postCaptureViewController animated:YES];
+}
+
+#pragma mark - Countdown View Controller
+
+@synthesize countdownViewController, countdownHolder;
+
+- (void)countdownViewControllerDidCountdown {
+    [self.countdownViewController.view removeFromSuperview];
+    self.countdownViewController.delegate = nil;
+    self.countdownViewController = nil;
+    
+    // display the recording view controller
+    self.recordingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Recording View Controller"];
+    [Utils setY:0.0f to:self.recordingViewController.view];
+    [self.recordingContainerView addSubview:self.recordingViewController.view];
+    self.recordingViewController.delegate = self;
+    
+    [self.startButton setUserInteractionEnabled:NO];
+    [self.countdownHolder setUserInteractionEnabled:NO];
+    [self.recordingContainerView setUserInteractionEnabled:YES];
+    
+}
+
 #pragma mark - IB
 
-@synthesize radarContainerView;
+@synthesize radarContainerView, startButton;
+
+- (IBAction)startButtonPressed:(id)sender {
+    self.countdownViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Countdown View Controller"];
+    [Utils setY:0.0f to:self.countdownViewController.view];
+    self.countdownViewController.delegate = self;
+    [self.countdownHolder addSubview:self.countdownViewController.view];
+    self.startButton.hidden = YES;
+    
+    [self.startButton setUserInteractionEnabled:NO];
+    [self.countdownHolder setUserInteractionEnabled:YES];
+    [self.recordingContainerView setUserInteractionEnabled:NO];
+}
 
 #pragma mark - Radar view controller
 
@@ -20,7 +89,7 @@
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"CaptureViewController viewWillAppear");
+    
     self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundA"];
     self.tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
     self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
@@ -30,6 +99,20 @@
     [self.soundAnalyser start];
     self.radarViewController.datasource = self.soundAnalyser;
     [self.radarViewController viewWillAppear:animated];
+    
+    [self.countdownViewController.view removeFromSuperview];
+    self.countdownViewController.delegate = nil;
+    self.countdownViewController = nil;
+    
+    [self.recordingViewController.view removeFromSuperview];
+    self.recordingViewController.delegate = nil;
+    self.recordingViewController = nil;
+    
+    self.startButton.hidden = NO;
+    
+    [self.startButton setUserInteractionEnabled:YES];
+    [self.countdownHolder setUserInteractionEnabled:NO];
+    [self.recordingContainerView setUserInteractionEnabled:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
