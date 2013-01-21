@@ -127,7 +127,6 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     }];
 }
 
-
 + (void)setY:(float)y to:(UIView *)view {
     CGRect frame = view.frame;
     frame.origin.y = y;

@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "COSM.h"
 
 @implementation AppDelegate
 
@@ -18,8 +19,9 @@
 
 #pragma mark - Application
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[COSMAPI defaultAPI] setApiKey:kCOSM_API_KEY];
+    
     // styles
     [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes: @{

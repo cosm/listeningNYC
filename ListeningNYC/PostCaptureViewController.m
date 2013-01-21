@@ -14,6 +14,21 @@
 
 @synthesize tags;
 
+#pragma mark - COSM Model
+
+@synthesize cosmFeed;
+
+- (void)modelDidSave:(COSMModel *)model {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON {
+    NSLog(@"Failed to save model");
+    NSLog(@"JSON is %@", JSON);
+    NSLog(@"Error is %@", error);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Notifcations
 
 - (void)didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
@@ -38,7 +53,13 @@
 }
 
 - (IBAction)submit:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"should disable submit button");
+    
+    if (!self.cosmFeed.delegate) {
+        [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
+        self.cosmFeed.delegate = self;
+        [self.cosmFeed save];
+    }
 }
 
 #pragma mark - UI

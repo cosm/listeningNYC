@@ -203,7 +203,7 @@ void maxiFFTOctaveAnalyzer::setup(float samplingRate, int nBandsInTheFFT, int nA
     // fe:  2f for octave bands, sqrt(2) for half-octave bands, cuberoot(2) for third-octave bands, etc
     if (nAveragesPerOctave==0) // um, wtf?
 		nAveragesPerOctave = 1;
-//    nAveragesPerOctave = nAveragesPerOctave;
+    nAveragesPerOctave = nAveragesPerOctave;
     averageFrequencyIncrement = pow(2.0f, 1.0f/(float)(nAveragesPerOctave));
     // this isn't currently configurable (used once here then no effect), but here's some reasoning:
     // 43 is a good value if you want to approximate "computer" octaves: 44100/2/2/2/2/2/2/2/2/2/2
@@ -213,7 +213,7 @@ void maxiFFTOctaveAnalyzer::setup(float samplingRate, int nBandsInTheFFT, int nA
     // but don't go much smaller unless you have a huge fft window size (see below for more why)
     // keep in mind, if you change it, that the number of actual bands may change +/-1, and
     // for some values, the last averaging band may not be very useful (may extend above nyquist)
-    firstOctaveFrequency = 55.0f;
+    firstOctaveFrequency = 35;//55.0f; // ross: setting this to be the bottom of ANSI band 16 http://www.mstarlabs.com/docs/tn257.html#Ref2
     // for each spectrum[] bin, calculate the mapping into the appropriate average[] bin.
     // this gives us roughly log-sized averaging bins, subject to how "fine" the spectrum bins are.
     // with more spectrum bins, you can better map into the averaging bins (especially at low

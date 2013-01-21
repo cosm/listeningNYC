@@ -13,7 +13,7 @@
 
 #pragma mark - Recording View Controller 
 
-@synthesize recordingViewController, recordingContainerView;
+@synthesize recordingViewController, recordingContainerView, cosmFeed;
 
 - (void)recordingViewControllerDidCancel {
     [self.view bringSubviewToFront:self.startButton];
@@ -28,7 +28,7 @@
 }
 
 - (void)recordingViewControllerDidFinish {
-    
+    self.cosmFeed = [self.soundAnalyser stopRecording];
 }
 
 - (void)recordingViewControllerDidRequestNext {
@@ -42,6 +42,8 @@
     [self.recordingContainerView setUserInteractionEnabled:NO];
     
     PostCaptureViewController *postCaptureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Post Capture View Controller"];
+    postCaptureViewController.cosmFeed = self.cosmFeed;
+    self.cosmFeed = nil;
     [self.navigationController pushViewController:postCaptureViewController animated:YES];
 }
 
@@ -63,6 +65,7 @@
     [self.startButton setUserInteractionEnabled:NO];
     [self.countdownHolder setUserInteractionEnabled:NO];
     [self.recordingContainerView setUserInteractionEnabled:YES];
+    [self.soundAnalyser beginRecording];
     
 }
 

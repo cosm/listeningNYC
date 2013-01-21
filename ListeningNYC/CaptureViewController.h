@@ -3,6 +3,7 @@
 #import "RecordingViewController.h"
 @class SoundAnalyser;
 @class RadarViewController;
+@class COSMFeedModel;
 
 @interface CaptureViewController : UIViewController<CountdownViewControllerDelegate, RecordingViewControllerDelegate>
 
@@ -17,6 +18,7 @@
 - (void)recordingViewControllerDidCancel;
 - (void)recordingViewControllerDidFinish;
 - (void)recordingViewControllerDidRequestNext;
+@property (nonatomic, strong) COSMFeedModel *cosmFeed;
 
 // Countdown
 @property (nonatomic, weak) IBOutlet UIView *countdownHolder;

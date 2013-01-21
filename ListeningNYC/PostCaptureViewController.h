@@ -1,12 +1,18 @@
 #import <UIKit/UIKit.h>
 #import "TagDeleteView.h"
 #import "MapWebViewController.h"
+#import "COSM.h"
 @class CircleBands;
 
-@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate>
+@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate>
 
 // Data
 @property (nonatomic, strong) NSMutableArray *tags;
+
+// COSM Model
+@property (nonatomic, strong) COSMFeedModel *cosmFeed;
+- (void)modelDidSave:(COSMModel *)model;
+- (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
 
 // IB
 @property (nonatomic, weak) IBOutlet CircleBands *circleBands;

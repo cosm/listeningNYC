@@ -4,6 +4,7 @@
 #import "DBTool.h"
 #import "NVPeakingEQFilter.h"
 #import "RadarViewController.h"
+@class COSMFeedModel;
 
 @interface SoundAnalyser : NSObject<RadarViewControllerDatasource> {
     NVPeakingEQFilter *aPeakingEqs[11];
@@ -21,6 +22,10 @@
 - (void)stop;
 @property DBCollection currentLevels;
 -(DBCollection)peakLevels;
+
+// recording
+- (void)beginRecording;
+- (COSMFeedModel *)stopRecording;
 
 // radar datasource
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;

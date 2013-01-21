@@ -98,6 +98,7 @@
 		917ABC45165FA53D00643315 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		917ABC46165FA54000643315 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC41165FA50300643315 /* Utils.m */; };
 		917ABC4C165FACC300643315 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC4B165FACC200643315 /* LoadingViewController.m */; };
+		918B268716A86F83009BD7A9 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 918B268616A86F82009BD7A9 /* Config.m */; };
 		919AAA2B16524D5E00EB99D4 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */; };
 		919AAA2F1652534E00EB99D4 /* MeasureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2E1652534E00EB99D4 /* MeasureDetailViewController.m */; };
 		919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
@@ -163,7 +164,6 @@
 		91AB209416A5B80E00D7CBF4 /* COSM UI-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */; };
 		91AB209516A5B80E00D7CBF4 /* COSM UI-91.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */; };
 		91AB209616A5B80E00D7CBF4 /* COSM UI-92.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */; };
-		91AB209716A5B80E00D7CBF4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202616A5B80E00D7CBF4 /* Default-568h@2x.png */; };
 		91AB209816A5B80E00D7CBF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202716A5B80E00D7CBF4 /* Default.png */; };
 		91AB209916A5B80E00D7CBF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202816A5B80E00D7CBF4 /* Default@2x.png */; };
 		91AB209A16A5B80E00D7CBF4 /* DeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202916A5B80E00D7CBF4 /* DeleteButton.png */; };
@@ -539,6 +539,8 @@
 		917ABC47165FA88F00643315 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		917ABC4B165FACC200643315 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ListeningNYC.entitlements; sourceTree = "<group>"; };
+		918B268516A86F81009BD7A9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		918B268616A86F82009BD7A9 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		919AAA2916524D5E00EB99D4 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureViewController.h; sourceTree = "<group>"; };
 		919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasureViewController.m; sourceTree = "<group>"; };
 		919AAA2D1652534E00EB99D4 /* MeasureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureDetailViewController.h; sourceTree = "<group>"; };
@@ -609,7 +611,6 @@
 		91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-32.png"; path = "Assets/Export/COSM UI-32.png"; sourceTree = SOURCE_ROOT; };
 		91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-91.png"; path = "Assets/Export/COSM UI-91.png"; sourceTree = SOURCE_ROOT; };
 		91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-92.png"; path = "Assets/Export/COSM UI-92.png"; sourceTree = SOURCE_ROOT; };
-		91AB202616A5B80E00D7CBF4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Assets/Export/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB202716A5B80E00D7CBF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Assets/Export/Default.png; sourceTree = SOURCE_ROOT; };
 		91AB202816A5B80E00D7CBF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Assets/Export/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB202916A5B80E00D7CBF4 /* DeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DeleteButton.png; path = Assets/Export/DeleteButton.png; sourceTree = SOURCE_ROOT; };
@@ -1256,6 +1257,8 @@
 			children = (
 				91F07611169F35A30047FFEF /* Libraries */,
 				91C7737B1671F8A400C9BDB3 /* Javascript */,
+				918B268516A86F81009BD7A9 /* Config.h */,
+				918B268616A86F82009BD7A9 /* Config.m */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
 				91C773251671EB7A00C9BDB3 /* AppDelegate.m */,
 				917A65F3169F262100E862D7 /* Utilities */,
@@ -1571,7 +1574,6 @@
 				91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */,
 				91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */,
 				91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */,
-				91AB202616A5B80E00D7CBF4 /* Default-568h@2x.png */,
 				91AB202716A5B80E00D7CBF4 /* Default.png */,
 				91AB202816A5B80E00D7CBF4 /* Default@2x.png */,
 				91AB202916A5B80E00D7CBF4 /* DeleteButton.png */,
@@ -1952,7 +1954,6 @@
 				91AB209416A5B80E00D7CBF4 /* COSM UI-32.png in Resources */,
 				91AB209516A5B80E00D7CBF4 /* COSM UI-91.png in Resources */,
 				91AB209616A5B80E00D7CBF4 /* COSM UI-92.png in Resources */,
-				91AB209716A5B80E00D7CBF4 /* Default-568h@2x.png in Resources */,
 				91AB209816A5B80E00D7CBF4 /* Default.png in Resources */,
 				91AB209916A5B80E00D7CBF4 /* Default@2x.png in Resources */,
 				91AB209A16A5B80E00D7CBF4 /* DeleteButton.png in Resources */,
@@ -2291,6 +2292,7 @@
 				91AB215C16A7256000D7CBF4 /* AFURLConnectionOperation.m in Sources */,
 				91AB215D16A7256000D7CBF4 /* AFXMLRequestOperation.m in Sources */,
 				91AB215E16A7256000D7CBF4 /* UIImageView+AFNetworking.m in Sources */,
+				918B268716A86F83009BD7A9 /* Config.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
