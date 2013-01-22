@@ -12,13 +12,17 @@
 
 #pragma mark - Data
 
-@synthesize tags;
+@synthesize tags, elevation;
 
 #pragma mark - COSM Model
 
 @synthesize cosmFeed;
 
 - (void)modelDidSave:(COSMModel *)model {
+    COSMFeedModel *feed = (COSMFeedModel *)model;
+    //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
+    [Utils saveFeedToDisk:feed];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -26,6 +30,7 @@
     NSLog(@"Failed to save model");
     NSLog(@"JSON is %@", JSON);
     NSLog(@"Error is %@", error);
+    [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -35,6 +40,7 @@
     if (self.mapWebViewController.mapIsReady) {
         [self.mapWebViewController setMapLocation:newLocation];
     }
+    elevation = newLocation.altitude;
 }
 
 #pragma mark - Map Web View Delegate
@@ -54,11 +60,38 @@
 
 - (IBAction)submit:(id)sender {
     NSLog(@"should disable submit button");
-    
+    // instead
     if (!self.cosmFeed.delegate) {
+        
+        // Default data
+        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@", kCOSM_FEED_TITLE_PREPEND] forKey:@"title"];
+        [self.cosmFeed.info setObject:kCOSM_FEED_WEBSITE forKey:@"website"];
+        [self.cosmFeed.info setObject:[Utils versionString] forKey:@"version"];
+        NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
+        [location setObject:@"mobile" forKey:@"disposition"];
+        CLLocationCoordinate2D coordinate = self.mapWebViewController.queryMapLocation;
+        [location setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
+        [location setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lon"];
+        if (self.elevation > -10000000.0) {
+            [location setObject:[NSString stringWithFormat:@"%f", self.elevation] forKey:@"ele"];
+        }
+        [self.cosmFeed.info setObject:location forKey:@"location"];
+        
+        // Post capture data
+        [self.tags addObject:[NSString stringWithFormat:@"User:GUID=%@", [Utils deviceGUID]]];
+        [self.tags addObject:[NSString stringWithFormat:@"App:Version=%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]]];
+        [self.tags addObject:[NSString stringWithFormat:@"App:Build=%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]];
+        [self.tags addObject:[NSString stringWithFormat:@"App:Device=%@", [Utils platformString]]];
         [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
+        
+        COSMDatastreamModel *likeDislike = [[COSMDatastreamModel alloc] init];
+        [likeDislike.info setValue:@"LikeDislike" forKeyPath:@"id"];
+        [likeDislike.info setValue:[NSString stringWithFormat:@"%f", self.slider.value] forKeyPath:@"current_value"];
+        [self.cosmFeed.datastreamCollection.datastreams addObject:likeDislike];
+        
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
+        
     }
 }
 
@@ -123,6 +156,7 @@
 - (void)viewDidLoad
 { 
     [super viewDidLoad];
+    self.elevation = -10000000.0;
     self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
     [self.view addSubview:self.mapWebViewController.view];
     [self.view sendSubviewToBack:self.mapWebViewController.view];

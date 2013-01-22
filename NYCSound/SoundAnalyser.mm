@@ -73,6 +73,41 @@ struct Normalizing {
     return peakLevels;
 }
 
+- (void)preformResetMetering {
+    peakLevels.flatDB = -99999.9f;
+    peakLevels.aWeightedDB = -99999.9f;
+    peakLevels.cWeightedDB = -99999.9f;
+    shouldResetMetering = false;
+    
+    if (fftAWeighted) {
+        delete fftAWeighted;
+        delete octAWeighted;
+        delete nomalizedAWeighted;
+    }
+    
+    fftAWeighted = new maxiFFT();
+    octAWeighted = new maxiFFTOctaveAnalyzer();
+    octAWeighted->peakDecayRate = 1.0;
+    NSInteger fftSize = 1024 * 2;
+    NSInteger windowSize = 1024; //1024;
+    Float64 samplingRate = [Novocaine audioManager].samplingRate;
+    fftAWeighted->setup(fftSize, windowSize, 256);
+    NSLog(@"%d", averages);
+    NSLog(@"%f", samplingRate);
+    NSLog(@"%df", fftSize/2);
+    octAWeighted->setup(samplingRate,
+                        fftSize/2,
+                        averages);
+    //            for (int i=0; i<octAWeighted->nAverages; ++i) {
+    //                if (i % averages == 0) {
+    //                    lastBin = lastBin * 2.0f;
+    //                    NSLog(@"Bin %d: %f  hz", i, lastBin);
+    //                }
+    //            }
+    nomalizedAWeighted = new Normalizing<float>[octAWeighted->nAverages];
+    shouldResetMetering = NO;
+}
+
 - (void)start {
     NSLog(@"Sound Analyers start");
     
@@ -80,33 +115,13 @@ struct Normalizing {
     
     Novocaine *audioManager = [Novocaine audioManager];
     [audioManager setInputBlock:^(float *incomingAudio, UInt32 numFrames, UInt32 numChannels) {
+        if (!self) { return; }
+        
         ////
         /// reset metering
         if (shouldResetMetering) {
-            peakLevels.flatDB = -99999.9f;
-            peakLevels.aWeightedDB = -99999.9f;
-            peakLevels.cWeightedDB = -99999.9f;
-            shouldResetMetering = false;
-            
-            delete fftAWeighted;
-            delete octAWeighted;
-            delete nomalizedAWeighted;
-            
-            fftAWeighted = new maxiFFT();
-            octAWeighted = new maxiFFTOctaveAnalyzer();
-            octAWeighted->peakDecayRate = 1.0;
-            NSInteger fftSize = 1024 * 2;
-            NSInteger windowSize = 1024; //1024;
-            fftAWeighted->setup(fftSize, windowSize, 256);
-            NSLog(@"Novocaine audioManager].samplingRate %f", [Novocaine audioManager].samplingRate);
-            octAWeighted->setup([Novocaine audioManager].samplingRate, fftSize/2, averages);
-//            for (int i=0; i<octAWeighted->nAverages; ++i) {
-//                if (i % averages == 0) {
-//                    lastBin = lastBin * 2.0f;
-//                    NSLog(@"Bin %d: %f  hz", i, lastBin);
-//                }
-//            }
-            nomalizedAWeighted = new Normalizing<float>[octAWeighted->nAverages];
+            [self preformResetMetering];
+            return;
         }
         
         currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
@@ -183,25 +198,67 @@ struct Normalizing {
 
 - (COSMFeedModel *)stopRecording {
     COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
-    [feedModel.info setObject:@"NYC Recording" forKey:@"title"];
-    [feedModel.info setObject:@"www.cosm.com" forKey:@"website"];
     
     NSLog(@"fft bins count %d", fftAWeighted->bins);
     
-    float lastBin = 20.0;
+    float bin = 17.5;
     float peak = 0.0f;
     for (int i=0; i<octAWeighted->nAverages; ++i) {
         if (peak < octAWeighted->peaks[i]) {
             peak += octAWeighted->peaks[i];
         }
         if (i % averages == 0) {
-            lastBin = lastBin * 2.0f;
+            // work out the lower frequency of this bin
+            bin = bin * 2.0f;
             COSMDatastreamModel *datastream = [[COSMDatastreamModel alloc] init];
-            [datastream.info setValue:[NSString stringWithFormat:@"%fhz", lastBin] forKeyPath:@"id"];
+            float binCenter = -1.0f;
+            NSString *tag = @"ANSI:band=unknown";
+            if (bin == 35.0f) {
+                binCenter = 40.0f;
+                tag = @"ANSI:band=16";
+                
+            } else if (bin == 70.0f) {
+                binCenter = 80.0f;
+                tag = @"ANSI:band=19";
+                
+            } else if (bin == 140.0f) {
+                binCenter = 160.0f;
+                tag = @"ANSI:band=22";
+                
+            } else if (bin == 280.0f) {
+                binCenter = 315.0f;
+                tag = @"ANSI:band=25";
+                
+            } else if (bin == 560.0f) {
+                binCenter = 630.0f;
+                tag = @"ANSI:band=28";
+                
+            } else if (bin == 1120.0f) {
+                binCenter = 1250.0f;
+                tag = @"ANSI:band=31";
+                
+            } else if (bin == 2240.0f) {
+                binCenter = 2500.0f;
+                tag = @"ANSI:band=34";
+                
+            } else if (bin == 4480.0f) {
+                binCenter = 5000.0f;
+                tag = @"ANSI:band=37";
+                
+            } else if (bin == 8960.0f) {
+                binCenter = 10000.0f;
+                tag = @"ANSI:band=40";
+                
+            } else if (bin == 17920.0f) {
+                binCenter = 20000.0f;
+                tag = @"ANSI:band=43";
+            }
+            [datastream.info setValue:[NSString stringWithFormat:@"%.0fhz", binCenter] forKeyPath:@"id"];
             [datastream.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
             [datastream.info setValue:@"dB" forKeyPath:@"unit.label"];
+            [datastream.info setValue:tag forKeyPath:@"tags"];
             [datastream.info setValue:[NSString stringWithFormat:@"%f", peak] forKeyPath:@"current_value"];
-            NSLog(@"Bin %d: %f  hz pow: %f", i, lastBin, peak);
+            NSLog(@"Bin %d: %f  hz pow: %f", i, bin, peak);
             peak = 0.0f;
             [feedModel.datastreamCollection.datastreams addObject:datastream];
         }
@@ -209,7 +266,7 @@ struct Normalizing {
     
     // Peak DB
     COSMDatastreamModel *peakDB = [[COSMDatastreamModel alloc] init];
-    [peakDB.info setValue:@"dB" forKeyPath:@"id"];
+    [peakDB.info setValue:@"Peak-dB" forKeyPath:@"id"];
     [peakDB.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     [peakDB.info setValue:@"dB" forKeyPath:@"unit.label"];
     [peakDB.info setValue:[NSString stringWithFormat:@"%f", peakLevels.flatDB] forKeyPath:@"current_value"];
@@ -217,7 +274,7 @@ struct Normalizing {
     
     // Peak DB
     COSMDatastreamModel *peakDBA = [[COSMDatastreamModel alloc] init];
-    [peakDBA.info setValue:@"dBA" forKeyPath:@"id"];
+    [peakDBA.info setValue:@"Peak-dBA" forKeyPath:@"id"];
     [peakDBA.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     [peakDBA.info setValue:@"dB" forKeyPath:@"unit.label"];
     [peakDBA.info setValue:[NSString stringWithFormat:@"%f", peakLevels.aWeightedDB] forKeyPath:@"current_value"];
@@ -225,7 +282,7 @@ struct Normalizing {
     
     // Peak DB
     COSMDatastreamModel *peakDBC = [[COSMDatastreamModel alloc] init];
-    [peakDBC.info setValue:@"dBC" forKeyPath:@"id"];
+    [peakDBC.info setValue:@"Peak-dBC" forKeyPath:@"id"];
     [peakDBC.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     [peakDBC.info setValue:@"dB" forKeyPath:@"unit.label"];
     [peakDBC.info setValue:[NSString stringWithFormat:@"%f", peakLevels.cWeightedDB] forKeyPath:@"current_value"];

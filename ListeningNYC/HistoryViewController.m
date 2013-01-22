@@ -1,12 +1,20 @@
 #import "HistoryViewController.h"
 #import "TwinCell.h"
 #import "DetailModalViewController.h"
+#import "Utils.h"
+#import "COSM.h"
 
 @interface HistoryViewController ()
 
 @end
 
 @implementation HistoryViewController
+
+#pragma mark - Data
+
+@synthesize feeds;
+
+#pragma mark - UI
 
 @synthesize detailModalViewController;
 
@@ -32,6 +40,8 @@
     if (self.detailModalViewController) {
         [self.detailModalViewController viewWillAppear:animated];
     }
+    
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,16 +76,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    self.feeds = [Utils loadFeedsFromDisk];
+    return [self.feeds count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Twin Cell";
     TwinCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
+    
+    COSMFeedModel *feed = [self.feeds objectAtIndex:indexPath.row];
+    NSLog(@"feed.info %@", feed.info);
     // Configure the cell...
-    cell.tagStrings_left = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
+    //NSDictionary *tags = [feeds valueForKeyPath:@"info.tags"]'
+    //if (feed.info )
+    cell.tagStrings_left = [feed.info valueForKeyPath:@"tags"];
     cell.tagStrings_right = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
     [cell setNeedsDisplay];
     

@@ -99,6 +99,7 @@
 		917ABC46165FA54000643315 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC41165FA50300643315 /* Utils.m */; };
 		917ABC4C165FACC300643315 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC4B165FACC200643315 /* LoadingViewController.m */; };
 		918B268716A86F83009BD7A9 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 918B268616A86F82009BD7A9 /* Config.m */; };
+		9194268F16ADC93B0037C0AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9194268E16ADC93B0037C0AB /* README.md */; };
 		919AAA2B16524D5E00EB99D4 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */; };
 		919AAA2F1652534E00EB99D4 /* MeasureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2E1652534E00EB99D4 /* MeasureDetailViewController.m */; };
 		919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
@@ -288,7 +289,6 @@
 		91C7732A1671EB7A00C9BDB3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C773291671EB7A00C9BDB3 /* Default@2x.png */; };
 		91C7732C1671EB7A00C9BDB3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91C7732B1671EB7A00C9BDB3 /* Default-568h@2x.png */; };
 		91C7732F1671EB7A00C9BDB3 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */; };
-		91C773321671EB7B00C9BDB3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C773311671EB7B00C9BDB3 /* ViewController.m */; };
 		91C773391671EB7B00C9BDB3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32ECE164971BF00BF7988 /* SenTestingKit.framework */; };
 		91C7733A1671EB7B00C9BDB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91C7733B1671EB7B00C9BDB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
@@ -541,6 +541,7 @@
 		9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ListeningNYC.entitlements; sourceTree = "<group>"; };
 		918B268516A86F81009BD7A9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		918B268616A86F82009BD7A9 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		9194268E16ADC93B0037C0AB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = Lib/COSM/README.md; sourceTree = SOURCE_ROOT; };
 		919AAA2916524D5E00EB99D4 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureViewController.h; sourceTree = "<group>"; };
 		919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasureViewController.m; sourceTree = "<group>"; };
 		919AAA2D1652534E00EB99D4 /* MeasureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureDetailViewController.h; sourceTree = "<group>"; };
@@ -759,8 +760,6 @@
 		91C773291671EB7A00C9BDB3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		91C7732B1671EB7A00C9BDB3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91C7732E1671EB7A00C9BDB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		91C773301671EB7A00C9BDB3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		91C773311671EB7B00C9BDB3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		91C773381671EB7B00C9BDB3 /* ListeningNYCTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListeningNYCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C773401671EB7B00C9BDB3 /* ListeningNYCTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ListeningNYCTests-Info.plist"; sourceTree = "<group>"; };
 		91C773421671EB7B00C9BDB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1201,6 +1200,7 @@
 		91AB211F16A71BB200D7CBF4 /* COSM */ = {
 			isa = PBXGroup;
 			children = (
+				9194268E16ADC93B0037C0AB /* README.md */,
 				91AB212016A71BE100D7CBF4 /* COSM.h */,
 				91AB212116A71BE100D7CBF4 /* COSMAPI.h */,
 				91AB212216A71BE100D7CBF4 /* COSMAPI.m */,
@@ -1265,8 +1265,6 @@
 				917A65F1169F258800E862D7 /* View Controllers */,
 				91F0760C169F348E0047FFEF /* Sound Analysis */,
 				917A65F4169F263900E862D7 /* Views */,
-				91C773301671EB7A00C9BDB3 /* ViewController.h */,
-				91C773311671EB7B00C9BDB3 /* ViewController.m */,
 				91C7731C1671EB7A00C9BDB3 /* Supporting Files */,
 			);
 			path = ListeningNYC;
@@ -2041,6 +2039,7 @@
 				91AB211C16A6E82000D7CBF4 /* RecordingRightIcon@2x.png in Resources */,
 				91AB211D16A6E82000D7CBF4 /* RecordingText.png in Resources */,
 				91AB211E16A6E82000D7CBF4 /* RecordingText@2x.png in Resources */,
+				9194268F16ADC93B0037C0AB /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2233,7 +2232,6 @@
 			files = (
 				91C773221671EB7A00C9BDB3 /* main.m in Sources */,
 				91C773261671EB7A00C9BDB3 /* AppDelegate.m in Sources */,
-				91C773321671EB7B00C9BDB3 /* ViewController.m in Sources */,
 				91C773501671EF3900C9BDB3 /* CaptureViewController.m in Sources */,
 				91C773531671EF5300C9BDB3 /* MapViewController.m in Sources */,
 				91C773561671EF6400C9BDB3 /* AboutViewController.m in Sources */,
@@ -2677,8 +2675,8 @@
 				INFOPLIST_FILE = "ListeningNYC/ListeningNYC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4BF92366-E9A8-4933-9C54-B640A8DD08C4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4BF92366-E9A8-4933-9C54-B640A8DD08C4";
+				PROVISIONING_PROFILE = "8B656204-355A-4F29-BCB1-3266A1EFEF09";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8B656204-355A-4F29-BCB1-3266A1EFEF09";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;

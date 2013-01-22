@@ -17,5 +17,4 @@
 @property (nonatomic, strong) MapWebViewController *mapWebViewController;
 - (void)mapDidLoad;
 
-
 @end

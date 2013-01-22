@@ -1,6 +1,7 @@
 #import "Utils.h"
 #import "ISO8601DateFormatter.h"
 #import "LoadingViewController.h"
+#import "COSMFeedModel.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -431,6 +432,102 @@ NSString * createUUID() {
         }
     }
     return guid;
+}
+
++ (NSString*)versionString {
+    return [NSString stringWithFormat:kCOSM_FEED_VERSION_FORMAT,
+            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],
+            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+}
+
++ (NSString *)platformString {
+    // Gets a string with the device model
+    // http://stackoverflow.com/a/13679404/179015
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    free(machine);
+    
+    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone2G";
+    if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone3G";
+    if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone3GS";
+    if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone4";
+    if ([platform isEqualToString:@"iPhone3,2"])    return @"iPhone4";
+    if ([platform isEqualToString:@"iPhone3,3"])    return @"iPhone4-CDMA";
+    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone4S";
+    if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone5";
+    if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone5-GSM+CDMA";
+    
+    if ([platform isEqualToString:@"iPod1,1"])      return @"iPodTouch-1Gen";
+    if ([platform isEqualToString:@"iPod2,1"])      return @"iPodTouch-2Gen";
+    if ([platform isEqualToString:@"iPod3,1"])      return @"iPodTouch-3Gen";
+    if ([platform isEqualToString:@"iPod4,1"])      return @"iPodTouch-4Gen";
+    if ([platform isEqualToString:@"iPod5,1"])      return @"iPodTouch-5Gen";
+    
+    if ([platform isEqualToString:@"iPad1,1"])      return @"iPad";
+    if ([platform isEqualToString:@"iPad1,2"])      return @"iPad3G";
+    if ([platform isEqualToString:@"iPad2,1"])      return @"iPad2-WiFi";
+    if ([platform isEqualToString:@"iPad2,2"])      return @"iPad2";
+    if ([platform isEqualToString:@"iPad2,3"])      return @"iPad2-CDMA";
+    if ([platform isEqualToString:@"iPad2,4"])      return @"iPad2";
+    if ([platform isEqualToString:@"iPad2,5"])      return @"iPadMini-WiFi";
+    if ([platform isEqualToString:@"iPad2,6"])      return @"iPadMini";
+    if ([platform isEqualToString:@"iPad2,7"])      return @"iPadMini-GSM+CDMA";
+    if ([platform isEqualToString:@"iPad3,1"])      return @"iPad3-WiFi";
+    if ([platform isEqualToString:@"iPad3,2"])      return @"iPad3-GSM+CDMA";
+    if ([platform isEqualToString:@"iPad3,3"])      return @"iPad3";
+    if ([platform isEqualToString:@"iPad3,4"])      return @"iPad4-WiFi";
+    if ([platform isEqualToString:@"iPad3,5"])      return @"iPad4";
+    if ([platform isEqualToString:@"iPad3,6"])      return @"iPad4-GSM+CDMA";
+    
+    if ([platform isEqualToString:@"i386"])         return @"Simulator";
+    if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
+    
+    return platform;
+}
+
+#pragma mark - COSM
+
++ (void)saveFeedToDisk:(COSMFeedModel*)feed {
+    id feedJSON = [feed saveableInfoWithNewDatastreamsOnly:NO];
+    NSError *error = nil;
+    NSData *feedData = [NSJSONSerialization dataWithJSONObject:feedJSON options:NSJSONWritingPrettyPrinted error:&error];
+    if (!error) {
+        NSString *filename = [NSString stringWithFormat:@"%@.recording", [feed.info objectForKey:@"id"]];
+        NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+        [feedData writeToFile:filepath atomically:YES];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
+            NSLog(@"filepath exists");
+    } else {
+        [Utils alert:@"Error saving" message:@"Could not save recording to device"];
+        NSLog(@"Error saving feed to device. %@", error);
+    }
+}
+
++ (NSMutableArray *)loadFeedsFromDisk {
+    NSMutableArray *feeds = [[NSMutableArray alloc] initWithCapacity:10];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:NULL];
+    
+    [directoryContent enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:[NSString stringWithFormat:@"%@/%@", documentsDirectory, obj]];
+        NSError *error;
+        id json = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingMutableContainers error:&error];
+        if (!error) {
+            COSMFeedModel *feed = [[COSMFeedModel alloc] init];
+            [feed parse:json];
+            [feeds addObject:feed];
+            NSLog(@"feed %@", feed);
+        } else {
+            NSLog(@"Error parsing saved recording named %@", obj);
+            NSLog(@"Error was %@", error);
+        }
+    }];
+    
+    return feeds;
 }
 
 @end

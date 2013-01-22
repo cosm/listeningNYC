@@ -8,6 +8,7 @@
 
 // Data
 @property (nonatomic, strong) NSMutableArray *tags;
+@property double elevation;
 
 // COSM Model
 @property (nonatomic, strong) COSMFeedModel *cosmFeed;

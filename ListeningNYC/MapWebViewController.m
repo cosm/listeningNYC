@@ -57,6 +57,21 @@
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 
+#pragma mark - Map Query
+- (CLLocationCoordinate2D)queryMapLocation {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.getLocationString()"];
+    NSString *result = [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+    NSArray *latLngArray = [result componentsSeparatedByString:@","];
+    CLLocationCoordinate2D location;
+    if ([latLngArray count] > 0) {
+        location.latitude = [[latLngArray objectAtIndex:0] doubleValue];
+    }
+    if ([latLngArray count] > 1) {
+        location.longitude = [[latLngArray objectAtIndex:1] doubleValue];
+    }
+    return location;
+}
+
 #pragma mark - UI
 
 @synthesize webview;

@@ -57,13 +57,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.nextButton.hidden = YES;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:NO];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kRECORD_FOR target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:NO];
     CGRect originalFrame = self.progressImageView.frame;
     CGRect modifiedFrame = self.progressImageView.frame;
     modifiedFrame.size.width = 0.0f;
     self.progressImageView.frame = modifiedFrame;
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:10.0];
+    [UIView setAnimationDuration:kRECORD_FOR];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     self.progressImageView.frame = originalFrame;
     [UIView commitAnimations];

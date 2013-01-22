@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 @class ISO8601DateFormatter;
 @class LoadingViewController;
+@class COSMFeedModel;
 
 @interface Utils : NSObject
 
@@ -56,5 +57,11 @@
 
 // Device
 + (NSString *)deviceGUID;
++ (NSString *)versionString;
++ (NSString *)platformString;
+
+// COSM
++ (void)saveFeedToDisk:(COSMFeedModel*)feed;
++ (NSMutableArray *)loadFeedsFromDisk;
 
 @end
