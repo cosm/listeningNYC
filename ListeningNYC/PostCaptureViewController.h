@@ -21,7 +21,7 @@
 @property (nonatomic, weak) IBOutlet UISlider *slider;
 - (IBAction)deleteTagsTouched:(id)sender;
 - (IBAction)submit:(id)sender;
-
+- (IBAction)cancel:(id)sender;
 // UI
 @property (nonatomic, weak) NSMutableArray *tagViews;
 @property (nonatomic, strong) NSMutableArray *deleteButtons;

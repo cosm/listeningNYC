@@ -58,6 +58,13 @@
     [self addDeleteButtons];
 }
 
+
+- (IBAction)cancel:(id)sender {
+    self.cosmFeed.delegate = nil;
+    self.cosmFeed = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)submit:(id)sender {
     NSLog(@"should disable submit button");
     // instead
