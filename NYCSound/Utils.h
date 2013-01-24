@@ -32,6 +32,7 @@
 + (NSMutableArray *)tags;
 + (void)saveTags;
 + (NSMutableArray *)findTagsIn:(NSString *)string;
++ (NSMutableArray *)tagArrayWithoutMachineTags:(NSArray *)tags;
 
 // String
 + (NSString*)describe:(id)obj;

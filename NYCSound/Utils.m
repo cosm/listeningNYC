@@ -275,6 +275,22 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     return matches;
 }
 
++ (NSMutableArray *)tagArrayWithoutMachineTags:(NSArray *)tags {
+    NSMutableArray *returnTags = [[NSMutableArray alloc] initWithCapacity:[tags count]];
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(.*):(.*)=" options:NSRegularExpressionCaseInsensitive error:&error];
+    [tags enumerateObjectsUsingBlock:^(id tag, NSUInteger idx, BOOL *stop) {
+        if ([tag isKindOfClass:[NSString class]]) {
+            NSUInteger numberOfMatches = [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, [tag length])];
+            if (numberOfMatches == 0) {
+                [returnTags addObject:tag];
+            }
+        }
+    }];
+    return returnTags;
+}
+
+
 #pragma mark - String
 
 + (NSString*)describe:(id)obj {
