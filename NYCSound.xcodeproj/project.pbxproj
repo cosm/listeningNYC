@@ -66,6 +66,12 @@
 		914894781667B3AA0039094B /* UINavigationBar-COSM-Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EED164A665A00BF7988 /* UINavigationBar-COSM-Title.png */; };
 		914894791667B3AA0039094B /* UINavigationBar-COSM-Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EEE164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png */; };
 		9153142116A4592A0075972B /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9153142016A4592A0075972B /* CountdownViewController.m */; };
+		916CB37C16B14D3E0083F47C /* LikeDislikeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */; };
+		916CB37D16B14D3E0083F47C /* LikeDislikeBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */; };
+		916CB38A16B152F90083F47C /* SubmitCancelPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB38616B152F90083F47C /* SubmitCancelPressed@2x.png */; };
+		916CB38B16B152F90083F47C /* SubmitCancelPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB38716B152F90083F47C /* SubmitCancelPressed.png */; };
+		916CB38C16B152F90083F47C /* SubmitCancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB38816B152F90083F47C /* SubmitCancel@2x.png */; };
+		916CB38D16B152F90083F47C /* SubmitCancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB38916B152F90083F47C /* SubmitCancel.png */; };
 		917ABC06165F901D00643315 /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABBF3165F901D00643315 /* COSMAPI.m */; };
 		917ABC07165F901D00643315 /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABBF5165F901D00643315 /* COSMDatapointCollection.m */; };
 		917ABC08165F901D00643315 /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABBF7165F901D00643315 /* COSMDatapointModel.m */; };
@@ -160,11 +166,6 @@
 		91AB208F16A5B80E00D7CBF4 /* Capture3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB201E16A5B80E00D7CBF4 /* Capture3@2x.png */; };
 		91AB209016A5B80E00D7CBF4 /* CellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB201F16A5B80E00D7CBF4 /* CellBackground.png */; };
 		91AB209116A5B80E00D7CBF4 /* CellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202016A5B80E00D7CBF4 /* CellBackground@2x.png */; };
-		91AB209216A5B80E00D7CBF4 /* COSM UI Page 2-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202116A5B80E00D7CBF4 /* COSM UI Page 2-01.png */; };
-		91AB209316A5B80E00D7CBF4 /* COSM UI-31.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202216A5B80E00D7CBF4 /* COSM UI-31.png */; };
-		91AB209416A5B80E00D7CBF4 /* COSM UI-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */; };
-		91AB209516A5B80E00D7CBF4 /* COSM UI-91.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */; };
-		91AB209616A5B80E00D7CBF4 /* COSM UI-92.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */; };
 		91AB209816A5B80E00D7CBF4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202716A5B80E00D7CBF4 /* Default.png */; };
 		91AB209916A5B80E00D7CBF4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202816A5B80E00D7CBF4 /* Default@2x.png */; };
 		91AB209A16A5B80E00D7CBF4 /* DeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202916A5B80E00D7CBF4 /* DeleteButton.png */; };
@@ -192,8 +193,6 @@
 		91AB20B016A5B80E00D7CBF4 /* OK.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203F16A5B80E00D7CBF4 /* OK.png */; };
 		91AB20B116A5B80E00D7CBF4 /* OK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB204016A5B80E00D7CBF4 /* OK@2x.png */; };
 		91AB20B216A5B80E00D7CBF4 /* OKPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB204116A5B80E00D7CBF4 /* OKPressed.png */; };
-		91AB20B916A5B80E00D7CBF4 /* RecordingIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB204816A5B80E00D7CBF4 /* RecordingIcon.png */; };
-		91AB20BA16A5B80E00D7CBF4 /* RecordingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB204916A5B80E00D7CBF4 /* RecordingIcon@2x.png */; };
 		91AB20C116A5B80E00D7CBF4 /* RemainQuiet.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB205016A5B80E00D7CBF4 /* RemainQuiet.png */; };
 		91AB20C216A5B80E00D7CBF4 /* RemainQuiet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB205116A5B80E00D7CBF4 /* RemainQuiet@2x.png */; };
 		91AB20C316A5B80E00D7CBF4 /* RemoveTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB205216A5B80E00D7CBF4 /* RemoveTag.png */; };
@@ -231,9 +230,6 @@
 		91AB20E316A5B80E00D7CBF4 /* ToolbarBackgroundC@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207216A5B80E00D7CBF4 /* ToolbarBackgroundC@2x.png */; };
 		91AB20E416A5B80E00D7CBF4 /* ToolbarBackgroundD.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207316A5B80E00D7CBF4 /* ToolbarBackgroundD.png */; };
 		91AB20E516A5B80E00D7CBF4 /* ToolbarBackgroundD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207416A5B80E00D7CBF4 /* ToolbarBackgroundD@2x.png */; };
-		91AB20E616A5B80E00D7CBF4 /* UIBarButton Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207516A5B80E00D7CBF4 /* UIBarButton Back.png */; };
-		91AB20E716A5B80E00D7CBF4 /* UIBarButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207616A5B80E00D7CBF4 /* UIBarButtonBack.png */; };
-		91AB20E816A5B80E00D7CBF4 /* UIBarButtonBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207716A5B80E00D7CBF4 /* UIBarButtonBack@2x.png */; };
 		91AB20E916A5B80E00D7CBF4 /* UINavigationBar-COSM-Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207816A5B80E00D7CBF4 /* UINavigationBar-COSM-Title.png */; };
 		91AB20EA16A5B80E00D7CBF4 /* UINavigationBar-COSM-Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB207916A5B80E00D7CBF4 /* UINavigationBar-COSM-Title@2x.png */; };
 		91AB20ED16A5B8B700D7CBF4 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB20EC16A5B8B700D7CBF4 /* RecordingViewController.m */; };
@@ -483,6 +479,12 @@
 		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DBTool.h; path = ../NYCSound/DBTool.h; sourceTree = "<group>"; };
 		9153141F16A4592A0075972B /* CountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownViewController.h; sourceTree = "<group>"; };
 		9153142016A4592A0075972B /* CountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownViewController.m; sourceTree = "<group>"; };
+		916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LikeDislikeBackground.png; path = Assets/Export/LikeDislikeBackground.png; sourceTree = SOURCE_ROOT; };
+		916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LikeDislikeBackground@2x.png"; path = "Assets/Export/LikeDislikeBackground@2x.png"; sourceTree = SOURCE_ROOT; };
+		916CB38616B152F90083F47C /* SubmitCancelPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SubmitCancelPressed@2x.png"; path = "Assets/Export/SubmitCancelPressed@2x.png"; sourceTree = SOURCE_ROOT; };
+		916CB38716B152F90083F47C /* SubmitCancelPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SubmitCancelPressed.png; path = Assets/Export/SubmitCancelPressed.png; sourceTree = SOURCE_ROOT; };
+		916CB38816B152F90083F47C /* SubmitCancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SubmitCancel@2x.png"; path = "Assets/Export/SubmitCancel@2x.png"; sourceTree = SOURCE_ROOT; };
+		916CB38916B152F90083F47C /* SubmitCancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SubmitCancel.png; path = Assets/Export/SubmitCancel.png; sourceTree = SOURCE_ROOT; };
 		917ABBF1165F901D00643315 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSM.h; path = ../../COSM/COSM.h; sourceTree = "<group>"; };
 		917ABBF2165F901D00643315 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMAPI.h; path = ../../COSM/COSMAPI.h; sourceTree = "<group>"; };
 		917ABBF3165F901D00643315 /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMAPI.m; path = ../../COSM/COSMAPI.m; sourceTree = "<group>"; };
@@ -607,11 +609,6 @@
 		91AB201E16A5B80E00D7CBF4 /* Capture3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Capture3@2x.png"; path = "Assets/Export/Capture3@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB201F16A5B80E00D7CBF4 /* CellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackground.png; path = Assets/Export/CellBackground.png; sourceTree = SOURCE_ROOT; };
 		91AB202016A5B80E00D7CBF4 /* CellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackground@2x.png"; path = "Assets/Export/CellBackground@2x.png"; sourceTree = SOURCE_ROOT; };
-		91AB202116A5B80E00D7CBF4 /* COSM UI Page 2-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI Page 2-01.png"; path = "Assets/Export/COSM UI Page 2-01.png"; sourceTree = SOURCE_ROOT; };
-		91AB202216A5B80E00D7CBF4 /* COSM UI-31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-31.png"; path = "Assets/Export/COSM UI-31.png"; sourceTree = SOURCE_ROOT; };
-		91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-32.png"; path = "Assets/Export/COSM UI-32.png"; sourceTree = SOURCE_ROOT; };
-		91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-91.png"; path = "Assets/Export/COSM UI-91.png"; sourceTree = SOURCE_ROOT; };
-		91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "COSM UI-92.png"; path = "Assets/Export/COSM UI-92.png"; sourceTree = SOURCE_ROOT; };
 		91AB202716A5B80E00D7CBF4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Assets/Export/Default.png; sourceTree = SOURCE_ROOT; };
 		91AB202816A5B80E00D7CBF4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Assets/Export/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB202916A5B80E00D7CBF4 /* DeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DeleteButton.png; path = Assets/Export/DeleteButton.png; sourceTree = SOURCE_ROOT; };
@@ -639,8 +636,6 @@
 		91AB203F16A5B80E00D7CBF4 /* OK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OK.png; path = Assets/Export/OK.png; sourceTree = SOURCE_ROOT; };
 		91AB204016A5B80E00D7CBF4 /* OK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "OK@2x.png"; path = "Assets/Export/OK@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB204116A5B80E00D7CBF4 /* OKPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = OKPressed.png; path = Assets/Export/OKPressed.png; sourceTree = SOURCE_ROOT; };
-		91AB204816A5B80E00D7CBF4 /* RecordingIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RecordingIcon.png; path = Assets/Export/RecordingIcon.png; sourceTree = SOURCE_ROOT; };
-		91AB204916A5B80E00D7CBF4 /* RecordingIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RecordingIcon@2x.png"; path = "Assets/Export/RecordingIcon@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB205016A5B80E00D7CBF4 /* RemainQuiet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RemainQuiet.png; path = Assets/Export/RemainQuiet.png; sourceTree = SOURCE_ROOT; };
 		91AB205116A5B80E00D7CBF4 /* RemainQuiet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RemainQuiet@2x.png"; path = "Assets/Export/RemainQuiet@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB205216A5B80E00D7CBF4 /* RemoveTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RemoveTag.png; path = Assets/Export/RemoveTag.png; sourceTree = SOURCE_ROOT; };
@@ -678,9 +673,6 @@
 		91AB207216A5B80E00D7CBF4 /* ToolbarBackgroundC@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ToolbarBackgroundC@2x.png"; path = "Assets/Export/ToolbarBackgroundC@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB207316A5B80E00D7CBF4 /* ToolbarBackgroundD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarBackgroundD.png; path = Assets/Export/ToolbarBackgroundD.png; sourceTree = SOURCE_ROOT; };
 		91AB207416A5B80E00D7CBF4 /* ToolbarBackgroundD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ToolbarBackgroundD@2x.png"; path = "Assets/Export/ToolbarBackgroundD@2x.png"; sourceTree = SOURCE_ROOT; };
-		91AB207516A5B80E00D7CBF4 /* UIBarButton Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIBarButton Back.png"; path = "Assets/Export/UIBarButton Back.png"; sourceTree = SOURCE_ROOT; };
-		91AB207616A5B80E00D7CBF4 /* UIBarButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UIBarButtonBack.png; path = Assets/Export/UIBarButtonBack.png; sourceTree = SOURCE_ROOT; };
-		91AB207716A5B80E00D7CBF4 /* UIBarButtonBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UIBarButtonBack@2x.png"; path = "Assets/Export/UIBarButtonBack@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB207816A5B80E00D7CBF4 /* UINavigationBar-COSM-Title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UINavigationBar-COSM-Title.png"; path = "Assets/Export/UINavigationBar-COSM-Title.png"; sourceTree = SOURCE_ROOT; };
 		91AB207916A5B80E00D7CBF4 /* UINavigationBar-COSM-Title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UINavigationBar-COSM-Title@2x.png"; path = "Assets/Export/UINavigationBar-COSM-Title@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB20EB16A5B8B700D7CBF4 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingViewController.h; sourceTree = "<group>"; };
@@ -1567,11 +1559,6 @@
 				91AB201E16A5B80E00D7CBF4 /* Capture3@2x.png */,
 				91AB201F16A5B80E00D7CBF4 /* CellBackground.png */,
 				91AB202016A5B80E00D7CBF4 /* CellBackground@2x.png */,
-				91AB202116A5B80E00D7CBF4 /* COSM UI Page 2-01.png */,
-				91AB202216A5B80E00D7CBF4 /* COSM UI-31.png */,
-				91AB202316A5B80E00D7CBF4 /* COSM UI-32.png */,
-				91AB202416A5B80E00D7CBF4 /* COSM UI-91.png */,
-				91AB202516A5B80E00D7CBF4 /* COSM UI-92.png */,
 				91AB202716A5B80E00D7CBF4 /* Default.png */,
 				91AB202816A5B80E00D7CBF4 /* Default@2x.png */,
 				91AB202916A5B80E00D7CBF4 /* DeleteButton.png */,
@@ -1584,6 +1571,8 @@
 				91AB203016A5B80E00D7CBF4 /* FrequencyGuide.png */,
 				91AB203116A5B80E00D7CBF4 /* FrequencyGuide@2x.png */,
 				91AB203216A5B80E00D7CBF4 /* h1.png */,
+				916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */,
+				916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */,
 				91AB203316A5B80E00D7CBF4 /* Map.png */,
 				91AB203416A5B80E00D7CBF4 /* Map@2x.png */,
 				91AB203516A5B80E00D7CBF4 /* MapLocate.png */,
@@ -1599,8 +1588,6 @@
 				91AB203F16A5B80E00D7CBF4 /* OK.png */,
 				91AB204016A5B80E00D7CBF4 /* OK@2x.png */,
 				91AB204116A5B80E00D7CBF4 /* OKPressed.png */,
-				91AB204816A5B80E00D7CBF4 /* RecordingIcon.png */,
-				91AB204916A5B80E00D7CBF4 /* RecordingIcon@2x.png */,
 				91AB205016A5B80E00D7CBF4 /* RemainQuiet.png */,
 				91AB205116A5B80E00D7CBF4 /* RemainQuiet@2x.png */,
 				91AB205216A5B80E00D7CBF4 /* RemoveTag.png */,
@@ -1626,6 +1613,10 @@
 				91AB206616A5B80E00D7CBF4 /* Submit@2x.png */,
 				91AB206716A5B80E00D7CBF4 /* SubmitPressed.png */,
 				91AB206816A5B80E00D7CBF4 /* SubmitPressed@2x.png */,
+				916CB38616B152F90083F47C /* SubmitCancelPressed@2x.png */,
+				916CB38716B152F90083F47C /* SubmitCancelPressed.png */,
+				916CB38816B152F90083F47C /* SubmitCancel@2x.png */,
+				916CB38916B152F90083F47C /* SubmitCancel.png */,
 				91AB206916A5B80E00D7CBF4 /* TagBackground.png */,
 				91AB206A16A5B80E00D7CBF4 /* TagBackground@2x.png */,
 				91AB206B16A5B80E00D7CBF4 /* TagBackgroundSmall.png */,
@@ -1638,9 +1629,6 @@
 				91AB207216A5B80E00D7CBF4 /* ToolbarBackgroundC@2x.png */,
 				91AB207316A5B80E00D7CBF4 /* ToolbarBackgroundD.png */,
 				91AB207416A5B80E00D7CBF4 /* ToolbarBackgroundD@2x.png */,
-				91AB207516A5B80E00D7CBF4 /* UIBarButton Back.png */,
-				91AB207616A5B80E00D7CBF4 /* UIBarButtonBack.png */,
-				91AB207716A5B80E00D7CBF4 /* UIBarButtonBack@2x.png */,
 				91AB207816A5B80E00D7CBF4 /* UINavigationBar-COSM-Title.png */,
 				91AB207916A5B80E00D7CBF4 /* UINavigationBar-COSM-Title@2x.png */,
 			);
@@ -1947,11 +1935,6 @@
 				91AB208F16A5B80E00D7CBF4 /* Capture3@2x.png in Resources */,
 				91AB209016A5B80E00D7CBF4 /* CellBackground.png in Resources */,
 				91AB209116A5B80E00D7CBF4 /* CellBackground@2x.png in Resources */,
-				91AB209216A5B80E00D7CBF4 /* COSM UI Page 2-01.png in Resources */,
-				91AB209316A5B80E00D7CBF4 /* COSM UI-31.png in Resources */,
-				91AB209416A5B80E00D7CBF4 /* COSM UI-32.png in Resources */,
-				91AB209516A5B80E00D7CBF4 /* COSM UI-91.png in Resources */,
-				91AB209616A5B80E00D7CBF4 /* COSM UI-92.png in Resources */,
 				91AB209816A5B80E00D7CBF4 /* Default.png in Resources */,
 				91AB209916A5B80E00D7CBF4 /* Default@2x.png in Resources */,
 				91AB209A16A5B80E00D7CBF4 /* DeleteButton.png in Resources */,
@@ -1979,8 +1962,6 @@
 				91AB20B016A5B80E00D7CBF4 /* OK.png in Resources */,
 				91AB20B116A5B80E00D7CBF4 /* OK@2x.png in Resources */,
 				91AB20B216A5B80E00D7CBF4 /* OKPressed.png in Resources */,
-				91AB20B916A5B80E00D7CBF4 /* RecordingIcon.png in Resources */,
-				91AB20BA16A5B80E00D7CBF4 /* RecordingIcon@2x.png in Resources */,
 				91AB20C116A5B80E00D7CBF4 /* RemainQuiet.png in Resources */,
 				91AB20C216A5B80E00D7CBF4 /* RemainQuiet@2x.png in Resources */,
 				91AB20C316A5B80E00D7CBF4 /* RemoveTag.png in Resources */,
@@ -2018,9 +1999,6 @@
 				91AB20E316A5B80E00D7CBF4 /* ToolbarBackgroundC@2x.png in Resources */,
 				91AB20E416A5B80E00D7CBF4 /* ToolbarBackgroundD.png in Resources */,
 				91AB20E516A5B80E00D7CBF4 /* ToolbarBackgroundD@2x.png in Resources */,
-				91AB20E616A5B80E00D7CBF4 /* UIBarButton Back.png in Resources */,
-				91AB20E716A5B80E00D7CBF4 /* UIBarButtonBack.png in Resources */,
-				91AB20E816A5B80E00D7CBF4 /* UIBarButtonBack@2x.png in Resources */,
 				91AB20E916A5B80E00D7CBF4 /* UINavigationBar-COSM-Title.png in Resources */,
 				91AB20EA16A5B80E00D7CBF4 /* UINavigationBar-COSM-Title@2x.png in Resources */,
 				91AB210F16A6E82000D7CBF4 /* RecordingBackground.png in Resources */,
@@ -2040,6 +2018,12 @@
 				91AB211D16A6E82000D7CBF4 /* RecordingText.png in Resources */,
 				91AB211E16A6E82000D7CBF4 /* RecordingText@2x.png in Resources */,
 				9194268F16ADC93B0037C0AB /* README.md in Resources */,
+				916CB37C16B14D3E0083F47C /* LikeDislikeBackground.png in Resources */,
+				916CB37D16B14D3E0083F47C /* LikeDislikeBackground@2x.png in Resources */,
+				916CB38A16B152F90083F47C /* SubmitCancelPressed@2x.png in Resources */,
+				916CB38B16B152F90083F47C /* SubmitCancelPressed.png in Resources */,
+				916CB38C16B152F90083F47C /* SubmitCancel@2x.png in Resources */,
+				916CB38D16B152F90083F47C /* SubmitCancel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

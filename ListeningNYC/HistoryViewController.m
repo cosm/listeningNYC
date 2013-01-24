@@ -90,7 +90,7 @@
     // Configure the cell...
     //NSDictionary *tags = [feeds valueForKeyPath:@"info.tags"]'
     //if (feed.info )
-    cell.tagStrings_left = [feed.info valueForKeyPath:@"tags"];
+    cell.tagStrings_left = [Utils tagArrayWithoutMachineTags:[feed.info valueForKeyPath:@"tags"]];
     cell.tagStrings_right = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
     [cell setNeedsDisplay];
     
