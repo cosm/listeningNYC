@@ -28,7 +28,7 @@
 
 - (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON {
     NSLog(@"Failed to save model");
-    NSLog(@"JSON is %@", JSON);
+    //NSLog(@"JSON is %@", JSON);
     NSLog(@"Error is %@", error);
     [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
     [self.navigationController popViewControllerAnimated:YES];

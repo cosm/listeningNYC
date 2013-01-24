@@ -1,64 +1,67 @@
-#import "TwinCell.h"
+#import "RecordingCell.h"
 #import "Utils.h"
+#import "COSMFeedModel.h"
 
-@interface TwinCell() {}
+@interface RecordingCell() {}
 
 @property BOOL hasLaidOutTags;
 
 @end
 
-
-@implementation TwinCell
+@implementation RecordingCell
 
 #pragma mark - Data
 
-@synthesize tagStrings_left, tagStrings_right;
+@synthesize feed, delegate;
 
 #pragma mark - IB
 
-@synthesize tagContainer_left;
-@synthesize tagContainer_right;
-@synthesize dateLabel_left;
-@synthesize dateLabel_right;
-@synthesize timeLabel_left;
-@synthesize timeLabel_right;
-@synthesize deleteButton_left;
-@synthesize deleteButton_right;
+@synthesize tagContainer;
+@synthesize dateLabel;
+@synthesize deleteButton;
 
-- (IBAction)delete_left:(id)sender {
-    NSLog(@"Delete Left");
+- (IBAction)deleteRecording:(id)sender {
+    UIAlertView* message = [[UIAlertView alloc] initWithTitle: @"Delete" message:@"Are you sure you wish to delete this recoriding?" delegate:self cancelButtonTitle: @"Cancel" otherButtonTitles: @"Delete", nil];
+    [message show];
 }
 
-- (IBAction)delete_right:(id)sender {
-    NSLog(@"Delete Right");
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(cellWantsDeletion:)]) {
+            [self.delegate cellWantsDeletion:self];
+        }
+    }
 }
 
 #pragma mark - UI
 
-@synthesize  tagViews_left, tagViews_right, hasLaidOutTags;
+@synthesize tagViews, hasLaidOutTags;
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!self.hasLaidOutTags) {
-        self.tagViews_left = [Utils createSmallTagViews:self.tagStrings_left];
-        self.tagViews_right = [Utils createSmallTagViews:self.tagStrings_right];
+        self.tagViews = [Utils createSmallTagViews:[Utils tagArrayWithoutMachineTags:[self.feed.info valueForKeyPath:@"tags"]]];
         
-        [Utils layoutViewsHTMLStyle:self.tagViews_left
-                             inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_left.frame.size.width, self.tagContainer_left.frame.size.height)
+        [Utils layoutViewsHTMLStyle:self.tagViews
+                             inRect:CGRectMake(0.0f, 0.0f, self.tagContainer.frame.size.width, self.tagContainer.frame.size.height)
                         withSpacing:CGSizeMake(5.0f, 3.0f)];
-        [Utils addSubviews:self.tagViews_left toView:self.tagContainer_left];
-        
-        [Utils layoutViewsHTMLStyle:self.tagViews_right
-                             inRect:CGRectMake(0.0f, 0.0f, self.tagContainer_right.frame.size.width, self.tagContainer_right.frame.size.height)
-                        withSpacing:CGSizeMake(5.0f, 3.0f)];
-        [Utils addSubviews:self.tagViews_right toView:self.tagContainer_right];
+        [Utils addSubviews:self.tagViews toView:self.tagContainer];
     }
-    
-    self.hasLaidOutTags = YES; 
+    self.hasLaidOutTags = YES;
+    self.deleteButton.hidden = YES;
 }
 
 - (void)drawRect:(CGRect)rect {
     
+}
+
+- (void)swipedLeft:(id)sender {
+    self.deleteButton.hidden = NO;
+}
+
+
+- (void)swipedRight:(id)sender {
+    self.deleteButton.hidden = YES;
 }
 
 #pragma mark - Life cycle
@@ -68,6 +71,14 @@
     if (self) {
         self.hasLaidOutTags = NO;   
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UISwipeGestureRecognizer* swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedLeft:)];
+        [swipeGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [self addGestureRecognizer:swipeGestureRecognizerLeft];
+        
+        UISwipeGestureRecognizer* swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRight:)];
+        [swipeGestureRecognizerRight setDirection:UISwipeGestureRecognizerDirectionRight];
+        [self addGestureRecognizer:swipeGestureRecognizerRight];
     }
     return self;
 }
@@ -78,8 +89,16 @@
     if (self) {
         // Initialization code
         self.hasLaidOutTags = NO;
-        NSLog(@"setting selection stykle");
+        NSLog(@"setting selection style");
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UISwipeGestureRecognizer* swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedLeft:)];
+        [swipeGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [self addGestureRecognizer:swipeGestureRecognizerLeft];
+        
+        UISwipeGestureRecognizer* swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRight:)];
+        [swipeGestureRecognizerRight setDirection:UISwipeGestureRecognizerDirectionRight];
+        [self addGestureRecognizer:swipeGestureRecognizerRight];
     }
     return self;
 }
@@ -87,8 +106,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

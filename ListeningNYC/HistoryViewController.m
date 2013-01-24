@@ -1,5 +1,4 @@
 #import "HistoryViewController.h"
-#import "TwinCell.h"
 #import "DetailModalViewController.h"
 #import "Utils.h"
 #import "COSM.h"
@@ -17,6 +16,17 @@
 #pragma mark - UI
 
 @synthesize detailModalViewController;
+
+#pragma mark - Cell Delegate
+
+- (void)cellWantsDeletion:(RecordingCell*)cell {
+    NSLog(@"@stub: HistoryViewController::cellWantsDeletion:");
+    NSIndexPath *path = [NSIndexPath indexPathForRow:[self.feeds indexOfObject:cell.feed] inSection:0];
+    [self.feeds removeObjectAtIndex:path.row];    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
 
 #pragma mark - Lifecycle
 
@@ -41,6 +51,7 @@
         [self.detailModalViewController viewWillAppear:animated];
     }
     
+    self.feeds = [Utils loadFeedsFromDisk];
     [self.tableView reloadData];
 }
 
@@ -76,24 +87,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    self.feeds = [Utils loadFeedsFromDisk];
     return [self.feeds count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Twin Cell";
-    TwinCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    static NSString *CellIdentifier = @"Recording Cell";
+    RecordingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     COSMFeedModel *feed = [self.feeds objectAtIndex:indexPath.row];
-    NSLog(@"feed.info %@", feed.info);
-    // Configure the cell...
-    //NSDictionary *tags = [feeds valueForKeyPath:@"info.tags"]'
-    //if (feed.info )
-    cell.tagStrings_left = [Utils tagArrayWithoutMachineTags:[feed.info valueForKeyPath:@"tags"]];
-    cell.tagStrings_right = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
+    cell.feed = feed;
+    cell.delegate = self;
     [cell setNeedsDisplay];
-    
     return cell;
 }
 
@@ -101,14 +105,12 @@
     return 105.0f;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
 
 /*
 // Override to support editing the table view.
@@ -145,6 +147,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
+    self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
     [self.view.superview.superview addSubview:detailModalViewController.view];
     [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
     [self.detailModalViewController viewWillAppear:NO];
