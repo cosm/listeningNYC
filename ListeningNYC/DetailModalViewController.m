@@ -1,6 +1,7 @@
 #import "DetailModalViewController.h"
 #import "CircleBands.h"
 #import "Utils.h"
+#import "COSMFeedModel.h"
 
 @interface DetailModalViewController ()
 
@@ -8,12 +9,18 @@
 
 @implementation DetailModalViewController
 
+#pragma mark - Data
+
+@synthesize feed;
+
 #pragma mark - Map 
 
 @synthesize mapWebViewController;
 
 - (void)mapDidLoad {
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:40.748433 longitude:-73.985656];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:[[self.feed valueForKeyPath:@"info.location.lat"] floatValue] longitude:[[self.feed valueForKeyPath:@"info.location.lon"] floatValue]];
+    NSLog(@"Lat is %@", [self.feed valueForKeyPath:@"info.location.lat"]);
+    NSLog(@"Lon is %@", [self.feed valueForKeyPath:@"info.location.lon"]);
     [self.mapWebViewController setMapLocation:location];
     [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:14]];
     [self.mapWebViewController setMapDisplayLocationCircle:NO];
@@ -51,9 +58,7 @@
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
     
-    // Debug create tags
-    NSArray *tags = @[@"One tag", @"Two Tags", @"Very long tags here", @"longer tags"];
-    NSMutableArray *tagViews = [Utils createTagViews:tags];
+    NSMutableArray *tagViews = [Utils createTagViews:[Utils tagArrayWithoutMachineTags:[self.feed.info valueForKeyPath:@"tags"]]];
     
     [Utils layoutViewsVerticalCenterStyle:tagViews inRect:self.tagsContainer.frame spacingMin:1.0f spacingMax:10.0f];
     [Utils flipChildUIImageViewsIn:tagViews whichExceed:CGPointMake(10000.0f, self.tagsContainer.frame.size.height/2.0f)];

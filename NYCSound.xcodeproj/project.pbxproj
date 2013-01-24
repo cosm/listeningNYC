@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9103D8E91675F3F20014B3EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 917ABC1D165F998600643315 /* Icon.png */; };
 		9103D8EB1675F3F40014B3EF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 917ABC1F165F998C00643315 /* Icon@2x.png */; };
-		9103D8EE1675F6AB0014B3EF /* TwinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103D8ED1675F6AB0014B3EF /* TwinCell.m */; };
+		9103D8EE1675F6AB0014B3EF /* RecordingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103D8ED1675F6AB0014B3EF /* RecordingCell.m */; };
 		9110A0DC1678C31300B7B0EE /* CircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DB1678C31300B7B0EE /* CircleBands.m */; };
 		9110A0E01678DFD300B7B0EE /* QuarterCircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */; };
 		911C2428169C66BF00EE1E11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911C2427169C66BF00EE1E11 /* CoreLocation.framework */; };
@@ -114,6 +114,8 @@
 		919BD0CC166E3A2C00478838 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 919BD0CB166E3A2C00478838 /* OpenGLES.framework */; };
 		919E32F6165FBDB700121D6C /* CartoTileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E32F5165FBDB700121D6C /* CartoTileProvider.m */; };
 		919E32FA165FBE9400121D6C /* CartoTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 919E32F9165FBE9300121D6C /* CartoTile.m */; };
+		91A1553816B160A600DDCFB5 /* CollectionDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A1553616B160A600DDCFB5 /* CollectionDelete@2x.png */; };
+		91A1553916B160A600DDCFB5 /* CollectionDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A1553716B160A600DDCFB5 /* CollectionDelete.png */; };
 		91A5EC4716677F15002B9000 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91A5EC4816677F15002B9000 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
 		91A5EC4916677F15002B9000 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAE164971BE00BF7988 /* CoreGraphics.framework */; };
@@ -441,8 +443,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9103D8EC1675F6AB0014B3EF /* TwinCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwinCell.h; sourceTree = "<group>"; };
-		9103D8ED1675F6AB0014B3EF /* TwinCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwinCell.m; sourceTree = "<group>"; };
+		9103D8EC1675F6AB0014B3EF /* RecordingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordingCell.h; sourceTree = "<group>"; };
+		9103D8ED1675F6AB0014B3EF /* RecordingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordingCell.m; sourceTree = "<group>"; };
 		9110A0DA1678C31300B7B0EE /* CircleBands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleBands.h; sourceTree = "<group>"; };
 		9110A0DB1678C31300B7B0EE /* CircleBands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleBands.m; sourceTree = "<group>"; };
 		9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuarterCircleBands.h; sourceTree = "<group>"; };
@@ -557,6 +559,8 @@
 		919E32F5165FBDB700121D6C /* CartoTileProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartoTileProvider.m; sourceTree = "<group>"; };
 		919E32F8165FBE9300121D6C /* CartoTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartoTile.h; sourceTree = "<group>"; };
 		919E32F9165FBE9300121D6C /* CartoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartoTile.m; sourceTree = "<group>"; };
+		91A1553616B160A600DDCFB5 /* CollectionDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CollectionDelete@2x.png"; path = "Assets/Export/CollectionDelete@2x.png"; sourceTree = SOURCE_ROOT; };
+		91A1553716B160A600DDCFB5 /* CollectionDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CollectionDelete.png; path = Assets/Export/CollectionDelete.png; sourceTree = SOURCE_ROOT; };
 		91A5EC4516677F15002B9000 /* COSM TestMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COSM TestMonitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A5EC4C16677F15002B9000 /* COSM Monitor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "COSM Monitor-Info.plist"; sourceTree = "<group>"; };
 		91A5EC4E16677F15002B9000 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1038,7 +1042,6 @@
 		917A65F3169F262100E862D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
 				917ABC40165FA50100643315 /* Utils.h */,
 				917ABC41165FA50300643315 /* Utils.m */,
 				917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */,
@@ -1056,8 +1059,8 @@
 				9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */,
 				91F161DD1682214C0099AAB9 /* TagDeleteView.h */,
 				91F161DE1682214C0099AAB9 /* TagDeleteView.m */,
-				9103D8EC1675F6AB0014B3EF /* TwinCell.h */,
-				9103D8ED1675F6AB0014B3EF /* TwinCell.m */,
+				9103D8EC1675F6AB0014B3EF /* RecordingCell.h */,
+				9103D8ED1675F6AB0014B3EF /* RecordingCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1253,6 +1256,7 @@
 				918B268616A86F82009BD7A9 /* Config.m */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
 				91C773251671EB7A00C9BDB3 /* AppDelegate.m */,
+				91C7732D1671EB7A00C9BDB3 /* MainStoryboard.storyboard */,
 				917A65F3169F262100E862D7 /* Utilities */,
 				917A65F1169F258800E862D7 /* View Controllers */,
 				91F0760C169F348E0047FFEF /* Sound Analysis */,
@@ -1559,6 +1563,8 @@
 				91AB201E16A5B80E00D7CBF4 /* Capture3@2x.png */,
 				91AB201F16A5B80E00D7CBF4 /* CellBackground.png */,
 				91AB202016A5B80E00D7CBF4 /* CellBackground@2x.png */,
+				91A1553616B160A600DDCFB5 /* CollectionDelete@2x.png */,
+				91A1553716B160A600DDCFB5 /* CollectionDelete.png */,
 				91AB202716A5B80E00D7CBF4 /* Default.png */,
 				91AB202816A5B80E00D7CBF4 /* Default@2x.png */,
 				91AB202916A5B80E00D7CBF4 /* DeleteButton.png */,
@@ -2024,6 +2030,8 @@
 				916CB38B16B152F90083F47C /* SubmitCancelPressed.png in Resources */,
 				916CB38C16B152F90083F47C /* SubmitCancel@2x.png in Resources */,
 				916CB38D16B152F90083F47C /* SubmitCancel.png in Resources */,
+				91A1553816B160A600DDCFB5 /* CollectionDelete@2x.png in Resources */,
+				91A1553916B160A600DDCFB5 /* CollectionDelete.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2244,7 +2252,7 @@
 				91C773741671F43400C9BDB3 /* NVLowpassFilter.m in Sources */,
 				91C773751671F43400C9BDB3 /* NVLowShelvingFilter.m in Sources */,
 				91C773801671F90600C9BDB3 /* MapWebViewController.m in Sources */,
-				9103D8EE1675F6AB0014B3EF /* TwinCell.m in Sources */,
+				9103D8EE1675F6AB0014B3EF /* RecordingCell.m in Sources */,
 				91B5B5C91677A39600A7B8E0 /* Utils.m in Sources */,
 				91B5B5CA1677A40E00A7B8E0 /* ISO8601DateFormatter.m in Sources */,
 				9110A0DC1678C31300B7B0EE /* CircleBands.m in Sources */,
