@@ -7,6 +7,7 @@
 
 // Data
 @property (nonatomic, strong) NSMutableArray *feeds;
+@property (nonatomic, strong) NSMutableArray *unsyncedFeeds;
 
 // UI
 @property (nonatomic, strong) DetailModalViewController *detailModalViewController;

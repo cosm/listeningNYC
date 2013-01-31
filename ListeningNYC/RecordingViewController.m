@@ -16,11 +16,12 @@
         [self.delegate recordingViewControllerDidFinish];
     }
     self.nextButton.hidden = NO;
+    self.audioDescriptionImageView.hidden = NO;
 }
 
 #pragma mark - IB
 
-@synthesize progressImageView, textImageView, nextButton;
+@synthesize progressImageView, textImageView, nextButton, audioDescriptionImageView;
 
 - (IBAction)cancelRecordingPressed:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(recordingViewControllerDidCancel)]) {
@@ -67,6 +68,8 @@
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     self.progressImageView.frame = originalFrame;
     [UIView commitAnimations];
+
+    self.audioDescriptionImageView.hidden = YES;
     
     [self startAnimation];
 }

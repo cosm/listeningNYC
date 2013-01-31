@@ -8,6 +8,7 @@
 @class ISO8601DateFormatter;
 @class LoadingViewController;
 @class COSMFeedModel;
+@class COSMDatastreamModel;
 
 @interface Utils : NSObject
 
@@ -39,10 +40,14 @@
 + (NSString*)describeArray:(NSArray *)arr;
 + (NSString*)describeDictionary:(NSDictionary *)dict;
 + (NSString *)replaceDates:(NSString*)str;
++ (BOOL)string:(NSString *)testString contains:(NSString *)searchString;
 
 // Array
 + (void)addObjectsWhenNotADuplicate:(NSArray *)objects to:(NSMutableArray *)arr;
 + (BOOL)addObjectWhenNotADuplicate:(id)obj to:(NSMutableArray *)arr;
+
+// Number
++ (NSInteger)nextIncrementingIntegerForDomain:(NSString *)domain;
 
 // Date
 + (ISO8601DateFormatter *)dateFormmater;
@@ -62,7 +67,16 @@
 + (NSString *)platformString;
 
 // COSM
-+ (void)saveFeedToDisk:(COSMFeedModel*)feed;
++ (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
++ (void)saveUnsyncedFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
++ (void)saveFeedToDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension;
++ (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension;
 + (NSMutableArray *)loadFeedsFromDisk;
++ (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed;
++ (float)valueForBand:(int)index in:(COSMFeedModel*)feed;
++ (NSString *)valueOfMachineTag:(NSString *)machineTag;
++ (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed;
++ (NSArray *)userTagsForRecording:(COSMFeedModel *)feed;
+
 
 @end

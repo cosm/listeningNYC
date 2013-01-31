@@ -17,6 +17,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *progressImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *textImageView;
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
+@property (nonatomic, weak) IBOutlet UIImageView *audioDescriptionImageView;
 - (IBAction)cancelRecordingPressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 

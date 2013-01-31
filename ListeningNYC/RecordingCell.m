@@ -14,11 +14,21 @@
 
 @synthesize feed, delegate;
 
+#pragma mark - Circle bands datasource
+
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
+    //need to look why this doesn't work'
+    float value = [Utils valueForBand:bandIndex in:self.feed];
+    if (value > 0) {
+        //NSLog(@"value for band is %f", value);
+    }
+    
+    return [Utils valueForBand:bandIndex in:self.feed];
+}
+
 #pragma mark - IB
 
-@synthesize tagContainer;
-@synthesize dateLabel;
-@synthesize deleteButton;
+@synthesize tagContainer, dateLabel, deleteButton, circleBands;
 
 - (IBAction)deleteRecording:(id)sender {
     UIAlertView* message = [[UIAlertView alloc] initWithTitle: @"Delete" message:@"Are you sure you wish to delete this recoriding?" delegate:self cancelButtonTitle: @"Cancel" otherButtonTitles: @"Delete", nil];
@@ -40,7 +50,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!self.hasLaidOutTags) {
-        self.tagViews = [Utils createSmallTagViews:[Utils tagArrayWithoutMachineTags:[self.feed.info valueForKeyPath:@"tags"]]];
+        [self.tagViews enumerateObjectsUsingBlock:^(UIView *tagView, NSUInteger idx, BOOL *stop) {
+            [tagView removeFromSuperview];
+        }];
+        self.tagViews = [Utils createSmallTagViews:[Utils tagArrayWithoutMachineTags:[Utils userTagsForRecording:self.feed]]];
         
         [Utils layoutViewsHTMLStyle:self.tagViews
                              inRect:CGRectMake(0.0f, 0.0f, self.tagContainer.frame.size.width, self.tagContainer.frame.size.height)
@@ -49,6 +62,9 @@
     }
     self.hasLaidOutTags = YES;
     self.deleteButton.hidden = YES;
+    self.circleBands.datasource = self;
+    self.circleBands.numberOfBands = 10;
+    self.dateLabel.text = [Utils dataTimeOfRecording:self.feed];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -65,6 +81,11 @@
 }
 
 #pragma mark - Life cycle
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.hasLaidOutTags = NO;
+}
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super initWithCoder:decoder];

@@ -58,8 +58,9 @@
     
     // display the recording view controller
     self.recordingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Recording View Controller"];
-    [Utils setY:0.0f to:self.recordingViewController.view];
+    //[Utils setY:0.0f to:self.recordingContainerView];
     [self.recordingContainerView addSubview:self.recordingViewController.view];
+    self.recordingViewController.view.frame = CGRectMake(0.0f, 0.0f, 278.0f, 146.0f);
     self.recordingViewController.delegate = self;
     
     [self.startButton setUserInteractionEnabled:NO];

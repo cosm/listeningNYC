@@ -3,7 +3,15 @@
 
 @implementation CircleBands
 
-@synthesize circleDiameter, circleHoleDiameter;
+#pragma mark - Datasource
+
+@synthesize datasource;
+
+#pragma mark - Customisation
+
+@synthesize circleDiameter, circleHoleDiameter, numberOfBands, hueScalarMin, hueScalarMax;
+
+#pragma mark - Life Cycle
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -12,6 +20,9 @@
         [self setOpaque:NO];
         self.circleDiameter = frame.size.width;
         self.circleHoleDiameter = 10.0f;
+        self.numberOfBands = 20;
+        self.hueScalarMin = 0.0f;
+        self.hueScalarMax = 1.0f;
     }
     return self;
 }
@@ -23,9 +34,14 @@
         [self setOpaque:NO];
         self.circleDiameter = self.frame.size.width;
         self.circleHoleDiameter = 10.0f;
+        self.numberOfBands = 20;
+        self.hueScalarMin = 0.0f;
+        self.hueScalarMax = 1.0f;
     }
     return self;
 }
+
+#pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect
 {
@@ -80,13 +96,16 @@
     UIGraphicsPushContext(context);
     CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
     
-    int numberOfBands = 20;
-    for (int i=0; i<numberOfBands; i++) {
+    for (int i=0; i<self.numberOfBands; i++) {
         alignStroke = 0.0f;
         path = CGPathCreateMutable();
         float bandDiameter = [Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.circleDiameter outputMax:self.circleHoleDiameter];
         float bandPosition = (circleDiameter - bandDiameter) / 2.0f;
-        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands outputMin:0.0 outputMax:1.0f] saturation:1.0f brightness:1.0f alpha:1.0f];
+        float bandAlpha = 1.0f;
+        if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
+            bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
+        }
+        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
         drawRect = CGRectMake(bandPosition, bandPosition, bandDiameter, bandDiameter);
         drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
         drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;

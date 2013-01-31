@@ -9,4 +9,5 @@ extern NSString *const kCOSM_FEED_VERSION_FORMAT;
 
 // Recording
 extern double const kRECORD_FOR;
+extern double const kRECORD_COUNTDOWN_FOR;
 

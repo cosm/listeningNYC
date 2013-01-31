@@ -2,9 +2,9 @@
 #import "TagDeleteView.h"
 #import "MapWebViewController.h"
 #import "COSM.h"
-@class CircleBands;
+#import "CircleBands.h";
 
-@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate>
+@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate, CircleBandsDatasource>
 
 // Data
 @property (nonatomic, strong) NSMutableArray *tags;

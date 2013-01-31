@@ -11,7 +11,7 @@
 
 #pragma mark - Data
 
-@synthesize feeds;
+@synthesize feeds, unsyncedFeeds;
 
 #pragma mark - UI
 
@@ -51,7 +51,8 @@
         [self.detailModalViewController viewWillAppear:animated];
     }
     
-    self.feeds = [Utils loadFeedsFromDisk];
+    self.feeds = [Utils loadFeedsFromDiskWithExtension:@"recording"];
+    self.unsyncedFeeds = [Utils loadFeedsFromDiskWithExtension:@"unsynced"];
     [self.tableView reloadData];
 }
 
@@ -82,12 +83,30 @@
 
 #pragma mark - Table view data source
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (self.unsyncedFeeds.count > 0) {
+        switch (section) {
+            case 0: return @"Recordings"; break;
+            case 1: return @"Unsynced Recordings"; break;
+        }
+    }
+    return @"";
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (self.unsyncedFeeds.count > 0) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.feeds count];
+    switch (section) {
+        case 0: return [self.feeds count]; break;
+        case 1: return [self.unsyncedFeeds count]; break;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
