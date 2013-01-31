@@ -297,11 +297,16 @@ struct Normalizing {
 
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
     BOOL useOct = YES;
+    BOOL useNormalized = YES;
     if (useOct) {
         // NSLog(@"%u", oct->nAverages);
-        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, octAWeighted->nAverages - 20);
+        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, octAWeighted->nAverages);
         unsigned int peakDbIndex = floor(index);
-        return RadarMapFloat(nomalizedAWeighted[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
+        if (useNormalized) {
+            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
+        } else {
+            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].currentValue, 0.0f, 0.1f, 0.0f, 1.0f);
+        }
     } else {
         //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);
         //unsigned int peakDbIndex = floor(index);
