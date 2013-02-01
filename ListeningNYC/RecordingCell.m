@@ -64,6 +64,7 @@
     self.deleteButton.hidden = YES;
     self.circleBands.datasource = self;
     self.circleBands.numberOfBands = 10;
+    self.circleBands.drawMask = true;
     self.dateLabel.text = [Utils dataTimeOfRecording:self.feed];
 }
 

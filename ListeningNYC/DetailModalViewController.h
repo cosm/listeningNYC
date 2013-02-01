@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "MapWebViewController.h"
-@class CircleBands;
+#import "CircleBands.h"
 @class COSMFeedModel;
 
-@interface DetailModalViewController : UIViewController<MapWebViewControllerDelegate>
+@interface DetailModalViewController : UIViewController<MapWebViewControllerDelegate, CircleBandsDatasource>
 
 // Data
 @property (nonatomic, strong) COSMFeedModel *feed;

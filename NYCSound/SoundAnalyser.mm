@@ -9,6 +9,7 @@ struct Normalizing {
     Normalizing() {
         min = std::numeric_limits<T>::max();
         max = std::numeric_limits<T>::min();
+        NSLog(@"created!");
     }
     T max;
     T min;
@@ -306,6 +307,28 @@ struct Normalizing {
             return RadarMapFloat(nomalizedAWeighted[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
         } else {
             return RadarMapFloat(nomalizedAWeighted[peakDbIndex].currentValue, 0.0f, 0.1f, 0.0f, 1.0f);
+        }
+    } else {
+        //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);
+        //unsigned int peakDbIndex = floor(index);
+        //return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
+    }
+    return 0;
+}
+
+/// REFACTOR!!!! COPYING ABOVE
+- (float)valueForAllSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
+    BOOL useOct = YES;
+    BOOL useNormalized = YES;
+    if (useOct) {
+        // NSLog(@"%u", oct->nAverages);
+        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, octAWeighted->nAverages);
+        unsigned int peakDbIndex = floor(index);
+        if (useNormalized) {
+            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 10.0f, 0.2f, 1.0f);
+        } else {
+            NSLog(@"Will return %f", RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 0.1f, 0.0f, 1.0f));
+            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 0.1f, 0.0f, 1.0f);
         }
     } else {
         //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);

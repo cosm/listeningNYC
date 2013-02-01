@@ -6,6 +6,7 @@
 @protocol RadarViewControllerDatasource <NSObject>
 @optional
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
+- (float)valueForAllSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
 @end
 
 /// Class
@@ -16,6 +17,12 @@
 // Interface
 - (void)update;
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect;
+
+// control
+- (void)start;
+- (void)stop;
+- (void)requestAllFromDatasource;
+- (void)reset;
 
 // GL
 @property (nonatomic, strong) GLKBaseEffect *projectionMatrixEffect;

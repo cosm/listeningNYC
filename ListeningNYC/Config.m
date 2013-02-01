@@ -8,5 +8,6 @@ NSString *const kCOSM_FEED_WEBSITE = @"www.cosm.com";
 NSString *const kCOSM_FEED_VERSION_FORMAT = @"%@ (build %@, iPhone)";
 
 // Recording
-double const kRECORD_FOR = 1.0f;
-double const kRECORD_COUNTDOWN_FOR = 0.3f;
+double const kRECORD_FOR = 10.0f;
+double const kRECORD_COUNTDOWN_FOR = 1.0f;
+

@@ -9,7 +9,7 @@
 
 #pragma mark - Customisation
 
-@synthesize circleDiameter, circleHoleDiameter, numberOfBands, hueScalarMin, hueScalarMax;
+@synthesize circleDiameter, circleHoleDiameter, numberOfBands, hueScalarMin, hueScalarMax, drawMask;
 
 #pragma mark - Life Cycle
 
@@ -35,8 +35,9 @@
         self.circleDiameter = self.frame.size.width;
         self.circleHoleDiameter = 10.0f;
         self.numberOfBands = 20;
-        self.hueScalarMin = 0.0f;
-        self.hueScalarMax = 1.0f;
+        self.hueScalarMin = 0.5f;
+        self.hueScalarMax = 0.0f;
+        self.drawMask = false;
     }
     return self;
 }
@@ -96,7 +97,35 @@
     UIGraphicsPushContext(context);
     CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
     
+    // remove this when masking is in place!
+    //BOOL drawMask = true;
+    
     for (int i=0; i<self.numberOfBands; i++) {
+        if (self.drawMask) {
+            alignStroke = 0.0f;
+            path = CGPathCreateMutable();
+            float bandDiameter = [Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.circleDiameter outputMax:self.circleHoleDiameter];
+            float bandPosition = (circleDiameter - bandDiameter) / 2.0f;
+            float bandAlpha = 1.0f;
+            if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
+                bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
+            }
+            //UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
+            UIColor *debugColor = [UIColor whiteColor];
+            drawRect = CGRectMake(bandPosition, bandPosition, bandDiameter, bandDiameter);
+            drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
+            drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;
+            drawRect.size.width = roundf(resolution * drawRect.size.width) / resolution;
+            drawRect.size.height = roundf(resolution * drawRect.size.height) / resolution;
+            CGPathAddEllipseInRect(path, NULL, drawRect);
+            color = [UIColor colorWithRed:0.0f green:0.799f blue:0.624f alpha:1.0f];
+            color = debugColor;
+            [color setFill];
+            CGContextAddPath(context, path);
+            CGContextFillPath(context);
+            CGPathRelease(path);
+        }
+        
         alignStroke = 0.0f;
         path = CGPathCreateMutable();
         float bandDiameter = [Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.circleDiameter outputMax:self.circleHoleDiameter];
@@ -105,7 +134,7 @@
         if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
             bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
         }
-        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
+        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
         drawRect = CGRectMake(bandPosition, bandPosition, bandDiameter, bandDiameter);
         drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
         drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;

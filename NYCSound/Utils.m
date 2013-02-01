@@ -135,6 +135,12 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     view.frame = frame;
 }
 
++ (void)setX:(float)x to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.origin.x = x;
+    view.frame = frame;
+}
+
 #pragma mark - Tags
 
 + (NSMutableArray *)createTagViews:(NSArray *)tags {
@@ -606,7 +612,7 @@ NSString * createUUID() {
 }
 
 float mapCircleBandFloat(float input) {
-    return [Utils mapFloat:input inputMin:0.0f inputMax:1.0f outputMin:0.1 outputMax:1.0 clamp:YES];
+    return [Utils mapFloat:input inputMin:0.0f inputMax:1.0f outputMin:0.0 outputMax:1.0 clamp:YES];
 }
 
 + (float)valueForBand:(int)index in:(COSMFeedModel*)feed {

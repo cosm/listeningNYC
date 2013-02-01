@@ -16,6 +16,7 @@
 @property int numberOfBands;
 @property float hueScalarMin;
 @property float hueScalarMax;
+@property BOOL drawMask; // <-- remove me when masking in place
 
 
 @end

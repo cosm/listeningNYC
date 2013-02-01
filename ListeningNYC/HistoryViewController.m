@@ -15,7 +15,7 @@
 
 #pragma mark - UI
 
-@synthesize detailModalViewController;
+@synthesize detailModalViewController, startHereImageView;
 
 #pragma mark - Cell Delegate
 
@@ -54,6 +54,23 @@
     self.feeds = [Utils loadFeedsFromDiskWithExtension:@"recording"];
     self.unsyncedFeeds = [Utils loadFeedsFromDiskWithExtension:@"unsynced"];
     [self.tableView reloadData];
+    
+    if (!self.startHereImageView && (![self.unsyncedFeeds count] || ![self.feeds count])) {
+        self.startHereImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"StartHere"]];
+        self.startHereImageView.contentMode = UIViewContentModeBottomLeft;
+        [self.tableView addSubview:startHereImageView];
+        [Utils setY:self.tableView.frame.size.height - 60.0f to:self.startHereImageView];
+        [Utils setX:18.0f to:self.startHereImageView];
+    } else if ([self.unsyncedFeeds count] || [self.feeds count]){
+        [self.tableView removeFromSuperview];
+        self.tableView = NULL;
+    }
+   
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll view, %@", NSStringFromCGRect(self.tableView.frame));
+    [Utils setY:self.tableView.frame.size.height - 60.0f + self.tableView.contentOffset.y to:self.startHereImageView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -103,7 +120,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0: return [self.feeds count]; break;
+        case 0: return MAX([self.feeds count], 1); break;
         case 1: return [self.unsyncedFeeds count]; break;
     }
     return 0;
@@ -112,12 +129,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Recording Cell";
-    RecordingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    COSMFeedModel *feed = [self.feeds objectAtIndex:indexPath.row];
-    cell.feed = feed;
-    cell.delegate = self;
-    [cell setNeedsDisplay];
-    return cell;
+    static NSString *CellIdentifierNoSamples = @"No Samples";
+    UITableViewCell *returnCell;
+    if ([self.unsyncedFeeds count] >0 || [self.feeds count] >0) {
+        RecordingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        COSMFeedModel *feed = [self.feeds objectAtIndex:indexPath.row];
+        cell.feed = feed;
+        cell.delegate = self;
+        [cell setNeedsDisplay];
+        returnCell = cell;
+    } else {
+        NSLog(@"creating a no samples cell");
+        returnCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierNoSamples];
+    }
+    return returnCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

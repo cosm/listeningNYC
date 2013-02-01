@@ -11,6 +11,7 @@
 
 // UI
 @property (nonatomic, strong) DetailModalViewController *detailModalViewController;
+@property (nonatomic, strong) UIImageView *startHereImageView;
 
 // Cell Delegate
 - (void)cellWantsDeletion:(RecordingCell*)cell;

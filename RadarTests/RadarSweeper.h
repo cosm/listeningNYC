@@ -91,13 +91,13 @@ typedef std::vector<RadarScanline *>::iterator ScanlinesIt;
 
 class RadarSweeper {
 public:
-    
+
     RadarSweeper(unsigned int numScanlines, unsigned int particlesPerScanLine, float radius):numScanlines(numScanlines){
         scanlines.reserve(numScanlines);
         float spreadDegree = 360.0f / float(numScanlines);
         float width = radius * sinf( (spreadDegree / 2.0f) * M_PI/180.0f );
         float height = sqrt( (radius * radius) - (width * width) );
-        float currentRotation = 0.0f;
+        float currentRotation = 180.0f;
         for (int i=0; i < numScanlines; ++i) {
             RadarScanline *scanline = new RadarScanline(particlesPerScanLine, width * 2, height);
             scanlines.push_back(scanline);

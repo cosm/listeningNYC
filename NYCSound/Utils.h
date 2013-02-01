@@ -22,6 +22,7 @@
 + (void)layoutViewsVerticalCenterStyle:(NSArray *)views inRect:(CGRect)rect spacingMin:(float)spacingMin spacingMax:(float)spacingMax;
 + (void)flipChildUIImageViewsIn:(NSArray *)views whichExceed:(CGPoint)point;
 + (void)setY:(float)y to:(UIView *)view;
++ (void)setX:(float)y to:(UIView *)view;
 
 // Tags
 /// creates tag view and returns each tag view in a array.
@@ -77,6 +78,5 @@
 + (NSString *)valueOfMachineTag:(NSString *)machineTag;
 + (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed;
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed;
-
 
 @end

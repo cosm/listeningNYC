@@ -1,5 +1,4 @@
 #import "DetailModalViewController.h"
-#import "CircleBands.h"
 #import "Utils.h"
 #import "COSMFeedModel.h"
 #import "COSMDatastreamModel.h"
@@ -35,6 +34,12 @@
     [self.view removeFromSuperview];
 }
 
+#pragma mark - Circle Bands Datasource
+
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
+    return [Utils valueForBand:bandIndex in:self.feed];
+}
+
 #pragma mark - Life cycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,6 +63,9 @@
     frame.origin.y = 0.0f;
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
+    if (self.feed) {
+        self.circleBands.datasource = self;
+    }
     
     // ----------
     // @todo move to layoutViews

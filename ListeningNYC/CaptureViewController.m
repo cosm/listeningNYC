@@ -25,10 +25,15 @@
     [self.startButton setUserInteractionEnabled:YES];
     [self.countdownHolder setUserInteractionEnabled:NO];
     [self.recordingContainerView setUserInteractionEnabled:NO];
+    
+    [self.radarViewController reset];
+    [self.radarViewController start];
 }
 
 - (void)recordingViewControllerDidFinish {
     self.cosmFeed = [self.soundAnalyser stopRecording];
+    [self.radarViewController stop];
+    [self.radarViewController requestAllFromDatasource];
 }
 
 - (void)recordingViewControllerDidRequestNext {
@@ -68,6 +73,8 @@
     [self.recordingContainerView setUserInteractionEnabled:YES];
     [self.soundAnalyser beginRecording];
     
+    [self.radarViewController reset];
+    
 }
 
 #pragma mark - IB
@@ -104,6 +111,9 @@
     self.radarViewController.datasource = self.soundAnalyser;
     [self.radarViewController viewWillAppear:animated];
     
+    [self.radarViewController reset];
+    [self.radarViewController start];
+    
     [self.countdownViewController.view removeFromSuperview];
     self.countdownViewController.delegate = nil;
     self.countdownViewController = nil;
@@ -117,6 +127,8 @@
     [self.startButton setUserInteractionEnabled:YES];
     [self.countdownHolder setUserInteractionEnabled:NO];
     [self.recordingContainerView setUserInteractionEnabled:NO];
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

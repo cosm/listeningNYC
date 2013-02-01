@@ -365,6 +365,10 @@
 		91D32F23164AD3B400BF7988 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D32F22164AD3B400BF7988 /* HistoryCell.m */; };
 		91D32F25164AD88300BF7988 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32F24164AD88300BF7988 /* MapKit.framework */; };
 		91D75B50169DDA9C0088FB0D /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91D75B4F169DDA9C0088FB0D /* public */; };
+		91E288F216BBD96F00EFDEB3 /* NoSamples.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E288EE16BBD96F00EFDEB3 /* NoSamples.png */; };
+		91E288F316BBD96F00EFDEB3 /* NoSamples@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E288EF16BBD96F00EFDEB3 /* NoSamples@2x.png */; };
+		91E288F416BBD96F00EFDEB3 /* StartHere.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E288F016BBD96F00EFDEB3 /* StartHere.png */; };
+		91E288F516BBD96F00EFDEB3 /* StartHere@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91E288F116BBD96F00EFDEB3 /* StartHere@2x.png */; };
 		91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F0760F169F34C50047FFEF /* SoundAnalyser.mm */; };
 		91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F161DE1682214C0099AAB9 /* TagDeleteView.m */; };
 		91F23BCD166FE29900A4A7E4 /* RadarTestViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F23BCC166FE29900A4A7E4 /* RadarTestViewController.mm */; };
@@ -809,6 +813,10 @@
 		91D32F22164AD3B400BF7988 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		91D75B4F169DDA9C0088FB0D /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JSMap/public; sourceTree = SOURCE_ROOT; };
+		91E288EE16BBD96F00EFDEB3 /* NoSamples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NoSamples.png; path = "Assets/Export Page 2/NoSamples.png"; sourceTree = SOURCE_ROOT; };
+		91E288EF16BBD96F00EFDEB3 /* NoSamples@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NoSamples@2x.png"; path = "Assets/Export Page 2/NoSamples@2x.png"; sourceTree = SOURCE_ROOT; };
+		91E288F016BBD96F00EFDEB3 /* StartHere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StartHere.png; path = "Assets/Export Page 2/StartHere.png"; sourceTree = SOURCE_ROOT; };
+		91E288F116BBD96F00EFDEB3 /* StartHere@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StartHere@2x.png"; path = "Assets/Export Page 2/StartHere@2x.png"; sourceTree = SOURCE_ROOT; };
 		91F0760E169F34C50047FFEF /* SoundAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundAnalyser.h; path = NYCSound/SoundAnalyser.h; sourceTree = SOURCE_ROOT; };
 		91F0760F169F34C50047FFEF /* SoundAnalyser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoundAnalyser.mm; path = NYCSound/SoundAnalyser.mm; sourceTree = SOURCE_ROOT; };
 		91F161DD1682214C0099AAB9 /* TagDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDeleteView.h; sourceTree = "<group>"; };
@@ -1472,6 +1480,10 @@
 		91E8F1A916A5AA90007F0A8D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				91E288EE16BBD96F00EFDEB3 /* NoSamples.png */,
+				91E288EF16BBD96F00EFDEB3 /* NoSamples@2x.png */,
+				91E288F016BBD96F00EFDEB3 /* StartHere.png */,
+				91E288F116BBD96F00EFDEB3 /* StartHere@2x.png */,
 				9139E27D16B9294000F2E8CC /* AudioDescription.png */,
 				9139E27E16B9294000F2E8CC /* AudioDescription@2x.png */,
 				91AB20FF16A6E82000D7CBF4 /* RecordingBackground.png */,
@@ -1984,6 +1996,10 @@
 				91A1553916B160A600DDCFB5 /* CollectionDelete.png in Resources */,
 				9139E27F16B9294000F2E8CC /* AudioDescription.png in Resources */,
 				9139E28016B9294000F2E8CC /* AudioDescription@2x.png in Resources */,
+				91E288F216BBD96F00EFDEB3 /* NoSamples.png in Resources */,
+				91E288F316BBD96F00EFDEB3 /* NoSamples@2x.png in Resources */,
+				91E288F416BBD96F00EFDEB3 /* StartHere.png in Resources */,
+				91E288F516BBD96F00EFDEB3 /* StartHere@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
