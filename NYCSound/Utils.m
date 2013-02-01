@@ -444,6 +444,29 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     return (clamp) ? [Utils clampFloat:output min:outputMin max:outputMax] : output;
 }
 
+
++ (float)mapQuinticEaseOut:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp {
+    float quinticMappedInput = (value - 1);
+	quinticMappedInput =  quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput + 1;
+    float output = (quinticMappedInput*(outputMax-outputMin)+outputMin);
+    if (outputMax < outputMin) {
+        if (output < outputMax) {
+            output = outputMax;
+        }
+        else if (output > outputMin) {
+            output = outputMin;
+        }
+    } else {
+        if (output > outputMax) {
+            output = outputMax;
+        }
+        else if (output < outputMin) {
+            output = outputMin;
+        }
+    }
+    return (clamp) ? [Utils clampFloat:output min:outputMin max:outputMax] : output;
+}
+
 + (float)randomFloatFrom:(float)min to:(float)max {
     return ((float)arc4random() / 0x100000000) * (max-min) + min;
 }

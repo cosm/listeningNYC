@@ -3,6 +3,7 @@
 #import "maxiFFT.h"
 #import "RadarSweeper.h"
 #import "COSM.h"
+#import "Utils.h"
 
 template<typename T>
 struct Normalizing {
@@ -45,9 +46,9 @@ struct Normalizing {
 };
 
 @interface SoundAnalyser () {
-    maxiFFT *fftAWeighted;
-    maxiFFTOctaveAnalyzer *octAWeighted;
-    Normalizing<float> *nomalizedAWeighted;
+    maxiFFT *fft;
+    maxiFFTOctaveAnalyzer *oct;
+    Normalizing<float> *nomalized;
     BOOL shouldResetMetering;
     NSInteger averages;
 }
@@ -80,37 +81,29 @@ struct Normalizing {
     peakLevels.cWeightedDB = -99999.9f;
     shouldResetMetering = false;
     
-    if (fftAWeighted) {
-        delete fftAWeighted;
-        delete octAWeighted;
-        delete nomalizedAWeighted;
+    if (fft) {
+        delete fft;
+        delete oct;
+        delete nomalized;
     }
     
-    fftAWeighted = new maxiFFT();
-    octAWeighted = new maxiFFTOctaveAnalyzer();
-    octAWeighted->peakDecayRate = 1.0;
+    fft = new maxiFFT();
+    oct = new maxiFFTOctaveAnalyzer();
+    // oct->peakDecayRate = 1.0;
     NSInteger fftSize = 1024 * 2;
     NSInteger windowSize = 1024; //1024;
     Float64 samplingRate = [Novocaine audioManager].samplingRate;
-    fftAWeighted->setup(fftSize, windowSize, 256);
-    NSLog(@"%d", averages);
-    NSLog(@"%f", samplingRate);
-    NSLog(@"%df", fftSize/2);
-    octAWeighted->setup(samplingRate,
-                        fftSize/2,
-                        averages);
-    //            for (int i=0; i<octAWeighted->nAverages; ++i) {
-    //                if (i % averages == 0) {
-    //                    lastBin = lastBin * 2.0f;
-    //                    NSLog(@"Bin %d: %f  hz", i, lastBin);
-    //                }
-    //            }
-    nomalizedAWeighted = new Normalizing<float>[octAWeighted->nAverages];
+    fft->setup(fftSize, windowSize, 256);
+    // NSLog(@"%d", averages);
+    // NSLog(@"%f", samplingRate);
+    // NSLog(@"%df", fftSize/2);
+    oct->setup(samplingRate, fftSize/2, averages);
+    nomalized = new Normalizing<float>[oct->nAverages];
     shouldResetMetering = NO;
 }
 
 - (void)start {
-    NSLog(@"Sound Analyers start");
+    NSLog(@"Sound Analyers Start");
     
     [self resetMetering];
     
@@ -135,6 +128,17 @@ struct Normalizing {
             [aPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
         currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
+        
+    
+        /// add fft & octave analyser
+        for (int i=0; i < numFrames; i+=numChannels) {
+            fft->process(incomingAudio[i]);
+        }
+        fft->magsToDB();
+        oct->calculate(fft->magnitudesDB);
+        for (int i =0; i < oct->nAverages; ++i) {
+            nomalized[i].set(oct->peaks[i]);
+        }
 
         ////
         /// c weighted
@@ -144,17 +148,6 @@ struct Normalizing {
         for (int i=0; i < 11; ++i) {
             [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
-        
-        /// add a-weighted to the fft & octave analyser
-        for (int i=0; i < numFrames; i+=numChannels) {
-            fftAWeighted->process(cWeightedAudio[i]);
-        }
-        fftAWeighted->magsToDB();
-        octAWeighted->calculate(fftAWeighted->magnitudesDB);
-        for (int i =0; i < octAWeighted->nAverages; ++i) {
-            nomalizedAWeighted[i].set(octAWeighted->peaks[i]);
-        }
-        
         currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
         
         /// peak
@@ -173,7 +166,7 @@ struct Normalizing {
                 peakLevels.aWeightedDB = peakLevels.aWeightedDB * 0.999f;
             }
         }
-        /// peak b
+        /// peak c
         if (currentLevels.cWeightedDB < 999.0f) {
             if (peakLevels.cWeightedDB < currentLevels.cWeightedDB) {
                 peakLevels.cWeightedDB = peakLevels.cWeightedDB + ((currentLevels.cWeightedDB - peakLevels.cWeightedDB) * 0.2);
@@ -200,13 +193,14 @@ struct Normalizing {
 - (COSMFeedModel *)stopRecording {
     COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
     
-    NSLog(@"fft bins count %d", fftAWeighted->bins);
+    NSLog(@"fft bins count %d", fft->bins);
     
     float bin = 17.5;
     float peak = 0.0f;
-    for (int i=0; i<octAWeighted->nAverages; ++i) {
-        if (peak < octAWeighted->peaks[i]) {
-            peak += octAWeighted->peaks[i];
+    for (int i=0; i<oct->nAverages; ++i) {
+        // find the highest peak since reset
+        if (peak < oct->peaks[i]) {
+            peak = oct->peaks[i];
         }
         if (i % averages == 0) {
             // work out the lower frequency of this bin
@@ -289,62 +283,35 @@ struct Normalizing {
     [peakDBC.info setValue:[NSString stringWithFormat:@"%f", peakLevels.cWeightedDB] forKeyPath:@"current_value"];
     [feedModel.datastreamCollection.datastreams addObject:peakDBC];
     
-    NSLog(@"nAverages= %d, nAveragesPerOctave= %d, nSpectrum= %d, averageFrequencyIncrement= %f", octAWeighted->nAverages, octAWeighted->nAveragesPerOctave, octAWeighted->nSpectrum, octAWeighted->averageFrequencyIncrement);
+    //NSLog(@"nAverages= %d, nAveragesPerOctave= %d, nSpectrum= %d, averageFrequencyIncrement= %f", octAWeighted->nAverages, octAWeighted->nAveragesPerOctave, octAWeighted->nSpectrum, octAWeighted->averageFrequencyIncrement);
     
     return feedModel;
 }
 
 #pragma mark - Rader Data Source
 
+- (float)mapDBtoAlpha:(float)db {
+    return [Utils mapQuinticEaseOut:db inputMin:0.0f inputMax:60.0f outputMin:0.0f outputMax:1.0f clamp:YES];
+}
+
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
-    BOOL useOct = YES;
-    BOOL useNormalized = YES;
-    if (useOct) {
-        // NSLog(@"%u", oct->nAverages);
-        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, octAWeighted->nAverages);
-        unsigned int peakDbIndex = floor(index);
-        if (useNormalized) {
-            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
-        } else {
-            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].currentValue, 0.0f, 0.1f, 0.0f, 1.0f);
-        }
-    } else {
-        //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);
-        //unsigned int peakDbIndex = floor(index);
-        //return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
-    }
-    return 0;
+    unsigned int index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, oct->nAverages);
+    return [self mapDBtoAlpha:nomalized[index].currentValue];
 }
 
 /// REFACTOR!!!! COPYING ABOVE
 - (float)valueForAllSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
-    BOOL useOct = YES;
-    BOOL useNormalized = YES;
-    if (useOct) {
-        // NSLog(@"%u", oct->nAverages);
-        float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, octAWeighted->nAverages);
-        unsigned int peakDbIndex = floor(index);
-        if (useNormalized) {
-            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 10.0f, 0.2f, 1.0f);
-        } else {
-            NSLog(@"Will return %f", RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 0.1f, 0.0f, 1.0f));
-            return RadarMapFloat(nomalizedAWeighted[peakDbIndex].max, 0.0f, 0.1f, 0.0f, 1.0f);
-        }
-    } else {
-        //float index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, 1024/2);
-        //unsigned int peakDbIndex = floor(index);
-        //return RadarMapFloat(nomalized[peakDbIndex].getNormalized(), 0.0f, 0.6f, 0.2f, 1.0f);
-    }
-    return 0;
+    unsigned int index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, oct->nAverages);
+    return [self mapDBtoAlpha:nomalized[index].max];
 }
 
 #pragma mark - Life Cycle
 
 - (void)dealloc {
     NSLog(@"Sound Analyser dealloc");
-    delete fftAWeighted;
-    delete octAWeighted;
-    delete nomalizedAWeighted;
+    delete fft;
+    delete oct;
+    delete nomalized;
 }
 
 void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, int freq) {
