@@ -2,12 +2,13 @@
 #import "TagDeleteView.h"
 #import "MapWebViewController.h"
 #import "COSM.h"
-@class CircleBands;
+#import "CircleBands.h";
 
-@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate>
+@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate, CircleBandsDatasource>
 
 // Data
 @property (nonatomic, strong) NSMutableArray *tags;
+@property double elevation;
 
 // COSM Model
 @property (nonatomic, strong) COSMFeedModel *cosmFeed;
@@ -20,7 +21,7 @@
 @property (nonatomic, weak) IBOutlet UISlider *slider;
 - (IBAction)deleteTagsTouched:(id)sender;
 - (IBAction)submit:(id)sender;
-
+- (IBAction)cancel:(id)sender;
 // UI
 @property (nonatomic, weak) NSMutableArray *tagViews;
 @property (nonatomic, strong) NSMutableArray *deleteButtons;

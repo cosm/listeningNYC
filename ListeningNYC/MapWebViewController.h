@@ -23,6 +23,9 @@
 - (void)setMapZoom:(NSNumber *)level;
 - (void)setMapDisplayLocationCircle:(BOOL)yN;
 
+// Map Query
+- (CLLocationCoordinate2D)queryMapLocation;
+
 // UI
 @property (nonatomic, weak) IBOutlet UIWebView *webview;
 

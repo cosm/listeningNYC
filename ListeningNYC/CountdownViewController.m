@@ -44,7 +44,7 @@
     self.okButton.hidden = YES;
     self.state = 1;
     [self.timer invalidate];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kRECORD_COUNTDOWN_FOR target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:YES];
     self.imageView.image = [UIImage imageNamed:@"Capture3"];
 }
 

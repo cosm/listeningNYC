@@ -4,10 +4,8 @@
 #import "DetailModalViewController.h"
 
 @interface MapViewController ()
-
 @property BOOL optionsIsVisible;
 @property float webContainerHeightWhenVisible;
-
 @end
 
 @implementation MapViewController

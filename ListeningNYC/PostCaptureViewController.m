@@ -1,8 +1,8 @@
 #import "PostCaptureViewController.h"
-#import "CircleBands.h"
 #import "AddTagViewController.h"
 #import "Utils.h"
 #import "AppDelegate.h"
+#import "ISO8601DateFormatter.h"
 
 @interface PostCaptureViewController ()
 
@@ -12,13 +12,17 @@
 
 #pragma mark - Data
 
-@synthesize tags;
+@synthesize tags, elevation;
 
 #pragma mark - COSM Model
 
 @synthesize cosmFeed;
 
 - (void)modelDidSave:(COSMModel *)model {
+    COSMFeedModel *feed = (COSMFeedModel *)model;
+    //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
+    [Utils saveFeedToDisk:feed withExtension:@".recording"];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -26,6 +30,15 @@
     NSLog(@"Failed to save model");
     NSLog(@"JSON is %@", JSON);
     NSLog(@"Error is %@", error);
+    NSLog(@"Error code %d", error.code);
+    COSMFeedModel *feed = (COSMFeedModel *)model;
+    
+    if (error.code == -1009) {
+        [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
+        [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
+    } else {
+        [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -35,6 +48,7 @@
     if (self.mapWebViewController.mapIsReady) {
         [self.mapWebViewController setMapLocation:newLocation];
     }
+    elevation = newLocation.altitude;
 }
 
 #pragma mark - Map Web View Delegate
@@ -42,6 +56,12 @@
 - (void)mapDidLoad {
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
     [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+}
+
+#pragma mark - Circle Bands Datasource
+
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
+    return [Utils valueForBand:bandIndex in:self.cosmFeed];
 }
 
 #pragma mark - IB
@@ -52,11 +72,57 @@
     [self addDeleteButtons];
 }
 
+
+- (IBAction)cancel:(id)sender {
+    self.cosmFeed.delegate = nil;
+    self.cosmFeed = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)submit:(id)sender {
     NSLog(@"should disable submit button");
-    
+    // instead
     if (!self.cosmFeed.delegate) {
-        [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
+        
+        // Default data
+        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@", kCOSM_FEED_TITLE_PREPEND] forKey:@"title"];
+        [self.cosmFeed.info setObject:kCOSM_FEED_WEBSITE forKey:@"website"];
+        [self.cosmFeed.info setObject:[Utils versionString] forKey:@"version"];
+        NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
+        [location setObject:@"mobile" forKey:@"disposition"];
+        CLLocationCoordinate2D coordinate = self.mapWebViewController.queryMapLocation;
+        [location setObject:[NSString stringWithFormat:@"%f", coordinate.latitude] forKey:@"lat"];
+        [location setObject:[NSString stringWithFormat:@"%f", coordinate.longitude] forKey:@"lon"];
+        if (self.elevation > -10000000.0) {
+            [location setObject:[NSString stringWithFormat:@"%f", self.elevation] forKey:@"ele"];
+        }
+        [self.cosmFeed.info setObject:location forKey:@"location"];
+        
+        // Post capture data
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+        NSArray *machineTags = @[
+            [NSString stringWithFormat:@"User:GUID=%@", [Utils deviceGUID]],
+            [NSString stringWithFormat:@"App:Version=%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]],
+            [NSString stringWithFormat:@"App:Build=%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]],
+            [NSString stringWithFormat:@"App:Device=%@", [Utils platformString]],
+            [NSString stringWithFormat:@"Created:Date=%@", [dateFormatter stringFromDate:[NSDate date]]]
+        ];
+        [self.cosmFeed.info setObject:machineTags forKey:@"tags"];
+        
+        COSMDatastreamModel *description = [[COSMDatastreamModel alloc] init];
+        [description.info setValue:@"Description" forKeyPath:@"id"];
+        [description.info setObject:self.tags forKey:@"tags"];
+        [self.cosmFeed.datastreamCollection.datastreams addObject:description];
+        
+        COSMDatastreamModel *likeDislike = [[COSMDatastreamModel alloc] init];
+        [likeDislike.info setValue:@"LikeDislike" forKeyPath:@"id"];
+        [likeDislike.info setValue:[NSString stringWithFormat:@"%f", self.slider.value] forKeyPath:@"current_value"];
+        [self.cosmFeed.datastreamCollection.datastreams addObject:likeDislike];
+        
+        NSLog(@"feed is %@",self.cosmFeed.info);
+        
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
     }
@@ -66,7 +132,7 @@
 
 @synthesize tagViews, deleteButtons;
 
-- (void)layoutTags {
+- (void)layoutTags {    
     // remove all the tags & delete buttond
     [[self.tagsContainer subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.deleteButtons enumerateObjectsUsingBlock:^(TagDeleteView *deleteView, NSUInteger idx, BOOL *stop) {
@@ -75,7 +141,7 @@
     [self.deleteButtons makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.deleteButtons removeAllObjects];
     
-    self.tagViews = [Utils createBiggerTagViews:self.tags];
+    self.tagViews = [Utils createBiggerTagViews:[Utils tagArrayWithoutMachineTags:self.tags]];
     [Utils layoutViewsVerticalCenterStyle:self.tagViews inRect:self.tagsContainer.frame spacingMin:1.0f spacingMax:20.0f];
     [Utils flipChildUIImageViewsIn:self.tagViews whichExceed:CGPointMake(10000.0f, self.tagsContainer.frame.size.height / 2.0f)];
     [Utils addSubviews:self.tagViews toView:self.tagsContainer];
@@ -123,6 +189,7 @@
 - (void)viewDidLoad
 { 
     [super viewDidLoad];
+    self.elevation = -10000000.0;
     self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
     [self.view addSubview:self.mapWebViewController.view];
     [self.view sendSubviewToBack:self.mapWebViewController.view];
@@ -130,6 +197,7 @@
     frame.origin.y = 0.0f;
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
+    self.circleBands.numberOfBands = 11;
     self.tags = [[NSMutableArray alloc] init];
     self.deleteButtons = [[NSMutableArray alloc] init];
     [self.slider setMinimumTrackImage:[UIImage imageNamed:@"SliderTrack"] forState:UIControlStateNormal];
@@ -138,6 +206,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.circleBands.datasource = self;
     [self layoutTags];
     self.mapWebViewController.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserverForName:kLocationUpdatedNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -152,7 +221,8 @@
     [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"Capture"] withFinishedUnselectedImage:[UIImage imageNamed:@"Capture"]];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {    
+    self.circleBands.datasource = nil;
     self.mapWebViewController.delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

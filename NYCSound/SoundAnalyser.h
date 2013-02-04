@@ -30,4 +30,7 @@
 // radar datasource
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
 
+// db levels
+@property float currentDb;
+@property float peakDb;
 @end

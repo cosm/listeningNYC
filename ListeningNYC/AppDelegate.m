@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "COSM.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @implementation AppDelegate
 
@@ -21,6 +22,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[COSMAPI defaultAPI] setApiKey:kCOSM_API_KEY];
+    [[COSMAPI defaultAPI] setApiURLString:@"https://warm-sands-4383.herokuapp.com/v2/"];
+    //[[COSMAPI defaultAPI] setApiURLString:@"https://localhost:60000/v2/"];
+    
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     // styles
     [[UINavigationBar appearance]   setBackgroundImage:[UIImage imageNamed:@"UINavigationBackground"] forBarMetrics:UIBarMetricsDefault];

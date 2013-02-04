@@ -22,6 +22,29 @@ float RadarMapFloat(float input, float inputMin, float inputMax, float outputMin
     return output;
 };
 
+
+float RadarMapQuasdEaseIn(float input, float inputMin, float inputMax, float outputMin, float outputMax) {
+    input = (input-inputMin)/(inputMax-inputMin);
+    input = input * input;
+    float output = (input*(outputMax-outputMin)+outputMin);
+    if (outputMax < outputMin) {
+        if (output < outputMax) {
+            output = outputMax;
+        }
+        else if (output > outputMin) {
+            output = outputMin;
+        }
+    } else {
+        if (output > outputMax) {
+            output = outputMax;
+        }
+        else if (output < outputMin) {
+            output = outputMin;
+        }
+    }
+    return output;
+};
+
 // http://beesbuzz.biz/code/hsv_color_transforms.php
 template<class Color>
 Color TransformHSV(
@@ -140,6 +163,7 @@ void RadarScanline::draw() {
     glDisableVertexAttribArray(GLKVertexAttribColor);
     glDisableVertexAttribArray(GLKVertexAttribPosition);
     glDisable(GL_BLEND);
+    drawsSinceLastAlphaUpdate++;
 }
 
 void RadarScanline::rotate(float degrees, float x, float y, float z) {

@@ -16,11 +16,12 @@
         [self.delegate recordingViewControllerDidFinish];
     }
     self.nextButton.hidden = NO;
+    self.audioDescriptionImageView.hidden = NO;
 }
 
 #pragma mark - IB
 
-@synthesize progressImageView, textImageView, nextButton;
+@synthesize progressImageView, textImageView, nextButton, audioDescriptionImageView;
 
 - (IBAction)cancelRecordingPressed:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(recordingViewControllerDidCancel)]) {
@@ -57,16 +58,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.nextButton.hidden = YES;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:NO];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:kRECORD_FOR target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:NO];
     CGRect originalFrame = self.progressImageView.frame;
     CGRect modifiedFrame = self.progressImageView.frame;
     modifiedFrame.size.width = 0.0f;
     self.progressImageView.frame = modifiedFrame;
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:10.0];
+    [UIView setAnimationDuration:kRECORD_FOR];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
     self.progressImageView.frame = originalFrame;
     [UIView commitAnimations];
+
+    self.audioDescriptionImageView.hidden = YES;
     
     [self startAnimation];
 }

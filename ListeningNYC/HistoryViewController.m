@@ -1,6 +1,7 @@
 #import "HistoryViewController.h"
-#import "TwinCell.h"
 #import "DetailModalViewController.h"
+#import "Utils.h"
+#import "COSM.h"
 
 @interface HistoryViewController ()
 
@@ -8,7 +9,37 @@
 
 @implementation HistoryViewController
 
-@synthesize detailModalViewController;
+#pragma mark - Data
+
+@synthesize feeds, unsyncedFeeds;
+
+#pragma mark - UI
+
+@synthesize detailModalViewController, startHereImageView;
+
+- (void)updateDisplayStartInstructions {
+    if (!self.startHereImageView && (![self.unsyncedFeeds count] && ![self.feeds count])) {
+        self.startHereImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"StartHere"]];
+        self.startHereImageView.contentMode = UIViewContentModeBottomLeft;
+        [self.tableView addSubview:startHereImageView];
+        [Utils setY:self.tableView.frame.size.height - 60.0f to:self.startHereImageView];
+        [Utils setX:18.0f to:self.startHereImageView];
+    } else if ([self.unsyncedFeeds count] || [self.feeds count]){
+        [self.tableView removeFromSuperview];
+        self.tableView = NULL;
+    }
+}
+
+#pragma mark - Cell Delegate
+
+- (void)cellWantsDeletion:(RecordingCell*)cell {
+    NSLog(@"@stub: HistoryViewController::cellWantsDeletion:");
+    NSIndexPath *path = [NSIndexPath indexPathForRow:[self.feeds indexOfObject:cell.feed] inSection:0];
+    [self.feeds removeObjectAtIndex:path.row];    
+    [self.tableView beginUpdates];
+    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+}
 
 #pragma mark - Lifecycle
 
@@ -32,6 +63,17 @@
     if (self.detailModalViewController) {
         [self.detailModalViewController viewWillAppear:animated];
     }
+    
+    self.feeds = [Utils loadFeedsFromDiskWithExtension:@"recording"];
+    self.unsyncedFeeds = [Utils loadFeedsFromDiskWithExtension:@"unsynced"];
+    [self.tableView reloadData];
+    
+    [self updateDisplayStartInstructions];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSLog(@"scroll view, %@", NSStringFromCGRect(self.tableView.frame));
+    [Utils setY:self.tableView.frame.size.height - 60.0f + self.tableView.contentOffset.y to:self.startHereImageView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -61,39 +103,61 @@
 
 #pragma mark - Table view data source
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (self.unsyncedFeeds.count > 0) {
+        switch (section) {
+            case 0: return @"Recordings"; break;
+            case 1: return @"Unsynced Recordings"; break;
+        }
+    }
+    return @"";
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (self.unsyncedFeeds.count > 0) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    switch (section) {
+        case 0: return MAX([self.feeds count], 1); break;
+        case 1: return [self.unsyncedFeeds count]; break;
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Twin Cell";
-    TwinCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-    // Configure the cell...
-    cell.tagStrings_left = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
-    cell.tagStrings_right = @[@"Cars", @"Pubs", @"Rock", @"Screaming", @"Very long indeed"];
-    [cell setNeedsDisplay];
-    
-    return cell;
+    static NSString *CellIdentifier = @"Recording Cell";
+    static NSString *CellIdentifierNoSamples = @"No Samples";
+    UITableViewCell *returnCell;
+    if ([self.unsyncedFeeds count] >0 || [self.feeds count] >0) {
+        RecordingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        COSMFeedModel *feed = [self.feeds objectAtIndex:indexPath.row];
+        cell.feed = feed;
+        cell.delegate = self;
+        [cell setNeedsDisplay];
+        returnCell = cell;
+    } else {
+        NSLog(@"creating a no samples cell");
+        returnCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierNoSamples];
+    }
+    return returnCell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 105.0f;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
 
 /*
 // Override to support editing the table view.
@@ -130,6 +194,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
+    self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
     [self.view.superview.superview addSubview:detailModalViewController.view];
     [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
     [self.detailModalViewController viewWillAppear:NO];

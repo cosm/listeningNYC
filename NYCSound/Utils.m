@@ -1,6 +1,8 @@
 #import "Utils.h"
 #import "ISO8601DateFormatter.h"
 #import "LoadingViewController.h"
+#import "COSMFeedModel.h"
+#import "COSMDatastreamModel.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -133,6 +135,12 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     view.frame = frame;
 }
 
++ (void)setX:(float)x to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.origin.x = x;
+    view.frame = frame;
+}
+
 #pragma mark - Tags
 
 + (NSMutableArray *)createTagViews:(NSArray *)tags {
@@ -188,7 +196,7 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 
 + (NSMutableArray *)createBiggerTagViews:(NSArray *)tags {
     TagLayoutSettings settings;
-    settings.maxLength = 100.0f;
+    settings.maxLength = 150.0f;
     settings.textSize = 14.0f;
     settings.paddingBottomOrTop = 6.0f;
     settings.paddingLeft = 6.0f;
@@ -274,6 +282,22 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     return matches;
 }
 
++ (NSMutableArray *)tagArrayWithoutMachineTags:(NSArray *)tags {
+    NSMutableArray *returnTags = [[NSMutableArray alloc] initWithCapacity:[tags count]];
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(.*):(.*)=" options:NSRegularExpressionCaseInsensitive error:&error];
+    [tags enumerateObjectsUsingBlock:^(id tag, NSUInteger idx, BOOL *stop) {
+        if ([tag isKindOfClass:[NSString class]]) {
+            NSUInteger numberOfMatches = [regex numberOfMatchesInString:tag options:0 range:NSMakeRange(0, [tag length])];
+            if (numberOfMatches == 0) {
+                [returnTags addObject:tag];
+            }
+        }
+    }];
+    return returnTags;
+}
+
+
 #pragma mark - String
 
 + (NSString*)describe:(id)obj {
@@ -336,6 +360,12 @@ typedef struct TagLayoutSettings TagLayoutSettings;
    return [regex stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, [str length]) withTemplate:@"$4:$5 $1/$2/$3"];
 }
 
+
++ (BOOL)string:(NSString *)testString contains:(NSString *)searchString {
+    NSRange range = [testString rangeOfString:searchString];
+    return (range.location != NSNotFound);
+}
+
 #pragma mark - Array
 
 + (void)addObjectsWhenNotADuplicate:(NSArray *)objects to:(NSMutableArray *)arr {
@@ -358,7 +388,21 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     return (found) ? NO : YES;
 }
 
-#pragma mark – Date
+#pragma mark - Number
+
++ (NSInteger)nextIncrementingIntegerForDomain:(NSString *)domain {
+    NSString *domainKey = [NSString stringWithFormat:@"IncreamentingNumber_%@", domain];
+    NSInteger lastNumber = [[NSUserDefaults standardUserDefaults] integerForKey:domainKey];
+    ++lastNumber;
+    NSLog(@"Next number should be %d", lastNumber);
+    [[NSUserDefaults standardUserDefaults] setInteger:lastNumber forKey:domainKey];
+    if (![[NSUserDefaults standardUserDefaults] synchronize]) {
+        [Utils alert:@"error" message:[NSString stringWithFormat:@"Failed to save the guid %@", domainKey]];
+    }
+    return lastNumber;
+}
+
+#pragma mark - Date
 
 + (ISO8601DateFormatter *)dateFormmater {
     static ISO8601DateFormatter *iSO8601DateFormmater = nil;
@@ -382,6 +426,29 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 
 + (float)mapFloat:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp {
     float output = ((value-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
+    if (outputMax < outputMin) {
+        if (output < outputMax) {
+            output = outputMax;
+        }
+        else if (output > outputMin) {
+            output = outputMin;
+        }
+    } else {
+        if (output > outputMax) {
+            output = outputMax;
+        }
+        else if (output < outputMin) {
+            output = outputMin;
+        }
+    }
+    return (clamp) ? [Utils clampFloat:output min:outputMin max:outputMax] : output;
+}
+
+
++ (float)mapQuinticEaseOut:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp {
+    float quinticMappedInput = (value - 1);
+	quinticMappedInput =  quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput + 1;
+    float output = (quinticMappedInput*(outputMax-outputMin)+outputMin);
     if (outputMax < outputMin) {
         if (output < outputMax) {
             output = outputMax;
@@ -431,6 +498,191 @@ NSString * createUUID() {
         }
     }
     return guid;
+}
+
++ (NSString*)versionString {
+    return [NSString stringWithFormat:kCOSM_FEED_VERSION_FORMAT,
+            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],
+            [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+}
+
++ (NSString *)platformString {
+    // Gets a string with the device model
+    // http://stackoverflow.com/a/13679404/179015
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    free(machine);
+    
+    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone2G";
+    if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone3G";
+    if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone3GS";
+    if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone4";
+    if ([platform isEqualToString:@"iPhone3,2"])    return @"iPhone4";
+    if ([platform isEqualToString:@"iPhone3,3"])    return @"iPhone4-CDMA";
+    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone4S";
+    if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone5";
+    if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone5-GSM+CDMA";
+    
+    if ([platform isEqualToString:@"iPod1,1"])      return @"iPodTouch-1Gen";
+    if ([platform isEqualToString:@"iPod2,1"])      return @"iPodTouch-2Gen";
+    if ([platform isEqualToString:@"iPod3,1"])      return @"iPodTouch-3Gen";
+    if ([platform isEqualToString:@"iPod4,1"])      return @"iPodTouch-4Gen";
+    if ([platform isEqualToString:@"iPod5,1"])      return @"iPodTouch-5Gen";
+    
+    if ([platform isEqualToString:@"iPad1,1"])      return @"iPad";
+    if ([platform isEqualToString:@"iPad1,2"])      return @"iPad3G";
+    if ([platform isEqualToString:@"iPad2,1"])      return @"iPad2-WiFi";
+    if ([platform isEqualToString:@"iPad2,2"])      return @"iPad2";
+    if ([platform isEqualToString:@"iPad2,3"])      return @"iPad2-CDMA";
+    if ([platform isEqualToString:@"iPad2,4"])      return @"iPad2";
+    if ([platform isEqualToString:@"iPad2,5"])      return @"iPadMini-WiFi";
+    if ([platform isEqualToString:@"iPad2,6"])      return @"iPadMini";
+    if ([platform isEqualToString:@"iPad2,7"])      return @"iPadMini-GSM+CDMA";
+    if ([platform isEqualToString:@"iPad3,1"])      return @"iPad3-WiFi";
+    if ([platform isEqualToString:@"iPad3,2"])      return @"iPad3-GSM+CDMA";
+    if ([platform isEqualToString:@"iPad3,3"])      return @"iPad3";
+    if ([platform isEqualToString:@"iPad3,4"])      return @"iPad4-WiFi";
+    if ([platform isEqualToString:@"iPad3,5"])      return @"iPad4";
+    if ([platform isEqualToString:@"iPad3,6"])      return @"iPad4-GSM+CDMA";
+    
+    if ([platform isEqualToString:@"i386"])         return @"Simulator";
+    if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
+    
+    return platform;
+}
+
+#pragma mark - COSM
+
++ (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
+    [Utils saveFeedToDisk:feed withName:[feed.info objectForKey:@"id"] extension:extension];
+}
+
+
++ (void)saveUnsyncedFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
+    [Utils saveFeedToDisk:feed withName:[NSString stringWithFormat:@"%d", [Utils nextIncrementingIntegerForDomain:@"unsyncedFeed"]] extension:extension];
+}
+
+
++ (void)saveFeedToDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension {
+    id feedJSON = [feed saveableInfoWithNewDatastreamsOnly:NO];
+    NSError *error = nil;
+    NSData *feedData = [NSJSONSerialization dataWithJSONObject:feedJSON options:NSJSONWritingPrettyPrinted error:&error];
+    if (!error) {
+        NSString *filename = [NSString stringWithFormat:@"%@.%@", name, extension];
+        NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+        [feedData writeToFile:filepath atomically:YES];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
+            NSLog(@"filepath exists");
+    } else {
+        [Utils alert:@"Error saving" message:@"Could not save recording to device"];
+        NSLog(@"Error saving feed to device. %@", error);
+    }
+}
+
++ (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension {
+    NSMutableArray *feeds = [[NSMutableArray alloc] initWithCapacity:10];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:NULL];
+    
+    // sort the directory
+    NSArray *directoryContentSorted = [directoryContent sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 integerValue] > [obj2 integerValue]) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        if ([obj1 integerValue] < [obj2 integerValue]) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    }];
+    
+    [directoryContentSorted enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        //[id rangeOf has ".recording" or range of have .unsynced]
+        if ([Utils string:obj contains:extension]) {
+            NSData *fileData = [[NSFileManager defaultManager] contentsAtPath:[NSString stringWithFormat:@"%@/%@", documentsDirectory, obj]];
+            NSError *error;
+            id json = [NSJSONSerialization JSONObjectWithData:fileData options:NSJSONReadingMutableContainers error:&error];
+            if (!error) {
+                COSMFeedModel *feed = [[COSMFeedModel alloc] init];
+                [feed parse:json];
+                [feeds addObject:feed];
+            } else {
+                NSLog(@"Error parsing saved recording named %@", obj);
+                NSLog(@"Error was %@", error);
+            }
+        }
+    }];
+    
+    return feeds;
+}
+
+
++ (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed {
+    __block COSMDatastreamModel *datastream = NULL;
+    [feed.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[COSMDatastreamModel class]]) {
+            COSMDatastreamModel *datastreamInFeed = obj;
+            if ([[datastreamInFeed.info valueForKeyPath:@"id"] isEqualToString:cosmId]) {
+                datastream = datastreamInFeed;
+            }
+        }
+    }];
+    return datastream;
+}
+
+float mapCircleBandFloat(float input) {
+    return [Utils mapFloat:input inputMin:0.0f inputMax:1.0f outputMin:0.0 outputMax:1.0 clamp:YES];
+}
+
++ (float)valueForBand:(int)index in:(COSMFeedModel*)feed {
+    switch (index) {
+        case 0: return mapCircleBandFloat([[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 1: return mapCircleBandFloat([[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 2: return mapCircleBandFloat([[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 3: return mapCircleBandFloat([[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 4: return mapCircleBandFloat([[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 5: return mapCircleBandFloat([[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 6: return mapCircleBandFloat([[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 7: return mapCircleBandFloat([[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 8: return mapCircleBandFloat([[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 9: return mapCircleBandFloat([[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        default: return 0.0f; break;
+    }
+}
+
+
++ (NSString *)valueOfMachineTag:(NSString *)machineTag {
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"([a-zA-Z]*:[a-zA-Z]*=)(.*)" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSString *result = [regex stringByReplacingMatchesInString:machineTag options:0 range:NSMakeRange(0, [machineTag length]) withTemplate:@"$2"];
+    return result;
+}
+
++ (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed {
+    NSArray *tags = [feed.info valueForKeyPath:@"tags"];
+    __block NSString *dateTime = @"";
+    if (tags) {
+        [tags enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj isKindOfClass:[NSString class]]) {
+                if ([Utils string:obj contains:@"Created:Date"]) {
+                    dateTime = [Utils valueOfMachineTag:obj];
+                }
+            }
+        }];
+    }
+    return dateTime;
+}
+
+
++ (NSArray *)userTagsForRecording:(COSMFeedModel *)feed {
+    COSMDatastreamModel *descriptonDatastream = [Utils datastreamWithId:@"Description" in:feed];
+    NSLog(@"tags should be in %@", descriptonDatastream.info);
+    return [descriptonDatastream.info valueForKeyPath:@"tags"];
 }
 
 @end

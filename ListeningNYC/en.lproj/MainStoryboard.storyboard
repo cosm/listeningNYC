@@ -10,11 +10,11 @@
             <objects>
                 <viewController id="HXY-8V-jTb" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qU9-Jm-wXl">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="2" id="3pu-a2-aPf">
-                                <rect key="frame" x="26" y="368" width="269" height="30"/>
+                                <rect key="frame" x="26" y="456" width="269" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segments>
                                     <segment title="'Like' Only"/>
@@ -26,18 +26,18 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SHOW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XVR-t0-CP6">
-                                <rect key="frame" x="20" y="346" width="280" height="21"/>
+                                <rect key="frame" x="20" y="429" width="280" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="12"/>
                                 <color key="textColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="Dsg-FC-yUC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="72J-go-afa">
-                                        <rect key="frame" x="19" y="299" width="32" height="32"/>
+                                        <rect key="frame" x="19" y="387" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Button" image="MapLocate.png">
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="3ma-kF-kQe">
-                                        <rect key="frame" x="51" y="299" width="42" height="33"/>
+                                        <rect key="frame" x="51" y="387" width="42" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Button" image="MapOptions.png">
@@ -88,78 +88,51 @@
             <objects>
                 <tableViewController id="SPX-TB-cYD" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="105" sectionHeaderHeight="22" sectionFooterHeight="22" id="neK-wL-V5x">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Twin Cell" rowHeight="105" id="BXZ-5w-gNM" customClass="TwinCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="105"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Recording Cell" rowHeight="115" id="BXZ-5w-gNM" customClass="RecordingCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CellBackground.png" id="hgQ-it-NlU">
-                                            <rect key="frame" x="8" y="0.0" width="150" height="105"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="TopLeft" image="CellBackground.png" id="hgQ-it-NlU">
+                                            <rect key="frame" x="-2" y="6" width="320" height="105"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CellBackground@2x.png" id="Kd7-bn-bed">
-                                            <rect key="frame" x="161" y="0.0" width="150" height="105"/>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="ukM-Nz-vKT">
+                                            <rect key="frame" x="82" y="9" width="231" height="95"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <view contentMode="scaleToFill" id="Q9Q-IL-BBg" customClass="QuarterCircleBands">
-                                            <rect key="frame" x="67" y="16" width="82" height="82"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" id="Q9Q-IL-BBg" customClass="QuarterCircleBands">
+                                                    <rect key="frame" x="73" y="-62" width="158" height="158"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" id="c1H-G7-Nny" customClass="QuarterCircleBands">
-                                            <rect key="frame" x="220" y="15" width="82" height="82"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </view>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12/03/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HIX-nM-Mv4">
-                                            <rect key="frame" x="16" y="65" width="86" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12/03/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0BM-sp-46H">
-                                            <rect key="frame" x="16" y="77" width="86" height="21"/>
+                                            <rect key="frame" x="12" y="83" width="222" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12/03/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QJP-v1-nUH">
-                                            <rect key="frame" x="169" y="65" width="86" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="10"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12/03/2012" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9lS-PS-aGs">
-                                            <rect key="frame" x="169" y="77" width="86" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="10"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="11"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" id="Qn9-a9-Okm">
-                                            <rect key="frame" x="16" y="6" width="119" height="63"/>
+                                            <rect key="frame" x="12" y="16" width="208" height="63"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" id="RDB-po-WrE">
-                                            <rect key="frame" x="169" y="6" width="119" height="63"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j8W-bC-FYe">
-                                            <rect key="frame" x="131" y="5" width="17" height="18"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="j8W-bC-FYe">
+                                            <rect key="frame" x="232" y="14" width="75" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Button" image="DeleteButton.png">
+                                            <state key="normal" title="Button" image="CollectionDelete.png">
                                                 <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -168,38 +141,33 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="delete_left:" destination="BXZ-5w-gNM" eventType="touchUpInside" id="qYB-lo-Eaw"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z3d-8s-8k4">
-                                            <rect key="frame" x="284" y="3" width="17" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Button" image="DeleteButton.png">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="selected" image="DeleteButtonPressed.png"/>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="delete_right:" destination="BXZ-5w-gNM" eventType="touchUpInside" id="qKT-cz-Tmh"/>
+                                                <action selector="deleteRecording:" destination="BXZ-5w-gNM" eventType="touchUpInside" id="IzW-A8-x3U"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="dateLabel_left" destination="HIX-nM-Mv4" id="xyV-Jh-T1j"/>
-                                    <outlet property="dateLabel_right" destination="QJP-v1-nUH" id="9pB-aw-msr"/>
-                                    <outlet property="deleteButton_left" destination="j8W-bC-FYe" id="Miz-hf-dgo"/>
-                                    <outlet property="deleteButton_right" destination="z3d-8s-8k4" id="3Gp-UK-ARF"/>
-                                    <outlet property="tagContainer_left" destination="Qn9-a9-Okm" id="lDU-zo-9r0"/>
-                                    <outlet property="tagContainer_right" destination="RDB-po-WrE" id="Yv3-fU-dEq"/>
-                                    <outlet property="timeLabel_left" destination="0BM-sp-46H" id="6ea-pJ-NiW"/>
-                                    <outlet property="timeLabel_right" destination="9lS-PS-aGs" id="crW-XA-q2s"/>
+                                    <outlet property="circleBands" destination="Q9Q-IL-BBg" id="4Cb-SO-wvK"/>
+                                    <outlet property="dateLabel" destination="0BM-sp-46H" id="GCD-Rz-nBE"/>
+                                    <outlet property="deleteButton" destination="j8W-bC-FYe" id="oYJ-dT-S6P"/>
+                                    <outlet property="tagContainer" destination="Qn9-a9-Okm" id="KtZ-5d-n0k"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="No Samples" rowHeight="138" id="zFM-hd-gZg">
+                                <rect key="frame" x="0.0" y="137" width="320" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" image="NoSamples.png" id="MHZ-Tz-QAU">
+                                            <rect key="frame" x="30" y="35" width="260" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -207,7 +175,8 @@
                             <outlet property="delegate" destination="SPX-TB-cYD" id="Yoq-oL-fhB"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="My Collection" image="MyCollection.png" id="usD-ck-guq"/>
+                    <tabBarItem key="tabBarItem" title="My Collection" image="MyCollection.png" id="hjA-uW-MW3"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1be-rP-Ou2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,20 +187,20 @@
             <objects>
                 <viewController storyboardIdentifier="Detail Modal View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T2U-KE-s4n" customClass="DetailModalViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="h4B-hF-hG6">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="scaleToFill" id="Swm-5w-g3f">
-                                <rect key="frame" x="0.0" y="8" width="320" height="348"/>
+                                <rect key="frame" x="0.0" y="8" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" id="zVw-Ad-dDp">
-                                        <rect key="frame" x="24" y="19" width="273" height="306"/>
+                                        <rect key="frame" x="24" y="19" width="273" height="394"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DetailModalBackground.png" id="P1R-St-Z0C">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="362"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
@@ -241,14 +210,14 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="12/07/12   12:04 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uAW-2o-At2">
-                                                <rect key="frame" x="9" y="11" width="133" height="21"/>
+                                                <rect key="frame" x="9" y="11" width="135" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="32 dBA   34 dBC" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H9C-b7-81R">
-                                                <rect key="frame" x="129" y="11" width="135" height="21"/>
+                                                <rect key="frame" x="145" y="11" width="119" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="12"/>
                                                 <color key="textColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -258,17 +227,17 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view opaque="NO" alpha="0.30000000000000016" contentMode="scaleToFill" id="xqB-9S-avi" customClass="CircleBands">
-                                        <rect key="frame" x="82" y="96" width="156" height="156"/>
+                                        <rect key="frame" x="82" y="140" width="156" height="156"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" restorationIdentifier="Tag Container View" id="8Wh-bn-8Op">
-                                        <rect key="frame" x="36" y="60" width="261" height="215"/>
+                                        <rect key="frame" x="36" y="60" width="261" height="303"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="top" image="LikeDislikeBackground.png" id="38V-hz-pFk">
-                                        <rect key="frame" x="23" y="266" width="275" height="61"/>
+                                        <rect key="frame" x="23" y="354" width="275" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ymf-qq-WW6">
@@ -287,7 +256,7 @@
                                         </connections>
                                     </button>
                                     <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="oZ9-i5-DEz">
-                                        <rect key="frame" x="94" y="288" width="151" height="23"/>
+                                        <rect key="frame" x="94" y="376" width="151" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </slider>
                                 </subviews>
@@ -299,6 +268,8 @@
                     <connections>
                         <outlet property="circleBands" destination="xqB-9S-avi" id="Atk-rW-vzp"/>
                         <outlet property="containerView" destination="Swm-5w-g3f" id="vZ8-qK-DzI"/>
+                        <outlet property="dateTimeLabel" destination="uAW-2o-At2" id="MlJ-TN-THp"/>
+                        <outlet property="dbLabel" destination="H9C-b7-81R" id="guY-8t-d7H"/>
                         <outlet property="likeDislikeSlider" destination="oZ9-i5-DEz" id="M60-fm-l0q"/>
                         <outlet property="mapContainer" destination="zVw-Ad-dDp" id="P1W-6W-3MD"/>
                         <outlet property="modalBackgroundImageView" destination="P1R-St-Z0C" id="CH9-Oy-NcV"/>
@@ -314,11 +285,11 @@
             <objects>
                 <viewController id="yn3-SX-3my" customClass="AboutViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="icF-eJ-aj1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="oyu-eZ-x7p">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
@@ -338,12 +309,16 @@
         <scene sceneID="sTH-Yk-NK3">
             <objects>
                 <viewController storyboardIdentifier="Recording View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eXf-ya-64X" customClass="RecordingViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7li-bi-k6n">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="7li-bi-k6n">
+                        <rect key="frame" x="0.0" y="0.0" width="278" height="146"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" image="AudioDescription.png" id="l3t-47-tyZ">
+                                <rect key="frame" x="0.0" y="0.0" width="278" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="TfA-Vb-7EW">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                <rect key="frame" x="18" y="106" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="RecordingCancel.png">
@@ -359,23 +334,23 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="RecordingBackground.png" id="rlo-Pt-JVF">
-                                <rect key="frame" x="40" y="0.0" width="200" height="40"/>
+                                <rect key="frame" x="58" y="106" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" image="RecordingProgressBackground.png" id="iaq-LC-rMu">
-                                <rect key="frame" x="40" y="0.0" width="200" height="40"/>
+                                <rect key="frame" x="58" y="106" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="TopLeft" image="RecordingText.png" id="Um1-v7-N3E">
-                                <rect key="frame" x="28" y="0.0" width="200" height="40"/>
+                                <rect key="frame" x="46" y="106" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="TopLeft" image="RecordingRightIcon.png" id="Zvo-NQ-bsw">
-                                <rect key="frame" x="195" y="-2" width="54" height="46"/>
+                                <rect key="frame" x="213" y="104" width="54" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="zwd-GP-bcP">
-                                <rect key="frame" x="40" y="0.0" width="200" height="40"/>
+                                <rect key="frame" x="58" y="106" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="RecordingNext.png">
@@ -390,13 +365,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="audioDescriptionImageView" destination="l3t-47-tyZ" id="dng-9C-sw0"/>
                         <outlet property="nextButton" destination="zwd-GP-bcP" id="5Qh-4X-neG"/>
                         <outlet property="progressImageView" destination="iaq-LC-rMu" id="pYc-lf-WMS"/>
                         <outlet property="textImageView" destination="Um1-v7-N3E" id="g7Z-7j-rfD"/>
@@ -404,13 +380,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1u0-x0-thf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="641" y="-479"/>
+            <point key="canvasLocation" x="542" y="-558"/>
         </scene>
         <!--Countdown View Controller-->
         <scene sceneID="9nj-Ps-a7s">
             <objects>
                 <viewController storyboardIdentifier="Countdown View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OxH-7b-WAK" customClass="CountdownViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="TTU-pB-fLa">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="TTU-pB-fLa">
                         <rect key="frame" x="0.0" y="0.0" width="259" height="119"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -435,7 +411,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -455,30 +431,53 @@
             <objects>
                 <viewController title="Capture" id="paW-Up-uwj" customClass="CaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptK-Po-ijR">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="aAc-O5-enK">
-                                <rect key="frame" x="0.0" y="34" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="67" width="320" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="LaF-sc-i6C">
+                                        <rect key="frame" x="131" y="137" width="57" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EIb-2j-kdC">
+                                                <rect key="frame" x="0.0" y="5" width="57" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="dB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nrr-Qd-Kjo">
+                                                <rect key="frame" x="0.0" y="19" width="57" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="top" image="FrequencyGuide.png" id="cS1-cX-ujO">
                                 <rect key="frame" x="-3" y="11" width="325" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" id="Y8U-a9-nix">
-                                <rect key="frame" x="40" y="360" width="240" height="40"/>
+                            <view opaque="NO" contentMode="scaleToFill" id="Y8U-a9-nix">
+                                <rect key="frame" x="21" y="345" width="278" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view opaque="NO" clipsSubviews="YES" contentMode="TopLeft" id="lVO-0P-jld">
-                                <rect key="frame" x="30" y="281" width="259" height="119"/>
+                                <rect key="frame" x="30" y="369" width="259" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dFb-of-5j4">
-                                <rect key="frame" x="40" y="359" width="240" height="41"/>
+                                <rect key="frame" x="40" y="447" width="240" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="StartButton.png">
@@ -493,6 +492,48 @@
                                     <action selector="startButtonPressed:" destination="paW-Up-uwj" eventType="touchUpInside" id="dlj-0N-WMR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="nfp-jz-BQb">
+                                <rect key="frame" x="0.0" y="0.0" width="322" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Above Delay, Below Decay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mh4-LU-Tms">
+                                        <rect key="frame" x="20" y="31" width="214" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="302" id="4Ud-xX-1Ov">
+                                        <rect key="frame" x="18" y="6" width="218" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="delayForChanged:" destination="paW-Up-uwj" eventType="valueChanged" id="0nn-zg-zuA"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z2u-IW-654">
+                                        <rect key="frame" x="250" y="7" width="65" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.98999999999999999" minValue="0.96299999999999997" maxValue="0.997" id="fbM-TY-wuK">
+                                        <rect key="frame" x="18" y="52" width="218" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="decayForChanged:" destination="paW-Up-uwj" eventType="valueChanged" id="f5E-83-V4o"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f0e-7Z-58u">
+                                        <rect key="frame" x="250" y="53" width="65" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.50980392159999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -500,6 +541,12 @@
                     <navigationItem key="navigationItem" id="Rc1-KW-JXy"/>
                     <connections>
                         <outlet property="countdownHolder" destination="lVO-0P-jld" id="cTD-jt-Hkh"/>
+                        <outlet property="dbLabel" destination="EIb-2j-kdC" id="a2F-ye-OmC"/>
+                        <outlet property="debugContainerView" destination="nfp-jz-BQb" id="Kzb-jX-Jv1"/>
+                        <outlet property="decayLabel" destination="f0e-7Z-58u" id="S6Z-6q-3lm"/>
+                        <outlet property="decaySlider" destination="fbM-TY-wuK" id="T1M-ZV-C4T"/>
+                        <outlet property="delayForLabel" destination="z2u-IW-654" id="yjq-hG-jrE"/>
+                        <outlet property="delaySlider" destination="4Ud-xX-1Ov" id="f6D-5h-kvs"/>
                         <outlet property="radarContainerView" destination="aAc-O5-enK" id="V4W-29-yIt"/>
                         <outlet property="recordingContainerView" destination="Y8U-a9-nix" id="byX-LT-e2I"/>
                         <outlet property="startButton" destination="dFb-of-5j4" id="H0g-PN-lzh"/>
@@ -552,25 +599,25 @@
             <objects>
                 <viewController restorationIdentifier="Post Capture View Controller" storyboardIdentifier="Post Capture View Controller" id="eqG-JT-BL8" userLabel=" " customClass="PostCaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8cA-Db-aHf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000013" contentMode="scaleToFill" id="OQe-g7-TNU" customClass="CircleBands">
-                                <rect key="frame" x="82" y="153" width="160" height="160"/>
+                                <rect key="frame" x="82" y="198" width="160" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="1lN-zh-DXH">
-                                <rect key="frame" x="25" y="90" width="275" height="237"/>
+                                <rect key="frame" x="25" y="90" width="275" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="top" image="AddTagBackground.png" id="rTk-fT-5DV">
-                                <rect key="frame" x="0.0" y="20" width="320" height="111"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="199"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="izA-tH-wJv">
-                                <rect key="frame" x="131" y="27" width="126" height="28"/>
+                            <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="izA-tH-wJv">
+                                <rect key="frame" x="144" y="20" width="111" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="AddTag.png">
@@ -585,7 +632,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="3te-Wh-fY8">
-                                <rect key="frame" x="257" y="27" width="28" height="28"/>
+                                <rect key="frame" x="254" y="20" width="44" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="RemoveTag.png">
@@ -600,15 +647,15 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="top" image="SliderBackground.png" id="viW-jR-aRH">
-                                <rect key="frame" x="0.0" y="340" width="320" height="62"/>
+                                <rect key="frame" x="0.0" y="428" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="t9T-vO-V8f">
-                                <rect key="frame" x="78" y="366" width="176" height="23"/>
+                                <rect key="frame" x="79" y="454" width="176" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3mC-ih-uui">
-                                <rect key="frame" x="40" y="407" width="240" height="41"/>
+                                <rect key="frame" x="79" y="495" width="202" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="Submit.png">
@@ -620,6 +667,21 @@
                                 </state>
                                 <connections>
                                     <action selector="submit:" destination="eqG-JT-BL8" eventType="touchUpInside" id="fzF-dQ-X9z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="2uF-Jj-RZd">
+                                <rect key="frame" x="39" y="495" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="SubmitCancel.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="SubmitCancelPressed.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="eqG-JT-BL8" eventType="touchUpInside" id="g2q-AX-Ys2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -642,11 +704,11 @@
             <objects>
                 <viewController storyboardIdentifier="Add Tag View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lxv-gT-8aa" customClass="AddTagViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7sx-mO-Khd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CKv-ux-DKQ">
-                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -717,11 +779,11 @@
             <objects>
                 <viewController storyboardIdentifier="Map Web View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VX3-wv-nuQ" customClass="MapWebViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IM7-wG-cJP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="QYf-Nf-l1N">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.2377604166666667" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -758,25 +820,26 @@
         </scene>
     </scenes>
     <resources>
-        <image name="About.png" width="64" height="64"/>
-        <image name="AddTag.png" width="126" height="27"/>
+        <image name="About.png" width="32" height="32"/>
+        <image name="AddTag.png" width="111" height="42"/>
         <image name="AddTagBackground.png" width="276" height="58"/>
-        <image name="AddTagPressed.png" width="127" height="27"/>
+        <image name="AddTagPressed.png" width="111" height="42"/>
+        <image name="AudioDescription.png" width="278" height="96"/>
         <image name="BackButton.png" width="26" height="26"/>
         <image name="Capture.png" width="32" height="32"/>
-        <image name="CellBackground.png" width="150" height="105"/>
-        <image name="CellBackground@2x.png" width="300" height="210"/>
-        <image name="DeleteButton.png" width="17" height="17"/>
+        <image name="CellBackground.png" width="320" height="105"/>
+        <image name="CollectionDelete.png" width="75" height="30"/>
         <image name="DeleteButtonPressed.png" width="17" height="17"/>
         <image name="DetailModalBackground.png" width="320" height="421"/>
         <image name="FrequencyGuide.png" width="320" height="33"/>
-        <image name="LikeDislikeBackground.png" width="16" height="16"/>
+        <image name="LikeDislikeBackground.png" width="251" height="51"/>
         <image name="Map.png" width="32" height="32"/>
         <image name="MapLocate.png" width="32" height="32"/>
         <image name="MapLocatePressed.png" width="32" height="32"/>
         <image name="MapOptions.png" width="42" height="32"/>
         <image name="MapOptionsPressed.png" width="42" height="32"/>
         <image name="MyCollection.png" width="32" height="32"/>
+        <image name="NoSamples.png" width="260" height="73"/>
         <image name="OK.png" width="120" height="30"/>
         <image name="OKPressed.png" width="120" height="30"/>
         <image name="RecordingBackground.png" width="200" height="40"/>
@@ -788,18 +851,139 @@
         <image name="RecordingRightIcon.png" width="35" height="40"/>
         <image name="RecordingText.png" width="165" height="40"/>
         <image name="RemainQuiet.png" width="259" height="119"/>
-        <image name="RemoveTag.png" width="28" height="27"/>
-        <image name="RemoveTagPressed.png" width="29" height="27"/>
+        <image name="RemoveTag.png" width="44" height="42"/>
+        <image name="RemoveTagPressed.png" width="44" height="42"/>
         <image name="SliderBackground.png" width="276" height="58"/>
         <image name="StartButton.png" width="240" height="40"/>
         <image name="StartButtonPressed.png" width="240" height="40"/>
         <image name="StartButtonPressed@2x.png" width="480" height="80"/>
-        <image name="Submit.png" width="242" height="40"/>
-        <image name="SubmitPressed.png" width="243" height="40"/>
+        <image name="Submit.png" width="202" height="40"/>
+        <image name="SubmitCancel.png" width="40" height="40"/>
+        <image name="SubmitCancelPressed.png" width="40" height="40"/>
+        <image name="SubmitPressed.png" width="202" height="40"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelFilterViewController:"/>
+                <relationship kind="outlet" name="guidTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="AddTagViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTagViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="add:"/>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="textfield" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="decayForChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="delayForChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="startButtonPressed:"/>
+                <relationship kind="outlet" name="countdownHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="decayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="decaySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="delayForLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="delaySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radarContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordingContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CircleBands" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CircleBands.h"/>
+        </class>
+        <class className="CountdownViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountdownViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="okPressed:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="okButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DetailModalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailModalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dateTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="likeDislikeSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="modalBackgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tagsContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="HistoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="filterChanged:"/>
+                <relationship kind="action" name="locatePressed:"/>
+                <relationship kind="action" name="toggleMapOptionsPressed:"/>
+                <relationship kind="outlet" name="webContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MapWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="PostCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="deleteTagsTouched:"/>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tagsContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="QuarterCircleBands" superclassName="CircleBands">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuarterCircleBands.h"/>
+        </class>
+        <class className="RadarViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RadarViewController.h"/>
+        </class>
+        <class className="RecordingCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordingCell.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteRecording:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tagContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RecordingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelRecordingPressed:"/>
+                <relationship kind="action" name="nextPressed:"/>
+                <relationship kind="outlet" name="audioDescriptionImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="progressImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

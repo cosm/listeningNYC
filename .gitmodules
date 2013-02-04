@@ -3,7 +3,7 @@
 	url = git@bitbucket.org:rc1/cosm-map.git
 [submodule "Lib/COSM"]
 	path = Lib/COSM
-	url = git@bitbucket.org:rc1/libcosm.git
+	url = git@github.com:rc1/LibCOSM.git
 [submodule "Lib/AFNetworking"]
 	path = Lib/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
