@@ -17,6 +17,19 @@
 
 @synthesize detailModalViewController, startHereImageView;
 
+- (void)updateDisplayStartInstructions {
+    if (!self.startHereImageView && (![self.unsyncedFeeds count] && ![self.feeds count])) {
+        self.startHereImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"StartHere"]];
+        self.startHereImageView.contentMode = UIViewContentModeBottomLeft;
+        [self.tableView addSubview:startHereImageView];
+        [Utils setY:self.tableView.frame.size.height - 60.0f to:self.startHereImageView];
+        [Utils setX:18.0f to:self.startHereImageView];
+    } else if ([self.unsyncedFeeds count] || [self.feeds count]){
+        [self.tableView removeFromSuperview];
+        self.tableView = NULL;
+    }
+}
+
 #pragma mark - Cell Delegate
 
 - (void)cellWantsDeletion:(RecordingCell*)cell {
@@ -55,17 +68,7 @@
     self.unsyncedFeeds = [Utils loadFeedsFromDiskWithExtension:@"unsynced"];
     [self.tableView reloadData];
     
-    if (!self.startHereImageView && (![self.unsyncedFeeds count] || ![self.feeds count])) {
-        self.startHereImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"StartHere"]];
-        self.startHereImageView.contentMode = UIViewContentModeBottomLeft;
-        [self.tableView addSubview:startHereImageView];
-        [Utils setY:self.tableView.frame.size.height - 60.0f to:self.startHereImageView];
-        [Utils setX:18.0f to:self.startHereImageView];
-    } else if ([self.unsyncedFeeds count] || [self.feeds count]){
-        [self.tableView removeFromSuperview];
-        self.tableView = NULL;
-    }
-   
+    [self updateDisplayStartInstructions];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {

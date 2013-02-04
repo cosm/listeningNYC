@@ -5,8 +5,7 @@
 @class RadarViewController; 
 @protocol RadarViewControllerDatasource <NSObject>
 @optional
-- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
-- (float)valueForAllSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll;
 @end
 
 /// Class
@@ -19,6 +18,7 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect;
 
 // control
+@property BOOL shouldDecay;
 - (void)start;
 - (void)stop;
 - (void)requestAllFromDatasource;
@@ -30,5 +30,9 @@
 // Timer
 @property (nonatomic, strong) NSTimer *updateSweeperTimer;
 - (void)updaterSweeper;
+
+//debug
+- (void)setDecay:(float)f;
+- (void)setDelay:(unsigned int)i;
 
 @end

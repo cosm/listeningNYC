@@ -10,7 +10,6 @@ struct Normalizing {
     Normalizing() {
         min = std::numeric_limits<T>::max();
         max = std::numeric_limits<T>::min();
-        NSLog(@"created!");
     }
     T max;
     T min;
@@ -80,6 +79,8 @@ struct Normalizing {
     peakLevels.aWeightedDB = -99999.9f;
     peakLevels.cWeightedDB = -99999.9f;
     shouldResetMetering = false;
+    self.peakDb = -99999.9f;
+    self.currentDb = -99999.9f;
     
     if (fft) {
         delete fft;
@@ -100,6 +101,7 @@ struct Normalizing {
     oct->setup(samplingRate, fftSize/2, averages);
     nomalized = new Normalizing<float>[oct->nAverages];
     shouldResetMetering = NO;
+
 }
 
 - (void)start {
@@ -119,6 +121,9 @@ struct Normalizing {
         }
         
         currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
+        if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
+        self.currentDb = currentLevels.flatDB;
+        
         ////
         /// a weighted
         float aWeightedAudio[numFrames * numChannels];
@@ -196,11 +201,11 @@ struct Normalizing {
     NSLog(@"fft bins count %d", fft->bins);
     
     float bin = 17.5;
-    float peak = 0.0f;
+    float peak = -60.0f;
     for (int i=0; i<oct->nAverages; ++i) {
         // find the highest peak since reset
-        if (peak < oct->peaks[i]) {
-            peak = oct->peaks[i];
+        if (peak < nomalized[i].max) {
+            peak = nomalized[i].max;
         }
         if (i % averages == 0) {
             // work out the lower frequency of this bin
@@ -248,13 +253,13 @@ struct Normalizing {
                 binCenter = 20000.0f;
                 tag = @"ANSI:band=43";
             }
+            NSLog(@"BIN created %0.0fhz %@ = %0.5f ", binCenter, tag, peak);
             [datastream.info setValue:[NSString stringWithFormat:@"%.0fhz", binCenter] forKeyPath:@"id"];
             [datastream.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
             [datastream.info setValue:@"dB" forKeyPath:@"unit.label"];
             [datastream.info setValue:tag forKeyPath:@"tags"];
             [datastream.info setValue:[NSString stringWithFormat:@"%f", peak] forKeyPath:@"current_value"];
-            NSLog(@"Bin %d: %f  hz pow: %f", i, bin, peak);
-            peak = 0.0f;
+            peak = -60.0f;
             [feedModel.datastreamCollection.datastreams addObject:datastream];
         }
     }
@@ -291,19 +296,21 @@ struct Normalizing {
 #pragma mark - Rader Data Source
 
 - (float)mapDBtoAlpha:(float)db {
-    return [Utils mapQuinticEaseOut:db inputMin:0.0f inputMax:60.0f outputMin:0.0f outputMax:1.0f clamp:YES];
+    // the input should really be 60
+    return [Utils mapQuinticEaseOut:db inputMin:0.0f inputMax:180.0f outputMin:0.0f outputMax:1.0f clamp:YES];
 }
 
-- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
-    unsigned int index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, oct->nAverages);
-    return [self mapDBtoAlpha:nomalized[index].currentValue];
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll {
+    int startPoint = -4;
+    int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
+    return (index<0) ? 0.0f : [self mapDBtoAlpha:(isAll) ? nomalized[index].max : nomalized[index].currentValue];
+    //return (RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages)<0) ? 0.0f : 1.0;
 }
 
-/// REFACTOR!!!! COPYING ABOVE
-- (float)valueForAllSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController {
-    unsigned int index = RadarMapFloat(number, 0.0f, numberOfParticles, 0.0f, oct->nAverages);
-    return [self mapDBtoAlpha:nomalized[index].max];
-}
+#pragma mark - DB Levels
+
+@synthesize currentDb;
+@synthesize peakDb;
 
 #pragma mark - Life Cycle
 
@@ -367,5 +374,7 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
     
     return self;
 }
+
+
 
 @end
