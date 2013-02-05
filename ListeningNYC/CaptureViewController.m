@@ -37,7 +37,7 @@
     [self.radarViewController stop];
     [self.radarViewController requestAllFromDatasource];
     self.shouldUpdateDbLabel = NO;
-    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb];
+    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f]];
     [self updateCircleBands];
 }
 
@@ -65,6 +65,7 @@
 
 - (void)countdownViewControllerDidCountdown {
     self.radarContainerView.alpha = 1.0f;
+    self.dBContainerView.alpha = 1.0f;
     [self.countdownViewController.view removeFromSuperview];
     self.countdownViewController.delegate = nil;
     self.countdownViewController = nil;
@@ -88,7 +89,7 @@
 
 #pragma mark - IB
 
-@synthesize radarContainerView, startButton, dbLabel;
+@synthesize radarContainerView, startButton, dbLabel, dBContainerView;
 
 - (IBAction)startButtonPressed:(id)sender {
     self.countdownViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Countdown View Controller"];
@@ -103,7 +104,9 @@
     
     [UIView beginAnimations:@"fade out rader" context:nil];
     [UIView setAnimationDuration:kRECORD_COUNTDOWN_FOR * 3.0];
-    self.radarContainerView.alpha = 0;
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    self.radarContainerView.alpha = 0.0f;
+    self.dBContainerView.alpha = 0.0f;
     [UIView commitAnimations];
 }
 
@@ -161,8 +164,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.radarContainerView.alpha = 1.0f;
+    self.dBContainerView.alpha = 0.0f;
 
-    
     self.isDebugMode = kRADAR_SHOW_DEBUG_UI;
     self.decaySlider.value = kRADAR_DECAY_RATE;
     self.delaySlider.value = kRADAR_DELAY_FOR;

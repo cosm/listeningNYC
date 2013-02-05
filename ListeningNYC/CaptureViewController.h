@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UIView *radarContainerView;
 @property (nonatomic, weak) IBOutlet UIButton *startButton;
 - (IBAction)startButtonPressed:(id)sender;
+@property (nonatomic, weak) IBOutlet UIView *dBContainerView;
 // debug
 @property BOOL isDebugMode;
 @property (nonatomic, weak) IBOutlet UIView *debugContainerView;
