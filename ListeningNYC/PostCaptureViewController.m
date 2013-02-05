@@ -22,8 +22,7 @@
     COSMFeedModel *feed = (COSMFeedModel *)model;
     //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
     [Utils saveFeedToDisk:feed withExtension:@".recording"];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.submittingViewController showSuccess];
 }
 
 - (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON {
@@ -33,13 +32,18 @@
     NSLog(@"Error code %d", error.code);
     COSMFeedModel *feed = (COSMFeedModel *)model;
     
+    [self.submittingViewController.view removeFromSuperview];
+    self.submittingViewController.delegate = nil;
+    self.submittingViewController = nil;
+    
     if (error.code == -1009) {
         [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
         [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
     } else {
         [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    self.cosmFeed.delegate = nil;
 }
 
 #pragma mark - Notifcations
@@ -49,6 +53,16 @@
         [self.mapWebViewController setMapLocation:newLocation];
     }
     elevation = newLocation.altitude;
+}
+
+#pragma mark - Submitting View Controller Delegate
+
+- (void)submittingSoundViewControllerDidComplete:(SubmittingViewController *)submittingViewController {
+    [self.submittingViewController.view removeFromSuperview];
+    self.submittingViewController.delegate = nil;
+    self.submittingViewController = nil;
+    [self.tabBarController setSelectedIndex:2];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 #pragma mark - Map Web View Delegate
@@ -123,6 +137,16 @@
         
         NSLog(@"feed is %@",self.cosmFeed.info);
         
+        
+        // add the submit screen
+        self.submittingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Submitting View Controller"];
+        self.submittingViewController.view.autoresizingMask = UIViewAutoresizingNone;
+        self.submittingViewController.view.frame = [[UIScreen mainScreen] bounds];
+        [self.submittingViewController showSubmitting];
+        self.submittingViewController.delegate = self;
+        [self.view addSubview:self.submittingViewController.view];
+
+        
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
     }
@@ -130,7 +154,7 @@
 
 #pragma mark - UI
 
-@synthesize tagViews, deleteButtons;
+@synthesize tagViews, deleteButtons, submittingViewController;
 
 - (void)layoutTags {    
     // remove all the tags & delete buttond

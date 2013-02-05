@@ -142,7 +142,7 @@ struct Normalizing {
         fft->magsToDB();
         oct->calculate(fft->magnitudesDB);
         for (int i =0; i < oct->nAverages; ++i) {
-            nomalized[i].set(oct->peaks[i]);
+            nomalized[i].set(oct->averages[i]);
         }
 
         ////
@@ -193,6 +193,7 @@ struct Normalizing {
 
 - (void)beginRecording {
     [self resetMetering];
+    NSLog(@"number of averages %d", oct->nAverages);
 }
 
 - (COSMFeedModel *)stopRecording {

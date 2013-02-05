@@ -68,6 +68,14 @@
 		914894781667B3AA0039094B /* UINavigationBar-COSM-Title.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EED164A665A00BF7988 /* UINavigationBar-COSM-Title.png */; };
 		914894791667B3AA0039094B /* UINavigationBar-COSM-Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D32EEE164A665A00BF7988 /* UINavigationBar-COSM-Title@2x.png */; };
 		9153142116A4592A0075972B /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9153142016A4592A0075972B /* CountdownViewController.m */; };
+		9163819216C12918002587AE /* CaptureSuccess.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818A16C12918002587AE /* CaptureSuccess.png */; };
+		9163819316C12918002587AE /* CaptureSuccess@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818B16C12918002587AE /* CaptureSuccess@2x.png */; };
+		9163819416C12918002587AE /* CaptureSuccessOk.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818C16C12918002587AE /* CaptureSuccessOk.png */; };
+		9163819516C12918002587AE /* CaptureSuccessOk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818D16C12918002587AE /* CaptureSuccessOk@2x.png */; };
+		9163819616C12918002587AE /* CaptureSuccessOkPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818E16C12918002587AE /* CaptureSuccessOkPressed.png */; };
+		9163819716C12918002587AE /* CaptureSuccessOkPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163818F16C12918002587AE /* CaptureSuccessOkPressed@2x.png */; };
+		9163819816C12918002587AE /* SubmittingSound.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163819016C12918002587AE /* SubmittingSound.png */; };
+		9163819916C12918002587AE /* SubmittingSound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163819116C12918002587AE /* SubmittingSound@2x.png */; };
 		916CB37C16B14D3E0083F47C /* LikeDislikeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */; };
 		916CB37D16B14D3E0083F47C /* LikeDislikeBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */; };
 		916CB38A16B152F90083F47C /* SubmitCancelPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916CB38616B152F90083F47C /* SubmitCancelPressed@2x.png */; };
@@ -333,6 +341,7 @@
 		91C9D6FD166E2AD400837487 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
 		91C9D705166E2AD400837487 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91C9D703166E2AD400837487 /* InfoPlist.strings */; };
 		91C9D708166E2AD400837487 /* RadarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C9D707166E2AD400837487 /* RadarTests.m */; };
+		91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC33DF16C1343B005A4834 /* SubmittingViewController.m */; };
 		91D32EAB164971BE00BF7988 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
 		91D32EAD164971BE00BF7988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAC164971BE00BF7988 /* Foundation.framework */; };
 		91D32EAF164971BE00BF7988 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAE164971BE00BF7988 /* CoreGraphics.framework */; };
@@ -480,6 +489,14 @@
 		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DBTool.h; path = ../NYCSound/DBTool.h; sourceTree = "<group>"; };
 		9153141F16A4592A0075972B /* CountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownViewController.h; sourceTree = "<group>"; };
 		9153142016A4592A0075972B /* CountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownViewController.m; sourceTree = "<group>"; };
+		9163818A16C12918002587AE /* CaptureSuccess.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CaptureSuccess.png; path = "Assets/Export Page 2/CaptureSuccess.png"; sourceTree = SOURCE_ROOT; };
+		9163818B16C12918002587AE /* CaptureSuccess@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CaptureSuccess@2x.png"; path = "Assets/Export Page 2/CaptureSuccess@2x.png"; sourceTree = SOURCE_ROOT; };
+		9163818C16C12918002587AE /* CaptureSuccessOk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CaptureSuccessOk.png; path = "Assets/Export Page 2/CaptureSuccessOk.png"; sourceTree = SOURCE_ROOT; };
+		9163818D16C12918002587AE /* CaptureSuccessOk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CaptureSuccessOk@2x.png"; path = "Assets/Export Page 2/CaptureSuccessOk@2x.png"; sourceTree = SOURCE_ROOT; };
+		9163818E16C12918002587AE /* CaptureSuccessOkPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CaptureSuccessOkPressed.png; path = "Assets/Export Page 2/CaptureSuccessOkPressed.png"; sourceTree = SOURCE_ROOT; };
+		9163818F16C12918002587AE /* CaptureSuccessOkPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CaptureSuccessOkPressed@2x.png"; path = "Assets/Export Page 2/CaptureSuccessOkPressed@2x.png"; sourceTree = SOURCE_ROOT; };
+		9163819016C12918002587AE /* SubmittingSound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SubmittingSound.png; path = "Assets/Export Page 2/SubmittingSound.png"; sourceTree = SOURCE_ROOT; };
+		9163819116C12918002587AE /* SubmittingSound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SubmittingSound@2x.png"; path = "Assets/Export Page 2/SubmittingSound@2x.png"; sourceTree = SOURCE_ROOT; };
 		916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LikeDislikeBackground.png; path = Assets/Export/LikeDislikeBackground.png; sourceTree = SOURCE_ROOT; };
 		916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LikeDislikeBackground@2x.png"; path = "Assets/Export/LikeDislikeBackground@2x.png"; sourceTree = SOURCE_ROOT; };
 		916CB38616B152F90083F47C /* SubmitCancelPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SubmitCancelPressed@2x.png"; path = "Assets/Export/SubmitCancelPressed@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -769,6 +786,8 @@
 		91C9D704166E2AD400837487 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91C9D706166E2AD400837487 /* RadarTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadarTests.h; sourceTree = "<group>"; };
 		91C9D707166E2AD400837487 /* RadarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadarTests.m; sourceTree = "<group>"; };
+		91CC33DE16C1343B005A4834 /* SubmittingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittingViewController.h; sourceTree = "<group>"; };
+		91CC33DF16C1343B005A4834 /* SubmittingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittingViewController.m; sourceTree = "<group>"; };
 		91D32EA6164971BE00BF7988 /* NYCSound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYCSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D32EAA164971BE00BF7988 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91D32EAC164971BE00BF7988 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1019,6 +1038,8 @@
 				91C773521671EF5300C9BDB3 /* MapViewController.m */,
 				91C7737E1671F90600C9BDB3 /* MapWebViewController.h */,
 				91C7737F1671F90600C9BDB3 /* MapWebViewController.m */,
+				91CC33DE16C1343B005A4834 /* SubmittingViewController.h */,
+				91CC33DF16C1343B005A4834 /* SubmittingViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -1480,6 +1501,14 @@
 		91E8F1A916A5AA90007F0A8D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				9163818A16C12918002587AE /* CaptureSuccess.png */,
+				9163818B16C12918002587AE /* CaptureSuccess@2x.png */,
+				9163818C16C12918002587AE /* CaptureSuccessOk.png */,
+				9163818D16C12918002587AE /* CaptureSuccessOk@2x.png */,
+				9163818E16C12918002587AE /* CaptureSuccessOkPressed.png */,
+				9163818F16C12918002587AE /* CaptureSuccessOkPressed@2x.png */,
+				9163819016C12918002587AE /* SubmittingSound.png */,
+				9163819116C12918002587AE /* SubmittingSound@2x.png */,
 				91E288EE16BBD96F00EFDEB3 /* NoSamples.png */,
 				91E288EF16BBD96F00EFDEB3 /* NoSamples@2x.png */,
 				91E288F016BBD96F00EFDEB3 /* StartHere.png */,
@@ -2000,6 +2029,14 @@
 				91E288F316BBD96F00EFDEB3 /* NoSamples@2x.png in Resources */,
 				91E288F416BBD96F00EFDEB3 /* StartHere.png in Resources */,
 				91E288F516BBD96F00EFDEB3 /* StartHere@2x.png in Resources */,
+				9163819216C12918002587AE /* CaptureSuccess.png in Resources */,
+				9163819316C12918002587AE /* CaptureSuccess@2x.png in Resources */,
+				9163819416C12918002587AE /* CaptureSuccessOk.png in Resources */,
+				9163819516C12918002587AE /* CaptureSuccessOk@2x.png in Resources */,
+				9163819616C12918002587AE /* CaptureSuccessOkPressed.png in Resources */,
+				9163819716C12918002587AE /* CaptureSuccessOkPressed@2x.png in Resources */,
+				9163819816C12918002587AE /* SubmittingSound.png in Resources */,
+				9163819916C12918002587AE /* SubmittingSound@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2251,6 +2288,7 @@
 				91AB215D16A7256000D7CBF4 /* AFXMLRequestOperation.m in Sources */,
 				91AB215E16A7256000D7CBF4 /* UIImageView+AFNetworking.m in Sources */,
 				918B268716A86F83009BD7A9 /* Config.m in Sources */,
+				91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,9 +2,10 @@
 #import "TagDeleteView.h"
 #import "MapWebViewController.h"
 #import "COSM.h"
-#import "CircleBands.h";
+#import "CircleBands.h"
+#import "SubmittingViewController.h"
 
-@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate, CircleBandsDatasource>
+@interface PostCaptureViewController : UIViewController<TagDeleteViewDelegate, MapWebViewControllerDelegate, COSMModelDelegate, CircleBandsDatasource, SubmittingViewControllerDelegate>
 
 // Data
 @property (nonatomic, strong) NSMutableArray *tags;
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NSMutableArray *deleteButtons;
 - (void)layoutTags;
 @property (nonatomic, strong) MapWebViewController *mapWebViewController;
+@property (nonatomic, strong) SubmittingViewController *submittingViewController;
 
 // Tag Delete Delegate
 - (void)tagDeleteView:(TagDeleteView *)sender requestsDeletionOf:(NSString *)tag;
