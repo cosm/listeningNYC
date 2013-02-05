@@ -10,11 +10,14 @@ NSString *const kCOSM_FEED_VERSION_FORMAT = @"%@ (build %@, iPhone)";
 
 // Recording
 bool const kRADAR_SHOW_DEBUG_UI = NO;
-double const kRECORD_FOR = 10.0f;
+double const kRECORD_FOR = 1.0f;
 double const kRECORD_COUNTDOWN_FOR = 0.1;
+
+// Radar
 float const kRADAR_DECAY_RATE = 0.993;
 unsigned int const kRADAR_DELAY_FOR = 107;
+bool const kRADAR_USE_PEAKS = NO;
 
 // Circle bands
-float const kCIRCLE_BANDS_HUE_MAX = -0.203237;
+float const kCIRCLE_BANDS_HUE_MAX = -0.095324;
 float const kCIRCLE_BANDS_HUE_MIN = 0.449640;

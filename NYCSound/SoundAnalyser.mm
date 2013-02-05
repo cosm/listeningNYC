@@ -95,9 +95,6 @@ struct Normalizing {
     NSInteger windowSize = 1024; //1024;
     Float64 samplingRate = [Novocaine audioManager].samplingRate;
     fft->setup(fftSize, windowSize, 256);
-    // NSLog(@"%d", averages);
-    // NSLog(@"%f", samplingRate);
-    // NSLog(@"%df", fftSize/2);
     oct->setup(samplingRate, fftSize/2, averages);
     nomalized = new Normalizing<float>[oct->nAverages];
     shouldResetMetering = NO;
@@ -142,7 +139,11 @@ struct Normalizing {
         fft->magsToDB();
         oct->calculate(fft->magnitudesDB);
         for (int i =0; i < oct->nAverages; ++i) {
-            nomalized[i].set(oct->averages[i]);
+            if (kRADAR_USE_PEAKS) {
+                nomalized[i].set(oct->peaks[i]);
+            } else {
+                nomalized[i].set(oct->averages[i]);
+            }
         }
 
         ////
@@ -298,7 +299,7 @@ struct Normalizing {
 #pragma mark - Rader Data Source
 
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll {
-    int startPoint = -2;
+    int startPoint = -4;
     int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
     
     if (index < 0) return 0.0f;
