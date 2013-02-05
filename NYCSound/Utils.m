@@ -634,22 +634,23 @@ NSString * createUUID() {
     return datastream;
 }
 
-float mapCircleBandFloat(float input) {
-    return [Utils mapFloat:input inputMin:0.0f inputMax:1.0f outputMin:0.0 outputMax:1.0 clamp:YES];
++ (float)mapDbToAlpha:(float)input {
+    float alpha = [Utils mapQuinticEaseOut:input inputMin:0.0f inputMax:180.0f outputMin:0.0f outputMax:1.0f clamp:YES];
+    return alpha;
 }
 
 + (float)valueForBand:(int)index in:(COSMFeedModel*)feed {
     switch (index) {
-        case 0: return mapCircleBandFloat([[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 1: return mapCircleBandFloat([[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 2: return mapCircleBandFloat([[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 3: return mapCircleBandFloat([[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 4: return mapCircleBandFloat([[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 5: return mapCircleBandFloat([[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 6: return mapCircleBandFloat([[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 7: return mapCircleBandFloat([[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 8: return mapCircleBandFloat([[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 9: return mapCircleBandFloat([[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 9: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 8: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 7: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 6: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 5: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 4: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 3: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 2: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 1: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 0: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
         default: return 0.0f; break;
     }
 }

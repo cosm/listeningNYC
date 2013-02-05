@@ -115,7 +115,6 @@ public:
             RadarScanline *scanline = new RadarScanline(particlesPerScanLine, width * 2, height);
             scanlines.push_back(scanline);
             scanline->rotate(currentRotation, 0.0f, 0.0f, 1.0f);
-            //scanline->colorizeRandom();
             currentRotation += spreadDegree;
         }
     }

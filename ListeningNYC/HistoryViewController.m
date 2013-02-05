@@ -72,7 +72,6 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scroll view, %@", NSStringFromCGRect(self.tableView.frame));
     [Utils setY:self.tableView.frame.size.height - 60.0f + self.tableView.contentOffset.y to:self.startHereImageView];
 }
 

@@ -15,3 +15,8 @@ extern double const kRECORD_COUNTDOWN_FOR;
 extern float const  kRADAR_DECAY_RATE;
 extern unsigned int const kRADAR_DELAY_FOR;
 
+// Circle Bands
+extern float const kCIRCLE_BANDS_HUE_MAX;
+extern float const kCIRCLE_BANDS_HUE_MIN;
+
+

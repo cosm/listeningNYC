@@ -138,7 +138,7 @@
     self.hasStarted = NO;
     self.shouldDecay = NO;
     
-    radar = new RadarSweeper(400, 80, 150.0f);
+    radar = new RadarSweeper(400, 40, 150.0f);
     radar->decayRate = kRADAR_DECAY_RATE;
     radar->delayDecayForNumberOfDraws = kRADAR_DELAY_FOR;
     radar->setHues(0.0f, 185.0f);

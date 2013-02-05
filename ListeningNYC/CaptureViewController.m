@@ -38,6 +38,7 @@
     [self.radarViewController requestAllFromDatasource];
     self.shouldUpdateDbLabel = NO;
     self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb];
+    [self updateCircleBands];
 }
 
 - (void)recordingViewControllerDidRequestNext {
@@ -102,7 +103,7 @@
 
 // Debug
 
-@synthesize debugContainerView, delayForLabel, decayLabel, delaySlider, decaySlider;
+@synthesize debugContainerView, delayForLabel, decayLabel, delaySlider, decaySlider, circleBands;
 
 - (IBAction)delayForChanged:(UISlider *)slider {
     self.delayForLabel.text = [NSString stringWithFormat:@"%.0f", slider.value];
@@ -112,6 +113,27 @@
 - (IBAction)decayForChanged:(UISlider *)slider {
     self.decayLabel.text = [NSString stringWithFormat:@"%.3f", slider.value];
     [self.radarViewController setDecay:slider.value];
+}
+
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
+    //return [Utils randomFloatFrom:0.0f to:1.0f];
+    return [Utils valueForBand:bandIndex in:self.cosmFeed];
+}
+
+- (void)updateCircleBands {
+    if (self.cosmFeed) { [self.circleBands setNeedsDisplay]; }
+}
+
+- (IBAction)circleBandHueMin:(id)sender {
+    self.circleBands.hueScalarMin = [(UISlider *)sender value];
+    NSLog(@"hue max %f",  self.circleBands.hueScalarMax);
+    NSLog(@"hue min %f",  self.circleBands.hueScalarMin);
+}
+
+- (IBAction)circleBandHueMax:(id)sender {
+    self.circleBands.hueScalarMax = [(UISlider *)sender value];
+    NSLog(@"hue max %f",  self.circleBands.hueScalarMax);
+    NSLog(@"hue min %f",  self.circleBands.hueScalarMin);
 }
 
 #pragma mark - Radar view controller
@@ -172,6 +194,12 @@
     self.dbLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:updateRate target:self selector:@selector(dbLabelUpdateTimerDidFire) userInfo:nil repeats:YES];
     NSLog(@"%@", self.dbLabelUpdateTimer);
     self.shouldUpdateDbLabel = YES;
+    
+    // debug circles bands
+    self.circleBands.datasource = self;
+    self.circleBands.numberOfBands = 10;
+    [self.updateCircleBandsTimer invalidate];
+    self.updateCircleBandsTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(updateCircleBands) userInfo:Nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -21,8 +21,8 @@
         self.circleDiameter = frame.size.width;
         self.circleHoleDiameter = 10.0f;
         self.numberOfBands = 20;
-        self.hueScalarMin = 0.0f;
-        self.hueScalarMax = 1.0f;
+        self.hueScalarMin = kCIRCLE_BANDS_HUE_MIN;
+        self.hueScalarMax = kCIRCLE_BANDS_HUE_MAX;
     }
     return self;
 }
@@ -35,8 +35,8 @@
         self.circleDiameter = self.frame.size.width;
         self.circleHoleDiameter = 10.0f;
         self.numberOfBands = 20;
-        self.hueScalarMin = 0.5f;
-        self.hueScalarMax = 0.0f;
+        self.hueScalarMin = kCIRCLE_BANDS_HUE_MIN;
+        self.hueScalarMax = kCIRCLE_BANDS_HUE_MAX;
         self.drawMask = false;
     }
     return self;
@@ -121,16 +121,6 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-//    for (int i=0; i<self.numberOfBands; i++) {
-//        float bandDiameter = [Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.circleDiameter outputMax:self.circleHoleDiameter];
-//        float bandPosition = (circleDiameter - bandDiameter) / 2.0f;
-//        float bandAlpha = 1.0f;
-//        if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
-//            bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
-//        }
-//        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
-//        [self drawCircle:CGSizeMake(bandDiameter, bandDiameter) at:CGPointMake(bandPosition, bandPosition)];
-//    }
     
     CGRect imageBounds = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
     CGRect bounds = [self bounds];
@@ -288,7 +278,6 @@
             if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
                 bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
             }
-            //UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
             UIColor *debugColor = [UIColor whiteColor];
             drawRect = CGRectMake(bandPosition, bandPosition, bandDiameter, bandDiameter);
             drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
@@ -312,7 +301,7 @@
         if (self.datasource && [self.datasource respondsToSelector:@selector(alphaForBand:of:)]) {
             bandAlpha = [self.datasource alphaForBand:i of:self.numberOfBands];
         }
-        UIColor *debugColor = [UIColor colorWithHue:[Utils mapFloat:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax] saturation:1.0f brightness:1.0f alpha:bandAlpha];
+        UIColor *debugColor = [UIColor colorWithHue:[Utils mapQuinticEaseOut:i inputMin:0 inputMax:numberOfBands-1 outputMin:self.hueScalarMin outputMax:self.hueScalarMax clamp:YES] saturation:1.0f brightness:1.0f alpha:bandAlpha];
         drawRect = CGRectMake(bandPosition, bandPosition, bandDiameter, bandDiameter);
         drawRect.origin.x = (roundf(resolution * drawRect.origin.x + alignStroke) - alignStroke) / resolution;
         drawRect.origin.y = (roundf(resolution * drawRect.origin.y + alignStroke) - alignStroke) / resolution;

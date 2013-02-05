@@ -75,6 +75,7 @@
 + (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension;
 + (NSMutableArray *)loadFeedsFromDisk;
 + (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed;
++ (float)mapDbToAlpha:(float)input;
 + (float)valueForBand:(int)index in:(COSMFeedModel*)feed;
 + (NSString *)valueOfMachineTag:(NSString *)machineTag;
 + (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed;
