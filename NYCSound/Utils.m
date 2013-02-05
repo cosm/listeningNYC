@@ -446,6 +446,7 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 
 
 + (float)mapQuinticEaseOut:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp {
+    value = ((value-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
     float quinticMappedInput = (value - 1);
 	quinticMappedInput =  quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput + 1;
     float output = (quinticMappedInput*(outputMax-outputMin)+outputMin);
@@ -635,7 +636,21 @@ NSString * createUUID() {
 }
 
 + (float)mapDbToAlpha:(float)input {
-    float alpha = [Utils mapQuinticEaseOut:input inputMin:0.0f inputMax:180.0f outputMin:0.0f outputMax:1.0f clamp:YES];
+    
+    float alpha = [Utils mapQuinticEaseOut:input inputMin:0.0f inputMax:kMAX_DB_FOR_FULL_ALPHA outputMin:0.0f outputMax:1.0f clamp:YES];
+//    static float min = 600000;
+//    static float max = -6000000;
+//    if (input < min) {
+//        NSLog(@"new min db %.04f", min);
+//        min = input;
+//        NSLog(@"will return %0.04f", alpha);
+//    }
+//    
+//    if (input > max) {
+//        NSLog(@"new max db %.04f", max);
+//        max = input;
+//        NSLog(@"will return %0.04f", alpha);
+//    }
     return alpha;
 }
 

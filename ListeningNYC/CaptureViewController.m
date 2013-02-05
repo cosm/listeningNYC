@@ -64,6 +64,7 @@
 @synthesize countdownViewController, countdownHolder;
 
 - (void)countdownViewControllerDidCountdown {
+    self.radarContainerView.alpha = 1.0f;
     [self.countdownViewController.view removeFromSuperview];
     self.countdownViewController.delegate = nil;
     self.countdownViewController = nil;
@@ -99,6 +100,11 @@
     [self.startButton setUserInteractionEnabled:NO];
     [self.countdownHolder setUserInteractionEnabled:YES];
     [self.recordingContainerView setUserInteractionEnabled:NO];
+    
+    [UIView beginAnimations:@"fade out rader" context:nil];
+    [UIView setAnimationDuration:kRECORD_COUNTDOWN_FOR * 3.0];
+    self.radarContainerView.alpha = 0;
+    [UIView commitAnimations];
 }
 
 // Debug
@@ -154,6 +160,8 @@
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.radarContainerView.alpha = 1.0f;
+
     
     self.isDebugMode = kRADAR_SHOW_DEBUG_UI;
     self.decaySlider.value = kRADAR_DECAY_RATE;

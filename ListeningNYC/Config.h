@@ -14,6 +14,7 @@ extern double const kRECORD_FOR;
 extern double const kRECORD_COUNTDOWN_FOR;
 
 // Radar
+extern float const kMAX_DB_FOR_FULL_ALPHA;
 extern float const  kRADAR_DECAY_RATE;
 extern unsigned int const kRADAR_DELAY_FOR;
 extern bool const kRADAR_USE_PEAKS;
