@@ -37,7 +37,7 @@
     [self.radarViewController stop];
     [self.radarViewController requestAllFromDatasource];
     self.shouldUpdateDbLabel = NO;
-    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f]];
+    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f];
     [self updateCircleBands];
 }
 
