@@ -272,7 +272,7 @@ struct Normalizing {
     [peakDB.info setValue:@"Peak-dB" forKeyPath:@"id"];
     [peakDB.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     [peakDB.info setValue:@"dB" forKeyPath:@"unit.label"];
-    [peakDB.info setValue:[NSString stringWithFormat:@"%f", peakLevels.flatDB] forKeyPath:@"current_value"];
+    [peakDB.info setValue:[NSString stringWithFormat:@"%f", peakLevels.flatDB + 60.0f] forKeyPath:@"current_value"];
     [feedModel.datastreamCollection.datastreams addObject:peakDB];
     
     // Peak DB
