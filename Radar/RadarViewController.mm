@@ -57,6 +57,8 @@
         }
 
     }
+    
+    radar->drawsCurrentline = false;
 }
 
 - (void)reset {
@@ -68,6 +70,8 @@
         }
     }
     scanlinesIterator = radar->scanlines.begin();
+    //radar->currentline.resetRotation();
+    //radar->currentline.rotate(-90.f);
 }
 
 
@@ -88,6 +92,11 @@
             float alpha = [self.datasource valueForSweeperParticle:i inTotal:numberOfParticles for:self  wantsAll:NO];
             scanline->setAlpha(alpha, i);
         }
+        
+        // get the current index
+        unsigned int i = std::distance(radar->scanlines.begin(), std::find( radar->scanlines.begin(), radar->scanlines.end(), scanline ));
+        float currentLineAngle = (float(i) / float(radar->scanlines.size())) * 360.0f;
+        radar->currentline.setRotate(currentLineAngle);
     }
     
     if (++scanlinesIterator == radar->scanlines.end()) {
@@ -97,6 +106,9 @@
     if (self.shouldDecay) {
         radar->decay();
     }
+    
+    radar->drawsCurrentline = true;
+    //radar->currentline.rotate();
 }
 
 #pragma mark - GL

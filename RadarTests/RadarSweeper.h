@@ -102,12 +102,47 @@ private:
 typedef std::vector<RadarScanline *> Scanlines;
 typedef std::vector<RadarScanline *>::iterator ScanlinesIt;
 
+class RadarCurrentLine {
+public:
+    RadarCurrentLine(){}
+    void setup(float startRadius, float endRadius, float width = 10.0f) {
+        float vert[8] = {
+            startRadius, 0.0f,      endRadius, 0.0f,
+            startRadius, width,     endRadius, width
+        };
+        for (int i=0; i<8; ++i) {
+            vertices[i] = vert[i];
+        }
+        
+        float grey = 0.8f;
+        float color[16] = {
+            grey, grey, grey, 1.0f,
+            grey, grey, grey, 1.0f,
+            grey, grey, grey, 1.0f,
+            grey, grey, grey, 1.0f
+        };
+        for (int i=0; i<16; ++i) {
+            colors[i] = color[i];
+        }
+        currentRotation = 90.0f;
+    };
+    void draw();
+    void setRotate(float degrees);
+    
+    virtual ~RadarCurrentLine() {};
+protected:
+    float vertices[8];
+    float colors[16];
+    float currentRotation;
+};
+
 class RadarSweeper {
 public:
 
-    RadarSweeper(unsigned int numScanlines, unsigned int particlesPerScanLine, float radius):numScanlines(numScanlines),decayRate(0.8),delayDecayForNumberOfDraws(10){
+    RadarSweeper(unsigned int numScanlines, unsigned int particlesPerScanLine, float radius):numScanlines(numScanlines),decayRate(0.8),delayDecayForNumberOfDraws(10),drawsCurrentline(true){
         scanlines.reserve(numScanlines);
         float spreadDegree = 360.0f / float(numScanlines);
+        currentline.setup(20.0f, radius, 1.0f);
         float width = radius * sinf( (spreadDegree / 2.0f) * M_PI/180.0f );
         float height = sqrt( (radius * radius) - (width * width) );
         float currentRotation = 180.0f;
@@ -123,9 +158,7 @@ public:
         for (ScanlinesIt it = scanlines.begin(); it != scanlines.end(); ++it) {
             RadarScanline *scanline = *it;
             for (int i = 0; i < scanline->getNumParticles(); ++i) {
-                //scanline->setParticleRGBAColor(1.0f, 0.0f, 1.0f, 0.0f, i);
                 float hue = RadarMapQuasdEaseIn(i, 0, scanline->getNumParticles(), startHue, endHue);
-                //scanline->hsvTransformColor(hue, 1.0f, 1.0f, 01.0f.0f, i);
                 scanline->setParticleHSVAColor(hue, 1.0f, 1.0f, 0.0f, i);
             }
         }
@@ -154,9 +187,15 @@ public:
         for (ScanlinesIt it = scanlines.begin(); it != scanlines.end(); ++it) {
             (*it)->draw();
         }
+        if (drawsCurrentline) {
+            currentline.draw();
+        }
     }
     
     Scanlines scanlines;
+    
+    bool drawsCurrentline;
+    RadarCurrentLine currentline;
 private:
     unsigned int numScanlines;
 };
