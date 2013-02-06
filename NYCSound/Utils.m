@@ -697,7 +697,6 @@ NSString * createUUID() {
 
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed {
     COSMDatastreamModel *descriptonDatastream = [Utils datastreamWithId:@"Description" in:feed];
-    NSLog(@"tags should be in %@", descriptonDatastream.info);
     return [descriptonDatastream.info valueForKeyPath:@"tags"];
 }
 

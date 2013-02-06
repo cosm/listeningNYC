@@ -226,7 +226,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view opaque="NO" alpha="0.30000000000000016" contentMode="scaleToFill" id="xqB-9S-avi" customClass="CircleBands">
+                                    <view opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="xqB-9S-avi" customClass="CircleBands">
                                         <rect key="frame" x="82" y="140" width="156" height="156"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -262,7 +262,7 @@
                                 </subviews>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.78000000000000003" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -874,7 +874,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="spinner" destination="XZB-Ek-0lU" id="pQ4-Ld-3bW"/>

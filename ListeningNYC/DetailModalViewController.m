@@ -63,9 +63,15 @@
     frame.origin.y = 0.0f;
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
+    self.circleBands.numberOfBands = 10.0f;
     if (self.feed) {
         self.circleBands.datasource = self;
     }
+    
+    NSLog(@"BOOM tags %@", self.feed.info);
+    [self.feed.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(COSMDatastreamModel *datastream, NSUInteger idx, BOOL *stop) {
+        NSLog(@"%@", datastream.info);
+    }];
     
     // ----------
     // @todo move to layoutViews

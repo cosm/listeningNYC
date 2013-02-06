@@ -221,7 +221,7 @@
     frame.origin.y = 0.0f;
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
-    self.circleBands.numberOfBands = 11;
+    self.circleBands.numberOfBands = 10;
     self.tags = [[NSMutableArray alloc] init];
     self.deleteButtons = [[NSMutableArray alloc] init];
     [self.slider setMinimumTrackImage:[UIImage imageNamed:@"SliderTrack"] forState:UIControlStateNormal];
