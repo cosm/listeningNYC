@@ -557,6 +557,26 @@ NSString * createUUID() {
 
 #pragma mark - COSM
 
+// deleting
+
++ (void)deleteFeedFromDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
+    [Utils deleteFeedFromDisk:feed withName:[feed.info objectForKey:@"id"] extension:extension];
+}
+
++ (void)deleteFeedFromDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension {
+    NSString *filename = [NSString stringWithFormat:@"%@.%@", name, extension];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    NSError *error;
+    if ([[NSFileManager defaultManager] removeItemAtPath:filepath error:&error] != YES) {
+        NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+        NSLog(@"Error is %@", error);
+    }
+}
+
+// saving
+
 + (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
     [Utils saveFeedToDisk:feed withName:[feed.info objectForKey:@"id"] extension:extension];
 }
@@ -583,6 +603,9 @@ NSString * createUUID() {
         NSLog(@"Error saving feed to device. %@", error);
     }
 }
+
+
+// loading
 
 + (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension {
     NSMutableArray *feeds = [[NSMutableArray alloc] initWithCapacity:10];

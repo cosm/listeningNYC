@@ -33,12 +33,22 @@
 #pragma mark - Cell Delegate
 
 - (void)cellWantsDeletion:(RecordingCell*)cell {
-    NSLog(@"@stub: HistoryViewController::cellWantsDeletion:");
     NSIndexPath *path = [NSIndexPath indexPathForRow:[self.feeds indexOfObject:cell.feed] inSection:0];
-    [self.feeds removeObjectAtIndex:path.row];    
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    
+    // try to find the feed in synced
+    COSMFeedModel *feedToDelete = [self.feeds objectAtIndex:path.row];
+    if (feedToDelete) {
+        [self.feeds removeObjectAtIndex:path.row];
+        
+        if ([self.feeds count] + [self.unsyncedFeeds count] == 1) {
+            [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
+        } else {
+            [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
+            [self.tableView beginUpdates];
+            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView endUpdates];
+        }
+    }
 }
 
 #pragma mark - Lifecycle

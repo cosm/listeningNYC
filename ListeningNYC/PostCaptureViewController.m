@@ -21,7 +21,7 @@
 - (void)modelDidSave:(COSMModel *)model {
     COSMFeedModel *feed = (COSMFeedModel *)model;
     //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
-    [Utils saveFeedToDisk:feed withExtension:@".recording"];
+    [Utils saveFeedToDisk:feed withExtension:@"recording"];
     [self.submittingViewController showSuccess];
 }
 

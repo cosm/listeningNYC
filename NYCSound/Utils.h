@@ -69,9 +69,14 @@
 + (NSString *)platformString;
 
 // COSM
+// deleting
++ (void)deleteFeedFromDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
++ (void)deleteFeedFromDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension;
+// saving
 + (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
 + (void)saveUnsyncedFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
 + (void)saveFeedToDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension;
+// loading
 + (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension;
 + (NSMutableArray *)loadFeedsFromDisk;
 + (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed;
