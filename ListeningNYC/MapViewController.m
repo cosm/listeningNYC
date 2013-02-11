@@ -83,9 +83,14 @@
 }
 
 - (void)featureClicked:(id)data {
+    NSString *feedIdString = [data valueForKeyPath:@"feed_id"];
+    if (!feedIdString) { return; }
+    
     if (!self.detailModalViewController) {
         self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
     }
+    NSLog(@"Data %@", data);
+    [self.detailModalViewController fetchFeedWithId:[feedIdString integerValue]];
     CGRect frame = detailModalViewController.view.frame;
     frame.origin.y = 0.0f;
     detailModalViewController.view.frame = frame;

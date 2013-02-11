@@ -2,7 +2,8 @@
 
 // COSM
 NSString *const kCOSM_API_KEY = @"Q6_-qsvMOJbrlZNz_0lmUW2mbGWSAKxkekxuRG5SaVRlOD0g";
-NSString *const kCOSM_API_URL = @"https://warm-sands-4383.herokuapp.com/v2/";
+NSString *const kCOSM_API_URL = @"https://warm-sands-4383.herokuapp.com/v2";
+//NSString *const kCOSM_API_URL = @"https://localhost:60000/v2";
 NSString *const kCOSM_FEED_TITLE_PREPEND = @"Listening NYC";
 NSString *const kCOSM_FEED_TAG_PREPEND = @"";
 NSString *const kCOSM_FEED_WEBSITE = @"www.cosm.com";

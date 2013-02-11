@@ -66,6 +66,7 @@
     self.circleBands.numberOfBands = 10;
     self.circleBands.drawMask = true;
     self.dateLabel.text = [Utils dataTimeOfRecording:self.feed];
+    [self.circleBands setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
