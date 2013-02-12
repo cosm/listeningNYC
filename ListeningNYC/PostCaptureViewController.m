@@ -131,9 +131,6 @@
         [likeDislike.info setValue:[NSString stringWithFormat:@"%f", self.slider.value] forKeyPath:@"current_value"];
         [self.cosmFeed.datastreamCollection.datastreams addObject:likeDislike];
         
-        NSLog(@"feed is %@",self.cosmFeed.info);
-        
-        
         // add the submit screen
         self.submittingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Submitting View Controller"];
         self.submittingViewController.view.autoresizingMask = UIViewAutoresizingNone;
@@ -141,11 +138,16 @@
         [self.submittingViewController showSubmitting];
         self.submittingViewController.delegate = self;
         [self.view addSubview:self.submittingViewController.view];
-
         
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
     }
+}
+
+- (IBAction)locate:(id)sender {
+    id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+    [self.mapWebViewController setMapIsTracking:YES];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
 }
 
 #pragma mark - UI

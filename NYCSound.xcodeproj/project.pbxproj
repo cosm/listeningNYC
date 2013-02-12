@@ -105,6 +105,10 @@
 		917ABC45165FA53D00643315 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		917ABC46165FA54000643315 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC41165FA50300643315 /* Utils.m */; };
 		917ABC4C165FACC300643315 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC4B165FACC200643315 /* LoadingViewController.m */; };
+		91831DBF16CA923B00CBC1D5 /* Locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBB16CA923B00CBC1D5 /* Locate.png */; };
+		91831DC016CA923B00CBC1D5 /* Locate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBC16CA923B00CBC1D5 /* Locate@2x.png */; };
+		91831DC116CA923B00CBC1D5 /* LocatePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBD16CA923B00CBC1D5 /* LocatePressed.png */; };
+		91831DC216CA923B00CBC1D5 /* LocatePressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBE16CA923B00CBC1D5 /* LocatePressed@2x.png */; };
 		918B268716A86F83009BD7A9 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 918B268616A86F82009BD7A9 /* Config.m */; };
 		9194268F16ADC93B0037C0AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9194268E16ADC93B0037C0AB /* README.md */; };
 		919AAA2B16524D5E00EB99D4 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */; };
@@ -538,6 +542,10 @@
 		917ABC47165FA88F00643315 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		917ABC4B165FACC200643315 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		9180A5E0167B73BE000E46AE /* ListeningNYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ListeningNYC.entitlements; sourceTree = "<group>"; };
+		91831DBB16CA923B00CBC1D5 /* Locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Locate.png; path = "Assets/Export Page 2/Locate.png"; sourceTree = SOURCE_ROOT; };
+		91831DBC16CA923B00CBC1D5 /* Locate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Locate@2x.png"; path = "Assets/Export Page 2/Locate@2x.png"; sourceTree = SOURCE_ROOT; };
+		91831DBD16CA923B00CBC1D5 /* LocatePressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LocatePressed.png; path = "Assets/Export Page 2/LocatePressed.png"; sourceTree = SOURCE_ROOT; };
+		91831DBE16CA923B00CBC1D5 /* LocatePressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LocatePressed@2x.png"; path = "Assets/Export Page 2/LocatePressed@2x.png"; sourceTree = SOURCE_ROOT; };
 		918B268516A86F81009BD7A9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		918B268616A86F82009BD7A9 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
 		9194268E16ADC93B0037C0AB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = Lib/COSM/README.md; sourceTree = SOURCE_ROOT; };
@@ -1497,6 +1505,10 @@
 		91E8F1A916A5AA90007F0A8D /* images */ = {
 			isa = PBXGroup;
 			children = (
+				91831DBB16CA923B00CBC1D5 /* Locate.png */,
+				91831DBC16CA923B00CBC1D5 /* Locate@2x.png */,
+				91831DBD16CA923B00CBC1D5 /* LocatePressed.png */,
+				91831DBE16CA923B00CBC1D5 /* LocatePressed@2x.png */,
 				9163818A16C12918002587AE /* CaptureSuccess.png */,
 				9163818B16C12918002587AE /* CaptureSuccess@2x.png */,
 				9163818C16C12918002587AE /* CaptureSuccessOk.png */,
@@ -2029,6 +2041,10 @@
 				9163819716C12918002587AE /* CaptureSuccessOkPressed@2x.png in Resources */,
 				9163819816C12918002587AE /* SubmittingSound.png in Resources */,
 				9163819916C12918002587AE /* SubmittingSound@2x.png in Resources */,
+				91831DBF16CA923B00CBC1D5 /* Locate.png in Resources */,
+				91831DC016CA923B00CBC1D5 /* Locate@2x.png in Resources */,
+				91831DC116CA923B00CBC1D5 /* LocatePressed.png in Resources */,
+				91831DC216CA923B00CBC1D5 /* LocatePressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

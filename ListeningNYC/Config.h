@@ -23,4 +23,7 @@ extern bool const kRADAR_USE_PEAKS;
 extern float const kCIRCLE_BANDS_HUE_MAX;
 extern float const kCIRCLE_BANDS_HUE_MIN;
 
+// Detail View
+extern int const kDETAIL_MODAL_MAP_ZOOM;
+
 

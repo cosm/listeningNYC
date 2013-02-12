@@ -23,3 +23,6 @@ bool const kRADAR_USE_PEAKS = NO;
 // Circle bands
 float const kCIRCLE_BANDS_HUE_MAX = -0.095324;
 float const kCIRCLE_BANDS_HUE_MIN = 0.449640;
+
+// Detail view
+int const kDETAIL_MODAL_MAP_ZOOM = 18;

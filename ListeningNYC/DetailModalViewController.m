@@ -27,7 +27,7 @@
     NSLog(@"Lat is %@", [self.feed valueForKeyPath:@"info.location.lat"]);
     NSLog(@"Lon is %@", [self.feed valueForKeyPath:@"info.location.lon"]);
     [self.mapWebViewController setMapLocation:location];
-    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:14]];
+    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM]];
     [self.mapWebViewController setMapDisplayLocationCircle:NO];
 }
 
@@ -56,7 +56,7 @@
     NSLog(@"Lat is %@", [self.feed valueForKeyPath:@"info.location.lat"]);
     NSLog(@"Lon is %@", [self.feed valueForKeyPath:@"info.location.lon"]);
     [self.mapWebViewController setMapLocation:location];
-    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:14]];
+    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM]];
     [self.mapWebViewController setMapDisplayLocationCircle:NO];
 }
 

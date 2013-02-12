@@ -690,6 +690,21 @@
                                     <action selector="cancel:" destination="eqG-JT-BL8" eventType="touchUpInside" id="g2q-AX-Ys2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="CUP-7v-tj3">
+                                <rect key="frame" x="256" y="394" width="42" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="Locate.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="LocatePressed.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="locate:" destination="eqG-JT-BL8" eventType="touchUpInside" id="mzv-sh-rkY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -904,6 +919,8 @@
         <image name="DetailModalBackground.png" width="320" height="421"/>
         <image name="FrequencyGuide.png" width="320" height="33"/>
         <image name="LikeDislikeBackground.png" width="251" height="51"/>
+        <image name="Locate.png" width="42" height="42"/>
+        <image name="LocatePressed.png" width="42" height="42"/>
         <image name="Map.png" width="32" height="32"/>
         <image name="MapLocate.png" width="32" height="32"/>
         <image name="MapLocatePressed.png" width="32" height="32"/>
@@ -1023,6 +1040,7 @@
             <relationships>
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="deleteTagsTouched:"/>
+                <relationship kind="action" name="locate:"/>
                 <relationship kind="action" name="submit:"/>
                 <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
                 <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
