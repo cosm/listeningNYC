@@ -261,7 +261,7 @@ struct Normalizing {
             [datastream.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
             [datastream.info setValue:@"dB" forKeyPath:@"unit.label"];
             [datastream.info setValue:tag forKeyPath:@"tags"];
-            [datastream.info setValue:[NSString stringWithFormat:@"%f", 3.0f] forKeyPath:@"current_value"];
+            [datastream.info setValue:[NSString stringWithFormat:@"%f", peak] forKeyPath:@"current_value"];
             peak = -60.0f;
             [feedModel.datastreamCollection.datastreams addObject:datastream];
         }

@@ -123,12 +123,8 @@
             [NSString stringWithFormat:@"App:Device=%@", [Utils platformString]],
             [NSString stringWithFormat:@"Created:Date=%@", [dateFormatter stringFromDate:[NSDate date]]]
         ];
-        [self.cosmFeed.info setObject:machineTags forKey:@"tags"];
-        
-        COSMDatastreamModel *description = [[COSMDatastreamModel alloc] init];
-        [description.info setValue:@"Description" forKeyPath:@"id"];
-        [description.info setObject:self.tags forKey:@"tags"];
-        [self.cosmFeed.datastreamCollection.datastreams addObject:description];
+        [self.tags addObjectsFromArray:machineTags];
+        [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
         
         COSMDatastreamModel *likeDislike = [[COSMDatastreamModel alloc] init];
         [likeDislike.info setValue:@"LikeDislike" forKeyPath:@"id"];

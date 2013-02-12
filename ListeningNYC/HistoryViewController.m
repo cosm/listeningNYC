@@ -40,8 +40,9 @@
     if (feedToDelete) {
         [self.feeds removeObjectAtIndex:path.row];
         
-        if ([self.feeds count] + [self.unsyncedFeeds count] == 1) {
+        if ([self.feeds count] + [self.unsyncedFeeds count] == 0) {
             [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
+            [self.tableView reloadData];
         } else {
             [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
             [self.tableView beginUpdates];
@@ -154,6 +155,7 @@
         NSLog(@"creating a no samples cell");
         returnCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierNoSamples];
     }
+    returnCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return returnCell;
 }
 
@@ -202,11 +204,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
-    self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
-    [self.view.superview.superview addSubview:detailModalViewController.view];
-    [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
-    [self.detailModalViewController viewWillAppear:NO];
+    if ([self.feeds count] > 0 || [self.unsyncedFeeds count] > 0) {
+        self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
+        if (indexPath.section == 0) {
+            self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
+        } else {
+            self.detailModalViewController.feed = [self.unsyncedFeeds objectAtIndex:indexPath.row];
+        }
+        [self.view.superview.superview addSubview:detailModalViewController.view];
+        [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
+        [self.detailModalViewController viewWillAppear:NO];
+    }
 }
 
 @end
