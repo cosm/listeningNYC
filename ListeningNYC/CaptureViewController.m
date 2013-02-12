@@ -165,6 +165,8 @@
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Capture View Controller, view will appear");
+    
     self.radarContainerView.alpha = 1.0f;
     self.dBContainerView.alpha = 1.0f;
 
@@ -234,6 +236,8 @@
         [self.soundAnalyser start];
         self.radarViewController.datasource = self.soundAnalyser;
         [self.radarViewController viewWillAppear:NO];
+        [self.radarViewController reset];
+        [self.radarViewController start];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kapplicationWillResignActive object:nil queue:nil usingBlock:^(NSNotification *note) {

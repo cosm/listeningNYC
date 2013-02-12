@@ -177,10 +177,8 @@
 		91AB209D16A5B80E00D7CBF4 /* DeleteButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202C16A5B80E00D7CBF4 /* DeleteButtonPressed@2x.png */; };
 		91AB209E16A5B80E00D7CBF4 /* DetailModalBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202D16A5B80E00D7CBF4 /* DetailModalBackground.png */; };
 		91AB209F16A5B80E00D7CBF4 /* DetailModalBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202E16A5B80E00D7CBF4 /* DetailModalBackground@2x.png */; };
-		91AB20A016A5B80E00D7CBF4 /* footer.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB202F16A5B80E00D7CBF4 /* footer.png */; };
 		91AB20A116A5B80E00D7CBF4 /* FrequencyGuide.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203016A5B80E00D7CBF4 /* FrequencyGuide.png */; };
 		91AB20A216A5B80E00D7CBF4 /* FrequencyGuide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203116A5B80E00D7CBF4 /* FrequencyGuide@2x.png */; };
-		91AB20A316A5B80E00D7CBF4 /* h1.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203216A5B80E00D7CBF4 /* h1.png */; };
 		91AB20A416A5B80E00D7CBF4 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203316A5B80E00D7CBF4 /* Map.png */; };
 		91AB20A516A5B80E00D7CBF4 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203416A5B80E00D7CBF4 /* Map@2x.png */; };
 		91AB20A616A5B80E00D7CBF4 /* MapLocate.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB203516A5B80E00D7CBF4 /* MapLocate.png */; };
@@ -618,10 +616,8 @@
 		91AB202C16A5B80E00D7CBF4 /* DeleteButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DeleteButtonPressed@2x.png"; path = "Assets/Export/DeleteButtonPressed@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB202D16A5B80E00D7CBF4 /* DetailModalBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailModalBackground.png; path = Assets/Export/DetailModalBackground.png; sourceTree = SOURCE_ROOT; };
 		91AB202E16A5B80E00D7CBF4 /* DetailModalBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DetailModalBackground@2x.png"; path = "Assets/Export/DetailModalBackground@2x.png"; sourceTree = SOURCE_ROOT; };
-		91AB202F16A5B80E00D7CBF4 /* footer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = footer.png; path = Assets/Export/footer.png; sourceTree = SOURCE_ROOT; };
 		91AB203016A5B80E00D7CBF4 /* FrequencyGuide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FrequencyGuide.png; path = Assets/Export/FrequencyGuide.png; sourceTree = SOURCE_ROOT; };
 		91AB203116A5B80E00D7CBF4 /* FrequencyGuide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "FrequencyGuide@2x.png"; path = "Assets/Export/FrequencyGuide@2x.png"; sourceTree = SOURCE_ROOT; };
-		91AB203216A5B80E00D7CBF4 /* h1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = h1.png; path = Assets/Export/h1.png; sourceTree = SOURCE_ROOT; };
 		91AB203316A5B80E00D7CBF4 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Map.png; path = Assets/Export/Map.png; sourceTree = SOURCE_ROOT; };
 		91AB203416A5B80E00D7CBF4 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Map@2x.png"; path = "Assets/Export/Map@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB203516A5B80E00D7CBF4 /* MapLocate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MapLocate.png; path = Assets/Export/MapLocate.png; sourceTree = SOURCE_ROOT; };
@@ -1564,10 +1560,8 @@
 				91AB202C16A5B80E00D7CBF4 /* DeleteButtonPressed@2x.png */,
 				91AB202D16A5B80E00D7CBF4 /* DetailModalBackground.png */,
 				91AB202E16A5B80E00D7CBF4 /* DetailModalBackground@2x.png */,
-				91AB202F16A5B80E00D7CBF4 /* footer.png */,
 				91AB203016A5B80E00D7CBF4 /* FrequencyGuide.png */,
 				91AB203116A5B80E00D7CBF4 /* FrequencyGuide@2x.png */,
-				91AB203216A5B80E00D7CBF4 /* h1.png */,
 				916CB37A16B14D3E0083F47C /* LikeDislikeBackground.png */,
 				916CB37B16B14D3E0083F47C /* LikeDislikeBackground@2x.png */,
 				91AB203316A5B80E00D7CBF4 /* Map.png */,
@@ -1940,10 +1934,8 @@
 				91AB209D16A5B80E00D7CBF4 /* DeleteButtonPressed@2x.png in Resources */,
 				91AB209E16A5B80E00D7CBF4 /* DetailModalBackground.png in Resources */,
 				91AB209F16A5B80E00D7CBF4 /* DetailModalBackground@2x.png in Resources */,
-				91AB20A016A5B80E00D7CBF4 /* footer.png in Resources */,
 				91AB20A116A5B80E00D7CBF4 /* FrequencyGuide.png in Resources */,
 				91AB20A216A5B80E00D7CBF4 /* FrequencyGuide@2x.png in Resources */,
-				91AB20A316A5B80E00D7CBF4 /* h1.png in Resources */,
 				91AB20A416A5B80E00D7CBF4 /* Map.png in Resources */,
 				91AB20A516A5B80E00D7CBF4 /* Map@2x.png in Resources */,
 				91AB20A616A5B80E00D7CBF4 /* MapLocate.png in Resources */,

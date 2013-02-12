@@ -74,12 +74,12 @@
 }
 
 - (void)swipedLeft:(id)sender {
-    self.deleteButton.hidden = NO;
+    self.deleteButton.hidden = !self.deleteButton.hidden;
 }
 
 
 - (void)swipedRight:(id)sender {
-    self.deleteButton.hidden = YES;
+    self.deleteButton.hidden = !self.deleteButton.hidden;
 }
 
 #pragma mark - Life cycle
