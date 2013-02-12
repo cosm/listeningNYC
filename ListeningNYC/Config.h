@@ -12,6 +12,7 @@ extern NSString *const kCOSM_FEED_VERSION_FORMAT;
 extern bool const kRADAR_SHOW_DEBUG_UI;
 extern double const kRECORD_FOR;
 extern double const kRECORD_COUNTDOWN_FOR;
+extern bool const kSTORE_UNSYNCED;
 
 // Radar
 extern float const kMAX_DB_FOR_FULL_ALPHA;

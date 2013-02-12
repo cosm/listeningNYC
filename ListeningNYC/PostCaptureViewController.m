@@ -20,7 +20,6 @@
 
 - (void)modelDidSave:(COSMModel *)model {
     COSMFeedModel *feed = (COSMFeedModel *)model;
-    //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
     [Utils saveFeedToDisk:feed withExtension:@"recording"];
     [self.submittingViewController showSuccess];
 }
@@ -37,8 +36,12 @@
     self.submittingViewController = nil;
     
     if (error.code == -1009) {
-        [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
-        [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
+        if (kSTORE_UNSYNCED) {
+            [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
+            [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
+        } else {
+            [Utils alert:@"No Internet Connection" message:@"Your recording was not saved"];
+        }
     } else {
         [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
     }
@@ -99,7 +102,7 @@
     if (!self.cosmFeed.delegate) {
         
         // Default data
-        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@", kCOSM_FEED_TITLE_PREPEND] forKey:@"title"];
+        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@ %@", kCOSM_FEED_TITLE_PREPEND, [Utils describeArray:self.tags]] forKey:@"title"];
         [self.cosmFeed.info setObject:kCOSM_FEED_WEBSITE forKey:@"website"];
         [self.cosmFeed.info setObject:[Utils versionString] forKey:@"version"];
         NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
