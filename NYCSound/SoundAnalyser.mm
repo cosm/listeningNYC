@@ -63,6 +63,7 @@ struct Normalizing {
     Normalizing<float> *nomalized;
     BOOL shouldResetMetering;
     NSInteger averages;
+    BOOL hasAddedNormailzed;
 }
 
 - (void)resetPeakLevels;
@@ -110,6 +111,7 @@ struct Normalizing {
     fft->setup(fftSize, windowSize, 256);
     oct->setup(samplingRate, fftSize/2, averages);
     nomalized = new Normalizing<float>[oct->nAverages];
+    hasAddedNormailzed = NO;
     shouldResetMetering = NO;
 
 }
@@ -146,6 +148,7 @@ struct Normalizing {
     
         /// add fft & octave analyser
         for (int i=0; i < numFrames; i+=numChannels) {
+            // bug here
             fft->process(incomingAudio[i]);
         }
         fft->magsToDB();
@@ -193,6 +196,8 @@ struct Normalizing {
                 peakLevels.cWeightedDB = peakLevels.cWeightedDB * 0.999f;
             }
         }
+        
+        hasAddedNormailzed = YES;
         
     }];
 }
@@ -316,15 +321,14 @@ struct Normalizing {
     int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
     
     if (index < 0) return 0.0f;
+    
+    if (!hasAddedNormailzed) return 0.0f;
  
     if (isAll) {
         return [Utils mapDbToAlpha:nomalized[index].getAverage()];
     } else {
         return [Utils mapDbToAlpha:nomalized[index].currentValue];
     }
-    //return (index<0) ? 0.0f : [Utils mapDBtoAlpha:((isAll) ? nomalized[index].max : nomalized[index].currentValue)];
-    //debug return (RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages)<0) ? 0.0f : 1.0;
-    //return (number % 2 == 0);
 }
 
 #pragma mark - DB Levels

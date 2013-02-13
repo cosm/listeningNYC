@@ -2,6 +2,7 @@
 #import "DetailModalViewController.h"
 #import "Utils.h"
 #import "COSM.h"
+#import "DeleteingViewController.h"
 
 @interface HistoryViewController ()
 
@@ -9,7 +10,50 @@
 
 @implementation HistoryViewController
 
-#pragma mark - 
+#pragma mark - Cosm delegate
+
+-(void)modelDidDeleteFromCOSM:(COSMModel *)model {
+    [self.deletingViewController.view removeFromSuperview];
+    self.deletingViewController = nil;  
+    
+    unsigned int index = [self.feeds indexOfObject:model];
+    if (index == NSNotFound) {
+        NSLog(@"failed to find the model in the list of feeds");
+        return;
+    }
+    
+    [self.feeds removeObjectAtIndex:index];
+    
+    if ([self.feeds count] + [self.unsyncedFeeds count] == 0) {
+        [Utils deleteFeedFromDisk:(COSMFeedModel *)model withExtension:@"recording"];
+        [self.tableView reloadData];
+    } else {
+        [Utils deleteFeedFromDisk:(COSMFeedModel *)model withExtension:@"recording"];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+}
+
+- (void)modelFailedToDeleteFromCOSM:(COSMModel *)model withError:(NSError *)error json:(id)JSON {
+    NSLog(@"feed failed to delete from COSM");
+    NSLog(@"error is %@", error);
+    [self.deletingViewController.view removeFromSuperview];
+    self.deletingViewController = nil;
+    
+    if (error.code == -1009) {
+        [Utils alert:@"No Internet Connection" message:@"Your recording could not be deleted"];
+    } else {
+        [Utils alertUsingJSON:JSON orTitle:@"Failed to deleted recording." message:@"Something went wrong."];
+    }
+    model.delegate = nil;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+}
 
 #pragma mark - Data
 
@@ -40,17 +84,19 @@
     // try to find the feed in synced
     COSMFeedModel *feedToDelete = [self.feeds objectAtIndex:path.row];
     if (feedToDelete) {
-        [self.feeds removeObjectAtIndex:path.row];
         
-        if ([self.feeds count] + [self.unsyncedFeeds count] == 0) {
-            [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
-            [self.tableView reloadData];
-        } else {
-            [Utils deleteFeedFromDisk:feedToDelete withExtension:@"recording"];
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView endUpdates];
-        }
+        
+        self.deletingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Deleteing View Controller"];
+        self.deletingViewController.view.autoresizingMask = UIViewAutoresizingNone;
+        self.deletingViewController.view.frame = [[UIScreen mainScreen] bounds];
+        [self.view addSubview:self.deletingViewController.view];
+        NSLog(@"%@", self.navigationController.tabBarController.tabBar);
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+        self.tableView.userInteractionEnabled = NO;
+        
+        
+        feedToDelete.delegate = self;
+        [feedToDelete deleteFromCOSM];
     }
 }
 

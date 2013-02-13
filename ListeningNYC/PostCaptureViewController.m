@@ -22,6 +22,7 @@
     COSMFeedModel *feed = (COSMFeedModel *)model;
     [Utils saveFeedToDisk:feed withExtension:@"recording"];
     [self.submittingViewController showSuccess];
+    self.navigationController.tabBarController.tabBar.userInteractionEnabled = YES;
 }
 
 - (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON {
@@ -47,6 +48,7 @@
     }
     //[self.navigationController popViewControllerAnimated:YES];
     self.cosmFeed.delegate = nil;
+    self.navigationController.tabBarController.tabBar.userInteractionEnabled = YES;
 }
 
 #pragma mark - Notifcations
@@ -144,6 +146,7 @@
         
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
+        self.navigationController.tabBarController.tabBar.userInteractionEnabled = NO;
     }
 }
 
