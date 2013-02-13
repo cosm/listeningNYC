@@ -10,19 +10,32 @@ struct Normalizing {
     Normalizing() {
         min = std::numeric_limits<T>::max();
         max = std::numeric_limits<T>::min();
+        average = 0.0f;
+        count = 0;
     }
     T max;
     T min;
     T currentValue;
+    T average;
+    unsigned int count;
+    
     void set(T value) {
         if (value < min) { min = value; }
         if (value > max) { max = value; }
         currentValue = value;
+        average += value;
+        ++count;
     }
+    
     float getNormalized () {
         float n = map(currentValue, min, max, 0.0f, 1.0f);
         return n;
     }
+    
+    float getAverage() {
+        return average / float(count);
+    }
+    
     T map(float input, T inputMin, T inputMax, float outputMin, float outputMax) {
         T output = ((input-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
         if (outputMax < outputMin) {
@@ -305,7 +318,7 @@ struct Normalizing {
     if (index < 0) return 0.0f;
     
     if (isAll) {
-        return [Utils mapDbToAlpha:nomalized[index].max];
+        return [Utils mapDbToAlpha:nomalized[index].getAverage()];
     } else {
         return [Utils mapDbToAlpha:nomalized[index].currentValue];
     }
