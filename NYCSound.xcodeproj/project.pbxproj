@@ -12,6 +12,8 @@
 		9103D8EE1675F6AB0014B3EF /* RecordingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9103D8ED1675F6AB0014B3EF /* RecordingCell.m */; };
 		9110A0DC1678C31300B7B0EE /* CircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DB1678C31300B7B0EE /* CircleBands.m */; };
 		9110A0E01678DFD300B7B0EE /* QuarterCircleBands.m in Sources */ = {isa = PBXBuildFile; fileRef = 9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */; };
+		911BBA8416CBE46E003CDBCA /* MeterTable.mm in Sources */ = {isa = PBXBuildFile; fileRef = 911BBA8216CBE46E003CDBCA /* MeterTable.mm */; };
+		911BBA8816CBE5D0003CDBCA /* MeterTableBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 911BBA8716CBE5D0003CDBCA /* MeterTableBridge.mm */; };
 		911C2428169C66BF00EE1E11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911C2427169C66BF00EE1E11 /* CoreLocation.framework */; };
 		9139E27F16B9294000F2E8CC /* AudioDescription.png in Resources */ = {isa = PBXBuildFile; fileRef = 9139E27D16B9294000F2E8CC /* AudioDescription.png */; };
 		9139E28016B9294000F2E8CC /* AudioDescription@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9139E27E16B9294000F2E8CC /* AudioDescription@2x.png */; };
@@ -457,6 +459,10 @@
 		9110A0DB1678C31300B7B0EE /* CircleBands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleBands.m; sourceTree = "<group>"; };
 		9110A0DE1678DFD300B7B0EE /* QuarterCircleBands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuarterCircleBands.h; sourceTree = "<group>"; };
 		9110A0DF1678DFD300B7B0EE /* QuarterCircleBands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuarterCircleBands.m; sourceTree = "<group>"; };
+		911BBA8216CBE46E003CDBCA /* MeterTable.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MeterTable.mm; sourceTree = "<group>"; };
+		911BBA8316CBE46E003CDBCA /* MeterTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterTable.h; sourceTree = "<group>"; };
+		911BBA8616CBE5D0003CDBCA /* MeterTableBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeterTableBridge.h; sourceTree = "<group>"; };
+		911BBA8716CBE5D0003CDBCA /* MeterTableBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MeterTableBridge.mm; sourceTree = "<group>"; };
 		911C2427169C66BF00EE1E11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9139E27D16B9294000F2E8CC /* AudioDescription.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AudioDescription.png; path = "Assets/Export Page 2/AudioDescription.png"; sourceTree = SOURCE_ROOT; };
 		9139E27E16B9294000F2E8CC /* AudioDescription@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AudioDescription@2x.png"; path = "Assets/Export Page 2/AudioDescription@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1055,6 +1061,10 @@
 				917ABC41165FA50300643315 /* Utils.m */,
 				917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */,
 				917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */,
+				911BBA8216CBE46E003CDBCA /* MeterTable.mm */,
+				911BBA8316CBE46E003CDBCA /* MeterTable.h */,
+				911BBA8616CBE5D0003CDBCA /* MeterTableBridge.h */,
+				911BBA8716CBE5D0003CDBCA /* MeterTableBridge.mm */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2297,6 +2307,8 @@
 				91AB215E16A7256000D7CBF4 /* UIImageView+AFNetworking.m in Sources */,
 				918B268716A86F83009BD7A9 /* Config.m in Sources */,
 				91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */,
+				911BBA8416CBE46E003CDBCA /* MeterTable.mm in Sources */,
+				911BBA8816CBE5D0003CDBCA /* MeterTableBridge.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

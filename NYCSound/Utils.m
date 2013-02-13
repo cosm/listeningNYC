@@ -3,6 +3,7 @@
 #import "LoadingViewController.h"
 #import "COSMFeedModel.h"
 #import "COSMDatastreamModel.h"
+#import "MeterTableBridge.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -660,6 +661,7 @@ NSString * createUUID() {
 
 + (float)mapDbToAlpha:(float)input {
     
+    return [MeterTableBridge valueForDB:input];
     float alpha = [Utils mapQuinticEaseOut:input inputMin:0.0f inputMax:kMAX_DB_FOR_FULL_ALPHA outputMin:0.0f outputMax:1.0f clamp:YES];
 //    static float min = 600000;
 //    static float max = -6000000;
