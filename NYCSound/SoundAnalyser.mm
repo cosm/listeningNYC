@@ -164,6 +164,7 @@ struct Normalizing {
         memcpy(cWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
         // apply a weigthed
         for (int i=0; i < 11; ++i) {
+            // Bug error throw here
             [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
         currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;

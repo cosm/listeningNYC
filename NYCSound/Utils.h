@@ -23,6 +23,8 @@
 + (void)flipChildUIImageViewsIn:(NSArray *)views whichExceed:(CGPoint)point;
 + (void)setY:(float)y to:(UIView *)view;
 + (void)setX:(float)y to:(UIView *)view;
++ (void)setWidth:(float)width to:(UIView *)view;
++ (void)setHeight:(float)height to:(UIView *)view;
 
 // Tags
 /// creates tag view and returns each tag view in a array.

@@ -142,6 +142,19 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     view.frame = frame;
 }
 
+
++ (void)setWidth:(float)width to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.size.width = width;
+    view.frame = frame;
+}
+
++ (void)setHeight:(float)height to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.size.height = height;
+    view.frame = frame;
+}
+
 #pragma mark - Tags
 
 + (NSMutableArray *)createTagViews:(NSArray *)tags {
@@ -297,7 +310,6 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     }];
     return returnTags;
 }
-
 
 #pragma mark - String
 

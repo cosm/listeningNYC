@@ -779,8 +779,9 @@
                     <navigationItem key="navigationItem" id="QO7-k6-fV1"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="bfd-Vd-gVg" id="XY4-DU-mo6"/>
-                        <outlet property="tableView" destination="CKv-ux-DKQ" id="MWC-XQ-Rj7"/>
+                        <outlet property="tableView" destination="CKv-ux-DKQ" id="e5Z-XY-JC9"/>
                         <outlet property="textfield" destination="1HW-X2-uja" id="cRe-av-7xF"/>
+                        <outlet property="view" destination="7sx-mO-Khd" id="0vY-Qc-Oyb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5i-cq-Wbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -951,6 +952,139 @@
         <image name="SubmitPressed.png" width="202" height="40"/>
         <image name="SubmittingSound.png" width="240" height="97"/>
     </resources>
+    <classes>
+        <class className="AboutViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AboutViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelFilterViewController:"/>
+                <relationship kind="outlet" name="guidTextField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="AddTagViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddTagViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="add:"/>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="textfield" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="circleBandHueMax:"/>
+                <relationship kind="action" name="circleBandHueMin:"/>
+                <relationship kind="action" name="decayForChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="delayForChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="startButtonPressed:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="countdownHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dBContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="debugContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="decayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="decaySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="delayForLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="delaySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="radarContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordingContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CircleBands" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CircleBands.h"/>
+        </class>
+        <class className="CountdownViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CountdownViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="okPressed:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="okButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="DetailModalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailModalViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dateTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dbLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="likeDislikeSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="mapContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="modalBackgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tagsContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="HistoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="filterChanged:"/>
+                <relationship kind="action" name="locatePressed:"/>
+                <relationship kind="action" name="toggleMapOptionsPressed:"/>
+                <relationship kind="outlet" name="webContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MapWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="PostCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="deleteTagsTouched:"/>
+                <relationship kind="action" name="locate:"/>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="tagsContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="QuarterCircleBands" superclassName="CircleBands">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuarterCircleBands.h"/>
+        </class>
+        <class className="RadarViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RadarViewController.h"/>
+        </class>
+        <class className="RecordingCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordingCell.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteRecording:"/>
+                <relationship kind="outlet" name="circleBands" candidateClass="CircleBands"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tagContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="RecordingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecordingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelRecordingPressed:"/>
+                <relationship kind="action" name="nextPressed:"/>
+                <relationship kind="outlet" name="audioDescriptionImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="progressImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SubmittingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SubmittingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="okPressed:"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submittingContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="successContainerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

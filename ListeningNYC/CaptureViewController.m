@@ -233,9 +233,6 @@
 	self.soundAnalyser = [[SoundAnalyser alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kApplicationDidBecomeActive object:nil queue:nil usingBlock:^(NSNotification *note) {
-        //[self.soundAnalyser start];
-        //self.radarViewController.datasource = self.soundAnalyser;
-        //[self.radarViewController viewWillAppear:NO];
         [self viewWillAppear:NO];
     }];
     
