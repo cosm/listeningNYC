@@ -10,20 +10,20 @@ struct Normalizing {
     Normalizing() {
         min = std::numeric_limits<T>::max();
         max = std::numeric_limits<T>::min();
-        average = 0.0f;
+        total = 0.0f;
         count = 0;
     }
     T max;
     T min;
     T currentValue;
-    T average;
+    T total;
     unsigned int count;
     
     void set(T value) {
         if (value < min) { min = value; }
         if (value > max) { max = value; }
         currentValue = value;
-        average += value;
+        total += value;
         ++count;
     }
     
@@ -33,7 +33,7 @@ struct Normalizing {
     }
     
     float getAverage() {
-        return average / float(count);
+        return total / float(count);
     }
     
     T map(float input, T inputMin, T inputMax, float outputMin, float outputMax) {
@@ -129,7 +129,6 @@ struct Normalizing {
             [self preformResetMetering];
             return;
         }
-        
         currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
         if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
         self.currentDb = currentLevels.flatDB;
@@ -219,10 +218,10 @@ struct Normalizing {
     float peak = -60.0f;
     for (int i=0; i<oct->nAverages; ++i) {
         // find the highest peak since reset
-        if (peak < nomalized[i].max) {
-            peak = nomalized[i].max;
+        if (peak < nomalized[i].getAverage()) {
+            peak = nomalized[i].getAverage();
         }
-        NSLog(@"bin %d, %.03f", i, nomalized[i].max);
+        NSLog(@"bin %d, %.03f", i, nomalized[i].getAverage());
         if (i % averages == 0) {
             // work out the lower frequency of this bin
             bin = bin * 2.0f;
@@ -316,7 +315,7 @@ struct Normalizing {
     int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
     
     if (index < 0) return 0.0f;
-    
+ 
     if (isAll) {
         return [Utils mapDbToAlpha:nomalized[index].getAverage()];
     } else {

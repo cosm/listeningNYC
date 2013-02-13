@@ -262,7 +262,7 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 + (NSMutableArray *)tags {
     static NSMutableArray *tags = nil;
     if (!tags) {
-        tags = [[NSMutableArray alloc] initWithArray:@[@"animals",@"architecture",@"art",@"asia",@"australia",@"autumn",@"baby",@"band",@"barcelona",@"beach",@"berlin",@"bike",@"bird",@"birds",@"birthday",@"black",@"blackandwhite",@"blue",@"bw",@"california",@"canada",@"canon",@"car",@"cat",@"chicago",@"china",@"christmas",@"church",@"city",@"clouds",@"color",@"concert",@"dance",@"day",@"de",@"dog",@"england",@"europe",@"fall",@"family",@"fashion",@"festival",@"film",@"florida",@"flower",@"flowers",@"food",@"football",@"france",@"friends",@"fun",@"garden",@"geotagged",@"germany",@"girl",@"graffiti",@"green",@"halloween",@"hawaii",@"holiday",@"house",@"india",@"instagramapp",@"iphone",@"iphoneography",@"island",@"italia",@"italy",@"japan",@"kids",@"la",@"lake",@"landscape",@"light",@"live",@"london",@"love",@"macro",@"me",@"mexico",@"model",@"museum",@"music",@"nature",@"new",@"newyork",@"newyorkcity",@"night",@"nikon",@"nyc",@"ocean",@"old",@"paris",@"park",@"party",@"people",@"photo",@"photography",@"photos",@"portrait",@"raw",@"red",@"river",@"rock",@"san",@"sanfrancisco",@"scotland",@"sea",@"seattle",@"show",@"sky",@"snow",@"spain",@"spring",@"square",@"squareformat",@"street",@"summer",@"sun",@"sunset",@"taiwan",@"texas",@"thailand",@"tokyo",@"travel",@"tree",@"trees",@"trip",@"uk",@"unitedstates",@"urban",@"usa",@"vacation",@"vintage",@"washington",@"water",@"wedding",@"white",@"winter",@"woman",@"yellow",@"zoo" @""]];
+        tags = [[NSMutableArray alloc] initWithArray:@[@"ambulance",@"animals",@"annoying",@"baby",@"band",@"bar",@"bass",@"beach",@"bell chime",@"bike",@"birds",@"busy",@"calm",@"car",@"cat",@"choir",@"christmas",@"church",@"city",@"commute",@"concert",@"construction",@"contrast",@"dance",@"dog",@"drum",@"drum & bass",@"electronic",@"festival",@"fighting",@"film",@"football",@"footstep",@"friends",@"fun",@"garden",@"girl",@"graffiti",@"gun shot",@"harley davidson",@"harmony",@"headache",@"home",@"house",@"invasive",@"kids",@"lake",@"lecture",@"light",@"live",@"lorry",@"loud",@"lunch",@"meeting",@"moan",@"mumbling",@"museum",@"music",@"musical",@"nature",@"noisy",@"nuisance",@"office",@"parade",@"party",@"people",@"piercing",@"pop",@"protest",@"pub",@"quiet",@"rain",@"restaurant",@"rock",@"screaming",@"sea",@"shouting",@"show",@"silent",@"siren",@"spring",@"square",@"storm",@"street",@"subway",@"summer",@"traffic",@"train",@"travel",@"trees",@"trip",@"trock",@"truck",@"vacation",@"van",@"whistle",@"windy",@"winter",@"woman",@"work"]];
     }
     return tags;
 }
@@ -660,23 +660,7 @@ NSString * createUUID() {
 }
 
 + (float)mapDbToAlpha:(float)input {
-    
     return [MeterTableBridge valueForDB:input];
-    float alpha = [Utils mapQuinticEaseOut:input inputMin:0.0f inputMax:kMAX_DB_FOR_FULL_ALPHA outputMin:0.0f outputMax:1.0f clamp:YES];
-//    static float min = 600000;
-//    static float max = -6000000;
-//    if (input < min) {
-//        NSLog(@"new min db %.04f", min);
-//        min = input;
-//        NSLog(@"will return %0.04f", alpha);
-//    }
-//    
-//    if (input > max) {
-//        NSLog(@"new max db %.04f", max);
-//        max = input;
-//        NSLog(@"will return %0.04f", alpha);
-//    }
-    return alpha;
 }
 
 + (float)valueForBand:(int)index in:(COSMFeedModel*)feed {

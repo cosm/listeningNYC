@@ -10,15 +10,15 @@ NSString *const kCOSM_FEED_WEBSITE = @"www.cosm.com";
 NSString *const kCOSM_FEED_VERSION_FORMAT = @"%@ (build %@, iPhone)";
 
 // Recording
-bool const kRADAR_SHOW_DEBUG_UI = NO;
 double const kRECORD_FOR = 10.0f;
 double const kRECORD_COUNTDOWN_FOR = 1.0;
 bool const kSTORE_UNSYNCED = NO; // experimental
 
 // Radar
+bool const kRADAR_SHOW_DEBUG_UI = NO;
 float const kMAX_DB_FOR_FULL_ALPHA = 2.0f;
-float const kRADAR_DECAY_RATE = 0.993;
-unsigned int const kRADAR_DELAY_FOR = 107;
+float const kRADAR_DECAY_RATE = 0.992;
+unsigned int const kRADAR_DELAY_FOR = 10;
 bool const kRADAR_USE_PEAKS = NO;
 
 // Circle bands

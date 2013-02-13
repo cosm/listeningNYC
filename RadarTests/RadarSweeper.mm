@@ -150,7 +150,7 @@ void RadarScanline::setParticleHSVAColor(float h, float s, float v, float a, uns
 
 void RadarScanline::draw() {
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA_SATURATE, GL_ONE);
     // positions
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
@@ -178,7 +178,7 @@ void RadarScanline::rotate(float degrees, float x, float y, float z) {
 
 void RadarCurrentLine::draw() {
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
     // positions
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
