@@ -165,7 +165,6 @@
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"Capture View Controller, view will appear");
     
     self.radarContainerView.alpha = 1.0f;
     self.dBContainerView.alpha = 1.0f;
@@ -204,10 +203,8 @@
     [self.recordingContainerView setUserInteractionEnabled:NO];
     
     [self.dbLabelUpdateTimer invalidate];
-    NSLog(@"creating timer");
     NSTimeInterval updateRate = 0.f;
     self.dbLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:updateRate target:self selector:@selector(dbLabelUpdateTimerDidFire) userInfo:nil repeats:YES];
-    NSLog(@"%@", self.dbLabelUpdateTimer);
     self.shouldUpdateDbLabel = YES;
     
     // debug circles bands

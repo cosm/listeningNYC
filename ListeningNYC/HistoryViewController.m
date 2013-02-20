@@ -90,7 +90,6 @@
         self.deletingViewController.view.autoresizingMask = UIViewAutoresizingNone;
         self.deletingViewController.view.frame = [[UIScreen mainScreen] bounds];
         [self.view addSubview:self.deletingViewController.view];
-        NSLog(@"%@", self.navigationController.tabBarController.tabBar);
         self.tabBarController.tabBar.userInteractionEnabled = NO;
         self.tableView.userInteractionEnabled = NO;
         

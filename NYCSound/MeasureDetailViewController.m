@@ -94,7 +94,6 @@
 {
 #pragma warning - should be getting detailed information about the height of the keyboard
     CGRect rect =  [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //NSLog(@"%@", [[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey]);
     
     //Assign new frame to your view
     [self.view setFrame:CGRectMake(0,-127.0f,320,460)]; //here taken -20 for example i.e. your view will be scrolled to -20. change its value according to your requirement.

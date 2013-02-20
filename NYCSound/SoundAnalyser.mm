@@ -117,8 +117,6 @@ struct Normalizing {
 }
 
 - (void)start {
-    NSLog(@"Sound Analyers Start");
-    
     [self resetMetering];
     
     Novocaine *audioManager = [Novocaine audioManager];
