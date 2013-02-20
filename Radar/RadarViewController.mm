@@ -1,6 +1,9 @@
 #import "RadarViewController.h"
 #import "GLTool.h"
 #import "RadarSweeper.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#include "Utils.h"
 
 @interface RadarViewController () {
     RadarSweeper *radar;
@@ -133,12 +136,10 @@
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"RadarViewController viewWillAppear");
     self.paused = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    NSLog(@"RadarViewController viewWillDisappear");
     self.paused = YES;
     [self stop];
 }
@@ -150,7 +151,29 @@
     self.hasStarted = NO;
     self.shouldDecay = NO;
     
-    radar = new RadarSweeper(400, 40, 150.0f);
+    NSString *platform = [Utils platformStringRaw];
+    
+    NSUInteger radarFactitDesnsity = 450;
+
+    
+    if ([platform isEqualToString:@"iPhone1,1"])    radarFactitDesnsity =  50;
+    if ([platform isEqualToString:@"iPhone1,2"])    radarFactitDesnsity =  50;
+    if ([platform isEqualToString:@"iPhone2,1"])    radarFactitDesnsity =  50;
+    if ([platform isEqualToString:@"iPhone3,1"])    radarFactitDesnsity =  150;
+    if ([platform isEqualToString:@"iPhone3,3"])    radarFactitDesnsity =  200;
+    if ([platform isEqualToString:@"iPhone4,1"])    radarFactitDesnsity =  300;
+    if ([platform isEqualToString:@"iPhone5,1"])    radarFactitDesnsity =  400;
+    if ([platform isEqualToString:@"iPhone5,2"])    radarFactitDesnsity =  400;
+    if ([platform isEqualToString:@"iPod1,1"])      radarFactitDesnsity =  50;
+    if ([platform isEqualToString:@"iPod2,1"])      radarFactitDesnsity =  150;
+    if ([platform isEqualToString:@"iPod3,1"])      radarFactitDesnsity =  100;
+    if ([platform isEqualToString:@"iPod4,1"])      radarFactitDesnsity =  270;
+    if ([platform isEqualToString:@"i386"])         radarFactitDesnsity =  400;
+    if ([platform isEqualToString:@"x86_64"])       radarFactitDesnsity =  400;
+    
+    NSLog(@"Radar resoltion is set to %d for %@", radarFactitDesnsity, platform);
+    
+    radar = new RadarSweeper(radarFactitDesnsity, 40, 150.0f);
     radar->decayRate = kRADAR_DECAY_RATE;
     radar->delayDecayForNumberOfDraws = kRADAR_DELAY_FOR;
     radar->setHues(0.0f, 185.0f);
