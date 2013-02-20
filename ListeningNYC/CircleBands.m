@@ -2,7 +2,46 @@
 #import "Utils.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface CircleBands()
+@property (nonatomic, strong) NSString *saveAsPath;
+@end
+
 @implementation CircleBands
+
+#pragma mark - Image
+
+@synthesize saveAsPath;
+
+-(void)saveImageOnNextRender:(NSString *)path {
+    self.saveAsPath = path;
+}
+
+- (UIImage*)renderAsImage {
+    // Render the views layer contents into the current Graphics context
+    CGSize viewSize = self.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(viewSize, NO, 1.0);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    // Read the UIImage object
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (void)saveAsImage {
+    UIImage *image = [self renderAsImage];
+    NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(image)];
+    if (!self.saveAsPath) {
+        NSLog(@"CircleBands::saveAsImage something went wrong as the saveAsPath is no more");
+        return;
+    }
+    NSError *error;
+    [imageData writeToFile:self.saveAsPath options:NSDataWritingAtomic error:&error];
+    if (error) {
+        NSLog(@"Error saving image %@", error);
+    }
+    NSLog(@"saving the image");
+    self.saveAsPath = nil;
+}
 
 #pragma mark - Datasource
 
@@ -10,7 +49,7 @@
 
 #pragma mark - Customisation
 
-@synthesize circleDiameter, circleHoleDiameter, numberOfBands, hueScalarMin, hueScalarMax, drawMask;
+@synthesize isDisabled, circleDiameter, circleHoleDiameter, numberOfBands, hueScalarMin, hueScalarMax, drawMask;
 
 #pragma mark - Life Cycle
 
@@ -47,6 +86,8 @@
 
 - (void)drawRect:(CGRect)rect {
     
+    if (self.isDisabled) { return; }
+    
     self.layer.shouldRasterize = YES;
     
     CGRect imageBounds = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
@@ -66,7 +107,6 @@
     CGContextSaveGState(context);
     CGContextTranslateCTM(context, bounds.origin.x, bounds.origin.y);
     CGContextScaleCTM(context, (bounds.size.width / imageBounds.size.width), (bounds.size.height / imageBounds.size.height));
-    
     
     for (int i=0; i<self.numberOfBands; i++) {
         // Layer 1
@@ -135,7 +175,11 @@
     }
     
     CGContextRestoreGState(context);
-
+    
+    if (self.saveAsPath) {
+        // delaying this to be sure the current context has been updated
+        [self performSelector:@selector(saveAsImage) withObject:self afterDelay:0.01];
+    }
 }
 
 @end
