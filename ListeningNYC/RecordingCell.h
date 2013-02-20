@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property (nonatomic, weak) IBOutlet UIButton *deleteButton;
 @property (nonatomic, weak) IBOutlet CircleBands *circleBands;
+@property (nonatomic, weak) IBOutlet UIView *circleBandsContainer;
 - (IBAction)deleteRecording:(id)sender;
 
 // UI
@@ -29,5 +30,6 @@
 @property (nonatomic, strong) NSArray *tagViews;
 - (void)swipedLeft:(id)sender;
 - (void)swipedRight:(id)sender;
+@property (nonatomic, strong) UIImageView *cachedCircleBandsImageView;
 
 @end

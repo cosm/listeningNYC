@@ -31,7 +31,9 @@
 #pragma mark - Map Controls
 
 - (void)setMapLocation:(CLLocation *)location {
-    [self setMapLocation:location zoomLevel:13.0f];
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.updateUserPosition(%f, %f)", location.coordinate.latitude, location.coordinate.longitude];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+
 }
 
 - (void)setMapLocation:(CLLocation *)location zoomLevel:(float)zoom {
@@ -114,19 +116,19 @@
     }
     
     id log = [json objectForKey:@"log"];
-//    if (log) {
-//        if ([log isKindOfClass:[NSString class]]) {
-//            NSLog(@"Javascript Log: %@", log);
-//        } else if ([log isKindOfClass:[NSArray class]]) {
-//            NSMutableString *logOutput = [[NSMutableString alloc] init];
-//            [log enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//                [logOutput appendString:[NSString stringWithFormat:@"%@ ", obj]];
-//            }];
-//            NSLog(@"Javascript Log: %@", logOutput);
-//        } else {
-//            NSLog(@"Javascript Log: %@", log);
-//        }
-//    }
+    if (log) {
+        if ([log isKindOfClass:[NSString class]]) {
+            NSLog(@"Javascript Log: %@", log);
+        } else if ([log isKindOfClass:[NSArray class]]) {
+            NSMutableString *logOutput = [[NSMutableString alloc] init];
+            [log enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [logOutput appendString:[NSString stringWithFormat:@"%@ ", obj]];
+            }];
+            NSLog(@"Javascript Log: %@", logOutput);
+        } else {
+            NSLog(@"Javascript Log: %@", log);
+        }
+    }
     
     return NO;
 }

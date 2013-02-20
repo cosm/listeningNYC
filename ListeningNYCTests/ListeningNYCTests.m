@@ -49,7 +49,6 @@
                         @"Almost:tag",
                         @"COSM:GUID=123123-423432-25235432-234234"];
     NSMutableArray *withoutMachineTags = [Utils tagArrayWithoutMachineTags:tags];
-    NSLog(@"%@",withoutMachineTags);
     STAssertEquals([withoutMachineTags count], 4u, @"Utils tagArrayWithoutMachineTags:");
 }
 

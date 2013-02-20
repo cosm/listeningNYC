@@ -52,7 +52,7 @@
     if (self.mapWebViewController.mapIsReady) {
         [self.mapWebViewController setMapIsTracking:YES];
         id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-        [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:15.0f];
+        [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
     }
 }
 

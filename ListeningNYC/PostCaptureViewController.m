@@ -74,13 +74,13 @@
 
 - (void)mapDidLoad {
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:16.0f];
 }
 
 #pragma mark - Circle Bands Datasource
 
 - (float)alphaForBand:(int)bandIndex of:(int)totalBands {
-    return [Utils valueForBand:bandIndex in:self.cosmFeed];
+    return [Utils alphaForBand:bandIndex in:self.cosmFeed];
 }
 
 #pragma mark - IB

@@ -72,7 +72,7 @@
 
 - (float)alphaForBand:(int)bandIndex of:(int)totalBands {
     if (!self.feed) { return 0.0f; }
-    return [Utils valueForBand:bandIndex in:self.feed];
+    return [Utils alphaForBand:bandIndex in:self.feed];
 }
 
 #pragma mark - Life cycle

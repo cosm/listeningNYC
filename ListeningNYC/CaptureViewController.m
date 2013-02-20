@@ -39,6 +39,7 @@
     self.shouldUpdateDbLabel = NO;
     self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f];
     [self updateCircleBands];
+    [self.recordingViewController setDescriptionUsingFeed:self.cosmFeed];
 }
 
 - (void)recordingViewControllerDidRequestNext {
@@ -128,7 +129,7 @@
 
 - (float)alphaForBand:(int)bandIndex of:(int)totalBands {
     //return [Utils randomFloatFrom:0.0f to:1.0f];
-    return [Utils valueForBand:bandIndex in:self.cosmFeed];
+    return [Utils alphaForBand:bandIndex in:self.cosmFeed];
 }
 
 - (void)updateCircleBands {
