@@ -27,4 +27,7 @@ extern float const kCIRCLE_BANDS_HUE_MIN;
 // Detail View
 extern int const kDETAIL_MODAL_MAP_ZOOM;
 
+// Description
+extern NSString *const kDESCRIPTION;
+
 

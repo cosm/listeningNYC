@@ -28,3 +28,6 @@ float const kCIRCLE_BANDS_HUE_MIN = 0.449640;
 
 // Detail view
 int const kDETAIL_MODAL_MAP_ZOOM = 18;
+
+// Description
+NSString *const kDESCRIPTION = @"{#FFFFFF|There was }{#F15A29|%@} {#FFFFFF|low frequency,} {#F15A29|%@} {#FFFFFF|mid-range and }{#F15A29|%@} {#FFFFFF|high frequency content in this sound capture, which was }{#F15A29|%@}";
