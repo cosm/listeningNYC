@@ -69,6 +69,7 @@
 + (NSString *)deviceGUID;
 + (NSString *)versionString;
 + (NSString *)platformString;
++ (NSString *)platformStringRaw;
 
 // COSM
 // deleting
@@ -83,9 +84,14 @@
 + (NSMutableArray *)loadFeedsFromDisk;
 + (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed;
 + (float)mapDbToAlpha:(float)input;
-+ (float)valueForBand:(int)index in:(COSMFeedModel*)feed;
++ (float)alphaForBand:(int)index in:(COSMFeedModel*)feed;
++ (float)dbForBand:(int)index in:(COSMFeedModel*)feed;
 + (NSString *)valueOfMachineTag:(NSString *)machineTag;
 + (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed;
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed;
++ (NSString *)historyCellImagePathForFeed:(COSMFeedModel *)feed;
+
+/// returns nil if there is no image stored
++ (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed;
 
 @end

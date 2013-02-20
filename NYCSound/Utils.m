@@ -520,6 +520,16 @@ NSString * createUUID() {
             [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 }
 
++ (NSString *)platformStringRaw {
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    free(machine);
+    return platform;
+}
+
 + (NSString *)platformString {
     // Gets a string with the device model
     // http://stackoverflow.com/a/13679404/179015
@@ -609,8 +619,8 @@ NSString * createUUID() {
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
         [feedData writeToFile:filepath atomically:YES];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
-            NSLog(@"filepath exists");
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
+//            NSLog(@"filepath exists");
     } else {
         [Utils alert:@"Error saving" message:@"Could not save recording to device"];
         NSLog(@"Error saving feed to device. %@", error);
@@ -675,22 +685,25 @@ NSString * createUUID() {
     return [MeterTableBridge valueForDB:input];
 }
 
-+ (float)valueForBand:(int)index in:(COSMFeedModel*)feed {
++ (float)alphaForBand:(int)index in:(COSMFeedModel*)feed {
+    return [Utils mapDbToAlpha:[Utils dbForBand:index in:feed]];
+}
+
++ (float)dbForBand:(int)index in:(COSMFeedModel*)feed {
     switch (index) {
-        case 9: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 8: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 7: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 6: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 5: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 4: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 3: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 2: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 1: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
-        case 0: return [Utils mapDbToAlpha:[[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]]; break;
+        case 9: return [[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 8: return [[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 7: return [[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 6: return [[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 5: return [[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 4: return [[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 3: return [[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 2: return [[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 1: return [[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 0: return [[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
         default: return 0.0f; break;
     }
 }
-
 
 + (NSString *)valueOfMachineTag:(NSString *)machineTag {
     // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
@@ -717,9 +730,32 @@ NSString * createUUID() {
 
 
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed {
-    //COSMDatastreamModel *descriptonDatastream = [Utils datastreamWithId:@"Description" in:feed];
-    NSLog(@"%@", [Utils describe:feed.info]);
     return [feed.info valueForKeyPath:@"tags"];
+}
+
++ (NSString *)historyCellImagePathForFeed:(COSMFeedModel *)feed {
+    NSString *filename = [NSString stringWithFormat:@"%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f",
+                          [Utils dbForBand:0 in:feed],
+                          [Utils dbForBand:1 in:feed],
+                          [Utils dbForBand:2 in:feed],
+                          [Utils dbForBand:3 in:feed],
+                          [Utils dbForBand:4 in:feed],
+                          [Utils dbForBand:5 in:feed],
+                          [Utils dbForBand:6 in:feed],
+                          [Utils dbForBand:7 in:feed],
+                          [Utils dbForBand:8 in:feed],
+                          [Utils dbForBand:9 in:feed]];
+    filename = [filename stringByReplacingOccurrencesOfString:@"." withString:@""];
+    filename = [NSString stringWithFormat:@"%@.png", filename];
+    
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    return filepath;
+}
+
++ (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed {
+    return [UIImage imageWithContentsOfFile:[Utils historyCellImagePathForFeed:feed]];
 }
 
 @end
