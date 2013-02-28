@@ -78,7 +78,7 @@
 
 - (void)mapDidLoad {
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:kMAP_SCREEN_INITAIL_ZOOM];
     [self.mapWebViewController setMapQueryType:@"all"];
 }
 

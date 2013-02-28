@@ -54,7 +54,8 @@
 }
 
 - (void)setMapZoom:(NSNumber *)level {
-    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.map.setZoom(%@)", [level stringValue]];
+    NSLog(@"seetting zoom");
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setZoom(%@)", [level stringValue]];
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 
