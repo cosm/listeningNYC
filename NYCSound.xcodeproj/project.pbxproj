@@ -114,11 +114,21 @@
 		91831DC116CA923B00CBC1D5 /* LocatePressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBD16CA923B00CBC1D5 /* LocatePressed.png */; };
 		91831DC216CA923B00CBC1D5 /* LocatePressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91831DBE16CA923B00CBC1D5 /* LocatePressed@2x.png */; };
 		918B268716A86F83009BD7A9 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 918B268616A86F82009BD7A9 /* Config.m */; };
+		918D6C2516DFB12500909170 /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C0E16DFB12500909170 /* COSMAPI.m */; };
+		918D6C2616DFB12500909170 /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1016DFB12500909170 /* COSMDatapointCollection.m */; };
+		918D6C2716DFB12500909170 /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1216DFB12500909170 /* COSMDatapointModel.m */; };
+		918D6C2816DFB12500909170 /* COSMDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1416DFB12500909170 /* COSMDatastreamCollection.m */; };
+		918D6C2916DFB12500909170 /* COSMDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1616DFB12500909170 /* COSMDatastreamModel.m */; };
+		918D6C2A16DFB12500909170 /* COSMFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1816DFB12500909170 /* COSMFeedCollection.m */; };
+		918D6C2B16DFB12500909170 /* COSMFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1B16DFB12500909170 /* COSMFeedModel.m */; };
+		918D6C2C16DFB12500909170 /* COSMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C1D16DFB12500909170 /* COSMModel.m */; };
+		918D6C2D16DFB12500909170 /* COSMRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C2016DFB12500909170 /* COSMRequestable.m */; };
+		918D6C2E16DFB12500909170 /* COSMSubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6C2216DFB12500909170 /* COSMSubscribable.m */; };
+		918D6C2F16DFB12500909170 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 918D6C2316DFB12500909170 /* README.md */; };
 		918F6A7916CC1FEC009F2DEC /* CustomUserTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 918F6A7816CC1FEC009F2DEC /* CustomUserTags.m */; };
 		918F6A7C16CC3972009F2DEC /* DeleteingSound.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F6A7A16CC3972009F2DEC /* DeleteingSound.png */; };
 		918F6A7D16CC3972009F2DEC /* DeleteingSound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 918F6A7B16CC3972009F2DEC /* DeleteingSound@2x.png */; };
 		918F6A8016CC39C5009F2DEC /* DeleteingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 918F6A7F16CC39C4009F2DEC /* DeleteingViewController.m */; };
-		9194268F16ADC93B0037C0AB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9194268E16ADC93B0037C0AB /* README.md */; };
 		919AAA2B16524D5E00EB99D4 /* MeasureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */; };
 		919AAA2F1652534E00EB99D4 /* MeasureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919AAA2E1652534E00EB99D4 /* MeasureDetailViewController.m */; };
 		919BD0BC166E34EB00478838 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
@@ -262,15 +272,6 @@
 		91AB211C16A6E82000D7CBF4 /* RecordingRightIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB210C16A6E82000D7CBF4 /* RecordingRightIcon@2x.png */; };
 		91AB211D16A6E82000D7CBF4 /* RecordingText.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB210D16A6E82000D7CBF4 /* RecordingText.png */; };
 		91AB211E16A6E82000D7CBF4 /* RecordingText@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91AB210E16A6E82000D7CBF4 /* RecordingText@2x.png */; };
-		91AB213516A71BE100D7CBF4 /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212216A71BE100D7CBF4 /* COSMAPI.m */; };
-		91AB213616A71BE100D7CBF4 /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212416A71BE100D7CBF4 /* COSMDatapointCollection.m */; };
-		91AB213716A71BE100D7CBF4 /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212616A71BE100D7CBF4 /* COSMDatapointModel.m */; };
-		91AB213816A71BE100D7CBF4 /* COSMDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212816A71BE100D7CBF4 /* COSMDatastreamCollection.m */; };
-		91AB213916A71BE100D7CBF4 /* COSMDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212A16A71BE100D7CBF4 /* COSMDatastreamModel.m */; };
-		91AB213A16A71BE100D7CBF4 /* COSMFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212C16A71BE100D7CBF4 /* COSMFeedCollection.m */; };
-		91AB213B16A71BE100D7CBF4 /* COSMFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB212F16A71BE100D7CBF4 /* COSMFeedModel.m */; };
-		91AB213C16A71BE100D7CBF4 /* COSMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB213116A71BE100D7CBF4 /* COSMModel.m */; };
-		91AB213D16A71BE100D7CBF4 /* COSMRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB213416A71BE100D7CBF4 /* COSMRequestable.m */; };
 		91AB215616A7256000D7CBF4 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB214416A7256000D7CBF4 /* AFHTTPClient.m */; };
 		91AB215716A7256000D7CBF4 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB214616A7256000D7CBF4 /* AFHTTPRequestOperation.m */; };
 		91AB215816A7256000D7CBF4 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB214816A7256000D7CBF4 /* AFImageRequestOperation.m */; };
@@ -559,13 +560,36 @@
 		91831DBE16CA923B00CBC1D5 /* LocatePressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LocatePressed@2x.png"; path = "Assets/Export Page 2/LocatePressed@2x.png"; sourceTree = SOURCE_ROOT; };
 		918B268516A86F81009BD7A9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		918B268616A86F82009BD7A9 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
+		918D6C0C16DFB12500909170 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSM.h; sourceTree = "<group>"; };
+		918D6C0D16DFB12500909170 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMAPI.h; sourceTree = "<group>"; };
+		918D6C0E16DFB12500909170 /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMAPI.m; sourceTree = "<group>"; };
+		918D6C0F16DFB12500909170 /* COSMDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointCollection.h; sourceTree = "<group>"; };
+		918D6C1016DFB12500909170 /* COSMDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatapointCollection.m; sourceTree = "<group>"; };
+		918D6C1116DFB12500909170 /* COSMDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointModel.h; sourceTree = "<group>"; };
+		918D6C1216DFB12500909170 /* COSMDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatapointModel.m; sourceTree = "<group>"; };
+		918D6C1316DFB12500909170 /* COSMDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatastreamCollection.h; sourceTree = "<group>"; };
+		918D6C1416DFB12500909170 /* COSMDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatastreamCollection.m; sourceTree = "<group>"; };
+		918D6C1516DFB12500909170 /* COSMDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatastreamModel.h; sourceTree = "<group>"; };
+		918D6C1616DFB12500909170 /* COSMDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatastreamModel.m; sourceTree = "<group>"; };
+		918D6C1716DFB12500909170 /* COSMFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedCollection.h; sourceTree = "<group>"; };
+		918D6C1816DFB12500909170 /* COSMFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMFeedCollection.m; sourceTree = "<group>"; };
+		918D6C1916DFB12500909170 /* COSMFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedCollectionDelegate.h; sourceTree = "<group>"; };
+		918D6C1A16DFB12500909170 /* COSMFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedModel.h; sourceTree = "<group>"; };
+		918D6C1B16DFB12500909170 /* COSMFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMFeedModel.m; sourceTree = "<group>"; };
+		918D6C1C16DFB12500909170 /* COSMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMModel.h; sourceTree = "<group>"; };
+		918D6C1D16DFB12500909170 /* COSMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMModel.m; sourceTree = "<group>"; };
+		918D6C1E16DFB12500909170 /* COSMModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMModelDelegate.h; sourceTree = "<group>"; };
+		918D6C1F16DFB12500909170 /* COSMRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMRequestable.h; sourceTree = "<group>"; };
+		918D6C2016DFB12500909170 /* COSMRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMRequestable.m; sourceTree = "<group>"; };
+		918D6C2116DFB12500909170 /* COSMSubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMSubscribable.h; sourceTree = "<group>"; };
+		918D6C2216DFB12500909170 /* COSMSubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMSubscribable.m; sourceTree = "<group>"; };
+		918D6C2316DFB12500909170 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		918F6A7716CC1FEB009F2DEC /* CustomUserTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUserTags.h; sourceTree = "<group>"; };
 		918F6A7816CC1FEC009F2DEC /* CustomUserTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUserTags.m; sourceTree = "<group>"; };
 		918F6A7A16CC3972009F2DEC /* DeleteingSound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DeleteingSound.png; path = "Assets/Export Page 2/DeleteingSound.png"; sourceTree = SOURCE_ROOT; };
 		918F6A7B16CC3972009F2DEC /* DeleteingSound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DeleteingSound@2x.png"; path = "Assets/Export Page 2/DeleteingSound@2x.png"; sourceTree = SOURCE_ROOT; };
 		918F6A7E16CC39C4009F2DEC /* DeleteingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteingViewController.h; sourceTree = "<group>"; };
 		918F6A7F16CC39C4009F2DEC /* DeleteingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteingViewController.m; sourceTree = "<group>"; };
-		9194268E16ADC93B0037C0AB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = Lib/COSM/README.md; sourceTree = SOURCE_ROOT; };
 		919AAA2916524D5E00EB99D4 /* MeasureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureViewController.h; sourceTree = "<group>"; };
 		919AAA2A16524D5E00EB99D4 /* MeasureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasureViewController.m; sourceTree = "<group>"; };
 		919AAA2D1652534E00EB99D4 /* MeasureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureDetailViewController.h; sourceTree = "<group>"; };
@@ -716,27 +740,6 @@
 		91AB210C16A6E82000D7CBF4 /* RecordingRightIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RecordingRightIcon@2x.png"; path = "Assets/Export Page 2/RecordingRightIcon@2x.png"; sourceTree = SOURCE_ROOT; };
 		91AB210D16A6E82000D7CBF4 /* RecordingText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RecordingText.png; path = "Assets/Export Page 2/RecordingText.png"; sourceTree = SOURCE_ROOT; };
 		91AB210E16A6E82000D7CBF4 /* RecordingText@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RecordingText@2x.png"; path = "Assets/Export Page 2/RecordingText@2x.png"; sourceTree = SOURCE_ROOT; };
-		91AB212016A71BE100D7CBF4 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSM.h; path = Lib/COSM/COSM.h; sourceTree = SOURCE_ROOT; };
-		91AB212116A71BE100D7CBF4 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMAPI.h; path = Lib/COSM/COSMAPI.h; sourceTree = SOURCE_ROOT; };
-		91AB212216A71BE100D7CBF4 /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMAPI.m; path = Lib/COSM/COSMAPI.m; sourceTree = SOURCE_ROOT; };
-		91AB212316A71BE100D7CBF4 /* COSMDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatapointCollection.h; path = Lib/COSM/COSMDatapointCollection.h; sourceTree = SOURCE_ROOT; };
-		91AB212416A71BE100D7CBF4 /* COSMDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatapointCollection.m; path = Lib/COSM/COSMDatapointCollection.m; sourceTree = SOURCE_ROOT; };
-		91AB212516A71BE100D7CBF4 /* COSMDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatapointModel.h; path = Lib/COSM/COSMDatapointModel.h; sourceTree = SOURCE_ROOT; };
-		91AB212616A71BE100D7CBF4 /* COSMDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatapointModel.m; path = Lib/COSM/COSMDatapointModel.m; sourceTree = SOURCE_ROOT; };
-		91AB212716A71BE100D7CBF4 /* COSMDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatastreamCollection.h; path = Lib/COSM/COSMDatastreamCollection.h; sourceTree = SOURCE_ROOT; };
-		91AB212816A71BE100D7CBF4 /* COSMDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatastreamCollection.m; path = Lib/COSM/COSMDatastreamCollection.m; sourceTree = SOURCE_ROOT; };
-		91AB212916A71BE100D7CBF4 /* COSMDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatastreamModel.h; path = Lib/COSM/COSMDatastreamModel.h; sourceTree = SOURCE_ROOT; };
-		91AB212A16A71BE100D7CBF4 /* COSMDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatastreamModel.m; path = Lib/COSM/COSMDatastreamModel.m; sourceTree = SOURCE_ROOT; };
-		91AB212B16A71BE100D7CBF4 /* COSMFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedCollection.h; path = Lib/COSM/COSMFeedCollection.h; sourceTree = SOURCE_ROOT; };
-		91AB212C16A71BE100D7CBF4 /* COSMFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMFeedCollection.m; path = Lib/COSM/COSMFeedCollection.m; sourceTree = SOURCE_ROOT; };
-		91AB212D16A71BE100D7CBF4 /* COSMFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedCollectionDelegate.h; path = Lib/COSM/COSMFeedCollectionDelegate.h; sourceTree = SOURCE_ROOT; };
-		91AB212E16A71BE100D7CBF4 /* COSMFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedModel.h; path = Lib/COSM/COSMFeedModel.h; sourceTree = SOURCE_ROOT; };
-		91AB212F16A71BE100D7CBF4 /* COSMFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMFeedModel.m; path = Lib/COSM/COSMFeedModel.m; sourceTree = SOURCE_ROOT; };
-		91AB213016A71BE100D7CBF4 /* COSMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMModel.h; path = Lib/COSM/COSMModel.h; sourceTree = SOURCE_ROOT; };
-		91AB213116A71BE100D7CBF4 /* COSMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMModel.m; path = Lib/COSM/COSMModel.m; sourceTree = SOURCE_ROOT; };
-		91AB213216A71BE100D7CBF4 /* COSMModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMModelDelegate.h; path = Lib/COSM/COSMModelDelegate.h; sourceTree = SOURCE_ROOT; };
-		91AB213316A71BE100D7CBF4 /* COSMRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMRequestable.h; path = Lib/COSM/COSMRequestable.h; sourceTree = SOURCE_ROOT; };
-		91AB213416A71BE100D7CBF4 /* COSMRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMRequestable.m; path = Lib/COSM/COSMRequestable.m; sourceTree = SOURCE_ROOT; };
 		91AB214316A7256000D7CBF4 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = Lib/AFNetworking/AFNetworking/AFHTTPClient.h; sourceTree = SOURCE_ROOT; };
 		91AB214416A7256000D7CBF4 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = Lib/AFNetworking/AFNetworking/AFHTTPClient.m; sourceTree = SOURCE_ROOT; };
 		91AB214516A7256000D7CBF4 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = Lib/AFNetworking/AFNetworking/AFHTTPRequestOperation.h; sourceTree = SOURCE_ROOT; };
@@ -1154,6 +1157,38 @@
 			path = TagParsers;
 			sourceTree = "<group>";
 		};
+		918D6C0A16DFB12500909170 /* COSMObjectiveC */ = {
+			isa = PBXGroup;
+			children = (
+				918D6C0C16DFB12500909170 /* COSM.h */,
+				918D6C0D16DFB12500909170 /* COSMAPI.h */,
+				918D6C0E16DFB12500909170 /* COSMAPI.m */,
+				918D6C0F16DFB12500909170 /* COSMDatapointCollection.h */,
+				918D6C1016DFB12500909170 /* COSMDatapointCollection.m */,
+				918D6C1116DFB12500909170 /* COSMDatapointModel.h */,
+				918D6C1216DFB12500909170 /* COSMDatapointModel.m */,
+				918D6C1316DFB12500909170 /* COSMDatastreamCollection.h */,
+				918D6C1416DFB12500909170 /* COSMDatastreamCollection.m */,
+				918D6C1516DFB12500909170 /* COSMDatastreamModel.h */,
+				918D6C1616DFB12500909170 /* COSMDatastreamModel.m */,
+				918D6C1716DFB12500909170 /* COSMFeedCollection.h */,
+				918D6C1816DFB12500909170 /* COSMFeedCollection.m */,
+				918D6C1916DFB12500909170 /* COSMFeedCollectionDelegate.h */,
+				918D6C1A16DFB12500909170 /* COSMFeedModel.h */,
+				918D6C1B16DFB12500909170 /* COSMFeedModel.m */,
+				918D6C1C16DFB12500909170 /* COSMModel.h */,
+				918D6C1D16DFB12500909170 /* COSMModel.m */,
+				918D6C1E16DFB12500909170 /* COSMModelDelegate.h */,
+				918D6C1F16DFB12500909170 /* COSMRequestable.h */,
+				918D6C2016DFB12500909170 /* COSMRequestable.m */,
+				918D6C2116DFB12500909170 /* COSMSubscribable.h */,
+				918D6C2216DFB12500909170 /* COSMSubscribable.m */,
+				918D6C2316DFB12500909170 /* README.md */,
+			);
+			name = COSMObjectiveC;
+			path = Lib/COSMObjectiveC/COSMObjectiveC;
+			sourceTree = SOURCE_ROOT;
+		};
 		91A5EC4A16677F15002B9000 /* COSM TestMonitor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1214,35 +1249,6 @@
 			);
 			name = Novocaine;
 			path = ../Lib/novocaine/Novocaine;
-			sourceTree = "<group>";
-		};
-		91AB211F16A71BB200D7CBF4 /* COSM */ = {
-			isa = PBXGroup;
-			children = (
-				9194268E16ADC93B0037C0AB /* README.md */,
-				91AB212016A71BE100D7CBF4 /* COSM.h */,
-				91AB212116A71BE100D7CBF4 /* COSMAPI.h */,
-				91AB212216A71BE100D7CBF4 /* COSMAPI.m */,
-				91AB212316A71BE100D7CBF4 /* COSMDatapointCollection.h */,
-				91AB212416A71BE100D7CBF4 /* COSMDatapointCollection.m */,
-				91AB212516A71BE100D7CBF4 /* COSMDatapointModel.h */,
-				91AB212616A71BE100D7CBF4 /* COSMDatapointModel.m */,
-				91AB212716A71BE100D7CBF4 /* COSMDatastreamCollection.h */,
-				91AB212816A71BE100D7CBF4 /* COSMDatastreamCollection.m */,
-				91AB212916A71BE100D7CBF4 /* COSMDatastreamModel.h */,
-				91AB212A16A71BE100D7CBF4 /* COSMDatastreamModel.m */,
-				91AB212B16A71BE100D7CBF4 /* COSMFeedCollection.h */,
-				91AB212C16A71BE100D7CBF4 /* COSMFeedCollection.m */,
-				91AB212D16A71BE100D7CBF4 /* COSMFeedCollectionDelegate.h */,
-				91AB212E16A71BE100D7CBF4 /* COSMFeedModel.h */,
-				91AB212F16A71BE100D7CBF4 /* COSMFeedModel.m */,
-				91AB213016A71BE100D7CBF4 /* COSMModel.h */,
-				91AB213116A71BE100D7CBF4 /* COSMModel.m */,
-				91AB213216A71BE100D7CBF4 /* COSMModelDelegate.h */,
-				91AB213316A71BE100D7CBF4 /* COSMRequestable.h */,
-				91AB213416A71BE100D7CBF4 /* COSMRequestable.m */,
-			);
-			name = COSM;
 			sourceTree = "<group>";
 		};
 		91AB214216A7254E00D7CBF4 /* AFNetworking */ = {
@@ -1701,9 +1707,9 @@
 		91F07611169F35A30047FFEF /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				918D6C0A16DFB12500909170 /* COSMObjectiveC */,
 				917D3BAD16CD80B8008C593D /* OHAttributedLabel */,
 				91AB214216A7254E00D7CBF4 /* AFNetworking */,
-				91AB211F16A71BB200D7CBF4 /* COSM */,
 				91F9B978166FED9400EF1ACF /* Maximilian */,
 				9148941B166799C90039094B /* NVDSP */,
 				91A5EC811667858B002B9000 /* Novocaine */,
@@ -2065,7 +2071,6 @@
 				91AB211C16A6E82000D7CBF4 /* RecordingRightIcon@2x.png in Resources */,
 				91AB211D16A6E82000D7CBF4 /* RecordingText.png in Resources */,
 				91AB211E16A6E82000D7CBF4 /* RecordingText@2x.png in Resources */,
-				9194268F16ADC93B0037C0AB /* README.md in Resources */,
 				916CB37C16B14D3E0083F47C /* LikeDislikeBackground.png in Resources */,
 				916CB37D16B14D3E0083F47C /* LikeDislikeBackground@2x.png in Resources */,
 				916CB38A16B152F90083F47C /* SubmitCancelPressed@2x.png in Resources */,
@@ -2096,6 +2101,7 @@
 				918F6A7D16CC3972009F2DEC /* DeleteingSound@2x.png in Resources */,
 				917D3BC916CD80B8008C593D /* CHANGELOG in Resources */,
 				917D3BCA16CD80B8008C593D /* LICENSE in Resources */,
+				918D6C2F16DFB12500909170 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2328,15 +2334,6 @@
 				91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */,
 				9153142116A4592A0075972B /* CountdownViewController.m in Sources */,
 				91AB20ED16A5B8B700D7CBF4 /* RecordingViewController.m in Sources */,
-				91AB213516A71BE100D7CBF4 /* COSMAPI.m in Sources */,
-				91AB213616A71BE100D7CBF4 /* COSMDatapointCollection.m in Sources */,
-				91AB213716A71BE100D7CBF4 /* COSMDatapointModel.m in Sources */,
-				91AB213816A71BE100D7CBF4 /* COSMDatastreamCollection.m in Sources */,
-				91AB213916A71BE100D7CBF4 /* COSMDatastreamModel.m in Sources */,
-				91AB213A16A71BE100D7CBF4 /* COSMFeedCollection.m in Sources */,
-				91AB213B16A71BE100D7CBF4 /* COSMFeedModel.m in Sources */,
-				91AB213C16A71BE100D7CBF4 /* COSMModel.m in Sources */,
-				91AB213D16A71BE100D7CBF4 /* COSMRequestable.m in Sources */,
 				91AB215616A7256000D7CBF4 /* AFHTTPClient.m in Sources */,
 				91AB215716A7256000D7CBF4 /* AFHTTPRequestOperation.m in Sources */,
 				91AB215816A7256000D7CBF4 /* AFImageRequestOperation.m in Sources */,
@@ -2360,6 +2357,16 @@
 				917D3BD016CD80B8008C593D /* OHASBasicHTMLParser.m in Sources */,
 				917D3BD116CD80B8008C593D /* OHASBasicMarkupParser.m in Sources */,
 				917D3BD216CD80B8008C593D /* OHASMarkupParserBase.m in Sources */,
+				918D6C2516DFB12500909170 /* COSMAPI.m in Sources */,
+				918D6C2616DFB12500909170 /* COSMDatapointCollection.m in Sources */,
+				918D6C2716DFB12500909170 /* COSMDatapointModel.m in Sources */,
+				918D6C2816DFB12500909170 /* COSMDatastreamCollection.m in Sources */,
+				918D6C2916DFB12500909170 /* COSMDatastreamModel.m in Sources */,
+				918D6C2A16DFB12500909170 /* COSMFeedCollection.m in Sources */,
+				918D6C2B16DFB12500909170 /* COSMFeedModel.m in Sources */,
+				918D6C2C16DFB12500909170 /* COSMModel.m in Sources */,
+				918D6C2D16DFB12500909170 /* COSMRequestable.m in Sources */,
+				918D6C2E16DFB12500909170 /* COSMSubscribable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
