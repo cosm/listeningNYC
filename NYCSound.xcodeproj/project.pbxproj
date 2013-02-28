@@ -581,6 +581,7 @@
 		919E32F9165FBE9300121D6C /* CartoTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartoTile.m; sourceTree = "<group>"; };
 		91A1553616B160A600DDCFB5 /* CollectionDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CollectionDelete@2x.png"; path = "Assets/Export/CollectionDelete@2x.png"; sourceTree = SOURCE_ROOT; };
 		91A1553716B160A600DDCFB5 /* CollectionDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CollectionDelete.png; path = Assets/Export/CollectionDelete.png; sourceTree = SOURCE_ROOT; };
+		91A55B7716DBDD2100D2F4F4 /* BannedWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannedWords.h; path = NYCSound/BannedWords/BannedWords.h; sourceTree = SOURCE_ROOT; };
 		91A5EC4516677F15002B9000 /* COSM TestMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COSM TestMonitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A5EC4C16677F15002B9000 /* COSM Monitor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "COSM Monitor-Info.plist"; sourceTree = "<group>"; };
 		91A5EC4E16677F15002B9000 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1073,6 +1074,7 @@
 		917A65F3169F262100E862D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				91A55B7716DBDD2100D2F4F4 /* BannedWords.h */,
 				917ABC40165FA50100643315 /* Utils.h */,
 				917ABC41165FA50300643315 /* Utils.m */,
 				918F6A7716CC1FEB009F2DEC /* CustomUserTags.h */,
@@ -2717,7 +2719,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ListeningNYC/ListeningNYC.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ross Cairns";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ross Cairns";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ListeningNYC/ListeningNYC-Prefix.pch";
@@ -2725,8 +2727,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2E938EFA-BF6A-48EC-985F-845393D11418";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2E938EFA-BF6A-48EC-985F-845393D11418";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "976D8875-9380-4CB3-9D2E-A6C801D69DF6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Adhoc;
