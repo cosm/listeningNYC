@@ -26,8 +26,8 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[[self.feed valueForKeyPath:@"info.location.lat"] floatValue] longitude:[[self.feed valueForKeyPath:@"info.location.lon"] floatValue]];
     NSLog(@"Lat is %@", [self.feed valueForKeyPath:@"info.location.lat"]);
     NSLog(@"Lon is %@", [self.feed valueForKeyPath:@"info.location.lon"]);
-    [self.mapWebViewController setMapLocation:location];
-    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM]];
+    [self.mapWebViewController setMapLocation:location zoomLevel:[[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM] floatValue]];
+    NSLog(@"modelDidFetch setting zoom %d", kDETAIL_MODAL_MAP_ZOOM);
     [self.mapWebViewController setMapDisplayLocationCircle:NO];
 }
 
@@ -55,8 +55,7 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:[[self.feed valueForKeyPath:@"info.location.lat"] floatValue] longitude:[[self.feed valueForKeyPath:@"info.location.lon"] floatValue]];
     NSLog(@"Lat is %@", [self.feed valueForKeyPath:@"info.location.lat"]);
     NSLog(@"Lon is %@", [self.feed valueForKeyPath:@"info.location.lon"]);
-    [self.mapWebViewController setMapLocation:location];
-    [self.mapWebViewController setMapZoom:[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM]];
+    [self.mapWebViewController setMapLocation:location zoomLevel:[[NSNumber numberWithInt:kDETAIL_MODAL_MAP_ZOOM] floatValue]];
     [self.mapWebViewController setMapDisplayLocationCircle:NO];
 }
 
@@ -82,9 +81,9 @@
     
     NSLog(@"feed info %@", [Utils describe:self.feed.info]);
     
-    [self.feed.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(COSMDatastreamModel *datastream, NSUInteger idx, BOOL *stop) {
-        NSLog(@"datastream %@",[Utils describe:datastream.info]);
-    }];
+//    [self.feed.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(COSMDatastreamModel *datastream, NSUInteger idx, BOOL *stop) {
+//        NSLog(@"datastream %@",[Utils describe:datastream.info]);
+//    }];
     
     NSMutableArray *tagViews = [Utils createTagViews:[Utils tagArrayWithoutMachineTags:[Utils userTagsForRecording:self.feed]]];
     

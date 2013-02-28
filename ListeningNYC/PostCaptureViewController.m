@@ -74,7 +74,7 @@
 
 - (void)mapDidLoad {
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:16.0f];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:18.0f];
 }
 
 #pragma mark - Circle Bands Datasource
