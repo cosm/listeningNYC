@@ -1,0 +1,10 @@
+{
+  "name": "Banned-Words-Header-Generator",
+  "version": "0.0.1",
+  "private": "true",
+  "repository": "",
+  "author": "",
+  "dependencies": {
+    "lazy": "~1.0.8"
+  }
+}
