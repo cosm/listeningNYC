@@ -16,19 +16,12 @@
 
 #pragma mark - Circle bands datasource
 
-- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
-    //need to look why this doesn't work'
-    float value = [Utils valueForBand:bandIndex in:self.feed];
-    if (value > 0) {
-        //NSLog(@"value for band is %f", value);
-    }
-    
-    return [Utils valueForBand:bandIndex in:self.feed];
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {    return [Utils alphaForBand:bandIndex in:self.feed];
 }
 
 #pragma mark - IB
 
-@synthesize tagContainer, dateLabel, deleteButton, circleBands;
+@synthesize tagContainer, dateLabel, deleteButton, circleBands, circleBandsContainer;
 
 - (IBAction)deleteRecording:(id)sender {
     UIAlertView* message = [[UIAlertView alloc] initWithTitle: @"Delete" message:@"Are you sure you wish to delete this recoriding?" delegate:self cancelButtonTitle: @"Cancel" otherButtonTitles: @"Delete", nil];
@@ -66,6 +59,20 @@
     self.circleBands.numberOfBands = 10;
     self.circleBands.drawMask = true;
     self.dateLabel.text = [Utils dataTimeOfRecording:self.feed];
+    
+    UIImage *circleBandImage = [Utils historyCellImageForFeed:self.feed];
+    if (circleBandImage) {
+        self.circleBands.isDisabled = YES;
+        [self.cachedCircleBandsImageView removeFromSuperview];
+        self.cachedCircleBandsImageView = [[UIImageView alloc] initWithImage:circleBandImage];
+        self.cachedCircleBandsImageView.frame = self.circleBands.frame;
+        [self.circleBandsContainer addSubview:self.cachedCircleBandsImageView];
+    } else {
+        [self.cachedCircleBandsImageView removeFromSuperview];
+        self.cachedCircleBandsImageView = nil;
+        [self.circleBands saveImageOnNextRender:[Utils historyCellImagePathForFeed:self.feed]];
+        [self.circleBands setNeedsDisplay];
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -73,12 +80,12 @@
 }
 
 - (void)swipedLeft:(id)sender {
-    self.deleteButton.hidden = NO;
+    self.deleteButton.hidden = !self.deleteButton.hidden;
 }
 
 
 - (void)swipedRight:(id)sender {
-    self.deleteButton.hidden = YES;
+    self.deleteButton.hidden = !self.deleteButton.hidden;
 }
 
 #pragma mark - Life cycle

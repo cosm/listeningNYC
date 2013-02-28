@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[COSMAPI defaultAPI] setApiKey:kCOSM_API_KEY];
-    [[COSMAPI defaultAPI] setApiURLString:@"https://warm-sands-4383.herokuapp.com/v2/"];
+    [[COSMAPI defaultAPI] setApiURLString:kCOSM_API_URL];
     //[[COSMAPI defaultAPI] setApiURLString:@"https://localhost:60000/v2/"];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];

@@ -1,12 +1,14 @@
 #import <UIKit/UIKit.h>
 #import "MapWebViewController.h"
 #import "CircleBands.h"
-@class COSMFeedModel;
+#import "COSMFeedModel.h"
 
-@interface DetailModalViewController : UIViewController<MapWebViewControllerDelegate, CircleBandsDatasource>
+@interface DetailModalViewController : UIViewController<MapWebViewControllerDelegate, CircleBandsDatasource, COSMModelDelegate>
 
 // Data
 @property (nonatomic, strong) COSMFeedModel *feed;
+// or
+- (void)fetchFeedWithId:(NSInteger)feedId;
 
 // IB
 @property (nonatomic, weak) IBOutlet UIView *containerView;

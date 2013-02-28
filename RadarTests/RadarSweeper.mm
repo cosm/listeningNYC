@@ -150,7 +150,7 @@ void RadarScanline::setParticleHSVAColor(float h, float s, float v, float a, uns
 
 void RadarScanline::draw() {
     glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glBlendFunc(GL_SRC_ALPHA_SATURATE, GL_ONE);
     // positions
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
@@ -175,3 +175,34 @@ void RadarScanline::rotate(float degrees, float x, float y, float z) {
         vertices[i+1] = rotatedVector.y;
     }
 }
+
+void RadarCurrentLine::draw() {
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
+    // positions
+    glEnableVertexAttribArray(GLKVertexAttribPosition);
+    glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+    // color
+    glEnableVertexAttribArray(GLKVertexAttribColor);
+    glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, colors);
+    // draw
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    // disable
+    glDisableVertexAttribArray(GLKVertexAttribColor);
+    glDisableVertexAttribArray(GLKVertexAttribPosition);
+    glDisable(GL_BLEND);
+}
+
+void RadarCurrentLine::setRotate(float degrees) {
+    float delta = degrees - currentRotation;
+    float radians = (delta) * M_PI/180.0f;
+    GLKMatrix4 rotationMatrix = GLKMatrix4MakeRotation(radians, 0.0, 0.0, 1.0);
+    for (int i=0; i < 8; i += 2) {
+        GLKVector3 rotatedVector = GLKMatrix4MultiplyVector3(rotationMatrix, GLKVector3Make(vertices[i], vertices[i+1], 0.0f));
+        vertices[i] = rotatedVector.x;
+        vertices[i+1] = rotatedVector.y;
+    }
+    currentRotation += delta;
+}
+
+

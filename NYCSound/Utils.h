@@ -23,6 +23,8 @@
 + (void)flipChildUIImageViewsIn:(NSArray *)views whichExceed:(CGPoint)point;
 + (void)setY:(float)y to:(UIView *)view;
 + (void)setX:(float)y to:(UIView *)view;
++ (void)setWidth:(float)width to:(UIView *)view;
++ (void)setHeight:(float)height to:(UIView *)view;
 
 // Tags
 /// creates tag view and returns each tag view in a array.
@@ -67,17 +69,29 @@
 + (NSString *)deviceGUID;
 + (NSString *)versionString;
 + (NSString *)platformString;
++ (NSString *)platformStringRaw;
 
 // COSM
+// deleting
++ (void)deleteFeedFromDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
++ (void)deleteFeedFromDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension;
+// saving
 + (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
 + (void)saveUnsyncedFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension;
 + (void)saveFeedToDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension;
+// loading
 + (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension;
 + (NSMutableArray *)loadFeedsFromDisk;
 + (COSMDatastreamModel *)datastreamWithId:(NSString *)cosmId in:(COSMFeedModel*)feed;
-+ (float)valueForBand:(int)index in:(COSMFeedModel*)feed;
++ (float)mapDbToAlpha:(float)input;
++ (float)alphaForBand:(int)index in:(COSMFeedModel*)feed;
++ (float)dbForBand:(int)index in:(COSMFeedModel*)feed;
 + (NSString *)valueOfMachineTag:(NSString *)machineTag;
 + (NSString *)dataTimeOfRecording:(COSMFeedModel *)feed;
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed;
++ (NSString *)historyCellImagePathForFeed:(COSMFeedModel *)feed;
+
+/// returns nil if there is no image stored
++ (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed;
 
 @end

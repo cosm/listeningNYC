@@ -4,13 +4,16 @@
 @class SoundAnalyser;
 @class RadarViewController;
 @class COSMFeedModel;
+// debug
+#import "CircleBands.h"
 
-@interface CaptureViewController : UIViewController<CountdownViewControllerDelegate, RecordingViewControllerDelegate>
+@interface CaptureViewController : UIViewController<CountdownViewControllerDelegate, RecordingViewControllerDelegate, CircleBandsDatasource>
 
 // IB
 @property (nonatomic, weak) IBOutlet UIView *radarContainerView;
 @property (nonatomic, weak) IBOutlet UIButton *startButton;
 - (IBAction)startButtonPressed:(id)sender;
+@property (nonatomic, weak) IBOutlet UIView *dBContainerView;
 // debug
 @property BOOL isDebugMode;
 @property (nonatomic, weak) IBOutlet UIView *debugContainerView;
@@ -21,6 +24,11 @@
 @property (nonatomic, weak) IBOutlet UILabel *dbLabel;
 - (IBAction)delayForChanged:(UISlider *)slider;
 - (IBAction)decayForChanged:(UISlider *)slider;
+@property (nonatomic, weak) IBOutlet CircleBands *circleBands;
+- (void)updateCircleBands;
+@property (nonatomic, strong) NSTimer *updateCircleBandsTimer;
+- (IBAction)circleBandHueMin:(id)sender;
+- (IBAction)circleBandHueMax:(id)sender;
 
 // Recording
 @property (nonatomic, weak) IBOutlet UIView *recordingContainerView;

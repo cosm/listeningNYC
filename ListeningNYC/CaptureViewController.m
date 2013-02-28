@@ -37,7 +37,9 @@
     [self.radarViewController stop];
     [self.radarViewController requestAllFromDatasource];
     self.shouldUpdateDbLabel = NO;
-    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb];
+    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f];
+    [self updateCircleBands];
+    [self.recordingViewController setDescriptionUsingFeed:self.cosmFeed];
 }
 
 - (void)recordingViewControllerDidRequestNext {
@@ -62,7 +64,18 @@
 
 @synthesize countdownViewController, countdownHolder;
 
+- (void)countdownViewControllerWillCountdown {
+    [UIView beginAnimations:@"fade out rader" context:nil];
+    [UIView setAnimationDuration:kRECORD_COUNTDOWN_FOR * 3.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    self.radarContainerView.alpha = 0.0f;
+    self.dBContainerView.alpha = 0.0f;
+    [UIView commitAnimations];
+}
+
 - (void)countdownViewControllerDidCountdown {
+    self.radarContainerView.alpha = 1.0f;
+    self.dBContainerView.alpha = 1.0f;
     [self.countdownViewController.view removeFromSuperview];
     self.countdownViewController.delegate = nil;
     self.countdownViewController = nil;
@@ -86,7 +99,7 @@
 
 #pragma mark - IB
 
-@synthesize radarContainerView, startButton, dbLabel;
+@synthesize radarContainerView, startButton, dbLabel, dBContainerView;
 
 - (IBAction)startButtonPressed:(id)sender {
     self.countdownViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Countdown View Controller"];
@@ -102,7 +115,7 @@
 
 // Debug
 
-@synthesize debugContainerView, delayForLabel, decayLabel, delaySlider, decaySlider;
+@synthesize debugContainerView, delayForLabel, decayLabel, delaySlider, decaySlider, circleBands;
 
 - (IBAction)delayForChanged:(UISlider *)slider {
     self.delayForLabel.text = [NSString stringWithFormat:@"%.0f", slider.value];
@@ -112,6 +125,27 @@
 - (IBAction)decayForChanged:(UISlider *)slider {
     self.decayLabel.text = [NSString stringWithFormat:@"%.3f", slider.value];
     [self.radarViewController setDecay:slider.value];
+}
+
+- (float)alphaForBand:(int)bandIndex of:(int)totalBands {
+    //return [Utils randomFloatFrom:0.0f to:1.0f];
+    return [Utils alphaForBand:bandIndex in:self.cosmFeed];
+}
+
+- (void)updateCircleBands {
+    if (self.cosmFeed) { [self.circleBands setNeedsDisplay]; }
+}
+
+- (IBAction)circleBandHueMin:(id)sender {
+    self.circleBands.hueScalarMin = [(UISlider *)sender value];
+    NSLog(@"hue max %f",  self.circleBands.hueScalarMax);
+    NSLog(@"hue min %f",  self.circleBands.hueScalarMin);
+}
+
+- (IBAction)circleBandHueMax:(id)sender {
+    self.circleBands.hueScalarMax = [(UISlider *)sender value];
+    NSLog(@"hue max %f",  self.circleBands.hueScalarMax);
+    NSLog(@"hue min %f",  self.circleBands.hueScalarMin);
 }
 
 #pragma mark - Radar view controller
@@ -133,6 +167,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    self.radarContainerView.alpha = 1.0f;
+    self.dBContainerView.alpha = 1.0f;
+
     self.isDebugMode = kRADAR_SHOW_DEBUG_UI;
     self.decaySlider.value = kRADAR_DECAY_RATE;
     self.delaySlider.value = kRADAR_DELAY_FOR;
@@ -167,11 +204,15 @@
     [self.recordingContainerView setUserInteractionEnabled:NO];
     
     [self.dbLabelUpdateTimer invalidate];
-    NSLog(@"creating timer");
     NSTimeInterval updateRate = 0.f;
     self.dbLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:updateRate target:self selector:@selector(dbLabelUpdateTimerDidFire) userInfo:nil repeats:YES];
-    NSLog(@"%@", self.dbLabelUpdateTimer);
     self.shouldUpdateDbLabel = YES;
+    
+    // debug circles bands
+    self.circleBands.datasource = self;
+    self.circleBands.numberOfBands = 10;
+    [self.updateCircleBandsTimer invalidate];
+    self.updateCircleBandsTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(updateCircleBands) userInfo:Nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -190,9 +231,7 @@
 	self.soundAnalyser = [[SoundAnalyser alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kApplicationDidBecomeActive object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [self.soundAnalyser start];
-        self.radarViewController.datasource = self.soundAnalyser;
-        [self.radarViewController viewWillAppear:NO];
+        [self viewWillAppear:NO];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kapplicationWillResignActive object:nil queue:nil usingBlock:^(NSNotification *note) {

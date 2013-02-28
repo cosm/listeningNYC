@@ -2,12 +2,58 @@
 #import "DetailModalViewController.h"
 #import "Utils.h"
 #import "COSM.h"
+#import "DeleteingViewController.h"
 
 @interface HistoryViewController ()
 
 @end
 
 @implementation HistoryViewController
+
+#pragma mark - Cosm delegate
+
+-(void)modelDidDeleteFromCOSM:(COSMModel *)model {
+    [self.deletingViewController.view removeFromSuperview];
+    self.deletingViewController = nil;  
+    
+    unsigned int index = [self.feeds indexOfObject:model];
+    if (index == NSNotFound) {
+        NSLog(@"failed to find the model in the list of feeds");
+        return;
+    }
+    
+    [self.feeds removeObjectAtIndex:index];
+    
+    if ([self.feeds count] + [self.unsyncedFeeds count] == 0) {
+        [Utils deleteFeedFromDisk:(COSMFeedModel *)model withExtension:@"recording"];
+        [self.tableView reloadData];
+    } else {
+        [Utils deleteFeedFromDisk:(COSMFeedModel *)model withExtension:@"recording"];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+}
+
+- (void)modelFailedToDeleteFromCOSM:(COSMModel *)model withError:(NSError *)error json:(id)JSON {
+    NSLog(@"feed failed to delete from COSM");
+    NSLog(@"error is %@", error);
+    [self.deletingViewController.view removeFromSuperview];
+    self.deletingViewController = nil;
+    
+    if (error.code == -1009) {
+        [Utils alert:@"No Internet Connection" message:@"Your recording could not be deleted"];
+    } else {
+        [Utils alertUsingJSON:JSON orTitle:@"Failed to deleted recording." message:@"Something went wrong."];
+    }
+    model.delegate = nil;
+    self.tabBarController.tabBar.userInteractionEnabled = YES;
+    self.tableView.userInteractionEnabled = YES;
+}
 
 #pragma mark - Data
 
@@ -33,12 +79,24 @@
 #pragma mark - Cell Delegate
 
 - (void)cellWantsDeletion:(RecordingCell*)cell {
-    NSLog(@"@stub: HistoryViewController::cellWantsDeletion:");
     NSIndexPath *path = [NSIndexPath indexPathForRow:[self.feeds indexOfObject:cell.feed] inSection:0];
-    [self.feeds removeObjectAtIndex:path.row];    
-    [self.tableView beginUpdates];
-    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView endUpdates];
+    
+    // try to find the feed in synced
+    COSMFeedModel *feedToDelete = [self.feeds objectAtIndex:path.row];
+    if (feedToDelete) {
+        
+        
+        self.deletingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Deleteing View Controller"];
+        self.deletingViewController.view.autoresizingMask = UIViewAutoresizingNone;
+        self.deletingViewController.view.frame = [[UIScreen mainScreen] bounds];
+        [self.view addSubview:self.deletingViewController.view];
+        self.tabBarController.tabBar.userInteractionEnabled = NO;
+        self.tableView.userInteractionEnabled = NO;
+        
+        
+        feedToDelete.delegate = self;
+        [feedToDelete deleteFromCOSM];
+    }
 }
 
 #pragma mark - Lifecycle
@@ -72,7 +130,6 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"scroll view, %@", NSStringFromCGRect(self.tableView.frame));
     [Utils setY:self.tableView.frame.size.height - 60.0f + self.tableView.contentOffset.y to:self.startHereImageView];
 }
 
@@ -145,6 +202,7 @@
         NSLog(@"creating a no samples cell");
         returnCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierNoSamples];
     }
+    returnCell.selectionStyle = UITableViewCellSelectionStyleNone;
     return returnCell;
 }
 
@@ -193,11 +251,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
-    self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
-    [self.view.superview.superview addSubview:detailModalViewController.view];
-    [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
-    [self.detailModalViewController viewWillAppear:NO];
+    if ([self.feeds count] > 0 || [self.unsyncedFeeds count] > 0) {
+        self.detailModalViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Detail Modal View Controller"];
+        if (indexPath.section == 0) {
+            self.detailModalViewController.feed = [self.feeds objectAtIndex:indexPath.row];
+        } else {
+            self.detailModalViewController.feed = [self.unsyncedFeeds objectAtIndex:indexPath.row];
+        }
+        [self.view.superview.superview addSubview:detailModalViewController.view];
+        [self.view.superview.superview bringSubviewToFront:detailModalViewController.view];
+        [self.detailModalViewController viewWillAppear:NO];
+    }
 }
 
 @end

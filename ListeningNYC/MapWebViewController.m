@@ -31,9 +31,15 @@
 #pragma mark - Map Controls
 
 - (void)setMapLocation:(CLLocation *)location {
-    //location.horizontalAccuracy
-    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.updateUserPosition(%f, %f, 13)", location.coordinate.latitude, location.coordinate.longitude];
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.updateUserPosition(%f, %f)", location.coordinate.latitude, location.coordinate.longitude];
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+
+}
+
+- (void)setMapLocation:(CLLocation *)location zoomLevel:(float)zoom {
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.updateUserPosition(%f, %f, %f)", location.coordinate.latitude, location.coordinate.longitude, zoom];
+    [self.webview stringByEvaluatingJavaScriptFromString:javascript];
+    
 }
 
 - (void)setMapQueryType:(NSString *)queryType {
@@ -48,7 +54,8 @@
 }
 
 - (void)setMapZoom:(NSNumber *)level {
-    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.map.setZoom(%@)", [level stringValue]];
+    NSLog(@"seetting zoom");
+    NSString *javascript = [NSString stringWithFormat:@"listeningNYC.setZoom(%@)", [level stringValue]];
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 

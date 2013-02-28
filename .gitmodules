@@ -7,3 +7,6 @@
 [submodule "Lib/AFNetworking"]
 	path = Lib/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "Lib/OHAttributedLabel"]
+	path = Lib/OHAttributedLabel
+	url = git@github.com:AliSoftware/OHAttributedLabel.git

@@ -3,6 +3,7 @@
 #import "LoadingViewController.h"
 #import "COSMFeedModel.h"
 #import "COSMDatastreamModel.h"
+#import "MeterTableBridge.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -141,6 +142,19 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     view.frame = frame;
 }
 
+
++ (void)setWidth:(float)width to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.size.width = width;
+    view.frame = frame;
+}
+
++ (void)setHeight:(float)height to:(UIView *)view {
+    CGRect frame = view.frame;
+    frame.size.height = height;
+    view.frame = frame;
+}
+
 #pragma mark - Tags
 
 + (NSMutableArray *)createTagViews:(NSArray *)tags {
@@ -261,7 +275,7 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 + (NSMutableArray *)tags {
     static NSMutableArray *tags = nil;
     if (!tags) {
-        tags = [[NSMutableArray alloc] initWithArray:@[@"animals",@"architecture",@"art",@"asia",@"australia",@"autumn",@"baby",@"band",@"barcelona",@"beach",@"berlin",@"bike",@"bird",@"birds",@"birthday",@"black",@"blackandwhite",@"blue",@"bw",@"california",@"canada",@"canon",@"car",@"cat",@"chicago",@"china",@"christmas",@"church",@"city",@"clouds",@"color",@"concert",@"dance",@"day",@"de",@"dog",@"england",@"europe",@"fall",@"family",@"fashion",@"festival",@"film",@"florida",@"flower",@"flowers",@"food",@"football",@"france",@"friends",@"fun",@"garden",@"geotagged",@"germany",@"girl",@"graffiti",@"green",@"halloween",@"hawaii",@"holiday",@"house",@"india",@"instagramapp",@"iphone",@"iphoneography",@"island",@"italia",@"italy",@"japan",@"kids",@"la",@"lake",@"landscape",@"light",@"live",@"london",@"love",@"macro",@"me",@"mexico",@"model",@"museum",@"music",@"nature",@"new",@"newyork",@"newyorkcity",@"night",@"nikon",@"nyc",@"ocean",@"old",@"paris",@"park",@"party",@"people",@"photo",@"photography",@"photos",@"portrait",@"raw",@"red",@"river",@"rock",@"san",@"sanfrancisco",@"scotland",@"sea",@"seattle",@"show",@"sky",@"snow",@"spain",@"spring",@"square",@"squareformat",@"street",@"summer",@"sun",@"sunset",@"taiwan",@"texas",@"thailand",@"tokyo",@"travel",@"tree",@"trees",@"trip",@"uk",@"unitedstates",@"urban",@"usa",@"vacation",@"vintage",@"washington",@"water",@"wedding",@"white",@"winter",@"woman",@"yellow",@"zoo" @""]];
+        tags = [[NSMutableArray alloc] initWithArray:@[@"ambulance",@"animals",@"annoying",@"baby",@"band",@"bar",@"bass",@"beach",@"bell chime",@"bike",@"birds",@"busy",@"calm",@"car",@"cat",@"choir",@"christmas",@"church",@"city",@"commute",@"concert",@"construction",@"contrast",@"dance",@"dog",@"drum",@"drum & bass",@"electronic",@"festival",@"fighting",@"film",@"football",@"footstep",@"friends",@"fun",@"garden",@"girl",@"graffiti",@"gun shot",@"harley davidson",@"harmony",@"headache",@"home",@"house",@"invasive",@"kids",@"lake",@"lecture",@"light",@"live",@"lorry",@"loud",@"lunch",@"meeting",@"moan",@"mumbling",@"museum",@"music",@"musical",@"nature",@"noisy",@"nuisance",@"office",@"parade",@"party",@"people",@"piercing",@"pop",@"protest",@"pub",@"quiet",@"rain",@"restaurant",@"rock",@"screaming",@"sea",@"shouting",@"show",@"silent",@"siren",@"spring",@"square",@"storm",@"street",@"subway",@"summer",@"traffic",@"train",@"travel",@"trees",@"trip",@"trock",@"truck",@"vacation",@"van",@"whistle",@"windy",@"winter",@"woman",@"work"]];
     }
     return tags;
 }
@@ -296,7 +310,6 @@ typedef struct TagLayoutSettings TagLayoutSettings;
     }];
     return returnTags;
 }
-
 
 #pragma mark - String
 
@@ -446,6 +459,7 @@ typedef struct TagLayoutSettings TagLayoutSettings;
 
 
 + (float)mapQuinticEaseOut:(float)value inputMin:(float)inputMin inputMax:(float)inputMax outputMin:(float)outputMin outputMax:(float)outputMax clamp:(BOOL)clamp {
+    value = ((value-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
     float quinticMappedInput = (value - 1);
 	quinticMappedInput =  quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput * quinticMappedInput + 1;
     float output = (quinticMappedInput*(outputMax-outputMin)+outputMin);
@@ -506,6 +520,16 @@ NSString * createUUID() {
             [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
 }
 
++ (NSString *)platformStringRaw {
+    size_t size;
+    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+    char *machine = malloc(size);
+    sysctlbyname("hw.machine", machine, &size, NULL, 0);
+    NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+    free(machine);
+    return platform;
+}
+
 + (NSString *)platformString {
     // Gets a string with the device model
     // http://stackoverflow.com/a/13679404/179015
@@ -556,6 +580,26 @@ NSString * createUUID() {
 
 #pragma mark - COSM
 
+// deleting
+
++ (void)deleteFeedFromDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
+    [Utils deleteFeedFromDisk:feed withName:[feed.info objectForKey:@"id"] extension:extension];
+}
+
++ (void)deleteFeedFromDisk:(COSMFeedModel *)feed withName:(NSString *)name extension:(NSString *)extension {
+    NSString *filename = [NSString stringWithFormat:@"%@.%@", name, extension];
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    NSError *error;
+    if ([[NSFileManager defaultManager] removeItemAtPath:filepath error:&error] != YES) {
+        NSLog(@"Unable to delete file: %@", [error localizedDescription]);
+        NSLog(@"Error is %@", error);
+    }
+}
+
+// saving
+
 + (void)saveFeedToDisk:(COSMFeedModel*)feed withExtension:(NSString *)extension {
     [Utils saveFeedToDisk:feed withName:[feed.info objectForKey:@"id"] extension:extension];
 }
@@ -575,13 +619,16 @@ NSString * createUUID() {
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
         [feedData writeToFile:filepath atomically:YES];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
-            NSLog(@"filepath exists");
+//        if ([[NSFileManager defaultManager] fileExistsAtPath:filepath])
+//            NSLog(@"filepath exists");
     } else {
         [Utils alert:@"Error saving" message:@"Could not save recording to device"];
         NSLog(@"Error saving feed to device. %@", error);
     }
 }
+
+
+// loading
 
 + (NSMutableArray *)loadFeedsFromDiskWithExtension:(NSString *)extension {
     NSMutableArray *feeds = [[NSMutableArray alloc] initWithCapacity:10];
@@ -634,26 +681,29 @@ NSString * createUUID() {
     return datastream;
 }
 
-float mapCircleBandFloat(float input) {
-    return [Utils mapFloat:input inputMin:0.0f inputMax:1.0f outputMin:0.0 outputMax:1.0 clamp:YES];
++ (float)mapDbToAlpha:(float)input {
+    return [MeterTableBridge valueForDB:input];
 }
 
-+ (float)valueForBand:(int)index in:(COSMFeedModel*)feed {
++ (float)alphaForBand:(int)index in:(COSMFeedModel*)feed {
+    return [Utils mapDbToAlpha:[Utils dbForBand:index in:feed]];
+}
+
++ (float)dbForBand:(int)index in:(COSMFeedModel*)feed {
     switch (index) {
-        case 0: return mapCircleBandFloat([[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 1: return mapCircleBandFloat([[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 2: return mapCircleBandFloat([[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 3: return mapCircleBandFloat([[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 4: return mapCircleBandFloat([[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 5: return mapCircleBandFloat([[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 6: return mapCircleBandFloat([[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 7: return mapCircleBandFloat([[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 8: return mapCircleBandFloat([[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
-        case 9: return mapCircleBandFloat([[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]); break;
+        case 9: return [[[Utils datastreamWithId:@"40hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 8: return [[[Utils datastreamWithId:@"80hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 7: return [[[Utils datastreamWithId:@"160hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 6: return [[[Utils datastreamWithId:@"315hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 5: return [[[Utils datastreamWithId:@"630hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 4: return [[[Utils datastreamWithId:@"1250hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 3: return [[[Utils datastreamWithId:@"2500hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 2: return [[[Utils datastreamWithId:@"5000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 1: return [[[Utils datastreamWithId:@"10000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
+        case 0: return [[[Utils datastreamWithId:@"20000hz" in:feed] valueForKeyPath:@"info.current_value"] floatValue]; break;
         default: return 0.0f; break;
     }
 }
-
 
 + (NSString *)valueOfMachineTag:(NSString *)machineTag {
     // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
@@ -680,9 +730,32 @@ float mapCircleBandFloat(float input) {
 
 
 + (NSArray *)userTagsForRecording:(COSMFeedModel *)feed {
-    COSMDatastreamModel *descriptonDatastream = [Utils datastreamWithId:@"Description" in:feed];
-    NSLog(@"tags should be in %@", descriptonDatastream.info);
-    return [descriptonDatastream.info valueForKeyPath:@"tags"];
+    return [feed.info valueForKeyPath:@"tags"];
+}
+
++ (NSString *)historyCellImagePathForFeed:(COSMFeedModel *)feed {
+    NSString *filename = [NSString stringWithFormat:@"%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f%.2f",
+                          [Utils dbForBand:0 in:feed],
+                          [Utils dbForBand:1 in:feed],
+                          [Utils dbForBand:2 in:feed],
+                          [Utils dbForBand:3 in:feed],
+                          [Utils dbForBand:4 in:feed],
+                          [Utils dbForBand:5 in:feed],
+                          [Utils dbForBand:6 in:feed],
+                          [Utils dbForBand:7 in:feed],
+                          [Utils dbForBand:8 in:feed],
+                          [Utils dbForBand:9 in:feed]];
+    filename = [filename stringByReplacingOccurrencesOfString:@"." withString:@""];
+    filename = [NSString stringWithFormat:@"%@.png", filename];
+    
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filepath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    return filepath;
+}
+
++ (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed {
+    return [UIImage imageWithContentsOfFile:[Utils historyCellImagePathForFeed:feed]];
 }
 
 @end

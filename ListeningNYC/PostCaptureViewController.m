@@ -20,10 +20,9 @@
 
 - (void)modelDidSave:(COSMModel *)model {
     COSMFeedModel *feed = (COSMFeedModel *)model;
-    //NSLog(@"Model post save: %@", [feed saveableInfoWithNewDatastreamsOnly:NO]);
-    [Utils saveFeedToDisk:feed withExtension:@".recording"];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [Utils saveFeedToDisk:feed withExtension:@"recording"];
+    [self.submittingViewController showSuccess];
+    self.navigationController.tabBarController.tabBar.userInteractionEnabled = YES;
 }
 
 - (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON {
@@ -33,13 +32,23 @@
     NSLog(@"Error code %d", error.code);
     COSMFeedModel *feed = (COSMFeedModel *)model;
     
+    [self.submittingViewController.view removeFromSuperview];
+    self.submittingViewController.delegate = nil;
+    self.submittingViewController = nil;
+    
     if (error.code == -1009) {
-        [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
-        [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
+        if (kSTORE_UNSYNCED) {
+            [Utils alert:@"No Internet Connection" message:@"Your recording will be synced later"];
+            [Utils saveUnsyncedFeedToDisk:feed withExtension:@"unsynced"];
+        } else {
+            [Utils alert:@"No Internet Connection" message:@"Your recording was not saved"];
+        }
     } else {
         [Utils alertUsingJSON:JSON orTitle:@"Failed to save recording." message:@"Something went wrong."];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popViewControllerAnimated:YES];
+    self.cosmFeed.delegate = nil;
+    self.navigationController.tabBarController.tabBar.userInteractionEnabled = YES;
 }
 
 #pragma mark - Notifcations
@@ -51,17 +60,27 @@
     elevation = newLocation.altitude;
 }
 
+#pragma mark - Submitting View Controller Delegate
+
+- (void)submittingSoundViewControllerDidComplete:(SubmittingViewController *)submittingViewController {
+    [self.submittingViewController.view removeFromSuperview];
+    self.submittingViewController.delegate = nil;
+    self.submittingViewController = nil;
+    [self.tabBarController setSelectedIndex:2];
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
 #pragma mark - Map Web View Delegate
 
 - (void)mapDidLoad {
     id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
-    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation zoomLevel:18.0f];
 }
 
 #pragma mark - Circle Bands Datasource
 
 - (float)alphaForBand:(int)bandIndex of:(int)totalBands {
-    return [Utils valueForBand:bandIndex in:self.cosmFeed];
+    return [Utils alphaForBand:bandIndex in:self.cosmFeed];
 }
 
 #pragma mark - IB
@@ -85,7 +104,7 @@
     if (!self.cosmFeed.delegate) {
         
         // Default data
-        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@", kCOSM_FEED_TITLE_PREPEND] forKey:@"title"];
+        [self.cosmFeed.info setObject:[NSString stringWithFormat:@"%@ %@", kCOSM_FEED_TITLE_PREPEND, [Utils describeArray:self.tags]] forKey:@"title"];
         [self.cosmFeed.info setObject:kCOSM_FEED_WEBSITE forKey:@"website"];
         [self.cosmFeed.info setObject:[Utils versionString] forKey:@"version"];
         NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
@@ -109,28 +128,37 @@
             [NSString stringWithFormat:@"App:Device=%@", [Utils platformString]],
             [NSString stringWithFormat:@"Created:Date=%@", [dateFormatter stringFromDate:[NSDate date]]]
         ];
-        [self.cosmFeed.info setObject:machineTags forKey:@"tags"];
-        
-        COSMDatastreamModel *description = [[COSMDatastreamModel alloc] init];
-        [description.info setValue:@"Description" forKeyPath:@"id"];
-        [description.info setObject:self.tags forKey:@"tags"];
-        [self.cosmFeed.datastreamCollection.datastreams addObject:description];
+        [self.tags addObjectsFromArray:machineTags];
+        [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
         
         COSMDatastreamModel *likeDislike = [[COSMDatastreamModel alloc] init];
         [likeDislike.info setValue:@"LikeDislike" forKeyPath:@"id"];
         [likeDislike.info setValue:[NSString stringWithFormat:@"%f", self.slider.value] forKeyPath:@"current_value"];
         [self.cosmFeed.datastreamCollection.datastreams addObject:likeDislike];
         
-        NSLog(@"feed is %@",self.cosmFeed.info);
+        // add the submit screen
+        self.submittingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Submitting View Controller"];
+        self.submittingViewController.view.autoresizingMask = UIViewAutoresizingNone;
+        self.submittingViewController.view.frame = [[UIScreen mainScreen] bounds];
+        [self.submittingViewController showSubmitting];
+        self.submittingViewController.delegate = self;
+        [self.view addSubview:self.submittingViewController.view];
         
         self.cosmFeed.delegate = self;
         [self.cosmFeed save];
+        self.navigationController.tabBarController.tabBar.userInteractionEnabled = NO;
     }
+}
+
+- (IBAction)locate:(id)sender {
+    id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+    [self.mapWebViewController setMapIsTracking:YES];
+    [self.mapWebViewController setMapLocation:((AppDelegate *)appDelegate).currentLocation];
 }
 
 #pragma mark - UI
 
-@synthesize tagViews, deleteButtons;
+@synthesize tagViews, deleteButtons, submittingViewController;
 
 - (void)layoutTags {    
     // remove all the tags & delete buttond
@@ -197,7 +225,7 @@
     frame.origin.y = 0.0f;
     self.mapWebViewController.view.frame = frame;
     self.circleBands.circleDiameter = 156.0f;
-    self.circleBands.numberOfBands = 11;
+    self.circleBands.numberOfBands = 10;
     self.tags = [[NSMutableArray alloc] init];
     self.deleteButtons = [[NSMutableArray alloc] init];
     [self.slider setMinimumTrackImage:[UIImage imageNamed:@"SliderTrack"] forState:UIControlStateNormal];

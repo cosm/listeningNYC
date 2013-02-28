@@ -10,19 +10,32 @@ struct Normalizing {
     Normalizing() {
         min = std::numeric_limits<T>::max();
         max = std::numeric_limits<T>::min();
+        total = 0.0f;
+        count = 0;
     }
     T max;
     T min;
     T currentValue;
+    T total;
+    unsigned int count;
+    
     void set(T value) {
         if (value < min) { min = value; }
         if (value > max) { max = value; }
         currentValue = value;
+        total += value;
+        ++count;
     }
+    
     float getNormalized () {
         float n = map(currentValue, min, max, 0.0f, 1.0f);
         return n;
     }
+    
+    float getAverage() {
+        return total / float(count);
+    }
+    
     T map(float input, T inputMin, T inputMax, float outputMin, float outputMax) {
         T output = ((input-inputMin)/(inputMax-inputMin)*(outputMax-outputMin)+outputMin);
         if (outputMax < outputMin) {
@@ -50,6 +63,7 @@ struct Normalizing {
     Normalizing<float> *nomalized;
     BOOL shouldResetMetering;
     NSInteger averages;
+    BOOL hasAddedNormailzed;
 }
 
 - (void)resetPeakLevels;
@@ -95,18 +109,14 @@ struct Normalizing {
     NSInteger windowSize = 1024; //1024;
     Float64 samplingRate = [Novocaine audioManager].samplingRate;
     fft->setup(fftSize, windowSize, 256);
-    // NSLog(@"%d", averages);
-    // NSLog(@"%f", samplingRate);
-    // NSLog(@"%df", fftSize/2);
     oct->setup(samplingRate, fftSize/2, averages);
     nomalized = new Normalizing<float>[oct->nAverages];
+    hasAddedNormailzed = NO;
     shouldResetMetering = NO;
 
 }
 
 - (void)start {
-    NSLog(@"Sound Analyers Start");
-    
     [self resetMetering];
     
     Novocaine *audioManager = [Novocaine audioManager];
@@ -119,7 +129,6 @@ struct Normalizing {
             [self preformResetMetering];
             return;
         }
-        
         currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
         if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
         self.currentDb = currentLevels.flatDB;
@@ -137,12 +146,17 @@ struct Normalizing {
     
         /// add fft & octave analyser
         for (int i=0; i < numFrames; i+=numChannels) {
+            // bug here
             fft->process(incomingAudio[i]);
         }
         fft->magsToDB();
         oct->calculate(fft->magnitudesDB);
         for (int i =0; i < oct->nAverages; ++i) {
-            nomalized[i].set(oct->peaks[i]);
+            if (kRADAR_USE_PEAKS) {
+                nomalized[i].set(oct->peaks[i]);
+            } else {
+                nomalized[i].set(oct->averages[i]);
+            }
         }
 
         ////
@@ -151,6 +165,7 @@ struct Normalizing {
         memcpy(cWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
         // apply a weigthed
         for (int i=0; i < 11; ++i) {
+            // Bug error throw here
             [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
         }
         currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
@@ -180,6 +195,8 @@ struct Normalizing {
             }
         }
         
+        hasAddedNormailzed = YES;
+        
     }];
 }
 
@@ -193,6 +210,7 @@ struct Normalizing {
 
 - (void)beginRecording {
     [self resetMetering];
+    NSLog(@"number of averages %d", oct->nAverages);
 }
 
 - (COSMFeedModel *)stopRecording {
@@ -204,9 +222,10 @@ struct Normalizing {
     float peak = -60.0f;
     for (int i=0; i<oct->nAverages; ++i) {
         // find the highest peak since reset
-        if (peak < nomalized[i].max) {
-            peak = nomalized[i].max;
+        if (peak < nomalized[i].getAverage()) {
+            peak = nomalized[i].getAverage();
         }
+        NSLog(@"bin %d, %.03f", i, nomalized[i].getAverage());
         if (i % averages == 0) {
             // work out the lower frequency of this bin
             bin = bin * 2.0f;
@@ -269,7 +288,7 @@ struct Normalizing {
     [peakDB.info setValue:@"Peak-dB" forKeyPath:@"id"];
     [peakDB.info setObject:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     [peakDB.info setValue:@"dB" forKeyPath:@"unit.label"];
-    [peakDB.info setValue:[NSString stringWithFormat:@"%f", peakLevels.flatDB] forKeyPath:@"current_value"];
+    [peakDB.info setValue:[NSString stringWithFormat:@"%f", peakLevels.flatDB + 60.0f] forKeyPath:@"current_value"];
     [feedModel.datastreamCollection.datastreams addObject:peakDB];
     
     // Peak DB
@@ -295,16 +314,19 @@ struct Normalizing {
 
 #pragma mark - Rader Data Source
 
-- (float)mapDBtoAlpha:(float)db {
-    // the input should really be 60
-    return [Utils mapQuinticEaseOut:db inputMin:0.0f inputMax:180.0f outputMin:0.0f outputMax:1.0f clamp:YES];
-}
-
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll {
     int startPoint = -4;
     int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
-    return (index<0) ? 0.0f : [self mapDBtoAlpha:(isAll) ? nomalized[index].max : nomalized[index].currentValue];
-    //return (RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages)<0) ? 0.0f : 1.0;
+    
+    if (index < 0) return 0.0f;
+    
+    if (!hasAddedNormailzed) return 0.0f;
+ 
+    if (isAll) {
+        return [Utils mapDbToAlpha:nomalized[index].getAverage()];
+    } else {
+        return [Utils mapDbToAlpha:nomalized[index].currentValue];
+    }
 }
 
 #pragma mark - DB Levels
@@ -338,18 +360,7 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
         self.flatLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.aWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
         self.cWeightedLevelMeter = [[NVSoundLevelMeter alloc] init];
-        
-//        fftAWeighted = new maxiFFT();
-//        octAWeighted = new maxiFFTOctaveAnalyzer();
-//        NSInteger fftSize = 1024;
-//        NSInteger windowSize = 1024; //1024;
-//        fftAWeighted->setup(fftSize, windowSize, 256);
-//        NSInteger averages = 12; // setting this to 12 should be each step in the octave
-//        octAWeighted->setup([Novocaine audioManager].samplingRate, fftSize/2, averages);
-//        
-//        nomalizedAWeighted = new Normalizing<float>[octAWeighted->nAverages];
-        
-        averages = 3; // setting this to 12 should be each step in the octave
+        averages = 2; // setting this to 12 should be each step in the octave
         
         for (int i=0; i<11; ++i) {
             aPeakingEqs[i] = [[NVPeakingEQFilter alloc] initWithSamplingRate:[Novocaine audioManager].samplingRate];

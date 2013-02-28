@@ -3,6 +3,7 @@
 @protocol CountdownViewControllerDelegate <NSObject>
 @optional
 - (void)countdownViewControllerDidCountdown;
+- (void)countdownViewControllerWillCountdown;
 @end
 
 @interface CountdownViewController : UIViewController

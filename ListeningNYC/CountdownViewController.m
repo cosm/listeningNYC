@@ -46,6 +46,9 @@
     [self.timer invalidate];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:kRECORD_COUNTDOWN_FOR target:self selector:@selector(timerDidUpdate) userInfo:nil repeats:YES];
     self.imageView.image = [UIImage imageNamed:@"Capture3"];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(countdownViewControllerWillCountdown)]) {
+        [self.delegate countdownViewControllerWillCountdown];
+    }
 }
 
 #pragma mark - Life cycle
