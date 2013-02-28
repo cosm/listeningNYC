@@ -30,4 +30,7 @@ extern int const kDETAIL_MODAL_MAP_ZOOM;
 // Description
 extern NSString *const kDESCRIPTION;
 
+// Map Screen
+extern float const kMAP_SCREEN_INITAIL_ZOOM;
+
 

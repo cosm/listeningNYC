@@ -31,3 +31,6 @@ int const kDETAIL_MODAL_MAP_ZOOM = 18;
 
 // Description
 NSString *const kDESCRIPTION = @"{#FFFFFF|There was }{#F15A29|%@} {#FFFFFF|low frequency,} {#F15A29|%@} {#FFFFFF|mid-range and }{#F15A29|%@} {#FFFFFF|high frequency content in this sound capture, which was }{#F15A29|%@}";
+
+// Map View
+float const kMAP_SCREEN_INITAIL_ZOOM = 13.0f;
