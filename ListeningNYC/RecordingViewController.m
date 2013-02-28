@@ -51,7 +51,7 @@ float maxValue(NSRange range, NSArray *array) {
     NSString *highDescriptor = @"a lot of";
     float highMax = maxValue(NSMakeRange(8, 2), alphas);
     if (highMax < 0.5f) { highDescriptor = @"some"; }
-    if (highMax < 0.35f) { highDescriptor = @"almost no"; }
+    if (highMax < 0.3f) { highDescriptor = @"almost no"; }
     NSLog(@"high max %f", highMax);
     
     NSString *allDescriptor = @"very loud";
