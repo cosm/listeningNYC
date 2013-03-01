@@ -12,6 +12,14 @@ struct Normalizing {
         max = std::numeric_limits<T>::min();
         total = 0.0f;
         count = 0;
+        currentValue = 0.0f;
+    }
+    void reset() {
+        min = std::numeric_limits<T>::max();
+        max = std::numeric_limits<T>::min();
+        total = 0.0f;
+        count = 0;
+        currentValue = 0.0f;
     }
     T max;
     T min;
@@ -33,6 +41,8 @@ struct Normalizing {
     }
     
     float getAverage() {
+         
+        if (count == 0) { return 0.0f; }
         return total / float(count);
     }
     
@@ -64,6 +74,7 @@ struct Normalizing {
     BOOL shouldResetMetering;
     NSInteger averages;
     BOOL hasAddedNormailzed;
+    Normalizing<float> currentDBNormalized;
 }
 
 - (void)resetPeakLevels;
@@ -113,7 +124,8 @@ struct Normalizing {
     nomalized = new Normalizing<float>[oct->nAverages];
     hasAddedNormailzed = NO;
     shouldResetMetering = NO;
-
+    
+    currentDBNormalized.reset();
 }
 
 - (void)start {
@@ -131,7 +143,8 @@ struct Normalizing {
         }
         currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
         if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
-        self.currentDb = currentLevels.flatDB;
+        currentDBNormalized.set(currentLevels.flatDB);
+        self.currentDb = currentDBNormalized.getAverage();
         
         ////
         /// a weighted

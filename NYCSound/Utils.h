@@ -37,6 +37,9 @@
 + (void)saveTags;
 + (NSMutableArray *)findTagsIn:(NSString *)string;
 + (NSMutableArray *)tagArrayWithoutMachineTags:(NSArray *)tags;
+/// @returns Tags stripped
++ (NSMutableArray *)tagsArrayWithBannedTags:(NSArray *)tags;
++ (NSArray *)bannedWords;
 
 // String
 + (NSString*)describe:(id)obj;

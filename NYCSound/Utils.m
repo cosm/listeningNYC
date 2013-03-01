@@ -4,6 +4,7 @@
 #import "COSMFeedModel.h"
 #import "COSMDatastreamModel.h"
 #import "MeterTableBridge.h"
+#import "BannedWords.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -309,6 +310,33 @@ typedef struct TagLayoutSettings TagLayoutSettings;
         }
     }];
     return returnTags;
+}
+
++ (NSMutableArray *)tagsArrayWithBannedTags:(NSArray *)tags {
+    NSMutableArray *filteredTagsArray = [[NSMutableArray alloc] initWithCapacity:[tags count]];
+    [tags enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[NSString class]]) {
+            NSString *tag = obj;
+            __block BOOL safeToAdd = YES;
+            [[Utils bannedWords] enumerateObjectsUsingBlock:^(NSString *bannedWord, NSUInteger idx, BOOL *stop) {
+                if ([bannedWord isEqualToString:tag]) {
+                    safeToAdd = NO;
+                }
+            }];
+            if (safeToAdd) {
+                [filteredTagsArray addObject:tag];
+            }
+        }
+    }];
+    return filteredTagsArray;
+}
+
++ (NSArray *)bannedWords {
+    static NSArray *bannedWordsArray = nil;
+    if (!bannedWordsArray) {
+        bannedWordsArray = kBANNED_WORDS;
+    }
+    return bannedWordsArray;
 }
 
 #pragma mark - String
