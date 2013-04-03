@@ -28,7 +28,7 @@
 - (COSMFeedModel *)stopRecording;
 
 // radar datasource
-- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController;
+- (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll;
 
 // db levels
 @property float currentDb;

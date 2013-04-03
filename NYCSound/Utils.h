@@ -9,6 +9,7 @@
 @class LoadingViewController;
 @class COSMFeedModel;
 @class COSMDatastreamModel;
+@class OHAttributedLabel;
 
 @interface Utils : NSObject
 
@@ -96,5 +97,6 @@
 
 /// returns nil if there is no image stored
 + (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed;
++ (void)describeFeed:(COSMFeedModel*)feed usingAttributedLabel:(OHAttributedLabel *)label;
 
 @end

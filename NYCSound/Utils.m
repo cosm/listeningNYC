@@ -5,6 +5,8 @@
 #import "COSMDatastreamModel.h"
 #import "MeterTableBridge.h"
 #import "BannedWords.h"
+#import "OHAttributedLabel.h"
+#import "OHASBasicMarkupParser.h"
 
 struct TagLayoutSettings {
     float maxLength;
@@ -784,6 +786,59 @@ NSString * createUUID() {
 
 + (UIImage *)historyCellImageForFeed:(COSMFeedModel *)feed {
     return [UIImage imageWithContentsOfFile:[Utils historyCellImagePathForFeed:feed]];
+}
+
+float maxValue(NSRange range, NSArray *array) {
+    float max = -10000.0f;
+    for (int i = range.location; i < range.location + range.length; ++i) {
+        float floatValue = [[array objectAtIndex:i] floatValue];
+        if (max < floatValue) { max = floatValue; }
+    }
+    return max;
+}
+
++ (void)describeFeed:(COSMFeedModel*)feed usingAttributedLabel:(OHAttributedLabel *)label {
+    NSArray *alphas = @[
+        [NSNumber numberWithFloat:[Utils alphaForBand:0 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:1 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:2 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:3 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:4 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:5 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:6 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:7 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:8 in:feed]],
+        [NSNumber numberWithFloat:[Utils alphaForBand:9 in:feed]]
+    ];
+    
+    NSString *lowDescriptor = @"a lot of";
+    float lowMax = maxValue(NSMakeRange(0, 5), alphas);
+    if (lowMax < 0.7) { lowDescriptor = @"some"; }
+    if (lowMax < 0.2) { lowDescriptor = @"almost no"; }
+    NSLog(@"low max %f", lowMax);
+    
+    NSString *midDescriptor = @"a lot of";
+    float midMax = maxValue(NSMakeRange(4, 4), alphas);
+    if (midMax < 0.8f) { midDescriptor = @"some"; }
+    if (midMax < 0.3f) { midDescriptor = @"almost no"; }
+    NSLog(@"mid max %f", midMax);
+    
+    NSString *highDescriptor = @"a lot of";
+    float highMax = maxValue(NSMakeRange(8, 2), alphas);
+    if (highMax < 0.5f) { highDescriptor = @"some"; }
+    if (highMax < 0.3f) { highDescriptor = @"almost no"; }
+    NSLog(@"high max %f", highMax);
+    
+    NSString *allDescriptor = @"very loud";
+    float peak_db  = maxValue(NSMakeRange(0, 10), alphas);
+    if (peak_db < 0.95f) { allDescriptor = @"loud"; }
+    if (peak_db < 0.9f) { allDescriptor = @"moderately loud"; }
+    if (peak_db < 0.6734f) { allDescriptor = @"quiet"; }
+    if (peak_db < 0.2f) { allDescriptor = @"very quiet"; }
+    NSLog(@"all max %f", peak_db);
+    
+    NSString *markedUpString = [NSString stringWithFormat:kDESCRIPTION, lowDescriptor, midDescriptor, highDescriptor, allDescriptor];
+    label.attributedText = [OHASBasicMarkupParser attributedStringByProcessingMarkupInString:markedUpString];
 }
 
 @end

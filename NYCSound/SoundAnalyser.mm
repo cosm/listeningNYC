@@ -28,11 +28,13 @@ struct Normalizing {
     unsigned int count;
     
     void set(T value) {
-        if (value < min) { min = value; }
-        if (value > max) { max = value; }
-        currentValue = value;
-        total += value;
-        ++count;
+        if (value <= std::numeric_limits<T>::max() && value >= -std::numeric_limits<T>::max()) {
+            if (value < min) { min = value; }
+            if (value > max) { max = value; }
+            currentValue = value;
+            total += value;
+            ++count;
+        }
     }
     
     float getNormalized () {
@@ -41,8 +43,8 @@ struct Normalizing {
     }
     
     float getAverage() {
-         
-        if (count == 0) { return 0.0f; }
+        // NSLog(@"%d %f", count, total);
+        if (count == 0 || total == 0.0f) { return 0.0f; }
         return total / float(count);
     }
     
@@ -68,17 +70,14 @@ struct Normalizing {
 };
 
 @interface SoundAnalyser () {
-    maxiFFT *fft;
-    maxiFFTOctaveAnalyzer *oct;
+    maxiFFT fft;
+    maxiFFTOctaveAnalyzer oct;
     Normalizing<float> *nomalized;
     BOOL shouldResetMetering;
     NSInteger averages;
     BOOL hasAddedNormailzed;
     Normalizing<float> currentDBNormalized;
 }
-
-- (void)resetPeakLevels;
-
 @end
 
 @implementation SoundAnalyser
@@ -107,21 +106,9 @@ struct Normalizing {
     self.peakDb = -99999.9f;
     self.currentDb = -99999.9f;
     
-    if (fft) {
-        delete fft;
-        delete oct;
-        delete nomalized;
+    for (int i=0; i<oct.nAverages; ++i) {
+        nomalized[i].reset();
     }
-    
-    fft = new maxiFFT();
-    oct = new maxiFFTOctaveAnalyzer();
-    // oct->peakDecayRate = 1.0;
-    NSInteger fftSize = 1024 * 2;
-    NSInteger windowSize = 1024; //1024;
-    Float64 samplingRate = [Novocaine audioManager].samplingRate;
-    fft->setup(fftSize, windowSize, 256);
-    oct->setup(samplingRate, fftSize/2, averages);
-    nomalized = new Normalizing<float>[oct->nAverages];
     hasAddedNormailzed = NO;
     shouldResetMetering = NO;
     
@@ -135,105 +122,110 @@ struct Normalizing {
     [audioManager setInputBlock:^(float *incomingAudio, UInt32 numFrames, UInt32 numChannels) {
         if (!self) { return; }
         
-        ////
-        /// reset metering
-        if (shouldResetMetering) {
-            [self preformResetMetering];
-            return;
-        }
-        currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
-        if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
-        currentDBNormalized.set(currentLevels.flatDB);
-        self.currentDb = currentDBNormalized.getAverage();
+        @synchronized(self) {
         
-        ////
-        /// a weighted
-        float aWeightedAudio[numFrames * numChannels];
-        memcpy(aWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
-        // apply a weigthed
-        for (int i=0; i < 11; ++i) {
-            [aPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
-        }
-        currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
-        
-    
-        /// add fft & octave analyser
-        for (int i=0; i < numFrames; i+=numChannels) {
-            // bug here
-            fft->process(incomingAudio[i]);
-        }
-        fft->magsToDB();
-        oct->calculate(fft->magnitudesDB);
-        for (int i =0; i < oct->nAverages; ++i) {
-            if (kRADAR_USE_PEAKS) {
-                nomalized[i].set(oct->peaks[i]);
-            } else {
-                nomalized[i].set(oct->averages[i]);
+            ////
+            /// reset metering
+            if (shouldResetMetering) {
+                [self preformResetMetering];
+                return;
             }
-        }
+            currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
+            if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
+            currentDBNormalized.set(currentLevels.flatDB);
+            self.currentDb = currentDBNormalized.getAverage();
+            
+            ////
+            /// a weighted
+            float aWeightedAudio[numFrames * numChannels];
+            memcpy(aWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
+            // apply a weigthed
+            for (int i=0; i < 11; ++i) {
+                [aPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
+            }
+            currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
+            
+        
+            /// add fft & octave analyser
+            for (int i=0; i < numFrames; i+=numChannels) {
+                // Bug error throw here
+                fft.process(incomingAudio[i]);
+            }
+            fft.magsToDB();
+            oct.calculate(fft.magnitudesDB);
+            for (int i =0; i < oct.nAverages; ++i) {
+                if (kRADAR_USE_PEAKS) {
+                    nomalized[i].set(oct.peaks[i]);
+                } else {
+                    nomalized[i].set(oct.averages[i]);
+                }
+            }
 
-        ////
-        /// c weighted
-        float cWeightedAudio[numFrames * numChannels];
-        memcpy(cWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
-        // apply a weigthed
-        for (int i=0; i < 11; ++i) {
-            // Bug error throw here
-            [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
-        }
-        currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
-        
-        /// peak
-        if (currentLevels.flatDB < 999.0f) {
-            if (peakLevels.flatDB < currentLevels.flatDB) {
-                peakLevels.flatDB = peakLevels.flatDB + ((currentLevels.flatDB - peakLevels.flatDB) * 0.2);
-            } else {
-                peakLevels.flatDB = peakLevels.flatDB * 0.999f;
+            ////
+            /// c weighted
+            float cWeightedAudio[numFrames * numChannels];
+            memcpy(cWeightedAudio, incomingAudio, numFrames * numChannels * sizeof(float));
+            // apply a weigthed
+            for (int i=0; i < 11; ++i) {
+                // Bug error throw here
+                [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
             }
-        }
-        /// peak a
-        if (currentLevels.aWeightedDB < 999.0f) {
-            if (peakLevels.aWeightedDB < currentLevels.aWeightedDB) {
-                peakLevels.aWeightedDB = peakLevels.aWeightedDB + ((currentLevels.aWeightedDB - peakLevels.aWeightedDB) * 0.2);
-            } else {
-                peakLevels.aWeightedDB = peakLevels.aWeightedDB * 0.999f;
+            currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
+            
+            /// peak
+            if (currentLevels.flatDB < 999.0f) {
+                if (peakLevels.flatDB < currentLevels.flatDB) {
+                    peakLevels.flatDB = peakLevels.flatDB + ((currentLevels.flatDB - peakLevels.flatDB) * 0.2);
+                } else {
+                    peakLevels.flatDB = peakLevels.flatDB * 0.999f;
+                }
             }
-        }
-        /// peak c
-        if (currentLevels.cWeightedDB < 999.0f) {
-            if (peakLevels.cWeightedDB < currentLevels.cWeightedDB) {
-                peakLevels.cWeightedDB = peakLevels.cWeightedDB + ((currentLevels.cWeightedDB - peakLevels.cWeightedDB) * 0.2);
-            } else {
-                peakLevels.cWeightedDB = peakLevels.cWeightedDB * 0.999f;
+            /// peak a
+            if (currentLevels.aWeightedDB < 999.0f) {
+                if (peakLevels.aWeightedDB < currentLevels.aWeightedDB) {
+                    peakLevels.aWeightedDB = peakLevels.aWeightedDB + ((currentLevels.aWeightedDB - peakLevels.aWeightedDB) * 0.2);
+                } else {
+                    peakLevels.aWeightedDB = peakLevels.aWeightedDB * 0.999f;
+                }
             }
+            /// peak c
+            if (currentLevels.cWeightedDB < 999.0f) {
+                if (peakLevels.cWeightedDB < currentLevels.cWeightedDB) {
+                    peakLevels.cWeightedDB = peakLevels.cWeightedDB + ((currentLevels.cWeightedDB - peakLevels.cWeightedDB) * 0.2);
+                } else {
+                    peakLevels.cWeightedDB = peakLevels.cWeightedDB * 0.999f;
+                }
+            }
+            
+            hasAddedNormailzed = YES;
         }
-        
-        hasAddedNormailzed = YES;
         
     }];
 }
 
 - (void)stop {
-    NSLog(@"Sound Analyers Stop");
-    Novocaine *audioManager = [Novocaine audioManager];
-    [audioManager setInputBlock:nil];
+    @synchronized(self) {
+        NSLog(@"Sound Analyers Stop");
+        Novocaine *audioManager = [Novocaine audioManager];
+        [audioManager setInputBlock:nil];
+    }
 }
 
 #pragma mark - Recording
 
 - (void)beginRecording {
     [self resetMetering];
-    NSLog(@"number of averages %d", oct->nAverages);
+    NSLog(@"number of averages %d", oct.nAverages);
 }
 
 - (COSMFeedModel *)stopRecording {
     COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
     
-    NSLog(@"fft bins count %d", fft->bins);
+    NSLog(@"fft bins count %d", fft.bins);
     
     float bin = 17.5;
     float peak = -60.0f;
-    for (int i=0; i<oct->nAverages; ++i) {
+    for (int i=0; i<oct.nAverages; ++i) {
         // find the highest peak since reset
         if (peak < nomalized[i].getAverage()) {
             peak = nomalized[i].getAverage();
@@ -329,7 +321,7 @@ struct Normalizing {
 
 - (float)valueForSweeperParticle:(unsigned int)number inTotal:(unsigned int)numberOfParticles for:(RadarViewController *)radarViewController wantsAll:(BOOL)isAll {
     int startPoint = -4;
-    int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct->nAverages);
+    int index = RadarMapFloat(number, 0.0f, numberOfParticles, startPoint, oct.nAverages);
     
     if (index < 0) return 0.0f;
     
@@ -351,8 +343,6 @@ struct Normalizing {
 
 - (void)dealloc {
     NSLog(@"Sound Analyser dealloc");
-    delete fft;
-    delete oct;
     delete nomalized;
 }
 
@@ -380,6 +370,7 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
             cPeakingEqs[i] = [[NVPeakingEQFilter alloc] initWithSamplingRate:[Novocaine audioManager].samplingRate];
         }
         
+        
         // eq frequencies
         MakeWeighted(aPeakingEqs[0], cPeakingEqs[0], 10);
         MakeWeighted(aPeakingEqs[1], cPeakingEqs[1], 20);
@@ -394,6 +385,14 @@ void MakeWeighted(NVPeakingEQFilter *aPeakingEq, NVPeakingEQFilter *cPeakingEq, 
         MakeWeighted(aPeakingEqs[10], cPeakingEqs[10], 20000);
         
         shouldResetMetering = YES;
+        
+        NSInteger fftSize = 1024 * 2;
+        NSInteger windowSize = 1024; //1024;
+        Float64 samplingRate = [Novocaine audioManager].samplingRate;
+        fft.setup(fftSize, windowSize, 256);
+        oct.setup(samplingRate, fftSize/2, averages);
+
+        nomalized = new Normalizing<float>[oct.nAverages];
     }
     
     return self;
