@@ -1,6 +1,3 @@
-[submodule "JSMap"]
-	path = JSMap
-	url = git@bitbucket.org:rc1/cosm-map.git
 [submodule "Lib/OHAttributedLabel"]
 	path = Lib/OHAttributedLabel
 	url = git@github.com:AliSoftware/OHAttributedLabel.git

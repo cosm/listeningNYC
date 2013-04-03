@@ -178,7 +178,7 @@
 		91632A0F170C78EE00EF544E /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91632A0E170C78EE00EF544E /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		91632A16170C793D00EF544E /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A15170C793D00EF544E /* DBTool.mm */; };
 		91632A19170C794E00EF544E /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A18170C794E00EF544E /* SoundAnalyser.mm */; };
-		91632A1C170C7A1C00EF544E /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A1B170C7A1C00EF544E /* RadarSweeper.mm */; };
+		91632A20170C7CEF00EF544E /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A1F170C7CEF00EF544E /* RadarSweeper.mm */; };
 		917D3B7816CD4619008C593D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917D3B7716CD4619008C593D /* CoreText.framework */; };
 		917D3BC916CD80B8008C593D /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAE16CD80B8008C593D /* CHANGELOG */; };
 		917D3BCA16CD80B8008C593D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAF16CD80B8008C593D /* LICENSE */; };
@@ -487,9 +487,9 @@
 		91632A15170C793D00EF544E /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
 		91632A17170C794E00EF544E /* SoundAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundAnalyser.h; sourceTree = "<group>"; };
 		91632A18170C794E00EF544E /* SoundAnalyser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundAnalyser.mm; sourceTree = "<group>"; };
-		91632A1A170C7A1C00EF544E /* RadarSweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadarSweeper.h; path = _RadarTests/RadarSweeper.h; sourceTree = SOURCE_ROOT; };
-		91632A1B170C7A1C00EF544E /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarSweeper.mm; path = _RadarTests/RadarSweeper.mm; sourceTree = SOURCE_ROOT; };
 		91632A1D170C7BAE00EF544E /* BannedWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannedWords.h; path = BannedWords/BannedWords.h; sourceTree = "<group>"; };
+		91632A1E170C7CEF00EF544E /* RadarSweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSweeper.h; sourceTree = "<group>"; };
+		91632A1F170C7CEF00EF544E /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarSweeper.mm; sourceTree = "<group>"; };
 		917D3B7716CD4619008C593D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		917D3BAE16CD80B8008C593D /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		917D3BAF16CD80B8008C593D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1101,7 +1101,7 @@
 			isa = PBXGroup;
 			children = (
 				91F07611169F35A30047FFEF /* Libraries */,
-				91C7737B1671F8A400C9BDB3 /* Javascript */,
+				91C7737B1671F8A400C9BDB3 /* HTML */,
 				918B268516A86F81009BD7A9 /* Config.h */,
 				918B268616A86F82009BD7A9 /* Config.m */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
@@ -1148,12 +1148,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		91C7737B1671F8A400C9BDB3 /* Javascript */ = {
+		91C7737B1671F8A400C9BDB3 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
 				91D75B4F169DDA9C0088FB0D /* public */,
 			);
-			name = Javascript;
+			name = HTML;
 			sourceTree = "<group>";
 		};
 		91D32E9B164971BE00BF7988 = {
@@ -1213,8 +1213,8 @@
 				91632A15170C793D00EF544E /* DBTool.mm */,
 				91632A17170C794E00EF544E /* SoundAnalyser.h */,
 				91632A18170C794E00EF544E /* SoundAnalyser.mm */,
-				91632A1A170C7A1C00EF544E /* RadarSweeper.h */,
-				91632A1B170C7A1C00EF544E /* RadarSweeper.mm */,
+				91632A1E170C7CEF00EF544E /* RadarSweeper.h */,
+				91632A1F170C7CEF00EF544E /* RadarSweeper.mm */,
 			);
 			name = "Sound Analysis";
 			sourceTree = "<group>";
@@ -1605,7 +1605,7 @@
 				91632A0F170C78EE00EF544E /* ISO8601DateFormatter.m in Sources */,
 				91632A16170C793D00EF544E /* DBTool.mm in Sources */,
 				91632A19170C794E00EF544E /* SoundAnalyser.mm in Sources */,
-				91632A1C170C7A1C00EF544E /* RadarSweeper.mm in Sources */,
+				91632A20170C7CEF00EF544E /* RadarSweeper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
