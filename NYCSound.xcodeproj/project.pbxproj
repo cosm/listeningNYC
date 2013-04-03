@@ -173,6 +173,12 @@
 		91632A03170C5CD600EF544E /* SubmittingSound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916329D8170C5CD600EF544E /* SubmittingSound@2x.png */; };
 		91632A05170C5D0E00EF544E /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9153142016A4592A0075972B /* CountdownViewController.m */; };
 		91632A06170C5E3500EF544E /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C773581671EF8500C9BDB3 /* HistoryViewController.m */; };
+		91632A09170C788400EF544E /* RadarViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A08170C788400EF544E /* RadarViewController.mm */; };
+		91632A0C170C78AE00EF544E /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 91632A0B170C78AE00EF544E /* Utils.m */; };
+		91632A0F170C78EE00EF544E /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 91632A0E170C78EE00EF544E /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91632A16170C793D00EF544E /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A15170C793D00EF544E /* DBTool.mm */; };
+		91632A19170C794E00EF544E /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A18170C794E00EF544E /* SoundAnalyser.mm */; };
+		91632A1C170C7A1C00EF544E /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A1B170C7A1C00EF544E /* RadarSweeper.mm */; };
 		917D3B7816CD4619008C593D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917D3B7716CD4619008C593D /* CoreText.framework */; };
 		917D3BC916CD80B8008C593D /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAE16CD80B8008C593D /* CHANGELOG */; };
 		917D3BCA16CD80B8008C593D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAF16CD80B8008C593D /* LICENSE */; };
@@ -212,8 +218,6 @@
 		918D6C6516DFB47400909170 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918D6C6416DFB47400909170 /* CFNetwork.framework */; };
 		918F6A7916CC1FEC009F2DEC /* CustomUserTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 918F6A7816CC1FEC009F2DEC /* CustomUserTags.m */; };
 		91AB20ED16A5B8B700D7CBF4 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AB20EC16A5B8B700D7CBF4 /* RecordingViewController.m */; };
-		91B5B5C91677A39600A7B8E0 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC41165FA50300643315 /* Utils.m */; };
-		91B5B5CA1677A40E00A7B8E0 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		91B8F34F167F67B200CBBC0C /* PostCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */; };
 		91B8F3901680BC3800CBBC0C /* AddTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B8F38A1680B68400CBBC0C /* AddTagViewController.m */; };
 		91C773181671EB7A00C9BDB3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D32EAA164971BE00BF7988 /* UIKit.framework */; };
@@ -231,9 +235,6 @@
 		91C773501671EF3900C9BDB3 /* CaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C7734F1671EF3900C9BDB3 /* CaptureViewController.m */; };
 		91C773531671EF5300C9BDB3 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C773521671EF5300C9BDB3 /* MapViewController.m */; };
 		91C773561671EF6400C9BDB3 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C773551671EF6400C9BDB3 /* AboutViewController.m */; };
-		91C7735A1671F2C000C9BDB3 /* RadarViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91C9D6F3166E2AD300837487 /* RadarViewController.mm */; };
-		91C7735B1671F2C700C9BDB3 /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 919BD0BB166E34EB00478838 /* RadarSweeper.mm */; };
-		91C7735C1671F2D100C9BDB3 /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 914894611667B28E0039094B /* DBTool.mm */; };
 		91C7735E1671F2EB00C9BDB3 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B9B6166FEED800EF1ACF /* maximilian.cpp */; };
 		91C7735F1671F2EB00C9BDB3 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97B166FED9400EF1ACF /* fft.cpp */; };
 		91C773601671F2EB00C9BDB3 /* maxiFFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91F9B97F166FED9400EF1ACF /* maxiFFT.cpp */; };
@@ -261,7 +262,6 @@
 		91C773801671F90600C9BDB3 /* MapWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C7737F1671F90600C9BDB3 /* MapWebViewController.m */; };
 		91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC33DF16C1343B005A4834 /* SubmittingViewController.m */; };
 		91D75B50169DDA9C0088FB0D /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91D75B4F169DDA9C0088FB0D /* public */; };
-		91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91F0760F169F34C50047FFEF /* SoundAnalyser.mm */; };
 		91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F161DE1682214C0099AAB9 /* TagDeleteView.m */; };
 		91F3F5DB16D4DFF900346786 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3F5DA16D4DFF900346786 /* QuartzCore.framework */; };
 		91FDAC951678F35400A1BA3A /* DetailModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FDAC941678F35400A1BA3A /* DetailModalViewController.m */; };
@@ -316,8 +316,6 @@
 		91489439166799C90039094B /* NVClippingDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVClippingDetection.m; sourceTree = "<group>"; };
 		9148943A166799C90039094B /* NVSoundLevelMeter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSoundLevelMeter.h; sourceTree = "<group>"; };
 		9148943B166799C90039094B /* NVSoundLevelMeter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSoundLevelMeter.m; sourceTree = "<group>"; };
-		914894611667B28E0039094B /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DBTool.mm; path = ../NYCSound/DBTool.mm; sourceTree = "<group>"; };
-		9148947A1667C7FA0039094B /* DBTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DBTool.h; path = ../NYCSound/DBTool.h; sourceTree = "<group>"; };
 		9153141F16A4592A0075972B /* CountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownViewController.h; sourceTree = "<group>"; };
 		9153142016A4592A0075972B /* CountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownViewController.m; sourceTree = "<group>"; };
 		915430E0170C43C1003FAEB7 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
@@ -478,10 +476,20 @@
 		916329D6170C5CD600EF544E /* StartHere@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartHere@2x.png"; sourceTree = "<group>"; };
 		916329D7170C5CD600EF544E /* SubmittingSound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SubmittingSound.png; sourceTree = "<group>"; };
 		916329D8170C5CD600EF544E /* SubmittingSound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SubmittingSound@2x.png"; sourceTree = "<group>"; };
-		917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISO8601DateFormatter.h; path = ../NYCSound/ISO8601DateFormatter.h; sourceTree = "<group>"; };
-		917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISO8601DateFormatter.m; path = ../NYCSound/ISO8601DateFormatter.m; sourceTree = "<group>"; };
-		917ABC40165FA50100643315 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../NYCSound/Utils.h; sourceTree = "<group>"; };
-		917ABC41165FA50300643315 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../NYCSound/Utils.m; sourceTree = "<group>"; };
+		91632A07170C788400EF544E /* RadarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarViewController.h; sourceTree = "<group>"; };
+		91632A08170C788400EF544E /* RadarViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarViewController.mm; sourceTree = "<group>"; };
+		91632A0A170C78AE00EF544E /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		91632A0B170C78AE00EF544E /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		91632A0D170C78EE00EF544E /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		91632A0E170C78EE00EF544E /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		91632A10170C791200EF544E /* GLTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTool.h; sourceTree = "<group>"; };
+		91632A14170C793D00EF544E /* DBTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTool.h; sourceTree = "<group>"; };
+		91632A15170C793D00EF544E /* DBTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DBTool.mm; sourceTree = "<group>"; };
+		91632A17170C794E00EF544E /* SoundAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundAnalyser.h; sourceTree = "<group>"; };
+		91632A18170C794E00EF544E /* SoundAnalyser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SoundAnalyser.mm; sourceTree = "<group>"; };
+		91632A1A170C7A1C00EF544E /* RadarSweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadarSweeper.h; path = _RadarTests/RadarSweeper.h; sourceTree = SOURCE_ROOT; };
+		91632A1B170C7A1C00EF544E /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarSweeper.mm; path = _RadarTests/RadarSweeper.mm; sourceTree = SOURCE_ROOT; };
+		91632A1D170C7BAE00EF544E /* BannedWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannedWords.h; path = BannedWords/BannedWords.h; sourceTree = "<group>"; };
 		917D3B7716CD4619008C593D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		917D3BAE16CD80B8008C593D /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		917D3BAF16CD80B8008C593D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -560,12 +568,8 @@
 		918F6A7816CC1FEC009F2DEC /* CustomUserTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUserTags.m; sourceTree = "<group>"; };
 		918F6A7E16CC39C4009F2DEC /* DeleteingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteingViewController.h; sourceTree = "<group>"; };
 		918F6A7F16CC39C4009F2DEC /* DeleteingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteingViewController.m; sourceTree = "<group>"; };
-		919BD0BA166E333900478838 /* RadarSweeper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadarSweeper.h; path = RadarTests/RadarSweeper.h; sourceTree = SOURCE_ROOT; };
-		919BD0BB166E34EB00478838 /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarSweeper.mm; path = RadarTests/RadarSweeper.mm; sourceTree = SOURCE_ROOT; };
 		919BD0BE166E35F000478838 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		919BD0CB166E3A2C00478838 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		919BD0D8166E469F00478838 /* GLTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GLTool.h; path = ../Radar/GLTool.h; sourceTree = "<group>"; };
-		91A55B7716DBDD2100D2F4F4 /* BannedWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannedWords.h; path = NYCSound/BannedWords/BannedWords.h; sourceTree = SOURCE_ROOT; };
 		91A5EC821667858B002B9000 /* AudioFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileReader.h; sourceTree = "<group>"; };
 		91A5EC831667858B002B9000 /* AudioFileReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioFileReader.mm; sourceTree = "<group>"; };
 		91A5EC841667858B002B9000 /* AudioFileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileWriter.h; sourceTree = "<group>"; };
@@ -605,8 +609,6 @@
 		91C773581671EF8500C9BDB3 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		91C7737E1671F90600C9BDB3 /* MapWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapWebViewController.h; sourceTree = "<group>"; };
 		91C7737F1671F90600C9BDB3 /* MapWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapWebViewController.m; sourceTree = "<group>"; };
-		91C9D6F2166E2AD300837487 /* RadarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RadarViewController.h; path = ../Radar/RadarViewController.h; sourceTree = "<group>"; };
-		91C9D6F3166E2AD300837487 /* RadarViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = RadarViewController.mm; path = ../Radar/RadarViewController.mm; sourceTree = "<group>"; };
 		91CC33DE16C1343B005A4834 /* SubmittingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmittingViewController.h; sourceTree = "<group>"; };
 		91CC33DF16C1343B005A4834 /* SubmittingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmittingViewController.m; sourceTree = "<group>"; };
 		91D32EAA164971BE00BF7988 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -615,8 +617,6 @@
 		91D32ECE164971BF00BF7988 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		91D75B4F169DDA9C0088FB0D /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JSMap/public; sourceTree = SOURCE_ROOT; };
-		91F0760E169F34C50047FFEF /* SoundAnalyser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundAnalyser.h; path = NYCSound/SoundAnalyser.h; sourceTree = SOURCE_ROOT; };
-		91F0760F169F34C50047FFEF /* SoundAnalyser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SoundAnalyser.mm; path = NYCSound/SoundAnalyser.mm; sourceTree = SOURCE_ROOT; };
 		91F161DD1682214C0099AAB9 /* TagDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDeleteView.h; sourceTree = "<group>"; };
 		91F161DE1682214C0099AAB9 /* TagDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDeleteView.m; sourceTree = "<group>"; };
 		91F3F5DA16D4DFF900346786 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -907,8 +907,8 @@
 				91C773581671EF8500C9BDB3 /* HistoryViewController.m */,
 				91B8F34D167F67B100CBBC0C /* PostCaptureViewController.h */,
 				91B8F34E167F67B200CBBC0C /* PostCaptureViewController.m */,
-				91C9D6F2166E2AD300837487 /* RadarViewController.h */,
-				91C9D6F3166E2AD300837487 /* RadarViewController.mm */,
+				91632A07170C788400EF544E /* RadarViewController.h */,
+				91632A08170C788400EF544E /* RadarViewController.mm */,
 				91AB20EB16A5B8B700D7CBF4 /* RecordingViewController.h */,
 				91AB20EC16A5B8B700D7CBF4 /* RecordingViewController.m */,
 				91C773511671EF5300C9BDB3 /* MapViewController.h */,
@@ -926,13 +926,13 @@
 		917A65F3169F262100E862D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				91A55B7716DBDD2100D2F4F4 /* BannedWords.h */,
-				917ABC40165FA50100643315 /* Utils.h */,
-				917ABC41165FA50300643315 /* Utils.m */,
+				91632A1D170C7BAE00EF544E /* BannedWords.h */,
+				91632A0A170C78AE00EF544E /* Utils.h */,
+				91632A0B170C78AE00EF544E /* Utils.m */,
 				918F6A7716CC1FEB009F2DEC /* CustomUserTags.h */,
 				918F6A7816CC1FEC009F2DEC /* CustomUserTags.m */,
-				917ABC3E165FA4FF00643315 /* ISO8601DateFormatter.h */,
-				917ABC3F165FA50000643315 /* ISO8601DateFormatter.m */,
+				91632A0D170C78EE00EF544E /* ISO8601DateFormatter.h */,
+				91632A0E170C78EE00EF544E /* ISO8601DateFormatter.m */,
 				911BBA8316CBE46E003CDBCA /* MeterTable.h */,
 				911BBA8216CBE46E003CDBCA /* MeterTable.mm */,
 				911BBA8616CBE5D0003CDBCA /* MeterTableBridge.h */,
@@ -1208,13 +1208,13 @@
 		91F0760C169F348E0047FFEF /* Sound Analysis */ = {
 			isa = PBXGroup;
 			children = (
-				919BD0D8166E469F00478838 /* GLTool.h */,
-				9148947A1667C7FA0039094B /* DBTool.h */,
-				914894611667B28E0039094B /* DBTool.mm */,
-				91F0760E169F34C50047FFEF /* SoundAnalyser.h */,
-				91F0760F169F34C50047FFEF /* SoundAnalyser.mm */,
-				919BD0BA166E333900478838 /* RadarSweeper.h */,
-				919BD0BB166E34EB00478838 /* RadarSweeper.mm */,
+				91632A10170C791200EF544E /* GLTool.h */,
+				91632A14170C793D00EF544E /* DBTool.h */,
+				91632A15170C793D00EF544E /* DBTool.mm */,
+				91632A17170C794E00EF544E /* SoundAnalyser.h */,
+				91632A18170C794E00EF544E /* SoundAnalyser.mm */,
+				91632A1A170C7A1C00EF544E /* RadarSweeper.h */,
+				91632A1B170C7A1C00EF544E /* RadarSweeper.mm */,
 			);
 			name = "Sound Analysis";
 			sourceTree = "<group>";
@@ -1534,9 +1534,6 @@
 				91C773501671EF3900C9BDB3 /* CaptureViewController.m in Sources */,
 				91C773531671EF5300C9BDB3 /* MapViewController.m in Sources */,
 				91C773561671EF6400C9BDB3 /* AboutViewController.m in Sources */,
-				91C7735A1671F2C000C9BDB3 /* RadarViewController.mm in Sources */,
-				91C7735B1671F2C700C9BDB3 /* RadarSweeper.mm in Sources */,
-				91C7735C1671F2D100C9BDB3 /* DBTool.mm in Sources */,
 				91C7735E1671F2EB00C9BDB3 /* maximilian.cpp in Sources */,
 				91C7735F1671F2EB00C9BDB3 /* fft.cpp in Sources */,
 				91C773601671F2EB00C9BDB3 /* maxiFFT.cpp in Sources */,
@@ -1559,15 +1556,12 @@
 				91C773751671F43400C9BDB3 /* NVLowShelvingFilter.m in Sources */,
 				91C773801671F90600C9BDB3 /* MapWebViewController.m in Sources */,
 				9103D8EE1675F6AB0014B3EF /* RecordingCell.m in Sources */,
-				91B5B5C91677A39600A7B8E0 /* Utils.m in Sources */,
-				91B5B5CA1677A40E00A7B8E0 /* ISO8601DateFormatter.m in Sources */,
 				9110A0DC1678C31300B7B0EE /* CircleBands.m in Sources */,
 				9110A0E01678DFD300B7B0EE /* QuarterCircleBands.m in Sources */,
 				91FDAC951678F35400A1BA3A /* DetailModalViewController.m in Sources */,
 				91B8F34F167F67B200CBBC0C /* PostCaptureViewController.m in Sources */,
 				91B8F3901680BC3800CBBC0C /* AddTagViewController.m in Sources */,
 				91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */,
-				91F07610169F34C50047FFEF /* SoundAnalyser.mm in Sources */,
 				91AB20ED16A5B8B700D7CBF4 /* RecordingViewController.m in Sources */,
 				918B268716A86F83009BD7A9 /* Config.m in Sources */,
 				91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */,
@@ -1606,6 +1600,12 @@
 				918D6C5716DFB3A700909170 /* SRWebSocket.m in Sources */,
 				91632A05170C5D0E00EF544E /* CountdownViewController.m in Sources */,
 				91632A06170C5E3500EF544E /* HistoryViewController.m in Sources */,
+				91632A09170C788400EF544E /* RadarViewController.mm in Sources */,
+				91632A0C170C78AE00EF544E /* Utils.m in Sources */,
+				91632A0F170C78EE00EF544E /* ISO8601DateFormatter.m in Sources */,
+				91632A16170C793D00EF544E /* DBTool.mm in Sources */,
+				91632A19170C794E00EF544E /* SoundAnalyser.mm in Sources */,
+				91632A1C170C7A1C00EF544E /* RadarSweeper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

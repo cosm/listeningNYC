@@ -1,6 +1,5 @@
 #import "Utils.h"
 #import "ISO8601DateFormatter.h"
-#import "LoadingViewController.h"
 #import "COSMFeedModel.h"
 #import "COSMDatastreamModel.h"
 #import "MeterTableBridge.h"
@@ -37,14 +36,6 @@ typedef struct TagLayoutSettings TagLayoutSettings;
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];
     [message show];
-}
-
-+ (LoadingViewController *)loadingViewControllerOn:(UIViewController*)viewController withTitle:(NSString *)title {
-    LoadingViewController *loadingViewController = [viewController.storyboard instantiateViewControllerWithIdentifier:@"Loading Screen"];
-    loadingViewController.view.autoresizingMask = UIViewAutoresizingNone;
-    loadingViewController.view.frame = [[UIScreen mainScreen] bounds];
-    [viewController.navigationController.view addSubview:loadingViewController.view];
-    return loadingViewController;
 }
 
 + (void)addSubviews:(NSArray *)views toView:(UIView *)view {

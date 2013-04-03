@@ -6,7 +6,6 @@
 //
 #import <Foundation/Foundation.h>
 @class ISO8601DateFormatter;
-@class LoadingViewController;
 @class COSMFeedModel;
 @class COSMDatastreamModel;
 @class OHAttributedLabel;
@@ -16,8 +15,6 @@
 // UI
 + (void)alertUsingJSON:(id)JSON orTitle:(NSString *)fallbackTile message:(NSString*)messageOrNil;
 + (void)alert:(NSString *)title message:(NSString *)messageOrNil;
-/// to remove this added LoadingViewController do [self.loadingViewController.view removeFromSuperview];
-+ (LoadingViewController*)loadingViewControllerOn:(UIViewController*)viewController withTitle:(NSString *)title;
 + (void)addSubviews:(NSArray *)views toView:(UIView *)view;
 + (void)layoutViewsHTMLStyle:(NSArray *)views inRect:(CGRect)area withSpacing:(CGSize)spacing;
 + (void)layoutViewsVerticalCenterStyle:(NSArray *)views inRect:(CGRect)rect spacingMin:(float)spacingMin spacingMax:(float)spacingMax;
