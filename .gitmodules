@@ -1,0 +1,6 @@
+[submodule "Lib/OHAttributedLabel"]
+	path = Lib/OHAttributedLabel
+	url = git@github.com:AliSoftware/OHAttributedLabel.git
+[submodule "Lib/COSMObjectiveC"]
+	path = Lib/COSMObjectiveC
+	url = git@github.com:rc1/COSMObjectiveC.git
