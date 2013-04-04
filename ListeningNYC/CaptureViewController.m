@@ -167,7 +167,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    NSLog(@"Animated? %@", animated ? @"YES" : @"NO");
+    // NSLog(@"Animated? %@", animated ? @"YES" : @"NO");
     
     self.radarContainerView.alpha = 1.0f;
     self.dBContainerView.alpha = 1.0f;
@@ -254,7 +254,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        NSLog(@"Captuer View Controller initWithCoder");
     }
     return self;
 }

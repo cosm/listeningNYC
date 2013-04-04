@@ -99,6 +99,7 @@ struct Normalizing {
 }
 
 - (void)preformResetMetering {
+    
     peakLevels.flatDB = -99999.9f;
     peakLevels.aWeightedDB = -99999.9f;
     peakLevels.cWeightedDB = -99999.9f;
@@ -120,16 +121,16 @@ struct Normalizing {
     
     Novocaine *audioManager = [Novocaine audioManager];
     [audioManager setInputBlock:^(float *incomingAudio, UInt32 numFrames, UInt32 numChannels) {
-        if (!self) { return; }
+        //if (!self) { return; }
+        
+        ////
+        /// reset metering
+        if (shouldResetMetering) {
+            [self preformResetMetering];
+            return;
+        }
         
         @synchronized(self) {
-        
-            ////
-            /// reset metering
-            if (shouldResetMetering) {
-                [self preformResetMetering];
-                return;
-            }
             currentLevels.flatDB = [flatLevelMeter getdBLevel:incomingAudio numFrames:numFrames numChannels:numChannels];
             if (self.peakDb < currentLevels.flatDB) { self.peakDb = currentLevels.flatDB; }
             currentDBNormalized.set(currentLevels.flatDB);
@@ -145,7 +146,7 @@ struct Normalizing {
             }
             currentLevels.aWeightedDB = [aWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
             
-        
+            
             /// add fft & octave analyser
             for (int i=0; i < numFrames; i+=numChannels) {
                 // Bug error throw here
@@ -161,6 +162,8 @@ struct Normalizing {
                 }
             }
 
+        
+        
             ////
             /// c weighted
             float cWeightedAudio[numFrames * numChannels];
@@ -168,9 +171,12 @@ struct Normalizing {
             // apply a weigthed
             for (int i=0; i < 11; ++i) {
                 // Bug error throw here
+                //! here
                 [cPeakingEqs[i] filterData:aWeightedAudio numFrames:numFrames numChannels:numChannels];
             }
+            //! here
             currentLevels.cWeightedDB = [cWeightedLevelMeter getdBLevel:aWeightedAudio numFrames:numFrames numChannels:numChannels]+120.0f;
+       
             
             /// peak
             if (currentLevels.flatDB < 999.0f) {
@@ -198,15 +204,15 @@ struct Normalizing {
             }
             
             hasAddedNormailzed = YES;
+            
         }
         
     }];
 }
 
 - (void)stop {
+    Novocaine *audioManager = [Novocaine audioManager];
     @synchronized(self) {
-        NSLog(@"Sound Analyers Stop");
-        Novocaine *audioManager = [Novocaine audioManager];
         [audioManager setInputBlock:nil];
     }
 }
@@ -215,7 +221,6 @@ struct Normalizing {
 
 - (void)beginRecording {
     [self resetMetering];
-    NSLog(@"number of averages %d", oct.nAverages);
 }
 
 - (COSMFeedModel *)stopRecording {
@@ -343,6 +348,7 @@ struct Normalizing {
 
 - (void)dealloc {
     NSLog(@"Sound Analyser dealloc");
+    
     delete nomalized;
 }
 

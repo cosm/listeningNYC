@@ -61,11 +61,8 @@ var ListeningNYC = W.Object.extend({
             attributionControl: false
         };
         if (this.shouldConstrain) {
-            NSLog("Constraigning");
             mapOptions.maxBounds = this.mapBounds;
-        } else {
-            NSLog("not constringing");
-        }
+        } 
         this.map = L.map('map', mapOptions);
 
         L.tileLayer('http://{s}.tile.cloudmade.com/10380a30d44f42e2b9ed814d8880e454/{styleId}/256/{z}/{x}/{y}.png', {
@@ -86,22 +83,16 @@ var ListeningNYC = W.Object.extend({
         });
                                    
         bridgeJSON({"event":"mapDidCreate"});
-        NSLog("mapDidCreate");
         if (this.latitude !== undefined && this.longitude!== undefined  && this.zoom!== undefined ) {
             this.updateUserPosition(this.latitude, this.longitude, this.zoom);
-        } else {
-            NSLog("no at set");
-            console.log(this);
         }
     },
     // bridge methods
     setZoom : function (zoom) {
         this.zoom = zoom;
         this.map.setZoom(this.zoom);
-        NSLog("setting zoom to", this.zoom);
     },
     updateUserPosition : function (latitude, longitude, zoom) {
-        NSLog("updating users position", latitude, longitude, zoom);
         if (latitude && longitude) {
             this.latitude = latitude;
             this.longitude = longitude;
@@ -115,7 +106,6 @@ var ListeningNYC = W.Object.extend({
                 } else {
                     this.map.panTo(this.mapCenter);
                 }
-                NSLog("bailing");
                 return;
             }
         }
@@ -155,7 +145,6 @@ var ListeningNYC = W.Object.extend({
     setQueryType : function (type) {
         if (type === this.queryType) { return; }
         this.queryType = type;
-        NSLog("Should be updateing query type to:", this.queryType);
 
         if (this.queryType === "all") {
             if (this.likeonlyCartoLayer) { this.map.removeLayer(this.likeonlyCartoLayer); }

@@ -171,7 +171,7 @@
     if ([platform isEqualToString:@"i386"])         radarFactitDesnsity =  400;
     if ([platform isEqualToString:@"x86_64"])       radarFactitDesnsity =  400;
     
-    NSLog(@"Radar resoltion is set to %d for %@", radarFactitDesnsity, platform);
+    //NSLog(@"Radar resolution is set to %d for %@", radarFactitDesnsity, platform);
     
     radar = new RadarSweeper(radarFactitDesnsity, 40, 150.0f);
     radar->decayRate = kRADAR_DECAY_RATE;

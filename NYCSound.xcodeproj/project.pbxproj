@@ -179,6 +179,7 @@
 		91632A16170C793D00EF544E /* DBTool.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A15170C793D00EF544E /* DBTool.mm */; };
 		91632A19170C794E00EF544E /* SoundAnalyser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A18170C794E00EF544E /* SoundAnalyser.mm */; };
 		91632A20170C7CEF00EF544E /* RadarSweeper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 91632A1F170C7CEF00EF544E /* RadarSweeper.mm */; };
+		91632A22170C7D8B00EF544E /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 91632A21170C7D8B00EF544E /* HTML */; };
 		917D3B7816CD4619008C593D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917D3B7716CD4619008C593D /* CoreText.framework */; };
 		917D3BC916CD80B8008C593D /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAE16CD80B8008C593D /* CHANGELOG */; };
 		917D3BCA16CD80B8008C593D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 917D3BAF16CD80B8008C593D /* LICENSE */; };
@@ -261,7 +262,6 @@
 		91C773751671F43400C9BDB3 /* NVLowShelvingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9148942E166799C90039094B /* NVLowShelvingFilter.m */; };
 		91C773801671F90600C9BDB3 /* MapWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C7737F1671F90600C9BDB3 /* MapWebViewController.m */; };
 		91CC33E016C1343B005A4834 /* SubmittingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CC33DF16C1343B005A4834 /* SubmittingViewController.m */; };
-		91D75B50169DDA9C0088FB0D /* public in Resources */ = {isa = PBXBuildFile; fileRef = 91D75B4F169DDA9C0088FB0D /* public */; };
 		91F161DF1682214D0099AAB9 /* TagDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F161DE1682214C0099AAB9 /* TagDeleteView.m */; };
 		91F3F5DB16D4DFF900346786 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F3F5DA16D4DFF900346786 /* QuartzCore.framework */; };
 		91FDAC951678F35400A1BA3A /* DetailModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FDAC941678F35400A1BA3A /* DetailModalViewController.m */; };
@@ -490,6 +490,7 @@
 		91632A1D170C7BAE00EF544E /* BannedWords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannedWords.h; path = BannedWords/BannedWords.h; sourceTree = "<group>"; };
 		91632A1E170C7CEF00EF544E /* RadarSweeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarSweeper.h; sourceTree = "<group>"; };
 		91632A1F170C7CEF00EF544E /* RadarSweeper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RadarSweeper.mm; sourceTree = "<group>"; };
+		91632A21170C7D8B00EF544E /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = SOURCE_ROOT; };
 		917D3B7716CD4619008C593D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		917D3BAE16CD80B8008C593D /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		917D3BAF16CD80B8008C593D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -616,7 +617,6 @@
 		91D32EAE164971BE00BF7988 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		91D32ECE164971BF00BF7988 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91D32F24164AD88300BF7988 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		91D75B4F169DDA9C0088FB0D /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; name = public; path = JSMap/public; sourceTree = SOURCE_ROOT; };
 		91F161DD1682214C0099AAB9 /* TagDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDeleteView.h; sourceTree = "<group>"; };
 		91F161DE1682214C0099AAB9 /* TagDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDeleteView.m; sourceTree = "<group>"; };
 		91F3F5DA16D4DFF900346786 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1100,8 +1100,8 @@
 		91C7731B1671EB7A00C9BDB3 /* ListeningNYC */ = {
 			isa = PBXGroup;
 			children = (
+				91632A21170C7D8B00EF544E /* HTML */,
 				91F07611169F35A30047FFEF /* Libraries */,
-				91C7737B1671F8A400C9BDB3 /* HTML */,
 				918B268516A86F81009BD7A9 /* Config.h */,
 				918B268616A86F82009BD7A9 /* Config.m */,
 				91C773241671EB7A00C9BDB3 /* AppDelegate.h */,
@@ -1146,14 +1146,6 @@
 				91C773411671EB7B00C9BDB3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		91C7737B1671F8A400C9BDB3 /* HTML */ = {
-			isa = PBXGroup;
-			children = (
-				91D75B4F169DDA9C0088FB0D /* public */,
-			);
-			name = HTML;
 			sourceTree = "<group>";
 		};
 		91D32E9B164971BE00BF7988 = {
@@ -1321,7 +1313,6 @@
 			files = (
 				91C773201671EB7A00C9BDB3 /* InfoPlist.strings in Resources */,
 				91C7732F1671EB7A00C9BDB3 /* MainStoryboard.storyboard in Resources */,
-				91D75B50169DDA9C0088FB0D /* public in Resources */,
 				917D3BC916CD80B8008C593D /* CHANGELOG in Resources */,
 				917D3BCA16CD80B8008C593D /* LICENSE in Resources */,
 				915431AA170C43C1003FAEB7 /* About.png in Resources */,
@@ -1482,6 +1473,7 @@
 				91632A01170C5CD600EF544E /* StartHere@2x.png in Resources */,
 				91632A02170C5CD600EF544E /* SubmittingSound.png in Resources */,
 				91632A03170C5CD600EF544E /* SubmittingSound@2x.png in Resources */,
+				91632A22170C7D8B00EF544E /* HTML in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
