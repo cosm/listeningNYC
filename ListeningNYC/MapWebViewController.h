@@ -17,6 +17,7 @@
 @property BOOL mapIsReady;
 
 // Map Controls
+@property BOOL constrainToNYC;
 - (void)setMapLocation:(CLLocation *)location;
 - (void)setMapLocation:(CLLocation *)location zoomLevel:(float)zoom;
 - (void)setMapQueryType:(NSString *)queryType;

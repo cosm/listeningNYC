@@ -33,11 +33,11 @@
 }
 
 - (void)recordingViewControllerDidFinish {
+    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.currentDb + 60.0f];
     self.cosmFeed = [self.soundAnalyser stopRecording];
     [self.radarViewController stop];
     [self.radarViewController requestAllFromDatasource];
     self.shouldUpdateDbLabel = NO;
-    self.dbLabel.text = [NSString stringWithFormat:@"%0.f", self.soundAnalyser.peakDb + 60.0f];
     [self updateCircleBands];
     [self.recordingViewController setDescriptionUsingFeed:self.cosmFeed];
 }
@@ -167,6 +167,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    // NSLog(@"Animated? %@", animated ? @"YES" : @"NO");
+    
     self.radarContainerView.alpha = 1.0f;
     self.dBContainerView.alpha = 1.0f;
 
@@ -175,11 +177,16 @@
     self.delaySlider.value = kRADAR_DELAY_FOR;
     self.debugContainerView.hidden = !self.isDebugMode;
     
-    self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundA"];
-    self.tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
-    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
-    UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:0];
-    [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"Capture"] withFinishedUnselectedImage:[UIImage imageNamed:@"Capture"]];
+    // hack to only do this from the tab bar
+    // notification sent below claim to be
+    // animated
+    if (!animated) {
+        self.tabBarController.tabBar.backgroundImage = [UIImage imageNamed:@"ToolbarBackgroundA"];
+        self.tabBarController.tabBar.selectionIndicatorImage = [[UIImage alloc] init];
+        self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
+        UITabBarItem *tabItem = [[[self.tabBarController tabBar] items] objectAtIndex:0];
+        [tabItem setFinishedSelectedImage:[UIImage imageNamed:@"Capture"] withFinishedUnselectedImage:[UIImage imageNamed:@"Capture"]];
+    }
     
     [self.soundAnalyser start];
     self.radarViewController.datasource = self.soundAnalyser;
@@ -231,7 +238,7 @@
 	self.soundAnalyser = [[SoundAnalyser alloc] init];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kApplicationDidBecomeActive object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [self viewWillAppear:NO];
+        [self viewWillAppear:YES];
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kapplicationWillResignActive object:nil queue:nil usingBlock:^(NSNotification *note) {
@@ -247,7 +254,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        NSLog(@"Captuer View Controller initWithCoder");
     }
     return self;
 }

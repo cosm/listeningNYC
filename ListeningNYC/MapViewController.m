@@ -145,7 +145,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Map Web View Controller"];
-    NSLog(@"Map View Controller Did Load");
+    self.mapWebViewController.constrainToNYC = YES;
     CGRect frame = self.webContainerView.frame;
     frame.origin = CGPointMake(0.0f, 0.0f);
     self.mapWebViewController.view.frame = frame;

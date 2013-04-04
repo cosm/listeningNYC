@@ -1,0 +1,55 @@
+doctype 5
+html
+	head
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		style()
+			body {
+				font-family: "HelveticaNeue-Light";
+				font-size: 12px;
+				line-height: 18px;
+				margin: 0;
+				padding: 0;
+			}
+			img { 
+				display: block;
+			}
+			/** basic header/footer **/
+			h1, footer {
+				display: block;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				text-align: center;
+			}
+			h1 img, footer img {
+				display: inline-block;
+			}
+			/** footer/header specific **/
+			h1 {
+				padding-top: 20px;
+			}
+			footer {
+				padding-top: 20px;	
+			}
+			p {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+			a, a:visited, a:hover, a:active {
+				color: #F15A29;
+				text-decoration: none;
+			}
+	body()
+		h1: img(width=338/2, height=52/2, src="images/h1@2x.png")
+
+		p Lorem ipsum dolor sit amet, 
+			a(href="") consectetur adipisicing 
+			| elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+		p Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+		p Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+
+		footer: img(width=584/2, height=90/2, src="images/footer@2x.png")

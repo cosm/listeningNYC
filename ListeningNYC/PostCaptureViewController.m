@@ -129,7 +129,7 @@
             [NSString stringWithFormat:@"Created:Date=%@", [dateFormatter stringFromDate:[NSDate date]]]
         ];
         [self.tags addObjectsFromArray:machineTags];
-        [self.cosmFeed.info setObject:self.tags forKey:@"tags"];
+        [self.cosmFeed.info setObject:[Utils tagsArrayWithBannedTags:self.tags] forKey:@"tags"];
         
         COSMDatastreamModel *likeDislike = [[COSMDatastreamModel alloc] init];
         [likeDislike.info setValue:@"LikeDislike" forKeyPath:@"id"];

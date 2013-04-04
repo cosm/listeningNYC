@@ -12,6 +12,7 @@
 - (IBAction)toggleMapOptionsPressed:(id)sender;
 - (IBAction)locatePressed:(id)sender;
 - (IBAction)filterChanged:(id)sender;
+- (IBAction)descriptionButtonPressed:(id)sender;
 
 // Map Web View & Delegate
 @property (nonatomic, strong) MapWebViewController *mapWebViewController;

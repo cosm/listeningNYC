@@ -11,7 +11,12 @@
 @synthesize mapIsReady;
 
 - (void)createMap {
-    NSString *javascript = [NSString stringWithFormat:@"listeningNYC = new ListeningNYC()"];
+    NSString *javascript;
+    if (self.constrainToNYC) {
+        javascript = [NSString stringWithFormat:@"listeningNYC = new ListeningNYC({shouldConstrain:true})"];
+    } else {
+        javascript = [NSString stringWithFormat:@"listeningNYC = new ListeningNYC()"];
+    }
     [self.webview stringByEvaluatingJavaScriptFromString:javascript];
 }
 

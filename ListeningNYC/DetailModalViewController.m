@@ -61,10 +61,27 @@
 
 #pragma mark - IB
 
-@synthesize containerView, tagsContainer, likeDislikeSlider, mapContainer, modalBackgroundImageView, dateTimeLabel, dbLabel;
+@synthesize containerView, tagsContainer, likeDislikeSlider, mapContainer, modalBackgroundImageView, dateTimeLabel, dbLabel, descriptionLabel, descriptionBackgroundButton;
 
 - (IBAction)close:(id)sender {
     [self.view removeFromSuperview];
+}
+
+- (void)updateLikeDislike:(float)likeDislikeCosmValue {
+    float mappedNumber = [Utils mapFloat:likeDislikeCosmValue inputMin:0.0f inputMax:1.0f outputMin:0.0f outputMax:0.9f];
+    float rounded = round(mappedNumber * 10.0f) / 10.0f;
+    self.likeDislikeSlider.value = [Utils mapFloat:rounded inputMin:0.0f inputMax:0.9f outputMin:0.0f outputMax:1.0f];
+}
+
+- (IBAction)descriptionButtonPressed:(id)sender {
+    [Utils describeFeed:self.feed usingAttributedLabel:self.descriptionLabel];
+    self.descriptionLabel.hidden = NO;
+    self.descriptionBackgroundButton.hidden = NO;
+}
+
+- (IBAction)descriptionBackgroundButtonPressed:(id)sender {
+    self.descriptionLabel.hidden = YES;
+    self.descriptionBackgroundButton.hidden = YES;
 }
 
 #pragma mark - Circle Bands Datasource
@@ -79,11 +96,8 @@
 - (void)layoutSubViews {
     [[self.tagsContainer subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    NSLog(@"feed info %@", [Utils describe:self.feed.info]);
-    
-//    [self.feed.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(COSMDatastreamModel *datastream, NSUInteger idx, BOOL *stop) {
-//        NSLog(@"datastream %@",[Utils describe:datastream.info]);
-//    }];
+    self.descriptionLabel.hidden = YES;
+    self.descriptionBackgroundButton.hidden = YES;
     
     NSMutableArray *tagViews = [Utils createTagViews:[Utils tagArrayWithoutMachineTags:[Utils userTagsForRecording:self.feed]]];
     
@@ -98,7 +112,7 @@
     
     self.dateTimeLabel.text = [Utils dataTimeOfRecording:self.feed];
     
-    self.likeDislikeSlider.value = [[[Utils datastreamWithId:@"LikeDislike" in:self.feed] valueForKeyPath:@"info.current_value"] floatValue];
+    [self updateLikeDislike:[[[Utils datastreamWithId:@"LikeDislike" in:self.feed] valueForKeyPath:@"info.current_value"] floatValue]];
     
     [self.circleBands setNeedsDisplay];
 }
