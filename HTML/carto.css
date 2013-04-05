@@ -1,0 +1,60 @@
+#listeningnyc {
+ ::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000 {
+    marker-allow-overlap: true;
+    marker-fill-opacity: 0;
+  	marker-line-color: #FF00FF; 
+  }
+  
+  ::hz40{marker-width:5;marker-line-color:#e30000}
+  ::hz80{marker-width:7;marker-line-color:#ff2700}
+  ::hz160{marker-width:9;marker-line-color:#ff2700}
+  ::hz315{marker-width:11;marker-line-color:#ff8400}
+  ::hz630{marker-width:13;marker-line-color:#ffe100}
+  ::hz1250{marker-width:15;marker-line-color:#c1ff00}
+  ::hz2500{marker-width:17;marker-line-color:#64ff00}
+  ::hz5000{marker-width:19;marker-line-color:#07ff00}
+  ::hz10000{marker-width:21;marker-line-color:#00ff55}
+  ::hz20000{marker-width:23;marker-line-color:#00ffb2}
+
+  [hz40<3]{::hz40{marker-line-opacity:0.6}}
+  [hz40<0.5]{::hz40{marker-line-opacity:0.3}}
+  [hz40<0.1]{::hz40{marker-line-opacity:0.0}}
+  [hz80<3]{::hz80{marker-line-opacity:0.6}}
+  [hz80<0.5]{::hz80{marker-line-opacity:0.3}}
+  [hz80<0.1]{::hz80{marker-line-opacity:0.0}}
+  [hz160<3]{::hz160{marker-line-opacity:0.6}}
+  [hz160<0.5]{::hz160{marker-line-opacity:0.3}}
+  [hz160<0.1]{::hz160{marker-line-opacity:0.0}}
+  [hz315<3]{::hz315{marker-line-opacity:0.6}}
+  [hz315<0.5]{::hz315{marker-line-opacity:0.3}}
+  [hz315<0.1]{::hz315{marker-line-opacity:0.0}}
+  [hz630<3]{::hz630{marker-line-opacity:0.6}}
+  [hz630<0.5]{::hz630{marker-line-opacity:0.3}}
+  [hz630<0.1]{::hz630{marker-line-opacity:0.0}}
+  [hz1250<3]{::hz1250{marker-line-opacity:0.6}}
+  [hz1250<0.5]{::hz1250{marker-line-opacity:0.3}}
+  [hz1250<0.1]{::hz1250{marker-line-opacity:0.0}}
+  [hz2500<3]{::hz2500{marker-line-opacity:0.6}}
+  [hz2500<0.5]{::hz2500{marker-line-opacity:0.3}}
+  [hz2500<0.1]{::hz2500{marker-line-opacity:0.0}}
+  [hz5000<3]{::hz5000{marker-line-opacity:0.6}}
+  [hz5000<0.5]{::hz5000{marker-line-opacity:0.3}}
+  [hz5000<0.1]{::hz5000{marker-line-opacity:0.0}}
+  [hz10000<3]{::hz10000{marker-line-opacity:0.6}}
+  [hz10000<0.5]{::hz10000{marker-line-opacity:0.3}}
+  [hz10000<0.1]{::hz10000{marker-line-opacity:0.0}}
+  [hz20000<3]{::hz20000{marker-line-opacity:0.6}}
+  [hz20000<0.5]{::hz20000{marker-line-opacity:0.3}}
+  [hz20000<0.1]{::hz20000{marker-line-opacity:0.0}}
+	
+  [zoom>=3]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.1,0.1);}}
+  [zoom>=8]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.2,0.2);}}
+  [zoom>=10]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.25,0.25);}}
+  [zoom>=11]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.3,0.3);}}
+  [zoom>=14]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.4,0.4);}}
+  [zoom>=16]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(0.6,0.6);}}
+  [zoom>=17]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(1.1,1.1);}}
+  [zoom>=18]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(1.6,1.6);}}
+  [zoom>=19]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(3,3);}}
+  [zoom>=20]{::hz40,::hz80,::hz160,::hz315,::hz630,::hz1250,::hz2500,::hz5000,::hz10000,::hz20000{ marker-transform: scale(4,4);}}
+}
